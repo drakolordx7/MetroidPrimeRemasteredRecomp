@@ -7,14 +7,12 @@
 - 18 reference projects in `refs/` (Switch recomps, Prime ports/mods, retrotool, PrimeRemasterStructs, Ryubing, deko3d, XenonRecomp, N64Recomp).
 - Git repos: root, `recomp/`, `runtime/`, `tools/`.
 
-## In progress
-- Ryubing emulator built from source as the reference oracle (git.ryujinx.app unreachable).
-
 ## Next
 - Game-independent work while the dump is pending: study smo-recomp / ssbu-recomp / Wonder architecture, then lifter + Unicorn test suite, runtime skeleton, SDL3/Vulkan shell, first-run setup tool.
 - Phase 1 the moment the user's dump (NSP/XCI + prod.keys) arrives.
 
 ## Open items
+- Reference emulator for trace diffs (Phase 5): Ryubing won't build here because some NuGet packages live only on the unreachable git.ryujinx.app feed; GitHub mirrors are unverified third-party binaries, not used. Revisit in Phase 5: Eden, a Ryubing build the user supplies, or retry the official host.
 - "Reverse Engineering" directory skill: user installs from the claude.ai card (CLI can't find it).
 - BinDiff/BinExport: no BinExport build for IDA 9.4 yet; build from source against the IDA SDK in Phase 1 if name matching needs it.
 - PrimeDecomp server (git.axiodl.com) returns 502; decomp source is available inside `refs/MetroidPrimePort/decomp`.
