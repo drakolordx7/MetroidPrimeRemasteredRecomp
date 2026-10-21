@@ -23,5 +23,7 @@ Check nstool     { & "$root\toolchain\nstool\nstool.exe" 2>&1 | Select-String 'N
 Check nx2elf     { & "$root\toolchain\nx2elf\nx2elf.exe" 2>&1 | Select-String 'Usage' }
 Check retrotool  { & "$root\toolchain\retrotool\retrotool.exe" --version }
 Check py-oracle  { & "$root\tools\.venv\Scripts\python.exe" -c "import unicorn, capstone, lz4, elftools; print('unicorn', unicorn.__version__, 'capstone', capstone.__version__)" }
+Check eden       { if (-not (Test-Path "$root\toolchain\eden\eden.exe")) { throw "eden.exe missing" }; "Eden v0.2.1" }
+Check guard      { python "$root\.claude\hooks\test_guard.py" | Select-Object -Last 1 }
 Check ida        { if (-not (Test-Path "C:\Program Files\IDA Professional 9.4\idalib.dll")) { throw "idalib missing" }; "IDA 9.4 idalib present" }
 "`n$fail failure(s)"; exit $fail

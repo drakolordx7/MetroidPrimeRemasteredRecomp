@@ -6,6 +6,7 @@
 /toolchain/
 /game/
 /work/
+.claude/settings.local.json
 *.i64
 *.idb
 *.nsp
