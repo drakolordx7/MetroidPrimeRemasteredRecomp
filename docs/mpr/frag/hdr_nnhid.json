@@ -1,0 +1,1891 @@
+{
+ "source_id": "hdr_nnhid",
+ "items": [
+  {
+   "type": "enum",
+   "name": "nn::hid::NpadButton",
+   "underlying": null,
+   "values": [
+    {
+     "name": "A",
+     "value": "0x0"
+    },
+    {
+     "name": "B",
+     "value": "0x1"
+    },
+    {
+     "name": "X",
+     "value": "0x2"
+    },
+    {
+     "name": "Y",
+     "value": "0x3"
+    },
+    {
+     "name": "StickL",
+     "value": "0x4"
+    },
+    {
+     "name": "StickR",
+     "value": "0x5"
+    },
+    {
+     "name": "L",
+     "value": "0x6"
+    },
+    {
+     "name": "R",
+     "value": "0x7"
+    },
+    {
+     "name": "ZL",
+     "value": "0x8"
+    },
+    {
+     "name": "ZR",
+     "value": "0x9"
+    },
+    {
+     "name": "Plus",
+     "value": "0xa"
+    },
+    {
+     "name": "Minus",
+     "value": "0xb"
+    },
+    {
+     "name": "Left",
+     "value": "0xc"
+    },
+    {
+     "name": "Up",
+     "value": "0xd"
+    },
+    {
+     "name": "Right",
+     "value": "0xe"
+    },
+    {
+     "name": "Down",
+     "value": "0xf"
+    },
+    {
+     "name": "StickLLeft",
+     "value": "0x10"
+    },
+    {
+     "name": "StickLUp",
+     "value": "0x11"
+    },
+    {
+     "name": "StickLRight",
+     "value": "0x12"
+    },
+    {
+     "name": "StickLDown",
+     "value": "0x13"
+    },
+    {
+     "name": "StickRLeft",
+     "value": "0x14"
+    },
+    {
+     "name": "StickRUp",
+     "value": "0x15"
+    },
+    {
+     "name": "StickRRight",
+     "value": "0x16"
+    },
+    {
+     "name": "StickRDown",
+     "value": "0x17"
+    },
+    {
+     "name": "LeftSL",
+     "value": "0x18"
+    },
+    {
+     "name": "LeftSR",
+     "value": "0x19"
+    },
+    {
+     "name": "RightSL",
+     "value": "0x1a"
+    },
+    {
+     "name": "RightSR",
+     "value": "0x1b"
+    },
+    {
+     "name": "Palma",
+     "value": "0x1c"
+    },
+    {
+     "name": "Verification",
+     "value": "0x1d"
+    },
+    {
+     "name": "HandheldLeftB",
+     "value": "0x1e"
+    },
+    {
+     "name": "LeftC",
+     "value": "0x1f"
+    },
+    {
+     "name": "UpC",
+     "value": "0x20"
+    },
+    {
+     "name": "RightC",
+     "value": "0x21"
+    },
+    {
+     "name": "DownC",
+     "value": "0x22"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 14,
+    "evidence": "enum class NpadButton {"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "nn::hid::NpadAttribute",
+   "underlying": null,
+   "values": [
+    {
+     "name": "IsConnected",
+     "value": "0x0"
+    },
+    {
+     "name": "IsWired",
+     "value": "0x1"
+    },
+    {
+     "name": "IsLeftConnected",
+     "value": "0x2"
+    },
+    {
+     "name": "IsLeftWired",
+     "value": "0x3"
+    },
+    {
+     "name": "IsRightConnected",
+     "value": "0x4"
+    },
+    {
+     "name": "IsRightWired",
+     "value": "0x5"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 52,
+    "evidence": "enum class NpadAttribute {"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "nn::hid::NpadStyleTag",
+   "underlying": null,
+   "values": [
+    {
+     "name": "NpadStyleFullKey",
+     "value": "0x0"
+    },
+    {
+     "name": "NpadStyleHandheld",
+     "value": "0x1"
+    },
+    {
+     "name": "NpadStyleJoyDual",
+     "value": "0x2"
+    },
+    {
+     "name": "NpadStyleJoyLeft",
+     "value": "0x3"
+    },
+    {
+     "name": "NpadStyleJoyRight",
+     "value": "0x4"
+    },
+    {
+     "name": "NpadStyleGc",
+     "value": "0x5"
+    },
+    {
+     "name": "NpadStylePalma",
+     "value": "0x6"
+    },
+    {
+     "name": "NpadStyleLark",
+     "value": "0x7"
+    },
+    {
+     "name": "NpadStyleHandheldLark",
+     "value": "0x8"
+    },
+    {
+     "name": "NpadStyleLucia",
+     "value": "0x9"
+    },
+    {
+     "name": "NpadStyleLagon",
+     "value": "0xa"
+    },
+    {
+     "name": "NpadStyleLager",
+     "value": "0xb"
+    },
+    {
+     "name": "NpadStyleSystemExt",
+     "value": "0x1d"
+    },
+    {
+     "name": "NpadStyleSystem",
+     "value": "0x1e"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 61,
+    "evidence": "enum class NpadStyleTag {"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "nn::hid::NpadSystemProperties",
+   "underlying": null,
+   "values": [
+    {
+     "name": "IsChargingJoyDual",
+     "value": "0x0"
+    },
+    {
+     "name": "IsChargingJoyLeft",
+     "value": "0x1"
+    },
+    {
+     "name": "IsChargingJoyRight",
+     "value": "0x2"
+    },
+    {
+     "name": "IsPoweredJoyDual",
+     "value": "0x3"
+    },
+    {
+     "name": "IsPoweredJoyLeft",
+     "value": "0x4"
+    },
+    {
+     "name": "IsPoweredJoyRight",
+     "value": "0x5"
+    },
+    {
+     "name": "IsUnsuportedButtonPressedOnNpadSystem",
+     "value": "0x9"
+    },
+    {
+     "name": "IsUnsuportedButtonPressedOnNpadSystemExt",
+     "value": "0xa"
+    },
+    {
+     "name": "IsAbxyButtonOriented",
+     "value": "0xb"
+    },
+    {
+     "name": "IsSlSrButtonOriented",
+     "value": "0xc"
+    },
+    {
+     "name": "IsPlusAvailable",
+     "value": "0xd"
+    },
+    {
+     "name": "IsMinusAvailable",
+     "value": "0xe"
+    },
+    {
+     "name": "IsDirectionalButtonsAvailable",
+     "value": "0xf"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 80,
+    "evidence": "enum class NpadSystemProperties {"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "nn::hid::TouchAttribute",
+   "underlying": null,
+   "values": [
+    {
+     "name": "Transferable",
+     "value": "0x0"
+    },
+    {
+     "name": "IsConnected",
+     "value": "0x1"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 96,
+    "evidence": "enum class TouchAttribute {"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "nn::hid::MouseButton",
+   "underlying": null,
+   "values": [
+    {
+     "name": "Left",
+     "value": "0x0"
+    },
+    {
+     "name": "Right",
+     "value": "0x1"
+    },
+    {
+     "name": "Middle",
+     "value": "0x2"
+    },
+    {
+     "name": "Forward",
+     "value": "0x3"
+    },
+    {
+     "name": "Back",
+     "value": "0x4"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 101,
+    "evidence": "enum class MouseButton {"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "nn::hid::MouseAttribute",
+   "underlying": null,
+   "values": [
+    {
+     "name": "Transferable",
+     "value": "0x0"
+    },
+    {
+     "name": "IsConnected",
+     "value": "0x1"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 109,
+    "evidence": "enum class MouseAttribute {"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "nn::hid::KeyboardKey",
+   "underlying": null,
+   "values": [
+    {
+     "name": "A",
+     "value": "0x4"
+    },
+    {
+     "name": "B",
+     "value": "0x5"
+    },
+    {
+     "name": "C",
+     "value": "0x6"
+    },
+    {
+     "name": "D",
+     "value": "0x7"
+    },
+    {
+     "name": "E",
+     "value": "0x8"
+    },
+    {
+     "name": "F",
+     "value": "0x9"
+    },
+    {
+     "name": "G",
+     "value": "0xa"
+    },
+    {
+     "name": "H",
+     "value": "0xb"
+    },
+    {
+     "name": "I",
+     "value": "0xc"
+    },
+    {
+     "name": "J",
+     "value": "0xd"
+    },
+    {
+     "name": "K",
+     "value": "0xe"
+    },
+    {
+     "name": "L",
+     "value": "0xf"
+    },
+    {
+     "name": "M",
+     "value": "0x10"
+    },
+    {
+     "name": "N",
+     "value": "0x11"
+    },
+    {
+     "name": "O",
+     "value": "0x12"
+    },
+    {
+     "name": "P",
+     "value": "0x13"
+    },
+    {
+     "name": "Q",
+     "value": "0x14"
+    },
+    {
+     "name": "R",
+     "value": "0x15"
+    },
+    {
+     "name": "S",
+     "value": "0x16"
+    },
+    {
+     "name": "T",
+     "value": "0x17"
+    },
+    {
+     "name": "U",
+     "value": "0x18"
+    },
+    {
+     "name": "V",
+     "value": "0x19"
+    },
+    {
+     "name": "W",
+     "value": "0x1a"
+    },
+    {
+     "name": "X",
+     "value": "0x1b"
+    },
+    {
+     "name": "Y",
+     "value": "0x1c"
+    },
+    {
+     "name": "Z",
+     "value": "0x1d"
+    },
+    {
+     "name": "D1",
+     "value": "0x1e"
+    },
+    {
+     "name": "D2",
+     "value": "0x1f"
+    },
+    {
+     "name": "D3",
+     "value": "0x20"
+    },
+    {
+     "name": "D4",
+     "value": "0x21"
+    },
+    {
+     "name": "D5",
+     "value": "0x22"
+    },
+    {
+     "name": "D6",
+     "value": "0x23"
+    },
+    {
+     "name": "D7",
+     "value": "0x24"
+    },
+    {
+     "name": "D8",
+     "value": "0x25"
+    },
+    {
+     "name": "D9",
+     "value": "0x26"
+    },
+    {
+     "name": "D0",
+     "value": "0x27"
+    },
+    {
+     "name": "Return",
+     "value": "0x28"
+    },
+    {
+     "name": "Escape",
+     "value": "0x29"
+    },
+    {
+     "name": "Backspace",
+     "value": "0x2a"
+    },
+    {
+     "name": "Tab",
+     "value": "0x2b"
+    },
+    {
+     "name": "Space",
+     "value": "0x2c"
+    },
+    {
+     "name": "Minus",
+     "value": "0x2d"
+    },
+    {
+     "name": "Plus",
+     "value": "0x2e"
+    },
+    {
+     "name": "OpenBracket",
+     "value": "0x2f"
+    },
+    {
+     "name": "CloseBracket",
+     "value": "0x30"
+    },
+    {
+     "name": "Pipe",
+     "value": "0x31"
+    },
+    {
+     "name": "Tilde",
+     "value": "0x32"
+    },
+    {
+     "name": "Semicolon",
+     "value": "0x33"
+    },
+    {
+     "name": "Quote",
+     "value": "0x34"
+    },
+    {
+     "name": "Backquote",
+     "value": "0x35"
+    },
+    {
+     "name": "Comma",
+     "value": "0x36"
+    },
+    {
+     "name": "Period",
+     "value": "0x37"
+    },
+    {
+     "name": "Slash",
+     "value": "0x38"
+    },
+    {
+     "name": "CapsLock",
+     "value": "0x39"
+    },
+    {
+     "name": "F1",
+     "value": "0x3a"
+    },
+    {
+     "name": "F2",
+     "value": "0x3b"
+    },
+    {
+     "name": "F3",
+     "value": "0x3c"
+    },
+    {
+     "name": "F4",
+     "value": "0x3d"
+    },
+    {
+     "name": "F5",
+     "value": "0x3e"
+    },
+    {
+     "name": "F6",
+     "value": "0x3f"
+    },
+    {
+     "name": "F7",
+     "value": "0x40"
+    },
+    {
+     "name": "F8",
+     "value": "0x41"
+    },
+    {
+     "name": "F9",
+     "value": "0x42"
+    },
+    {
+     "name": "F10",
+     "value": "0x43"
+    },
+    {
+     "name": "F11",
+     "value": "0x44"
+    },
+    {
+     "name": "F12",
+     "value": "0x45"
+    },
+    {
+     "name": "PrintScreen",
+     "value": "0x46"
+    },
+    {
+     "name": "ScrollLock",
+     "value": "0x47"
+    },
+    {
+     "name": "Pause",
+     "value": "0x48"
+    },
+    {
+     "name": "Insert",
+     "value": "0x49"
+    },
+    {
+     "name": "Home",
+     "value": "0x4a"
+    },
+    {
+     "name": "PageUp",
+     "value": "0x4b"
+    },
+    {
+     "name": "Delete",
+     "value": "0x4c"
+    },
+    {
+     "name": "End",
+     "value": "0x4d"
+    },
+    {
+     "name": "PageDown",
+     "value": "0x4e"
+    },
+    {
+     "name": "RightArrow",
+     "value": "0x4f"
+    },
+    {
+     "name": "LeftArrow",
+     "value": "0x50"
+    },
+    {
+     "name": "DownArrow",
+     "value": "0x51"
+    },
+    {
+     "name": "UpArrow",
+     "value": "0x52"
+    },
+    {
+     "name": "NumLock",
+     "value": "0x53"
+    },
+    {
+     "name": "NumPadDivide",
+     "value": "0x54"
+    },
+    {
+     "name": "NumPadMultiply",
+     "value": "0x55"
+    },
+    {
+     "name": "NumPadSubtract",
+     "value": "0x56"
+    },
+    {
+     "name": "NumPadAdd",
+     "value": "0x57"
+    },
+    {
+     "name": "NumPadEnter",
+     "value": "0x58"
+    },
+    {
+     "name": "NumPad1",
+     "value": "0x59"
+    },
+    {
+     "name": "NumPad2",
+     "value": "0x5a"
+    },
+    {
+     "name": "NumPad3",
+     "value": "0x5b"
+    },
+    {
+     "name": "NumPad4",
+     "value": "0x5c"
+    },
+    {
+     "name": "NumPad5",
+     "value": "0x5d"
+    },
+    {
+     "name": "NumPad6",
+     "value": "0x5e"
+    },
+    {
+     "name": "NumPad7",
+     "value": "0x5f"
+    },
+    {
+     "name": "NumPad8",
+     "value": "0x60"
+    },
+    {
+     "name": "NumPad9",
+     "value": "0x61"
+    },
+    {
+     "name": "NumPad0",
+     "value": "0x62"
+    },
+    {
+     "name": "NumPadDot",
+     "value": "0x63"
+    },
+    {
+     "name": "Backslash",
+     "value": "0x64"
+    },
+    {
+     "name": "Application",
+     "value": "0x65"
+    },
+    {
+     "name": "Power",
+     "value": "0x66"
+    },
+    {
+     "name": "NumPadEquals",
+     "value": "0x67"
+    },
+    {
+     "name": "F13",
+     "value": "0x68"
+    },
+    {
+     "name": "F14",
+     "value": "0x69"
+    },
+    {
+     "name": "F15",
+     "value": "0x6a"
+    },
+    {
+     "name": "F16",
+     "value": "0x6b"
+    },
+    {
+     "name": "F17",
+     "value": "0x6c"
+    },
+    {
+     "name": "F18",
+     "value": "0x6d"
+    },
+    {
+     "name": "F19",
+     "value": "0x6e"
+    },
+    {
+     "name": "F20",
+     "value": "0x6f"
+    },
+    {
+     "name": "F21",
+     "value": "0x70"
+    },
+    {
+     "name": "F22",
+     "value": "0x71"
+    },
+    {
+     "name": "F23",
+     "value": "0x72"
+    },
+    {
+     "name": "F24",
+     "value": "0x73"
+    },
+    {
+     "name": "NumPadComma",
+     "value": "0x85"
+    },
+    {
+     "name": "Ro",
+     "value": "0x87"
+    },
+    {
+     "name": "KatakanaHiragana",
+     "value": "0x88"
+    },
+    {
+     "name": "Yen",
+     "value": "0x89"
+    },
+    {
+     "name": "Henkan",
+     "value": "0x8a"
+    },
+    {
+     "name": "Muhenkan",
+     "value": "0x8b"
+    },
+    {
+     "name": "NumPadCommaPc98",
+     "value": "0x8c"
+    },
+    {
+     "name": "HangulEnglish",
+     "value": "0x90"
+    },
+    {
+     "name": "Hanja",
+     "value": "0x91"
+    },
+    {
+     "name": "Katakana",
+     "value": "0x92"
+    },
+    {
+     "name": "Hiragana",
+     "value": "0x93"
+    },
+    {
+     "name": "ZenkakuHankaku",
+     "value": "0x94"
+    },
+    {
+     "name": "LeftControl",
+     "value": "0xe0"
+    },
+    {
+     "name": "LeftShift",
+     "value": "0xe1"
+    },
+    {
+     "name": "LeftAlt",
+     "value": "0xe2"
+    },
+    {
+     "name": "LeftGui",
+     "value": "0xe3"
+    },
+    {
+     "name": "RightControl",
+     "value": "0xe4"
+    },
+    {
+     "name": "RightShift",
+     "value": "0xe5"
+    },
+    {
+     "name": "RightAlt",
+     "value": "0xe6"
+    },
+    {
+     "name": "RightGui",
+     "value": "0xe7"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 114,
+    "evidence": "enum class KeyboardKey {"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "nn::hid::KeyboardModifier",
+   "underlying": null,
+   "values": [
+    {
+     "name": "Control",
+     "value": "0x0"
+    },
+    {
+     "name": "Shift",
+     "value": "0x1"
+    },
+    {
+     "name": "LeftAlt",
+     "value": "0x2"
+    },
+    {
+     "name": "RightAlt",
+     "value": "0x3"
+    },
+    {
+     "name": "Gui",
+     "value": "0x4"
+    },
+    {
+     "name": "CapsLock",
+     "value": "0x5"
+    },
+    {
+     "name": "ScrollLock",
+     "value": "0x6"
+    },
+    {
+     "name": "NumLock",
+     "value": "0x7"
+    },
+    {
+     "name": "Katakana",
+     "value": "0x8"
+    },
+    {
+     "name": "Hiragana",
+     "value": "0x9"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 249,
+    "evidence": "enum class KeyboardModifier {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::AnalogStickState",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "s32",
+     "name": "X",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 270,
+      "evidence": "s32 X;"
+     }
+    },
+    {
+     "offset": "0x4",
+     "type": "s32",
+     "name": "Y",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 271,
+      "evidence": "s32 Y;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 269,
+    "evidence": "struct AnalogStickState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::TouchState",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "u64",
+     "name": "mDeltaTime",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 275,
+      "evidence": "u64 mDeltaTime;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 274,
+    "evidence": "struct TouchState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::TouchScreenState",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "u64",
+     "name": "samplingNumber",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 288,
+      "evidence": "u64 samplingNumber = 0;"
+     }
+    },
+    {
+     "offset": "0x8",
+     "type": "s32",
+     "name": "count",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 289,
+      "evidence": "s32 count = T;"
+     }
+    },
+    {
+     "offset": "0xc",
+     "type": "char[4]",
+     "name": "reserved",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 290,
+      "evidence": "char reserved[4] = {};"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 287,
+    "evidence": "struct TouchScreenState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::KeyboardState",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "u64",
+     "name": "samplingNumber",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 295,
+      "evidence": "u64 samplingNumber;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 294,
+    "evidence": "struct KeyboardState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::NpadBaseState",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "u64",
+     "name": "mSamplingNumber",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 301,
+      "evidence": "u64 mSamplingNumber;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 300,
+    "evidence": "struct NpadBaseState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::NpadFullKeyState",
+   "kind": "struct",
+   "bases": [
+    "NpadBaseState"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 309,
+    "evidence": "struct NpadFullKeyState : NpadBaseState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::NpadHandheldState",
+   "kind": "struct",
+   "bases": [
+    "NpadBaseState"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 311,
+    "evidence": "struct NpadHandheldState : NpadBaseState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::NpadJoyDualState",
+   "kind": "struct",
+   "bases": [
+    "NpadBaseState"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 313,
+    "evidence": "struct NpadJoyDualState : NpadBaseState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::NpadJoyLeftState",
+   "kind": "struct",
+   "bases": [
+    "NpadBaseState"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 315,
+    "evidence": "struct NpadJoyLeftState : NpadBaseState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::NpadJoyRightState",
+   "kind": "struct",
+   "bases": [
+    "NpadBaseState"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 317,
+    "evidence": "struct NpadJoyRightState : NpadBaseState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::NpadPalmaState",
+   "kind": "struct",
+   "bases": [
+    "NpadBaseState"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 319,
+    "evidence": "struct NpadPalmaState : NpadBaseState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::NpadSystemState",
+   "kind": "struct",
+   "bases": [
+    "NpadBaseState"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 321,
+    "evidence": "struct NpadSystemState : NpadBaseState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::NpadSystemExtState",
+   "kind": "struct",
+   "bases": [
+    "NpadBaseState"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 323,
+    "evidence": "struct NpadSystemExtState : NpadBaseState {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::ControllerSupportArg",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "u8",
+     "name": "mMinPlayerCount",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 327,
+      "evidence": "u8 mMinPlayerCount;"
+     }
+    },
+    {
+     "offset": "0x1",
+     "type": "u8",
+     "name": "mMaxPlayerCount",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 328,
+      "evidence": "u8 mMaxPlayerCount;"
+     }
+    },
+    {
+     "offset": "0x2",
+     "type": "u8",
+     "name": "mTakeOverConnection",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 329,
+      "evidence": "u8 mTakeOverConnection;"
+     }
+    },
+    {
+     "offset": "0x3",
+     "type": "bool",
+     "name": "mLeftJustify",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 330,
+      "evidence": "bool mLeftJustify;"
+     }
+    },
+    {
+     "offset": "0x4",
+     "type": "bool",
+     "name": "mPermitJoyconDual",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 331,
+      "evidence": "bool mPermitJoyconDual;"
+     }
+    },
+    {
+     "offset": "0x5",
+     "type": "bool",
+     "name": "mSingleMode",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 332,
+      "evidence": "bool mSingleMode;"
+     }
+    },
+    {
+     "offset": "0x6",
+     "type": "bool",
+     "name": "mUseColors",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 333,
+      "evidence": "bool mUseColors;"
+     }
+    },
+    {
+     "offset": "0x7",
+     "type": "u8[4]",
+     "name": "mIdentificationColors",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 334,
+      "evidence": "u8 mIdentificationColors[4];"
+     }
+    },
+    {
+     "offset": "0xb",
+     "type": "u8",
+     "name": "mUsingControllerNames",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 335,
+      "evidence": "u8 mUsingControllerNames;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 326,
+    "evidence": "struct ControllerSupportArg {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::ControllerSupportResultInfo",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "mPlayerCount",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 340,
+      "evidence": "int mPlayerCount;"
+     }
+    },
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "mSelectedId",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 341,
+      "evidence": "int mSelectedId;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 339,
+    "evidence": "struct ControllerSupportResultInfo {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "nn::hid::MouseState",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "u64",
+     "name": "samplingNumber",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 345,
+      "evidence": "u64 samplingNumber;"
+     }
+    },
+    {
+     "offset": "0x8",
+     "type": "s32",
+     "name": "x",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 346,
+      "evidence": "s32 x;"
+     }
+    },
+    {
+     "offset": "0xc",
+     "type": "s32",
+     "name": "y",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 347,
+      "evidence": "s32 y;"
+     }
+    },
+    {
+     "offset": "0x10",
+     "type": "s32",
+     "name": "deltaX",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 348,
+      "evidence": "s32 deltaX;"
+     }
+    },
+    {
+     "offset": "0x14",
+     "type": "s32",
+     "name": "deltaY",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 349,
+      "evidence": "s32 deltaY;"
+     }
+    },
+    {
+     "offset": "0x18",
+     "type": "s32",
+     "name": "wheelDeltaX",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 350,
+      "evidence": "s32 wheelDeltaX;"
+     }
+    },
+    {
+     "offset": "0x1c",
+     "type": "s32",
+     "name": "wheelDeltaY",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+      "line": 351,
+      "evidence": "s32 wheelDeltaY;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 344,
+    "evidence": "struct MouseState {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::InitializeNpad",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void InitializeNpad()",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 356,
+    "evidence": "void InitializeNpad();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::SetSupportedNpadIdType",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetSupportedNpadIdType(uint const *, ulong)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 358,
+    "evidence": "void SetSupportedNpadIdType(uint const *, ulong);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::SetSupportedNpadStyleSet",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetSupportedNpadStyleSet(nn::util::BitFlagSet<32, nn::hid::NpadStyleTag>)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 360,
+    "evidence": "void SetSupportedNpadStyleSet(nn::util::BitFlagSet<32, nn::hid::NpadStyleTag>);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadStyleSet",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::hid::NpadStyleSet GetNpadStyleSet(uint const &port)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 362,
+    "evidence": "nn::hid::NpadStyleSet GetNpadStyleSet(uint const &port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetNpadState(nn::hid::NpadFullKeyState *, uint const &port)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 364,
+    "evidence": "void GetNpadState(nn::hid::NpadFullKeyState *, uint const &port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetNpadState(nn::hid::NpadHandheldState *, uint const &port)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 366,
+    "evidence": "void GetNpadState(nn::hid::NpadHandheldState *, uint const &port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetNpadState(nn::hid::NpadJoyDualState *, uint const &port)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 368,
+    "evidence": "void GetNpadState(nn::hid::NpadJoyDualState *, uint const &port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetNpadState(nn::hid::NpadJoyLeftState *, uint const &port)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 370,
+    "evidence": "void GetNpadState(nn::hid::NpadJoyLeftState *, uint const &port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetNpadState(nn::hid::NpadJoyRightState *, uint const &port)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 372,
+    "evidence": "void GetNpadState(nn::hid::NpadJoyRightState *, uint const &port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadStates",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetNpadStates(nn::hid::NpadFullKeyState *, int, uint const &port)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 374,
+    "evidence": "void GetNpadStates(nn::hid::NpadFullKeyState *, int, uint const &port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadStates",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetNpadStates(nn::hid::NpadHandheldState *, int, uint const &port)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 376,
+    "evidence": "void GetNpadStates(nn::hid::NpadHandheldState *, int, uint const &port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadStates",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetNpadStates(nn::hid::NpadJoyDualState *, int, uint const &port)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 378,
+    "evidence": "void GetNpadStates(nn::hid::NpadJoyDualState *, int, uint const &port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadStates",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetNpadStates(nn::hid::NpadJoyLeftState *, int, uint const &port)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 380,
+    "evidence": "void GetNpadStates(nn::hid::NpadJoyLeftState *, int, uint const &port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadStates",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetNpadStates(nn::hid::NpadJoyRightState *, int, uint const &port)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 382,
+    "evidence": "void GetNpadStates(nn::hid::NpadJoyRightState *, int, uint const &port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::InitializeMouse",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void InitializeMouse()",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 387,
+    "evidence": "void InitializeMouse();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::InitializeKeyboard",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void InitializeKeyboard()",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 389,
+    "evidence": "void InitializeKeyboard();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetMouseState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetMouseState(nn::hid::MouseState *)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 391,
+    "evidence": "void GetMouseState(nn::hid::MouseState *);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetKeyboardState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetKeyboardState(nn::hid::KeyboardState *)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 393,
+    "evidence": "void GetKeyboardState(nn::hid::KeyboardState *);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetTouchScreenState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetTouchScreenState(nn::hid::TouchScreenState<T> *)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src_framework/nn/hid.h",
+    "line": 396,
+    "evidence": "void GetTouchScreenState(nn::hid::TouchScreenState<T> *);"
+   }
+  }
+ ]
+}

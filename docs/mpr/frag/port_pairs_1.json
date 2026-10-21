@@ -1,0 +1,1310 @@
+{
+ "source_id": "port_pairs_1",
+ "items": [
+  {
+   "type": "symbol",
+   "name": "CMath::SqrtF",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x65f70",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "0 for v <= 0, else v times a twice-refined FRSQRTE of max(v, 1e-35). Test alias: SqrtF (tests/port_particle_math.cpp).",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 261,
+    "evidence": "CMath::SqrtF 0x65f70"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CMath::InvSqrtF",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x66090",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Twice-refined reciprocal square root estimate of max(v, 1e-35).",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 288,
+    "evidence": "CMath::InvSqrtF 0x66090"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CMath::FastSinR",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x691a0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Opens with the angle wrap shared with FastCosR (t kept if |t| <= pi, else reduced by whole turns).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 420,
+    "evidence": "CMath::FastSinR 0x691a0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CMath::FastCosR",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x69280",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Even degree-8 polynomial of the wrapped angle. Bare alias FastCosR at the same address (header line 420 wrap comment).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 458,
+    "evidence": "CMath::FastCosR 0x69280"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CMath::SolveQuadratic",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x699b0",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Quadratic solver used by NCollisionRayCast::Capsule (ray vs capsule sweep). Test alias: Source::SolveQuadratic.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/CMakeLists.txt",
+    "line": 633,
+    "evidence": "CMath::SolveQuadratic 0x699b0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVector3f::IsNormalizable",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x6b030",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "False if any component is inf or NaN, else squared length >= 1e-28. Test alias: IsNormalizable.",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 1051,
+    "evidence": "CVector3f::IsNormalizable 0x6b030"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVector3f::Normalize",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x6b0b0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Scales by a twice-refined FRSQRTE of the squared length; no zero guard. Bare alias Normalize (PortParticleMath.hpp 826, tests).",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 634,
+    "evidence": "CVector3f::Normalize 0x6b0b0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVector3f::NormalizeWithMagnitude",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x6b100",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Normalizes in place and returns the magnitude from the same final reciprocal. Bare alias NormalizeWithMagnitude (port_remastered_ground_contacts.h 70).",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_remastered_sphere_sweep.h",
+    "line": 10,
+    "evidence": "CVector3f::NormalizeWithMagnitude 0x6b100"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVector3f::Magnitude",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x6b218",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Vector length, (x*x + y*y) + z*z through SqrtF; used by NORM (CVENormalizeVector::GetValue 0x29e620).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 273,
+    "evidence": "CVector3f::Magnitude 0x6b218"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVector3f::AsNormalized",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x6b238",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Same math as Normalize; the unit-vector step of the ELPS point and of visor goo splats. Bare alias AsNormalized (PortParticleMath.hpp 1064).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/MetroidPrime/PortVisorGoo.hpp",
+    "line": 6,
+    "evidence": "CVector3f::AsNormalized 0x6b238"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "AsNormalizedOrZero",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x6b6b8",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Unit vector with zero fallback. Bare name, class not stated in source; reached from the CUnitVector3f ctor 0x71164.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_collision_failsafe.cpp",
+    "line": 23,
+    "evidence": "AsNormalizedOrZero 0x6b6b8"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CUnitVector3f",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x71164",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Constructor (0x71164); calls AsNormalizedOrZero 0x6b6b8 with two refinements and fmulx.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_collision_failsafe.cpp",
+    "line": 462,
+    "evidence": "CUnitVector3f 0x71164"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "close_enough",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x94680",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Strict per-component compare: abs difference < 0.0001 on each axis. Bare name, class not stated.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_ground_contacts.cpp",
+    "line": 29,
+    "evidence": "close_enough 0x94680"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "DoBoundsOverlap",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x98234",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Inclusive box-vs-box overlap test used by the AABox pair check. Bare name, class not stated.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_remastered_ground_box.h",
+    "line": 19,
+    "evidence": "DoBoundsOverlap 0x98234"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "ClosestPointAlongVector",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x98b64",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Support corner of a box along a vector; a zero component chooses min (port SupportMin).",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_ground_contacts.cpp",
+    "line": 24,
+    "evidence": "ClosestPointAlongVector 0x98b64"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CRandom16::RangeF",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb9f90",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Float range draw; listed among the visor goo splat maths addresses in PortVisorGoo.hpp.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/MetroidPrime/PortVisorGoo.hpp",
+    "line": 5,
+    "evidence": "CRandom16::RangeF 0xb9f90"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CRandom16::GetVector3f",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xba108",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "CRandom16 draw: one LCG step, low 28 bits times 2^-28, in [0, 1). Source gives bare name GetVector3f; class taken from the comment.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/CRandom16.hpp",
+    "line": 33,
+    "evidence": "GetVector3f 0xba108"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CQuaternion::FromMatrix",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xd2de4",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Builds a quaternion from nine row-major matrix floats.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 493,
+    "evidence": "CQuaternion::FromMatrix 0xd2de4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CQuaternion::Transform",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xd3f2c",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Turns a vector by a quaternion, unnormalised, operation for operation.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 584,
+    "evidence": "CQuaternion::Transform 0xd3f2c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CQuaternion::Multiply",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xd43d8",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Quaternion product a * b, operation for operation.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 611,
+    "evidence": "CQuaternion::Multiply 0xd43d8"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "Orthonormalized",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xd5140",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Orthonormalises the up-forced basis built from dq in the grounded rider yaw prediction. Bare name; source is docs/REMASTERED_MOVEMENT.md.",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+    "line": 119,
+    "evidence": "Orthonormalized` 0xd5140"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "ComputeNdcDepthFromRetroDepth",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x12e234",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "NDC depth = (m23 - m22 * d) / (m33 - m32 * d).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 23,
+    "evidence": "ComputeNdcDepthFromRetroDepth 0x12e234"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CLightMaterialData::SCachedLight::Initialize",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x16b5c8",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Cached light record for one light from world-space pos and toLight and the view rows. Bare alias SCachedLight::Initialize (port_clustered_lights.h 75, tests 90).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_clustered_lights.h",
+    "line": 12,
+    "evidence": "CLightMaterialData::SCachedLight::Initialize 0x16b5c8"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "SLightDistanceAttenuation::FromValues",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x173798",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Distance falloff: far pushed just past near if far <= near; A = 1/(far-near), B = -near*A. Bare alias FromValues (port_clustered_lights.cpp 66).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_clustered_lights.h",
+    "line": 66,
+    "evidence": "SLightDistanceAttenuation::FromValues 0x173798"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "SLightAngleAttenuation::FromValues",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x173a50",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Cone attenuation from half angles in degrees: scale = 1/(cosIn - cosOut), bias = -cosOut*scale.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_clustered_lights.h",
+    "line": 69,
+    "evidence": "SLightAngleAttenuation::FromValues 0x173a50"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "UpdateLightModulationColor",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x1c6f4c",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Baked-light modulation colour; the X-ray override replaces it entirely, power-bomb flash included.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_room_env.cpp",
+    "line": 589,
+    "evidence": "UpdateLightModulationColor 0x1c6f4c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CBakedLightingProbeTexture::Initialize",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x1c8cbc",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Rounds the baked-light box to points and maps them to texels.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_room.cpp",
+    "line": 1487,
+    "evidence": "CBakedLightingProbeTexture::Initialize (0x1c8cbc"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "OnRegisterContextNode",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x1ca01c",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Registers an area's copy of a baked-light tile: first copy mapped, later copies on standby. Bare name, class not stated.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_room_env.cpp",
+    "line": 32,
+    "evidence": "OnRegisterContextNode 0x1ca01c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CScopedGraphicsDepthBias::CalculateProjMatrixDepthBias",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x22a604",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Particle depth bias: a world-unit bias at view depth becomes a constant NDC shift applied to projection m22. Bare alias CalculateProjMatrixDepthBias (tests/port_particle_depth_bias.cpp).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 19,
+    "evidence": "CScopedGraphicsDepthBias::CalculateProjMatrixDepthBias 0x22a604"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CElementGen::Update",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2460e0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "First-Update step that initialises the mover (CAddVarSystem::Init), before the PSWT warm-up.",
+   "tags": [
+    "render",
+    "timestep"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+    "line": 1633,
+    "evidence": "CElementGen::Update 0x2460e0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "SolveParticleTransform",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x246f14",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Per-particle model orientation direction and pivot offset (PMOV/PMPV) in the port's space. Bare name, class not stated.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CGenDescription.hpp",
+    "line": 234,
+    "evidence": "SolveParticleTransform 0x246f14"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CElementGen::SpawnChildSystems",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x249bd8",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Child-system spawn for converted Remastered effects, with the PKSM spawn tables.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CElementGen.hpp",
+    "line": 477,
+    "evidence": "CElementGen::SpawnChildSystems (0x249bd8"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CElementGen::TickSystem_Node",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24a16c",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Per-tick update; a CODE emitter (EMTR CODE) skips the automatic rate-driven spawn. Bare alias TickSystem_Node (CElementGen.cpp 838).",
+   "tags": [
+    "render",
+    "timestep"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CGenDescription.hpp",
+    "line": 191,
+    "evidence": "CElementGen::TickSystem_Node 0x24a16c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "UpdateExistingParticles",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24a26c",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Per-particle update; evaluates COLR with each particle's own variable block. Bare name, class not stated.",
+   "tags": [
+    "render",
+    "timestep"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+    "line": 2795,
+    "evidence": "UpdateExistingParticles 0x24a26c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CreateNewParticles",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24a4cc",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Particle birth at 0x24a4cc: runs _Init_Particle before EMTR and the properties, latching KPIN values. Bare name, class not stated.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+    "line": 364,
+    "evidence": "CreateNewParticles 0x24a4cc"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CreateNewParticles",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24a630",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Spreads new particle positions back along the system's translation change (ITPE 1). Bare name, class not stated; separate address from the other CreateNewParticles items.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CGenDescription.hpp",
+    "line": 219,
+    "evidence": "CreateNewParticles 0x24a630"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CreateNewParticles",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24a9fc",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Stops the emitter velocity from being turned by the system orientation (IVSE 0). Bare name, class not stated; separate address.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CGenDescription.hpp",
+    "line": 212,
+    "evidence": "CreateNewParticles 0x24a9fc"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "TickSystem_Complete",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24ac98",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Start-of-tick mover update (CAddVarSystem::Update), before particles update and spawn. Bare name.",
+   "tags": [
+    "render",
+    "timestep"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+    "line": 1701,
+    "evidence": "TickSystem_Complete 0x24ac98"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CElementGen::_CreateNewParticleAtPositionsIncludingChildren",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24bfd0",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Spawns particles at given positions: PART children first, then the generator's own (visor goo splats).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+    "line": 2206,
+    "evidence": "CElementGen::_CreateNewParticleAtPositionsIncludingChildren 0x24bfd0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CElementGen::_CreateNewParticlesAtPositions",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24c0dc",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Spawns up to MAXP particles at given positions, raw, at rest, without EMTR. Other labels for this address in the source, unresolved: IncludingChildren (CElementGen.hpp 299) and LTM2 (port_remastered_effect_convert.cpp 2376).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+    "line": 2229,
+    "evidence": "CElementGen::_CreateNewParticlesAtPositions 0x24c0dc"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "ConstructChildSystemCoords",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24c594",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Places each constructed child alike when no component is given. Bare name, class not stated.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+    "line": 1391,
+    "evidence": "ConstructChildSystemCoords 0x24c594"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "UpdateLifetimeTweenValues",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24ef38",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Lifetime tween for the system (time slot 0); the port saves and restores the global around child updates. Bare name.",
+   "tags": [
+    "render",
+    "timestep"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CParticleGlobals.hpp",
+    "line": 18,
+    "evidence": "UpdateLifetimeTweenValues 0x24ef38"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVarContext",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24f06c",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Constructor: records the parent variable context (ctx+0x48), or null.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+    "line": 172,
+    "evidence": "CVarContext 0x24f06c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CElementDep::Finish",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x24f9a4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Fills the constant-after-start flags for a node from its virtuals and its children.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 403,
+    "evidence": "CElementDep::Finish (0x24f9a4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "IElement::Compile",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x250830",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Element compile step; the source does not recurse here.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 1664,
+    "evidence": "IElement::Compile 0x250830"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "ResolveInitialOnlyConflict",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x250994",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Initial-only bit: falls to the children's bit when every child is constant-after-start.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 414,
+    "evidence": "ResolveInitialOnlyConflict 0x250994"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "IsConstantAfterStart",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x250b18",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "True when a variable tree is constant after start, i.e. (flags & 3) != 0.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 402,
+    "evidence": "IsConstantAfterStart (0x250b18"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetDefaultVarContextTime",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2513dc",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Maps a property tag to a default var-context time slot (2 -> 1, 4 -> 2, else 0).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 2374,
+    "evidence": "GetDefaultVarContextTime 0x2513dc"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetVectorElement",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x251974",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Vector element builder for the signature table; LINV maps to CVELineWithVariance.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect.cpp",
+    "line": 147,
+    "evidence": "GetVectorElement 0x251974"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "AddDirectParentExtVarRef",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x25584c",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Adds a reference to the direct parent's PVAR variable (DPV reads).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+    "line": 585,
+    "evidence": "AddDirectParentExtVarRef 0x25584c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "AddTopmostParentExtVarRef",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x255bf4",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Adds a reference to the topmost parent's PVAR variable (TPV reads).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+    "line": 586,
+    "evidence": "AddTopmostParentExtVarRef 0x255bf4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CreateGPSM",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x256b7c",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Writes the generator's property stream; the PMRB and PMCF flags set how PMRQ acts. Bare name, class not stated.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 4423,
+    "evidence": "CreateGPSM 0x256b7c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CreateGPSM",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x25a560",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "DFOG 1 sets the no-fog bit (desc+0x6b bit 3) for part and swoosh properties. Bare name; separate address from the other CreateGPSM.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 4250,
+    "evidence": "CreateGPSM 0x25a560"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetRotationElement",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x25d59c",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Rotation element builder; EXTR (system orientation) is built here. Bare name, class not stated.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 2249,
+    "evidence": "GetRotationElement 0x25d59c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetRotationElement",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x25e418",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Builds RAZY, the rotation from two axes (CERotationFromAxis). Bare name; separate address from the other GetRotationElement.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 360,
+    "evidence": "GetRotationElement 0x25e418"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetColorElement",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x25ece4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Colour combinator builder; half floats kept unclamped, results clamped to [0, 1] as CColor is bytes. Bare name, class not stated.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+    "line": 692,
+    "evidence": "GetColorElement 0x25ece4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetRealElement",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x260de4",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Real element builder; the SPAF, DPVF and TPVF parent reads are built here.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 347,
+    "evidence": "GetRealElement 0x260de4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetEmitterElement",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x264bc4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Emitter element builder; ASPV maps to CVEAngleSphereWithVariance.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect.cpp",
+    "line": 168,
+    "evidence": "GetEmitterElement 0x264bc4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetTextureElement",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x266ba4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Texture element builder; ATFB builds CUVEAnimFlipBookTexture.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect.cpp",
+    "line": 103,
+    "evidence": "GetTextureElement 0x266ba4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetLifetimeTweenElement",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x26a640",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Blend from A to B by the system tween (PSLW, Remastered SLTW).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortSystemTween.hpp",
+    "line": 3,
+    "evidence": "GetLifetimeTweenElement 0x26a640"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetIntElement",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x26a910",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Lifetime-percent int element (ILPT): lifetime times percent, truncated; no clamp of a negative percent.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CIntElement.hpp",
+    "line": 127,
+    "evidence": "GetIntElement 0x26a910"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetIntAsReal",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x26d794",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Int-as-real conversion; on the lifetime-percent path the percent is scaled by 0.01f first.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CIntElement.cpp",
+    "line": 285,
+    "evidence": "GetIntAsReal 0x26d794"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "SetUpShuffledIndexing",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x26ffe4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Sets the size of the index shuffler (mShuffle); 0 for none.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CEmitterElement.hpp",
+    "line": 147,
+    "evidence": "SetUpShuffledIndexing 0x26ffe4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CElementArray<CVector3f>::GetValue",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x27186c",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "SLCT select: entry at index % count, for the CVector3f instantiation. Source writes CElementArray<T>::GetValue with the address; instantiation inferred from the listed type.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+    "line": 755,
+    "evidence": "CVector3f 0x27186c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CElementArray<CColor4f16>::GetValue",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x271ee4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "SLCT select: entry at index % count, for the CColor4f16 instantiation. Source writes CElementArray<T>::GetValue with the address; instantiation inferred from the listed type.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+    "line": 755,
+    "evidence": "CColor4f16 0x271ee4"
+   }
+  }
+ ]
+}

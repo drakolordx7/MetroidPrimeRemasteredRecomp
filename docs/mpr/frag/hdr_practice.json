@@ -1,0 +1,5757 @@
+{
+ "source_id": "hdr_practice",
+ "items": [
+  {
+   "type": "struct",
+   "name": "CActorMP1",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CActorMP1.hpp",
+    "line": 5,
+    "evidence": "class CActorMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CActorMP1::GetTransform",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CTransform4f& GetTransform() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CActorMP1.hpp",
+    "line": 7,
+    "evidence": "CTransform4f& GetTransform() const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CActorMP1::SetTransform",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CTransform4f SetTransform(const CTransform4f& transform)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CActorMP1.hpp",
+    "line": 8,
+    "evidence": "CTransform4f SetTransform(const CTransform4f& transform);"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "EControl",
+   "underlying": "int",
+   "values": [
+    {
+     "name": "UNK0",
+     "value": "0x0"
+    },
+    {
+     "name": "UNK1",
+     "value": "0x1"
+    },
+    {
+     "name": "UNK2",
+     "value": "0x2"
+    },
+    {
+     "name": "UNK3",
+     "value": "0x3"
+    },
+    {
+     "name": "UNK4",
+     "value": "0x4"
+    },
+    {
+     "name": "UNK5",
+     "value": "0x5"
+    },
+    {
+     "name": "UNK6",
+     "value": "0x6"
+    },
+    {
+     "name": "UNK7",
+     "value": "0x7"
+    },
+    {
+     "name": "UNK8",
+     "value": "0x8"
+    },
+    {
+     "name": "UNK9",
+     "value": "0x9"
+    },
+    {
+     "name": "UNKA",
+     "value": "0xa"
+    },
+    {
+     "name": "UNKB",
+     "value": "0xb"
+    },
+    {
+     "name": "UNKC",
+     "value": "0xc"
+    },
+    {
+     "name": "UNKD",
+     "value": "0xd"
+    },
+    {
+     "name": "UNKE",
+     "value": "0xe"
+    },
+    {
+     "name": "LEFT_STICK_Y",
+     "value": "0xf"
+    },
+    {
+     "name": "LEFT_STICK_UP",
+     "value": "0x10"
+    },
+    {
+     "name": "LEFT_STICK_DOWN",
+     "value": "0x11"
+    },
+    {
+     "name": "LEFT_STICK_X",
+     "value": "0x12"
+    },
+    {
+     "name": "LEFT_STICK_RIGHT",
+     "value": "0x13"
+    },
+    {
+     "name": "LEFT_STICK_LEFT",
+     "value": "0x14"
+    },
+    {
+     "name": "RIGHT_STICK_Y",
+     "value": "0x15"
+    },
+    {
+     "name": "RIGHT_STICK_UP",
+     "value": "0x16"
+    },
+    {
+     "name": "RIGHT_STICK_DOWN",
+     "value": "0x17"
+    },
+    {
+     "name": "RIGHT_STICK_X",
+     "value": "0x18"
+    },
+    {
+     "name": "RIGHT_STICK_RIGHT",
+     "value": "0x19"
+    },
+    {
+     "name": "RIGHT_STICK_LEFT",
+     "value": "0x1a"
+    },
+    {
+     "name": "DPAD_UP",
+     "value": "0x1b"
+    },
+    {
+     "name": "DPAD_DOWN",
+     "value": "0x1c"
+    },
+    {
+     "name": "DPAD_LEFT",
+     "value": "0x1d"
+    },
+    {
+     "name": "DPAD_RIGHT",
+     "value": "0x1e"
+    },
+    {
+     "name": "A",
+     "value": "0x1f"
+    },
+    {
+     "name": "B",
+     "value": "0x20"
+    },
+    {
+     "name": "Y",
+     "value": "0x21"
+    },
+    {
+     "name": "X",
+     "value": "0x22"
+    },
+    {
+     "name": "L",
+     "value": "0x23"
+    },
+    {
+     "name": "R",
+     "value": "0x24"
+    },
+    {
+     "name": "ZL",
+     "value": "0x25"
+    },
+    {
+     "name": "ZR",
+     "value": "0x26"
+    },
+    {
+     "name": "MINUS",
+     "value": "0x27"
+    },
+    {
+     "name": "PLUS",
+     "value": "0x28"
+    },
+    {
+     "name": "UNK29",
+     "value": "0x29"
+    },
+    {
+     "name": "UNK2A",
+     "value": "0x2a"
+    },
+    {
+     "name": "LEFT_STICK_CLICK",
+     "value": "0x2b"
+    },
+    {
+     "name": "RIGHT_STICK_CLICK",
+     "value": "0x2c"
+    },
+    {
+     "name": "UNK2D",
+     "value": "0x2d"
+    },
+    {
+     "name": "UNK2E",
+     "value": "0x2e"
+    },
+    {
+     "name": "UNK2F",
+     "value": "0x2f"
+    },
+    {
+     "name": "UNK30",
+     "value": "0x30"
+    },
+    {
+     "name": "UNK31",
+     "value": "0x31"
+    },
+    {
+     "name": "UNK32",
+     "value": "0x32"
+    },
+    {
+     "name": "UNK33",
+     "value": "0x33"
+    },
+    {
+     "name": "UNK34",
+     "value": "0x34"
+    },
+    {
+     "name": "UNK35",
+     "value": "0x35"
+    },
+    {
+     "name": "UNK36",
+     "value": "0x36"
+    },
+    {
+     "name": "UNK37",
+     "value": "0x37"
+    },
+    {
+     "name": "MAX",
+     "value": "0x38"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFinalInput.hpp",
+    "line": 4,
+    "evidence": "enum class EControl : int {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CFinalInput",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "char[0x398]",
+     "name": "DATA_HOLDER",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CFinalInput.hpp",
+      "line": 66,
+      "evidence": "char DATA_HOLDER[0x398];"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFinalInput.hpp",
+    "line": 64,
+    "evidence": "class CFinalInput {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CFinalInput::GetDigitalHeld",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool GetDigitalHeld(EControl control) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFinalInput.hpp",
+    "line": 68,
+    "evidence": "bool GetDigitalHeld(EControl control) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CFinalInput::GetDigitalPressed",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool GetDigitalPressed(EControl control) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFinalInput.hpp",
+    "line": 69,
+    "evidence": "bool GetDigitalPressed(EControl control) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CFinalInput::GetDigitalReleased",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool GetDigitalReleased(EControl control) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFinalInput.hpp",
+    "line": 70,
+    "evidence": "bool GetDigitalReleased(EControl control) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CFinalInput::GetAnalog",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "float GetAnalog(EControl control) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFinalInput.hpp",
+    "line": 71,
+    "evidence": "float GetAnalog(EControl control) const;"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CGameCameraMP1",
+   "kind": "class",
+   "bases": [
+    "CGameCamera"
+   ],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x25c",
+     "type": "float",
+     "name": "CurrentFOV_acc",
+     "note": "accessor in header reads this offset; class CGameCameraMP1",
+     "confidence": "source-stated",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CFirstPersonCamera.hpp",
+      "line": 12,
+      "evidence": "GetField<float>(this, 0x25c)"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFirstPersonCamera.hpp",
+    "line": 10,
+    "evidence": "class CGameCameraMP1: public CGameCamera {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameCameraMP1::UpdateFOV",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void UpdateFOV(float dt)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFirstPersonCamera.hpp",
+    "line": 15,
+    "evidence": "void UpdateFOV(float dt);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CFirstPersonCameraMP1",
+   "kind": "class",
+   "bases": [
+    "CGameCameraMP1"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFirstPersonCamera.hpp",
+    "line": 18,
+    "evidence": "class CFirstPersonCameraMP1 : public CGameCameraMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CFirstPersonCameraMP1::Think",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void Think(float, CStateManager&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFirstPersonCamera.hpp",
+    "line": 20,
+    "evidence": "void Think(float, CStateManager&);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CCameraManagerMP1",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFirstPersonCamera.hpp",
+    "line": 23,
+    "evidence": "class CCameraManagerMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCameraManagerMP1::GetDefaultFirstPersonVerticalFOV",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "float GetDefaultFirstPersonVerticalFOV()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFirstPersonCamera.hpp",
+    "line": 25,
+    "evidence": "static float GetDefaultFirstPersonVerticalFOV();"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "STonemapParams",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "float",
+     "name": "inverseExposure_acc",
+     "note": "accessor in header reads this offset; class STonemapParams",
+     "confidence": "source-stated",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CFirstPersonCamera.hpp",
+      "line": 30,
+      "evidence": "GetField<float>(this, 0x0)"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFirstPersonCamera.hpp",
+    "line": 28,
+    "evidence": "class STonemapParams {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NTonemap::build_tonemap_eval_params",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void build_tonemap_eval_params(STonemapParams const&)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CFirstPersonCamera.hpp",
+    "line": 34,
+    "evidence": "void build_tonemap_eval_params(STonemapParams const&);"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "NGameInstanceState::EQuitReason",
+   "underlying": null,
+   "values": [
+    {
+     "name": "None",
+     "value": "-1"
+    },
+    {
+     "name": "kQR_Warp",
+     "value": "0x7"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 8,
+    "evidence": "enum EQuitReason {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CGameInstanceState",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 16,
+    "evidence": "class CGameInstanceState {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::CGameInstanceState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGameInstanceState(rstl::auto_ptr<NGameInstanceState::IPlayerInstanceState> const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 18,
+    "evidence": "CGameInstanceState(rstl::auto_ptr<NGameInstanceState::IPlayerInstanceState> const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::~CGameInstanceState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "~CGameInstanceState()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 19,
+    "evidence": "~CGameInstanceState();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::GameCameraState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GameCameraState(CStateManager const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 21,
+    "evidence": "void GameCameraState(CStateManager const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::GameFlowState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GameFlowState(CStateManager const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 22,
+    "evidence": "void GameFlowState(CStateManager const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::HUDState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void HUDState(CStateManager const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 23,
+    "evidence": "void HUDState(CStateManager const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::PlayerInstanceStateInterface",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PlayerInstanceStateInterface(CStateManager const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 24,
+    "evidence": "void PlayerInstanceStateInterface(CStateManager const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::GraphicalTransitionState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GraphicalTransitionState(CStateManager const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 25,
+    "evidence": "void GraphicalTransitionState(CStateManager const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::AITaskMgr",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void AITaskMgr(CStateManager const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 26,
+    "evidence": "void AITaskMgr(CStateManager const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::QuitGame",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void QuitGame(NGameInstanceState::EQuitReason)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 27,
+    "evidence": "void QuitGame(NGameInstanceState::EQuitReason);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::GetWantsToQuit",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetWantsToQuit(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 28,
+    "evidence": "void GetWantsToQuit(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::GetQuitReason",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "NGameInstanceState::EQuitReason GetQuitReason(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 29,
+    "evidence": "NGameInstanceState::EQuitReason GetQuitReason(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameInstanceState::CheckStateManagerTypeForWriteAccess",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void CheckStateManagerTypeForWriteAccess(CStateManager const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameInstanceState.h",
+    "line": 30,
+    "evidence": "void CheckStateManagerTypeForWriteAccess(CStateManager const&);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CGameState::SInitialState",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "CObjectId",
+     "name": "mInitialId",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+      "line": 38,
+      "evidence": "CObjectId mInitialId;"
+     }
+    },
+    {
+     "offset": "0x10",
+     "type": "int",
+     "name": "mSaveSlot",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+      "line": 39,
+      "evidence": "int mSaveSlot;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 32,
+    "evidence": "struct SInitialState {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SInitialState::SInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "SInitialState(CObjectId const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 33,
+    "evidence": "SInitialState(CObjectId const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SInitialState::SInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "SInitialState(CObjectId const&,SSaveInfo const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 34,
+    "evidence": "SInitialState(CObjectId const&,SSaveInfo const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SInitialState::SInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "SInitialState(CInputStream &,uint)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 35,
+    "evidence": "SInitialState(CInputStream &,uint);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SInitialState::PutTo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PutTo(COutputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 36,
+    "evidence": "void PutTo(COutputStream &);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CGameState",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 30,
+    "evidence": "class CGameState {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::CGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGameState(rstl::ncrc_ptr<CUniverseInfo> const &, CGameState::SInitialState const &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 47,
+    "evidence": "CGameState(rstl::ncrc_ptr<CUniverseInfo> const &, CGameState::SInitialState const &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::CGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGameState(CInputBitStream &, rstl::ncrc_ptr<CUniverseInfo> const &, uint, rstl::ncrc_ptr<CGameOptions> const &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 48,
+    "evidence": "CGameState(CInputBitStream &, rstl::ncrc_ptr<CUniverseInfo> const &, uint, rstl::ncrc_ptr<CGameOptio"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::~CGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "~CGameState()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 49,
+    "evidence": "~CGameState();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::InitQuickLoadBuffer",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void InitQuickLoadBuffer(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 51,
+    "evidence": "void InitQuickLoadBuffer(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::InitializeFromStream",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void InitializeFromStream(CInputBitStream &, uint)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 52,
+    "evidence": "void InitializeFromStream(CInputBitStream &, uint);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ResetGameInstanceState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ResetGameInstanceState(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 53,
+    "evidence": "void ResetGameInstanceState(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::PreSave",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PreSave(CObjectId const &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 54,
+    "evidence": "void PreSave(CObjectId const &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetSavePointName",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetSavePointName(rstl::basic_string<char, rstl::char_traits<char>, rstl::rmemory_allocator> const &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 55,
+    "evidence": "void SetSavePointName(rstl::basic_string<char, rstl::char_traits<char>, rstl::rmemory_allocator> con"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::PutTo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PutTo(COutputBitStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 56,
+    "evidence": "void PutTo(COutputBitStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::StreamInSystemState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void StreamInSystemState(CInputStream &, uint)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 57,
+    "evidence": "void StreamInSystemState(CInputStream &, uint);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::StreamOutSystemState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void StreamOutSystemState(COutputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 58,
+    "evidence": "void StreamOutSystemState(COutputStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::CopyOutSystemStateFrontEndSettings",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void CopyOutSystemStateFrontEndSettings(CSystemState &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 59,
+    "evidence": "void CopyOutSystemStateFrontEndSettings(CSystemState &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ConstructAreaStatesIfRequired",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ConstructAreaStatesIfRequired(SAreaInfoContext const &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 60,
+    "evidence": "void ConstructAreaStatesIfRequired(SAreaInfoContext const &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetDesiredAreaId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetDesiredAreaId(CObjectId const &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 61,
+    "evidence": "void SetDesiredAreaId(CObjectId const &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::GetSavePointName",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetSavePointName(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 62,
+    "evidence": "void GetSavePointName(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::PlayerState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PlayerState(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 63,
+    "evidence": "void PlayerState(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::GetPlayerState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetPlayerState(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 64,
+    "evidence": "void GetPlayerState(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ComputeGameProgress",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ComputeGameProgress(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 65,
+    "evidence": "void ComputeGameProgress(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetTotalPlayTime",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetTotalPlayTime(double)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 66,
+    "evidence": "void SetTotalPlayTime(double);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::GetGameMode4CC",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetGameMode4CC(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 67,
+    "evidence": "void GetGameMode4CC(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::IsInFrontEndArea",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void IsInFrontEndArea(CGameState::EReturnTrueIfAreaInvalid)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 68,
+    "evidence": "void IsInFrontEndArea(CGameState::EReturnTrueIfAreaInvalid);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::WasLoadedFromSaveFile",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void WasLoadedFromSaveFile(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 69,
+    "evidence": "void WasLoadedFromSaveFile(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetSaveSlot",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetSaveSlot(int)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 70,
+    "evidence": "void SetSaveSlot(int);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::IsCinematicSkippable",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void IsCinematicSkippable(CGuid const &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 71,
+    "evidence": "void IsCinematicSkippable(CGuid const &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetCinematicSkippable",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetCinematicSkippable(CGuid const &, bool)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 72,
+    "evidence": "void SetCinematicSkippable(CGuid const &, bool);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetCinematicForceSkippableOverride",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetCinematicForceSkippableOverride(bool)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 73,
+    "evidence": "void SetCinematicForceSkippableOverride(bool);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::StreamNewGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void StreamNewGameState(CInputStream &, rstl::ncrc_ptr<CUniverseInfo> const &, uint, rstl::ncrc_ptr<CGameOptions> const &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 74,
+    "evidence": "void StreamNewGameState(CInputStream &, rstl::ncrc_ptr<CUniverseInfo> const &, uint,"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::CreateNewGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void CreateNewGameState(rstl::ncrc_ptr<CUniverseInfo> const &, CGameState::SInitialState const &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 76,
+    "evidence": "void CreateNewGameState(rstl::ncrc_ptr<CUniverseInfo> const &, CGameState::SInitialState const &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ResetGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ResetGameState(CGameState const &, CGameState::SInitialState const &, CGameState::EForcePreserveData)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 77,
+    "evidence": "void ResetGameState(CGameState const &, CGameState::SInitialState const &, CGameState::EForcePreserv"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetInitialState(CGameState::SInitialState const &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 78,
+    "evidence": "void SetInitialState(CGameState::SInitialState const &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ResetWithQuickLoadBuffer",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ResetWithQuickLoadBuffer(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 79,
+    "evidence": "void ResetWithQuickLoadBuffer(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ContinueWithNewInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ContinueWithNewInitialState(CGameState &, CGameState::SInitialState const &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 81,
+    "evidence": "static void ContinueWithNewInitialState(CGameState &, CGameState::SInitialState const &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::GetPlayTime",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "double &GetPlayTime()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 85,
+    "evidence": "inline double &GetPlayTime() {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CStateManager",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x4e0150",
+     "type": "CStateManagerGameLogicMP1",
+     "name": "GameLogic_acc",
+     "note": "accessor in header reads this offset; class CStateManager",
+     "confidence": "source-stated",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+      "line": 99,
+      "evidence": "GetField<CStateManagerGameLogicMP1>(this, 0x4e0150)"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 91,
+    "evidence": "class CStateManager {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManager::GameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGameState& GameState(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 93,
+    "evidence": "CGameState& GameState(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManager::GetGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGameState* GetGameState(void) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 94,
+    "evidence": "CGameState* GetGameState(void) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManager::GameInstanceState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGameInstanceState& GameInstanceState(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 96,
+    "evidence": "CGameInstanceState& GameInstanceState(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManager::GetGameInstanceState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGameInstanceState* GetGameInstanceState(void) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 97,
+    "evidence": "CGameInstanceState* GetGameInstanceState(void) const;"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CGameStateMP1",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x20",
+     "type": "CPlayerStateMP1",
+     "name": "PlayerState_2_acc",
+     "note": "accessor in header reads this offset; class CGameStateMP1",
+     "confidence": "source-stated",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+      "line": 137,
+      "evidence": "GetField<CPlayerStateMP1>(this, 0x20)"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 108,
+    "evidence": "class CGameStateMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::~CGameStateMP1",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "~CGameStateMP1()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 111,
+    "evidence": "~CGameStateMP1();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::CGameStateMP1",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGameStateMP1(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 112,
+    "evidence": "CGameStateMP1(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::CGameStateMP1",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGameStateMP1(CInputStream &,uint)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 113,
+    "evidence": "CGameStateMP1(CInputStream &,uint);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::ResetFromStream",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ResetFromStream(CInputStream &,uint)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 114,
+    "evidence": "void ResetFromStream(CInputStream &,uint);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::InitializeWithUniverseInfo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void InitializeWithUniverseInfo(CGameState const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 115,
+    "evidence": "void InitializeWithUniverseInfo(CGameState const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::SetCurrentWorldId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetCurrentWorldId(CObjectId)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 116,
+    "evidence": "void SetCurrentWorldId(CObjectId);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::PutTo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PutTo(COutputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 117,
+    "evidence": "void PutTo(COutputStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::StreamInSystemState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void StreamInSystemState(CInputStream &,uint)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 118,
+    "evidence": "void StreamInSystemState(CInputStream &,uint);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::StreamOutSystemState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void StreamOutSystemState(COutputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 119,
+    "evidence": "void StreamOutSystemState(COutputStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::StreamInStateForGameCompletion",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void StreamInStateForGameCompletion(CInputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 120,
+    "evidence": "void StreamInStateForGameCompletion(CInputStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::StreamOutStateForGameCompletion",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void StreamOutStateForGameCompletion(COutputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 121,
+    "evidence": "void StreamOutStateForGameCompletion(COutputStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::CopyInSystemStateFrontEndSettings",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void CopyInSystemStateFrontEndSettings(CSystemStateMP1 const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 122,
+    "evidence": "void CopyInSystemStateFrontEndSettings(CSystemStateMP1 const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::StateForWorld",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CWorldStateMP1* StateForWorld(CObjectId)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 124,
+    "evidence": "CWorldStateMP1* StateForWorld(CObjectId);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::CurrentWorldState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CWorldStateMP1* CurrentWorldState(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 126,
+    "evidence": "CWorldStateMP1* CurrentWorldState(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::GetCurrentWorldState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "const CWorldStateMP1* GetCurrentWorldState(void) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 127,
+    "evidence": "const CWorldStateMP1* GetCurrentWorldState(void) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::PlayerState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CPlayerStateMP1* PlayerState(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 129,
+    "evidence": "CPlayerStateMP1* PlayerState(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::GetPlayerState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "const CPlayerStateMP1* GetPlayerState(void) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 130,
+    "evidence": "const CPlayerStateMP1* GetPlayerState(void) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::SetGameCompleted",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetGameCompleted(bool)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 132,
+    "evidence": "void SetGameCompleted(bool);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::GetDamageMultiplier",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetDamageMultiplier(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 133,
+    "evidence": "void GetDamageMultiplier(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::GetWeaponMultiplier",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetWeaponMultiplier(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 134,
+    "evidence": "void GetWeaponMultiplier(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameStateMP1::IsIntroLevel",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void IsIntroLevel(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 135,
+    "evidence": "void IsIntroLevel(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "gpGameState",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "extern CGameStateMP1* gpGameState",
+   "role": "extern global declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 139,
+    "evidence": "extern CGameStateMP1* gpGameState;"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "CStateManagerGameLogicMP1::EGameState",
+   "underlying": "uint32_t",
+   "values": [
+    {
+     "name": "Running",
+     "value": "0x0"
+    },
+    {
+     "name": "SoftPaused",
+     "value": "0x1"
+    },
+    {
+     "name": "Paused",
+     "value": "0x2"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 144,
+    "evidence": "enum class EGameState : uint32_t { Running, SoftPaused, Paused };"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CStateManagerGameLogicMP1",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 142,
+    "evidence": "class CStateManagerGameLogicMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManagerGameLogicMP1::GameMainLoop",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GameMainLoop(CStateManager& mgr, CStateManagerUpdateAccess& mgrUpdAcc, float dt)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 145,
+    "evidence": "void GameMainLoop(CStateManager& mgr, CStateManagerUpdateAccess& mgrUpdAcc, float dt);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManagerGameLogicMP1::PlayerState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CPlayerStateMP1* PlayerState()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 146,
+    "evidence": "static CPlayerStateMP1* PlayerState();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManagerGameLogicMP1::PlayerActor",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CPlayerMP1* PlayerActor()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 147,
+    "evidence": "CPlayerMP1* PlayerActor();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManagerGameLogicMP1::SetGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetGameState(EGameState state)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CGameState.hpp",
+    "line": 148,
+    "evidence": "void SetGameState(EGameState state);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CGuid",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 8,
+    "evidence": "class CGuid {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGuid::CGuid",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGuid()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 11,
+    "evidence": "CGuid() { low = 0; high = 0; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGuid::CGuid",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGuid(CInputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 13,
+    "evidence": "CGuid(CInputStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGuid::const",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGuid(char const(&)[37])",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 14,
+    "evidence": "CGuid(char const(&)[37]);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGuid::PutTo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PutTo(COutputStream &) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 16,
+    "evidence": "void PutTo(COutputStream &) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGuid::GetPutToSize",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "int GetPutToSize(void) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 17,
+    "evidence": "int GetPutToSize(void) const; // return 0x10;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGuid::FromString",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void FromString(rstl::string const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 18,
+    "evidence": "void FromString(rstl::string const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGuid::SetFromString",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetFromString(rstl::string const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 19,
+    "evidence": "void SetFromString(rstl::string const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGuid::IsGuidString",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void IsGuidString(rstl::string const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 20,
+    "evidence": "void IsGuidString(rstl::string const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGuid::AsString",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "rstl::string AsString(void) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 21,
+    "evidence": "rstl::string AsString(void) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGuid::GetHashValue",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "int GetHashValue(void) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 22,
+    "evidence": "int GetHashValue(void) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGuid::HexDWord",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void HexDWord(char const*)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 23,
+    "evidence": "void HexDWord(char const*);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CObjectId",
+   "kind": "class",
+   "bases": [
+    "CGuid"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 35,
+    "evidence": "class CObjectId : public CGuid {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CObjectId::CGuid",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CObjectId() : CGuid()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 37,
+    "evidence": "CObjectId() : CGuid() {}"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CObjectId::CObjectId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CObjectId(CInputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 39,
+    "evidence": "CObjectId(CInputStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CObjectId::const",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CObjectId(char const(&str)[37]) : CGuid(str)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 41,
+    "evidence": "explicit inline CObjectId(char const(&str)[37]) : CGuid(str) {}"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CObjectId::Invalid",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CObjectId* Invalid(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 43,
+    "evidence": "static CObjectId* Invalid(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CObjectId::FromString",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CObjectId* FromString(rstl::string const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 44,
+    "evidence": "static CObjectId* FromString(rstl::string const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CObjectId::PutTo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PutTo(COutputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 46,
+    "evidence": "void PutTo(COutputStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CObjectId::GetPutToSize",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetPutToSize(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 47,
+    "evidence": "void GetPutToSize(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CObjectId::operator<",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void operator<(CObjectId const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CObjectId.hpp",
+    "line": 48,
+    "evidence": "void operator<(CObjectId const&);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CPhysicsActorMP1",
+   "kind": "class",
+   "bases": [
+    "CActorMP1"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 8,
+    "evidence": "class CPhysicsActorMP1 : public CActorMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPhysicsActorMP1::GetVelocityWR",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CVector3f *GetVelocityWR(const CStateManager &mgr) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 10,
+    "evidence": "CVector3f *GetVelocityWR(const CStateManager &mgr) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPhysicsActorMP1::SetVelocityWR",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetVelocityWR(CStateManager &mgr, const CVector3f &vel)",
+   "role": "method declared in header; source comments list several mangled candidates (only one is real)",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 13,
+    "evidence": "void SetVelocityWR(CStateManager &mgr, const CVector3f &vel);"
+   },
+   "mangled_candidates": [
+    "_ZN16CPhysicsActorMP113SetVelocityWRERK13CStateManagerRK9CVector3f",
+    "_ZN16CPhysicsActorMP113SetVelocityWRER13CStateManagerRK9CVector3f"
+   ]
+  },
+  {
+   "type": "symbol",
+   "name": "CPhysicsActorMP1::GetAngularVelocityWR",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CAxisAngle *GetAngularVelocityWR(const CStateManager &mgr) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 15,
+    "evidence": "CAxisAngle *GetAngularVelocityWR(const CStateManager &mgr) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPhysicsActorMP1::SetAngularVelocityWR",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetAngularVelocityWR(CStateManager &mgr, const CAxisAngle &vel)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 16,
+    "evidence": "void SetAngularVelocityWR(CStateManager &mgr, const CAxisAngle &vel);"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "EPlayerMovementState",
+   "underlying": "uint32_t",
+   "values": [
+    {
+     "name": "OnGround",
+     "value": "0x0"
+    },
+    {
+     "name": "Jump",
+     "value": "0x1"
+    },
+    {
+     "name": "ApplyJump",
+     "value": "0x2"
+    },
+    {
+     "name": "Falling",
+     "value": "0x3"
+    },
+    {
+     "name": "FallingMorphed",
+     "value": "0x4"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 19,
+    "evidence": "enum class EPlayerMovementState: uint32_t { OnGround, Jump, ApplyJump, Falling, FallingMorphed };"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CMorphBallMP1",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 31,
+    "evidence": "class CMorphBallMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CMorphBallMP1::GetBombJumpState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "uint32_t GetBombJumpState() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 33,
+    "evidence": "uint32_t GetBombJumpState() const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CMorphBallMP1::GetIsInHalfPipeMode",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool GetIsInHalfPipeMode() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 34,
+    "evidence": "bool GetIsInHalfPipeMode() const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CMorphBallMP1::GetIsInHalfPipeModeInAir",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool GetIsInHalfPipeModeInAir() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 35,
+    "evidence": "bool GetIsInHalfPipeModeInAir() const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CMorphBallMP1::GetTouchedHalfPipeRecently",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool GetTouchedHalfPipeRecently() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 36,
+    "evidence": "bool GetTouchedHalfPipeRecently() const;"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CHealthInfoMP1",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "float",
+     "name": "heatlh",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+      "line": 41,
+      "evidence": "float heatlh;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 39,
+    "evidence": "class CHealthInfoMP1 {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CTweakPlayerMP1",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x138",
+     "type": "float",
+     "name": "MaxFreeLookPitchAngle_acc",
+     "note": "accessor in header reads this offset; class CTweakPlayerMP1",
+     "confidence": "source-stated",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+      "line": 48,
+      "evidence": "GetField<float>(this, 0x138)"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 46,
+    "evidence": "class CTweakPlayerMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "gpTweakPlayer",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "extern CTweakPlayerMP1* gpTweakPlayer",
+   "role": "extern global declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 51,
+    "evidence": "extern CTweakPlayerMP1* gpTweakPlayer;"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CPlayerMP1",
+   "kind": "class",
+   "bases": [
+    "CPhysicsActorMP1"
+   ],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x3f0",
+     "type": "EPlayerMovementState",
+     "name": "MoveState_acc",
+     "note": "accessor in header reads this offset; class CPlayerMP1",
+     "confidence": "source-stated",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+      "line": 60,
+      "evidence": "GetField<EPlayerMovementState>(this, 0x3f0)"
+     }
+    },
+    {
+     "offset": "0x5cc",
+     "type": "float",
+     "name": "FreeLookPitchAngle_acc",
+     "note": "accessor in header reads this offset; class CPlayerMP1",
+     "confidence": "source-stated",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+      "line": 58,
+      "evidence": "GetField<float>(this, 0x5cc)"
+     }
+    },
+    {
+     "offset": "0x9d0",
+     "type": "CMorphBallMP1*",
+     "name": "MorphBall_acc",
+     "note": "accessor in header reads this offset; class CPlayerMP1",
+     "confidence": "source-stated",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+      "line": 59,
+      "evidence": "GetField<CMorphBallMP1*>(this, 0x9d0)"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 54,
+    "evidence": "class CPlayerMP1 : public CPhysicsActorMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::BreakOrbit",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void BreakOrbit(EOrbitBrokenType, CStateManager&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 57,
+    "evidence": "void BreakOrbit(EOrbitBrokenType, CStateManager&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::HealthInfo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CHealthInfoMP1 &HealthInfo(CStateManager &mgr)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 61,
+    "evidence": "CHealthInfoMP1 &HealthInfo(CStateManager &mgr);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::ProcessInput",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ProcessInput(const CFinalInput&, CStateManager&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 62,
+    "evidence": "void ProcessInput(const CFinalInput&, CStateManager&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::RenderGun",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void RenderGun(const CStateManager& mgr, const CVector3f& pos) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerMP1.hpp",
+    "line": 63,
+    "evidence": "void RenderGun(const CStateManager& mgr, const CVector3f& pos) const;"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CPowerUp",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "amount",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+      "line": 5,
+      "evidence": "int amount;"
+     }
+    },
+    {
+     "offset": "0x4",
+     "type": "int",
+     "name": "capacity",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+      "line": 6,
+      "evidence": "int capacity;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 3,
+    "evidence": "class CPowerUp {"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "CPlayerStateMP1::EItemType",
+   "underlying": "int",
+   "values": [
+    {
+     "name": "Invalid",
+     "value": "-1"
+    },
+    {
+     "name": "PowerBeam",
+     "value": "0x0"
+    },
+    {
+     "name": "IceBeam",
+     "value": "0x1"
+    },
+    {
+     "name": "WaveBeam",
+     "value": "0x2"
+    },
+    {
+     "name": "PlasmaBeam",
+     "value": "0x3"
+    },
+    {
+     "name": "Missiles",
+     "value": "0x4"
+    },
+    {
+     "name": "ScanVisor",
+     "value": "0x5"
+    },
+    {
+     "name": "MorphBallBombs",
+     "value": "0x6"
+    },
+    {
+     "name": "PowerBombs",
+     "value": "0x7"
+    },
+    {
+     "name": "Flamethrower",
+     "value": "0x8"
+    },
+    {
+     "name": "ThermalVisor",
+     "value": "0x9"
+    },
+    {
+     "name": "ChargeBeam",
+     "value": "0xa"
+    },
+    {
+     "name": "SuperMissile",
+     "value": "0xb"
+    },
+    {
+     "name": "GrappleBeam",
+     "value": "0xc"
+    },
+    {
+     "name": "XRayVisor",
+     "value": "0xd"
+    },
+    {
+     "name": "IceSpreader",
+     "value": "0xe"
+    },
+    {
+     "name": "SpaceJumpBoots",
+     "value": "0xf"
+    },
+    {
+     "name": "MorphBall",
+     "value": "0x10"
+    },
+    {
+     "name": "CombatVisor",
+     "value": "0x11"
+    },
+    {
+     "name": "BoostBall",
+     "value": "0x12"
+    },
+    {
+     "name": "SpiderBall",
+     "value": "0x13"
+    },
+    {
+     "name": "PowerSuit",
+     "value": "0x14"
+    },
+    {
+     "name": "GravitySuit",
+     "value": "0x15"
+    },
+    {
+     "name": "VariaSuit",
+     "value": "0x16"
+    },
+    {
+     "name": "PhazonSuit",
+     "value": "0x17"
+    },
+    {
+     "name": "EnergyTanks",
+     "value": "0x18"
+    },
+    {
+     "name": "UnknownItem1",
+     "value": "0x19"
+    },
+    {
+     "name": "HealthRefill",
+     "value": "0x1a"
+    },
+    {
+     "name": "UnknownItem2",
+     "value": "0x1b"
+    },
+    {
+     "name": "Wavebuster",
+     "value": "0x1c"
+    },
+    {
+     "name": "Truth",
+     "value": "0x1d"
+    },
+    {
+     "name": "Strength",
+     "value": "0x1e"
+    },
+    {
+     "name": "Elder",
+     "value": "0x1f"
+    },
+    {
+     "name": "Wild",
+     "value": "0x20"
+    },
+    {
+     "name": "Lifegiver",
+     "value": "0x21"
+    },
+    {
+     "name": "Warrior",
+     "value": "0x22"
+    },
+    {
+     "name": "Chozo",
+     "value": "0x23"
+    },
+    {
+     "name": "Nature",
+     "value": "0x24"
+    },
+    {
+     "name": "Sun",
+     "value": "0x25"
+    },
+    {
+     "name": "World",
+     "value": "0x26"
+    },
+    {
+     "name": "Spirit",
+     "value": "0x27"
+    },
+    {
+     "name": "Newborn",
+     "value": "0x28"
+    },
+    {
+     "name": "Max",
+     "value": "0x29"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 10,
+    "evidence": "enum class EItemType : int {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CPlayerStateMP1",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 8,
+    "evidence": "class CPlayerStateMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::HasPowerUp",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool HasPowerUp(EItemType type) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 56,
+    "evidence": "bool HasPowerUp(EItemType type) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::AddPowerUp",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool AddPowerUp(EItemType type, int amount)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 57,
+    "evidence": "bool AddPowerUp(EItemType type, int amount);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::IncrPickUp",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void IncrPickUp(CPlayerStateMP1::EItemType, int)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 58,
+    "evidence": "void IncrPickUp(CPlayerStateMP1::EItemType, int);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::SetPickup",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetPickup(EItemType type, int amount)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 59,
+    "evidence": "void SetPickup(EItemType type, int amount);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::SetPowerUp",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetPowerUp(EItemType type, int amount)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 60,
+    "evidence": "void SetPowerUp(EItemType type, int amount);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::GetPowerUp",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "int GetPowerUp(EItemType type)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 61,
+    "evidence": "int GetPowerUp(EItemType type);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::GetItemCapacity",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "int GetItemCapacity(EItemType type) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 62,
+    "evidence": "int GetItemCapacity(EItemType type) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::GetPowerups",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CPowerUp* GetPowerups()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 64,
+    "evidence": "inline CPowerUp* GetPowerups() { return reinterpret_cast<CPowerUp*>(reinterpret_cast<size_t>(this) +"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::GetItemMax",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "int GetItemMax(EItemType type)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CPlayerStateMP1.hpp",
+    "line": 66,
+    "evidence": "static int GetItemMax(EItemType type);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CAutoMapperMP1",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CSamusHudMP1.hpp",
+    "line": 12,
+    "evidence": "class CAutoMapperMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CAutoMapperMP1::Update",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void Update(float f1, const CStateManager &csm, const CGuiCamera& cgc, float f2, bool b1)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CSamusHudMP1.hpp",
+    "line": 14,
+    "evidence": "void Update(float f1, const CStateManager &csm, const CGuiCamera& cgc, float f2, bool b1);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CSamusHudMP1",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CSamusHudMP1.hpp",
+    "line": 18,
+    "evidence": "class CSamusHudMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CSamusHudMP1::Draw",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void Draw(const CStateManager &stateManager, float alpha, uint32_t param_3, const rstl::enum_bit_field<CSamusHudMP1::EHudDrawFilter, unsigned int, (CSamusHudMP1::EHudDrawFilter)3> &hudDrawFilterFlags) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CSamusHudMP1.hpp",
+    "line": 22,
+    "evidence": "void Draw(const CStateManager &stateManager, float alpha, uint32_t param_3, const rstl::enum_bit_fie"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CSamusHudMP1::DrawHelmet",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void DrawHelmet(const CStateManager& stateManager, float camYOffset) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CSamusHudMP1.hpp",
+    "line": 23,
+    "evidence": "void DrawHelmet(const CStateManager& stateManager, float camYOffset) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CSamusHudMP1::DrawTargetingReticle",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void DrawTargetingReticle(const CStateManager&) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CSamusHudMP1.hpp",
+    "line": 24,
+    "evidence": "void DrawTargetingReticle(const CStateManager&) const;"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CWorldStateMP1",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "CObjectId",
+     "name": "mWorldId",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+      "line": 25,
+      "evidence": "CObjectId mWorldId;"
+     }
+    },
+    {
+     "offset": "0x10",
+     "type": "CObjectId",
+     "name": "mAreaId",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+      "line": 26,
+      "evidence": "CObjectId mAreaId;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 9,
+    "evidence": "class CWorldStateMP1 {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::CWorldStateMP1",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CWorldStateMP1(CObjectId)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 11,
+    "evidence": "CWorldStateMP1(CObjectId);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::CWorldStateMP1",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CWorldStateMP1(CInputStream &,uint)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 12,
+    "evidence": "CWorldStateMP1(CInputStream &,uint);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::PutTo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PutTo(COutputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 14,
+    "evidence": "void PutTo(COutputStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::GetWorldAssetId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetWorldAssetId(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 15,
+    "evidence": "void GetWorldAssetId(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::Mailbox",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void Mailbox(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 16,
+    "evidence": "void Mailbox(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::MapWorldInfo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void MapWorldInfo(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 17,
+    "evidence": "void MapWorldInfo(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::GetMailbox",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "rstl::rc_ptr<CScriptMailboxMP1>* GetMailbox(void) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 18,
+    "evidence": "rstl::rc_ptr<CScriptMailboxMP1>* GetMailbox(void) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::GetMapWorldInfo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "rstl::rc_ptr<CMapWorldInfoMP1>* GetMapWorldInfo(void) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 19,
+    "evidence": "rstl::rc_ptr<CMapWorldInfoMP1>* GetMapWorldInfo(void) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::GetCurrentArea",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CObjectId GetCurrentArea(void) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 20,
+    "evidence": "CObjectId GetCurrentArea(void) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::SetCurrentArea",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetCurrentArea(CObjectId)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 21,
+    "evidence": "void SetCurrentArea(CObjectId);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::GetDesiredAreaAssetId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CObjectId GetDesiredAreaAssetId(void) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 22,
+    "evidence": "CObjectId GetDesiredAreaAssetId(void) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldStateMP1::SetDesiredAreaAssetId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetDesiredAreaAssetId(CObjectId)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/CWorldStateMP1.h",
+    "line": 23,
+    "evidence": "void SetDesiredAreaAssetId(CObjectId);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CVector3f",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "float",
+     "name": "x",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+      "line": 5,
+      "evidence": "float x;"
+     }
+    },
+    {
+     "offset": "0x4",
+     "type": "float",
+     "name": "y",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+      "line": 6,
+      "evidence": "float y;"
+     }
+    },
+    {
+     "offset": "0x8",
+     "type": "float",
+     "name": "z",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+      "line": 7,
+      "evidence": "float z;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 3,
+    "evidence": "struct CVector3f {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVector3f::x",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CVector3f() : x(0), y(0), z(0)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 9,
+    "evidence": "inline CVector3f() : x(0), y(0), z(0) {};"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVector3f::x",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CVector3f(float x, float y, float z) : x(x), y(y), z(z)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 11,
+    "evidence": "inline CVector3f(float x, float y, float z) : x(x), y(y), z(z) {};"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CQuaternion",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "float",
+     "name": "w",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+      "line": 16,
+      "evidence": "float w;"
+     }
+    },
+    {
+     "offset": "0x4",
+     "type": "float",
+     "name": "x",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+      "line": 17,
+      "evidence": "float x;"
+     }
+    },
+    {
+     "offset": "0x8",
+     "type": "float",
+     "name": "y",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+      "line": 18,
+      "evidence": "float y;"
+     }
+    },
+    {
+     "offset": "0xc",
+     "type": "float",
+     "name": "z",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+      "line": 19,
+      "evidence": "float z;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 14,
+    "evidence": "struct CQuaternion {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CQuaternion::w",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CQuaternion(float w, float x, float y, float z) : w(w), x(x), y(y), z(z)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 21,
+    "evidence": "inline CQuaternion(float w, float x, float y, float z) : w(w), x(x), y(y), z(z) {};"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CAxisAngle",
+   "kind": "struct",
+   "bases": [
+    "CVector3f"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 24,
+    "evidence": "struct CAxisAngle : CVector3f {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CAxisAngle::CVector3f",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CAxisAngle() : CVector3f()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 25,
+    "evidence": "inline CAxisAngle() : CVector3f() {}"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CAxisAngle::CVector3f",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CAxisAngle(float x, float y, float z) : CVector3f(x, y, z)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 26,
+    "evidence": "inline CAxisAngle(float x, float y, float z) : CVector3f(x, y, z) {}"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CRelAngle",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "float",
+     "name": "theta",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+      "line": 32,
+      "evidence": "float theta;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 29,
+    "evidence": "class CRelAngle {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CRelAngle::theta",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CRelAngle(float theta): theta(theta)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 31,
+    "evidence": "inline CRelAngle(float theta): theta(theta) {}"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CTransform4f",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 35,
+    "evidence": "class CTransform4f {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::Identity",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CTransform4f Identity()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 50,
+    "evidence": "static constexpr inline CTransform4f Identity() {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::Translate",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CTransform4f Translate(float x, float y, float z)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 75,
+    "evidence": "static CTransform4f Translate(float x, float y, float z);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::RotateLocalX",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CTransform4f RotateLocalX(const CRelAngle &theta)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 78,
+    "evidence": "CTransform4f RotateLocalX(const CRelAngle &theta);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::RotateLocalY",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CTransform4f RotateLocalY(const CRelAngle &theta)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 79,
+    "evidence": "CTransform4f RotateLocalY(const CRelAngle &theta);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::RotateLocalZ",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CTransform4f RotateLocalZ(const CRelAngle &theta)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 80,
+    "evidence": "CTransform4f RotateLocalZ(const CRelAngle &theta);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::MultiplyRotation",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void MultiplyRotation(CTransform4f const&) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 81,
+    "evidence": "void MultiplyRotation(CTransform4f const&) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::MultiplyIgnoreTranslation",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void MultiplyIgnoreTranslation(const CTransform4f *param_1)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 82,
+    "evidence": "void MultiplyIgnoreTranslation(const CTransform4f *param_1);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::operator*",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CTransform4f operator*(const CTransform4f &rhs) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 84,
+    "evidence": "CTransform4f operator*(const CTransform4f &rhs) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::TransposeRotate",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CVector3f TransposeRotate(CVector3f const&) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 85,
+    "evidence": "CVector3f TransposeRotate(CVector3f const&) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::Rotate",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CVector3f Rotate(CVector3f const&) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 86,
+    "evidence": "CVector3f Rotate(CVector3f const&) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::origin",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CVector3f origin()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/Math.hpp",
+    "line": 88,
+    "evidence": "inline CVector3f origin() { return CVector3f(matrix[3], matrix[3 + 4], matrix[3 + 8]); };"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "rstl::auto_ptr",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "bool",
+     "name": "x0_has",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+      "line": 9,
+      "evidence": "mutable bool x0_has;"
+     }
+    },
+    {
+     "offset": "0x8",
+     "type": "T*",
+     "name": "x4_item",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+      "line": 10,
+      "evidence": "mutable T* x4_item;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+    "line": 8,
+    "evidence": "class auto_ptr {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::auto_ptr::x0_has",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "auto_ptr() : x0_has(false), x4_item(nullptr)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+    "line": 13,
+    "evidence": "auto_ptr() : x0_has(false), x4_item(nullptr) {}"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::auto_ptr::x0_has",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "auto_ptr(T* ptr) : x0_has(ptr != nullptr), x4_item(ptr)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+    "line": 14,
+    "evidence": "auto_ptr(T* ptr) : x0_has(ptr != nullptr), x4_item(ptr) {}"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::auto_ptr::~auto_ptr",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "~auto_ptr()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+    "line": 15,
+    "evidence": "~auto_ptr() {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::auto_ptr::x0_has",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "auto_ptr(const auto_ptr& other) : x0_has(other.x0_has), x4_item(other.x4_item)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+    "line": 21,
+    "evidence": "auto_ptr(const auto_ptr& other) : x0_has(other.x0_has), x4_item(other.x4_item) {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::auto_ptr::operator=",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "auto_ptr& operator=(const auto_ptr& other)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+    "line": 24,
+    "evidence": "auto_ptr& operator=(const auto_ptr& other) {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::auto_ptr::get",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "T* get() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+    "line": 35,
+    "evidence": "T* get() const { return x4_item; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::auto_ptr::operator->",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "T* operator->() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+    "line": 36,
+    "evidence": "T* operator->() const { return x4_item; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::auto_ptr::operator*",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "T& operator*() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+    "line": 37,
+    "evidence": "T& operator*() const { return *x4_item; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::auto_ptr::release",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "T* release() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+    "line": 38,
+    "evidence": "T* release() const {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::auto_ptr::null",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool null() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/auto_ptr.h",
+    "line": 42,
+    "evidence": "bool null() const { return x4_item == nullptr; }"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "rstl::vector",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/misc.h",
+    "line": 13,
+    "evidence": "class vector {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "rstl::rc_ptr_private::rc_ptr_control_block_base",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [
+    {
+     "slot": 0,
+     "name": "release",
+     "signature": "virtual bool release()",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+      "line": 13,
+      "evidence": "virtual bool release() { return false; }"
+     },
+     "slot_confidence": "inferred from declaration order (Itanium ABI, dtor = 2 slots)"
+    },
+    {
+     "slot": 1,
+     "name": "destroy",
+     "signature": "virtual void destroy()",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+      "line": 14,
+      "evidence": "virtual void destroy() {}"
+     },
+     "slot_confidence": "inferred from declaration order (Itanium ABI, dtor = 2 slots)"
+    },
+    {
+     "slot": 2,
+     "name": "~rc_ptr_control_block_base (complete dtor)",
+     "signature": "virtual ~rc_ptr_control_block_base() = default",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+      "line": 15,
+      "evidence": "virtual ~rc_ptr_control_block_base() = default;"
+     },
+     "slot_confidence": "inferred from declaration order (Itanium ABI, dtor = 2 slots)"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 12,
+    "evidence": "struct rc_ptr_control_block_base {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr_private::rc_ptr_control_block_base::release",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "virtual bool release()",
+   "role": "method declared in header (virtual)",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 13,
+    "evidence": "virtual bool release() { return false; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr_private::rc_ptr_control_block_base::destroy",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "virtual void destroy()",
+   "role": "method declared in header (virtual)",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 14,
+    "evidence": "virtual void destroy() {}"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr_private::rc_ptr_control_block_base::~rc_ptr_control_block_base (complete dtor)",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "virtual ~rc_ptr_control_block_base() = default",
+   "role": "method declared in header (virtual)",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 15,
+    "evidence": "virtual ~rc_ptr_control_block_base() = default;"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "rstl::rc_ptr_private::rc_ptr_control_block_null",
+   "kind": "struct",
+   "bases": [
+    "rc_ptr_control_block_base"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [
+    {
+     "slot": 0,
+     "name": "~rc_ptr_control_block_null (complete dtor, override)",
+     "signature": "~rc_ptr_control_block_null() override = default",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+      "line": 21,
+      "evidence": "~rc_ptr_control_block_null() override = default;"
+     },
+     "slot_confidence": "inferred from declaration order (Itanium ABI, dtor = 2 slots)"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 18,
+    "evidence": "struct rc_ptr_control_block_null : rc_ptr_control_block_base {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr_private::rc_ptr_control_block_null::~rc_ptr_control_block_null (complete dtor, override)",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "~rc_ptr_control_block_null() override = default",
+   "role": "method declared in header (virtual)",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 21,
+    "evidence": "~rc_ptr_control_block_null() override = default;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr_private::rc_ptr_control_block_null::release",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool release() override",
+   "role": "method declared in header (virtual)",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 19,
+    "evidence": "bool release() override { return false; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr_private::rc_ptr_control_block_null::destroy",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void destroy() override",
+   "role": "method declared in header (virtual)",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 20,
+    "evidence": "void destroy() override { }"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "rstl::rc_ptr_private",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "rc_ptr_control_block_base*",
+     "name": "mControlBlock",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+      "line": 40,
+      "evidence": "rc_ptr_control_block_base* mControlBlock; // this isnt right, it seems like this type isnt a pointer"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 11,
+    "evidence": "struct rc_ptr_private {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "rstl::rc_ptr",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x8",
+     "type": "rc_ptr_private*",
+     "name": "privData",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+      "line": 49,
+      "evidence": "rc_ptr_private *privData;"
+     }
+    }
+   ],
+   "virtuals": [
+    {
+     "slot": 0,
+     "name": "~rc_ptr (complete dtor)",
+     "signature": "virtual ~rc_ptr()",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+      "line": 51,
+      "evidence": "virtual ~rc_ptr() {"
+     },
+     "slot_confidence": "inferred from declaration order (Itanium ABI, dtor = 2 slots)"
+    }
+   ],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 48,
+    "evidence": "struct rc_ptr {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr::rc_ptr",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "rc_ptr() = default",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 58,
+    "evidence": "rc_ptr() = default;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr::rc_ptr",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "rc_ptr(const rc_ptr& other) = default",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 60,
+    "evidence": "rc_ptr(const rc_ptr& other) = default;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr::rc_ptr",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "rc_ptr(rc_ptr& other)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 62,
+    "evidence": "rc_ptr(rc_ptr& other) {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr::rc_ptr",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "rc_ptr(rc_ptr* other)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 67,
+    "evidence": "rc_ptr(rc_ptr* other) {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr::operator=",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "rc_ptr& operator=(const rc_ptr& other)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 72,
+    "evidence": "rc_ptr& operator=(const rc_ptr& other) {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::rc_ptr::~rc_ptr (complete dtor)",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "virtual ~rc_ptr()",
+   "role": "method declared in header (virtual)",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 51,
+    "evidence": "virtual ~rc_ptr() {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "rstl::ncrc_ptr",
+   "kind": "class",
+   "bases": [
+    "rc_ptr"
+   ],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 80,
+    "evidence": "class ncrc_ptr : public rc_ptr< T > {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::ncrc_ptr::ncrc_ptr",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "ncrc_ptr()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 82,
+    "evidence": "ncrc_ptr() {}"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::ncrc_ptr::ncrc_ptr",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "ncrc_ptr(T* ptr) : rc_ptr< T >(ptr)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 83,
+    "evidence": "ncrc_ptr(T* ptr) : rc_ptr< T >(ptr) {}"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::ncrc_ptr::ncrc_ptr",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "ncrc_ptr(const rc_ptr< T >& other) : rc_ptr< T >(other)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 84,
+    "evidence": "ncrc_ptr(const rc_ptr< T >& other) : rc_ptr< T >(other) {}"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::make_ncrc_ptr",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "ncrc_ptr<T> make_ncrc_ptr(B& control_block, Args&&... args)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/rc_ptr.hpp",
+    "line": 95,
+    "evidence": "ncrc_ptr<T> make_ncrc_ptr(B& control_block, Args&&... args);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "rstl::reserved_vector",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "int",
+     "name": "x0_count",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+      "line": 11,
+      "evidence": "int x0_count;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 10,
+    "evidence": "class reserved_vector {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::x0_count",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "reserved_vector() : x0_count(0)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 14,
+    "evidence": "reserved_vector() : x0_count(0) {}"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::x0_count",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "reserved_vector(const T& value) : x0_count(N)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 15,
+    "evidence": "explicit reserved_vector(const T& value) : x0_count(N) { uninitialized_fill_n(data(), N, value); }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::reserved_vector",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "reserved_vector(int count, const T& value)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 16,
+    "evidence": "explicit reserved_vector(int count, const T& value);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::reserved_vector",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "reserved_vector(CInputStream& in)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 17,
+    "evidence": "reserved_vector(CInputStream& in);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::data",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "T* data()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 19,
+    "evidence": "inline T* data() { return reinterpret_cast< T* >(x4_data); }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::data",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "const T* data() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 20,
+    "evidence": "inline const T* data() const { return reinterpret_cast< const T* >(x4_data); }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::empty",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool empty() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 21,
+    "evidence": "inline bool empty() const { return size() == 0; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::size",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "int size() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 22,
+    "evidence": "inline int size() const { return x0_count; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::capacity",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "int capacity() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 23,
+    "evidence": "inline int capacity() const { return N; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::front",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "T& front()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 24,
+    "evidence": "inline T& front() { return data()[0]; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::front",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "const T& front() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 25,
+    "evidence": "inline const T& front() const { return data()[0]; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::back",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "T& back()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 26,
+    "evidence": "inline T& back() { return data()[x0_count - 1]; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::back",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "const T& back() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 27,
+    "evidence": "inline const T& back() const { return data()[x0_count - 1]; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::operator[]",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "T& operator[](int idx)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 28,
+    "evidence": "inline T& operator[](int idx) { return data()[idx]; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::reserved_vector::operator[]",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "const T& operator[](int idx) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/reserved_vector.h",
+    "line": 29,
+    "evidence": "inline const T& operator[](int idx) const { return data()[idx]; }"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "rstl::basic_string::COWData",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "uint",
+     "name": "x0_capacity",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+      "line": 19,
+      "evidence": "uint x0_capacity;"
+     }
+    },
+    {
+     "offset": "0x4",
+     "type": "uint",
+     "name": "x4_refCount",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+      "line": 20,
+      "evidence": "uint x4_refCount;"
+     }
+    },
+    {
+     "offset": "0x8",
+     "type": "_CharTp*",
+     "name": "x8_data",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+      "line": 21,
+      "evidence": "_CharTp* x8_data;"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 18,
+    "evidence": "struct COWData {"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "rstl::basic_string",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [
+    {
+     "offset": "0x0",
+     "type": "const _CharTp*",
+     "name": "x0_ptr",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+      "line": 24,
+      "evidence": "const _CharTp* x0_ptr;"
+     }
+    },
+    {
+     "offset": "0x8",
+     "type": "COWData*",
+     "name": "x4_cow",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+      "line": 25,
+      "evidence": "COWData* x4_cow;"
+     }
+    },
+    {
+     "offset": "0x10",
+     "type": "uint",
+     "name": "x8_size",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+      "line": 26,
+      "evidence": "uint x8_size;"
+     }
+    },
+    {
+     "offset": "0x14",
+     "type": "uint",
+     "name": "_pad",
+     "note": "laid out sequentially from the previous field/base; verify",
+     "confidence": "inferred",
+     "src": {
+      "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+      "line": 27,
+      "evidence": "uint _pad; // Alloc?"
+     }
+    }
+   ],
+   "virtuals": [],
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 17,
+    "evidence": "class basic_string {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::internal_prepare_to_write",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void internal_prepare_to_write(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 29,
+    "evidence": "void internal_prepare_to_write(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::internal_prepare_to_write",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void internal_prepare_to_write(ulong len, bool)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 30,
+    "evidence": "void internal_prepare_to_write(ulong len, bool);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::internal_allocate",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void internal_allocate(int size)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 31,
+    "evidence": "void internal_allocate(int size);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::internal_dereference",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void internal_dereference()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 33,
+    "evidence": "void internal_dereference();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::x0_ptr",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "basic_string() : x0_ptr(&mNull), x4_cow(nullptr), x8_size(0)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 40,
+    "evidence": "basic_string() : x0_ptr(&mNull), x4_cow(nullptr), x8_size(0) {}"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::basic_string",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "basic_string(literal_t, const _CharTp* data, const Alloc&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 42,
+    "evidence": "basic_string(literal_t, const _CharTp* data, const Alloc&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::basic_string",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "basic_string(const basic_string& str)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 44,
+    "evidence": "basic_string(const basic_string& str);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::basic_string",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "basic_string(CInputStream& in, const Alloc&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 46,
+    "evidence": "basic_string(CInputStream& in, const Alloc&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::basic_string",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "basic_string(const _CharTp* data, ulong size, const Alloc&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 48,
+    "evidence": "basic_string(const _CharTp* data, ulong size, const Alloc&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::basic_string",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "basic_string(_CharTp data, const Alloc&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 50,
+    "evidence": "basic_string(_CharTp data, const Alloc&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::basic_string",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "basic_string(ulong size, _CharTp data, const Alloc&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 52,
+    "evidence": "basic_string(ulong size, _CharTp data, const Alloc&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::~basic_string",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "~basic_string()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 54,
+    "evidence": "~basic_string();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::size",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "size_t size() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 56,
+    "evidence": "size_t size() const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::reserve",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void reserve(int len)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 57,
+    "evidence": "void reserve(int len);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::assign",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void assign(const basic_string&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 59,
+    "evidence": "void assign(const basic_string&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::operator=",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "basic_string& operator=(const basic_string& other)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 60,
+    "evidence": "basic_string& operator=(const basic_string& other);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::operator+",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "basic_string operator+(const _CharTp*)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 61,
+    "evidence": "basic_string operator+(const _CharTp*);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::append",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void append(const basic_string& other)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 62,
+    "evidence": "void append(const basic_string& other);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::append",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void append(int, _CharTp)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 63,
+    "evidence": "void append(int, _CharTp);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::append",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void append(const _CharTp*, int)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 64,
+    "evidence": "void append(const _CharTp*, int);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::_eq_helper",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "int _eq_helper(const basic_string& other) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 66,
+    "evidence": "int _eq_helper(const basic_string& other) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::operator==",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool operator==(const basic_string& other) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 67,
+    "evidence": "bool operator==(const basic_string& other) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::operator<",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "bool operator<(const basic_string& other) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 68,
+    "evidence": "bool operator<(const basic_string& other) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::data",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "const _CharTp* data() const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 70,
+    "evidence": "const _CharTp* data() const { return x0_ptr; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::PutTo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PutTo(COutputStream& out) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 71,
+    "evidence": "void PutTo(COutputStream& out) const;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::basic_string::at",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "const _CharTp at(int idx) const",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 72,
+    "evidence": "const _CharTp at(int idx) const { return data()[idx]; }"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::wstring_l",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "wstring wstring_l(const wchar_t* data)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 93,
+    "evidence": "wstring wstring_l(const wchar_t* data);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "rstl::string_l",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "string string_l(const char* data)",
+   "role": "declared in header; no address given",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/prime/rstl/string.h",
+    "line": 95,
+    "evidence": "string string_l(const char* data);"
+   }
+  }
+ ]
+}

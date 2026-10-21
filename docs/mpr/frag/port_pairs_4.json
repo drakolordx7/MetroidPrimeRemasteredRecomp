@@ -1,0 +1,1578 @@
+{
+  "source_id": "port_pairs_4",
+  "items": [
+    {
+      "type": "symbol",
+      "name": "CPhysicsState::CPhysicsState",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc14f7c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Initialises the persisted physics object state (CPhysicsState+0x13c) to 0 once; nothing in load or save writes it.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_ground_policy.h",
+        "line": 413,
+        "evidence": "CPhysicsState::CPhysicsState` 0xc14f7c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPhysicsState::SetCollisionMaterial",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc1536c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Rewrites the object material list on every MaterialListChanged. Harvest also tagged the same address as bare SetCollisionMaterial (movers.cpp:207).",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_movers.cpp",
+        "line": 261,
+        "evidence": "CPhysicsState::SetCollisionMaterial 0xc1536c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SetRiderController",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc1631c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Sets the rider controller after the mover snap; decayed at the end of every movement tick. Class not named in source.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/MetroidPrime/Player/CPlayer.hpp",
+        "line": 334,
+        "evidence": "SetRiderController 0xc1631c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ApplyMotionState",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc165c0",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Absolute motion-state write used by the grounded mover (PredictMotion and ApplyMotionState are both absolute). Class not named in source.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_ground_policy.h",
+        "line": 539,
+        "evidence": "ApplyMotionState 0xc165c0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "copy_collision_info_list_into",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc18c00",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Appends a collision info list into the destination; never clears it.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 54,
+        "evidence": "copy_collision_info_list_into` 0xc18c00"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "NPhysicsUtils::get_rider_controller_offset",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc18f80",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Returns the rider pose delta (R+0x1100 minus R+0x1128, plus rotation term) for an unrotated rider. Harvest also tagged the same address as bare get_rider_controller_offset.",
+      "tags": [
+        "physics",
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_air_mover_contact.h",
+        "line": 88,
+        "evidence": "NPhysicsUtils::get_rider_controller_offset 0xc18f80"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPhysicsObject",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc19f50",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Caller that stores zero into the physics object state at construction (wzr).",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_ground_policy.h",
+        "line": 414,
+        "evidence": "CPhysicsObject 0xc19f50"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "FindOverlap",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc1a760",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Near-list builder: platform triangles are appended after terrain, ordered by object index.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 49,
+        "evidence": "FindOverlap` 0xc1a760"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CheckCollision",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc1e9b0",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "World collision query the shipped mover uses; walks each object candidate list per call with no leaf cache.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_movers.cpp",
+        "line": 1963,
+        "evidence": "CheckCollision 0xc1e9b0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CheckCollision",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc1ec60",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Near-list collision walk: an object is left out unless its own collision filter passes us.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 222,
+        "evidence": "CheckCollision` 0xc1ec60"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CheckCollision_Boolean_NoPostFilter",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc1f110",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Boolean collision check: visits an object only when its own filter passes us. Box-landing test also names it CheckCollision.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_ground_box.h",
+        "line": 22,
+        "evidence": "CheckCollision_Boolean_NoPostFilter 0xc1f110"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CheckGlobalCollision_Boolean_NoPostFilter",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc1f240",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Whole-world boolean collision check, used by the collision failsafe with its filter.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_collision_failsafe.h",
+        "line": 61,
+        "evidence": "CheckGlobalCollision_Boolean_NoPostFilter 0xc1f240"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPhysicsCollisionFailsafe::DoCollisionFailsafe",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc1fa68",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Failsafe wrapper for the stepped mover: runs the core with the collision filter, then the failsafe filter, and returns the translation to set.",
+      "tags": [
+        "collision",
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_collision_failsafe.h",
+        "line": 8,
+        "evidence": "CPhysicsCollisionFailsafe::DoCollisionFailsafe 0xc1fa68"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "DoCollisionFailsafe",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc1fb88",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Terrain-only failsafe run on every loop exit of the grounded mover.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 25,
+        "evidence": "DoCollisionFailsafe` 0xc1fb88"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SelectPush",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc1fc54",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Picks the failsafe push translation from the contact list (header also calls 0xc1fc54 the failsafe core).",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/tests/port_collision_failsafe.cpp",
+        "line": 1015,
+        "evidence": "SelectPush 0xc1fc54"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "DoTunnelingFailsafe",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc20214",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Tunnelling check: applies only when the move is longer than the bounds smallest half-extent.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_collision_failsafe.h",
+        "line": 9,
+        "evidence": "DoTunnelingFailsafe 0xc20214"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "RayIntersection",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc20810",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Ray test over the swept near list (no Character or CollisionActor), used by the tunnelling failsafe.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_collision_failsafe.h",
+        "line": 82,
+        "evidence": "RayIntersection 0xc20810"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "PredictMotion",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc23e40",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Predicts the next motion state; adds the rider pose delta to the predicted translation.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 32,
+        "evidence": "PredictMotion` 0xc23e40"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPhysicsSweptMoverCollider::MoveObject",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc255fc",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Swept mover of the morph ball; the port does not implement it.",
+      "tags": [
+        "physics",
+        "collision"
+      ],
+      "used_by": "cited as source; the port does NOT implement this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/CGameCollision.cpp",
+        "line": 877,
+        "evidence": "CPhysicsSweptMoverCollider::MoveObject 0xc255fc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CActorMP1::PreRender",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc4bb84",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Actor pre-render: re-poses a clipped actor whose dirty shadow box is in view.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/CActor.cpp",
+        "line": 300,
+        "evidence": "CActorMP1::PreRender 0xc4bb84"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "PreRenderShadow",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc4bc74",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Shadow pre-render: the shadow of an off-screen animated actor follows its animation.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/CActor.cpp",
+        "line": 300,
+        "evidence": "PreRenderShadow 0xc4bc74"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPhysicsActorMP1::SetupPhysicsObject",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc529f0",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Defines the mover filters: collision filter 0x1270 is the material filter; failsafe filter 0x1290 is Include Solid, Exclude Character and CollisionActor. Harvest also tagged the address as bare SetupPhysicsObject.",
+      "tags": [
+        "physics",
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_movers.cpp",
+        "line": 1163,
+        "evidence": "CPhysicsActorMP1::SetupPhysicsObject 0xc529f0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SetupPhysicsObject",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc53100",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Snapshots the mover step-up and step-down tweak values at construction.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_movers.cpp",
+        "line": 1795,
+        "evidence": "SetupPhysicsObject 0xc53100"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SetupPhysicsObject",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc53bc8",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Sets the ground velocity damp factor to 1.0 for every CPhysicsActorMP1, so only vertical velocity is zeroed for the player.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_ground_policy.h",
+        "line": 616,
+        "evidence": "SetupPhysicsObject 0xc53bc8"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPhysicsActorMP1::MaterialListChanged",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc53ccc",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Rewrites the actor material bits in translated form whenever its material list changes.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 226,
+        "evidence": "CPhysicsActorMP1::MaterialListChanged` 0xc53ccc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "PrePhysicsUpdate",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc543b8",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Teleports the physics object to its new pose before the step and resets the previous pose with it.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 93,
+        "evidence": "PrePhysicsUpdate` 0xc543b8"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "PostPhysicsUpdate",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc545bc",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Derives the ground and air messages from the persisted object state after the move.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 42,
+        "evidence": "PostPhysicsUpdate` 0xc545bc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "PreApplyForces",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc59814",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Pre step of the player airborne integrator: folds the entry impulse into the momentum once before the move.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_movers.cpp",
+        "line": 1696,
+        "evidence": "PreApplyForces 0xc59814"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "Post",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc5994c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Post step of the player split integrator: adds dt times (force plus persistent momentum) after the loop and snap. Bare name; class not named in source.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 34,
+        "evidence": "Post` 0xc5994c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "NGamePhysicsUtilsMP1::TranslateMP1Material",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc59b70",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Translates MP1 material-list bits into the translated material form the port filters on.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 227,
+        "evidence": "NGamePhysicsUtilsMP1::TranslateMP1Material` 0xc59b70"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "NGamePhysicsUtilsMP1::TranslatePositive",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc59c20",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Maps the MP1 Platform channel to filter bit 0x2, the exception to the floor-eligibility rule.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_box_landing.h",
+        "line": 120,
+        "evidence": "NGamePhysicsUtilsMP1::TranslatePositive 0xc59c20"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::GroundCheckForOffGroundMoverCollider",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc6d110",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Landing check for the airborne mover: probe and landing band along the up axis. Harvest also tagged the address as bare GroundCheckForOffGroundMoverCollider.",
+      "tags": [
+        "collision",
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 202,
+        "evidence": "CPlayerMP1::GroundCheckForOffGroundMoverCollider` 0xc6d110"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::ImpactResponseForOffGroundMoverCollider",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc6d460",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Per-contact impact response for the airborne mover (floor and wall classification, then response).",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_movers.cpp",
+        "line": 72,
+        "evidence": "CPlayerMP1::ImpactResponseForOffGroundMoverCollider 0xc6d460"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SetPlayerHitWallDuringMove",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc75394",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Sets the hit-wall-during-move flag (0x2000, acceleration index 1).",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_movers.cpp",
+        "line": 1539,
+        "evidence": "SetPlayerHitWallDuringMove 0xc75394"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::UpdateGrappleState",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc7b5c4",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": "void UpdateGrappleState(const CFinalInput& input, CStateManager& mgr)",
+      "role": "Remastered grapple update: only breaks a grapple in progress and does not re-add the ground collider each tick.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/Player/CPlayerOrbit.cpp",
+        "line": 1338,
+        "evidence": "CPlayerMP1::UpdateGrappleState 0xc7b5c4"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CCameraManagerMP1::UpdateFilters",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc8d7ec",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Remastered camera filters: no fog, only the water filter colour multiplied in, none in X-Ray or Thermal visors.",
+      "tags": [
+        "camera",
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/Cameras/CCameraManager.cpp",
+        "line": 300,
+        "evidence": "CCameraManagerMP1::UpdateFilters (0xc8d7ec"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "UpdateChargeRumbleTriggered",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xc9b41c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Triggers one charge rumble once the charge time passes the warm-up time.",
+      "tags": [
+        "input"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/Player/CPlayerGun.cpp",
+        "line": 1763,
+        "evidence": "UpdateChargeRumbleTriggered 0xc9b41c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "UpdateHudDamage",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xcad714",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Takes the damage-flash tint from Remastered own colour tables.",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/HUD/CSamusHud.cpp",
+        "line": 1064,
+        "evidence": "UpdateHudDamage (0xcad714"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CIncludeExcludeCollisionFilterMP1::Passes",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xcb7084",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Non-surface material filter test; a mode-0 filter passes every material.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 225,
+        "evidence": "CIncludeExcludeCollisionFilterMP1::Passes` 0xcb7084"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SurfaceCollisionPasses",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xcb7110",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Surface-level filter test for a candidate impact, using the other half outward normal.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 229,
+        "evidence": "SurfaceCollisionPasses` 0xcb7110"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CExcludeCollisionFilterMP1",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xcb73a4",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Exclude filter, surface form: positive Exclude AND negative IncludeAll AND NOT orientation.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_collision_material.h",
+        "line": 234,
+        "evidence": "CExcludeCollisionFilterMP1 0xcb73a4"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CIncludeCollisionFilterMP1",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xcb76a8",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Include filter, surface form: positive Include OR negative ExcludeSome OR orientation.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_collision_material.h",
+        "line": 228,
+        "evidence": "CIncludeCollisionFilterMP1 0xcb76a8"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CMorphBallMP1::Render",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xcea524",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Morph-ball hull draw: damage flash plus boost glow colour-add.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_morph_ball.cpp",
+        "line": 231,
+        "evidence": "CMorphBallMP1::Render (0xcea524"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CMorphBallMP1::FluidFXThink",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xcecb64",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": "void FluidFXThink(CActor::EFluidState state, CScriptWater& water, CStateManager& mgr)",
+      "role": "Morph-ball fluid effects with Remastered splash gating on the blue tail swoosh generator.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/Player/CMorphBall.cpp",
+        "line": 2784,
+        "evidence": "CMorphBallMP1::FluidFXThink 0xcecb64"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ComputeMovement",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xcefb48",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Movement input: Remastered leaves strafe unscaled and undoes the GameCube diagonal clamp.",
+      "tags": [
+        "input"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/Player/CPlayerDynamics.cpp",
+        "line": 419,
+        "evidence": "ComputeMovement 0xcefb48"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::JumpInput",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xcf0060",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Jump input handling, following Remastered jump behaviour (issue 117).",
+      "tags": [
+        "input"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/Player/CPlayerDynamics.cpp",
+        "line": 50,
+        "evidence": "CPlayerMP1::JumpInput (0xcf0060"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SetMoveState",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xcf0788",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Ground-jump path: Remastered drops the ground collider on a ground jump so the jump moves with the off-ground mover.",
+      "tags": [
+        "player_state",
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/Player/CPlayerDynamics.cpp",
+        "line": 880,
+        "evidence": "SetMoveState (0xcf0788"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::CollidedWithNew",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xcf1a2c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Post-collision handler: clears the sliding-on-wall flag, sets it on a wall impact during ApplyJump, then calls SetPlayerHitWallDuringMove.",
+      "tags": [
+        "collision",
+        "player_state"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_movers.cpp",
+        "line": 1535,
+        "evidence": "CPlayerMP1::CollidedWithNew 0xcf1a2c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "AddVisorGooSplat",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xd1078c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Adds a visor goo splat to the Remastered visor effect manager state (Switch 1.0.0). Class not named in source.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/MetroidPrime/PortVisorGoo.hpp",
+        "line": 5,
+        "evidence": "AddVisorGooSplat 0xd1078c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CalculateRandomVisorGooPosition",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xd10bcc",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Computes a random position for a visor goo splat.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/MetroidPrime/PortVisorGoo.hpp",
+        "line": 5,
+        "evidence": "CalculateRandomVisorGooPosition 0xd10bcc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CScriptWaterMP1::Render",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xd19404",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Sets the water surface opacity multiplier: applied in X-Ray visor only, reset to 1 otherwise.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_room_liquid.cpp",
+        "line": 261,
+        "evidence": "CScriptWaterMP1::Render (0xd19404"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "Load",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xd1e3ec",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Loads the SLdrColor_MP1Typedef sub-properties (r, g, b, a) in struct order. Bare name; class taken from the comment.",
+      "tags": [
+        "asset"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_room_internal.h",
+        "line": 222,
+        "evidence": "Load at 0xd1e3ec"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPhazonBeamMP1::Draw",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xd6917c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": "void Draw(const bool drawSuitArm, const CStateManager& mgr, const CTransform4f& xf, const CModelFlags& flags, const CActorLights* lights) const",
+      "role": "Base gun draw for the phazon beam; the Remastered gun model skips retail veins, clip wipe and indirect effect.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/Weapons/CPhazonBeam.cpp",
+        "line": 116,
+        "evidence": "CPhazonBeamMP1::Draw (0xd6917c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CScriptVisorGooMP1::Think",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xed3fec",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Visor goo think: Remastered keeps one persistent goo billboard that each goo splats into.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/ScriptObjects/CScriptVisorGoo.cpp",
+        "line": 94,
+        "evidence": "CScriptVisorGooMP1::Think 0xed3fec"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPhysicsGroundMoverColliderMP1::MoveObject",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xf923d8",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Grounded ground-collider mover: MoveAlongGround passes, terrain failsafe on loop exit, then snap. Harvest also tagged this address as MoveObject, and DoCollisionFailsafe is a call inside it.",
+      "tags": [
+        "physics",
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 13,
+        "evidence": "CPhysicsGroundMoverColliderMP1::MoveObject` 0xf923d8"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CanMoveUpAndDownFromPosition",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xf928c0",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Step probe: decides whether the mover can step up or down from a position; heights are contact extrema, not player origin. movers.cpp:1952 also names this address CheckCollision_Boolean_NoPostFilter.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/MetroidPrime/CGameCollision.hpp",
+        "line": 113,
+        "evidence": "CanMoveUpAndDownFromPosition 0xf928c0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "MoveAlongGround",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xf92ccc",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "One grounded-mover movement pass: bisection time search with wall or floor response.",
+      "tags": [
+        "physics",
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/MetroidPrime/CGameCollision.hpp",
+        "line": 113,
+        "evidence": "MoveAlongGround 0xf92ccc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ApplyMotionState",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xf9349c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Applies the motion state after a MoveAlongGround pass; the rider carry mode clears after the first pass.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_ground_rider.h",
+        "line": 29,
+        "evidence": "ApplyMotionState (0xf9349c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SnapToGround",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xf934ec",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Snap pass of the grounded mover: selects the floor contact and snaps to it.",
+      "tags": [
+        "collision",
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 14,
+        "evidence": "SnapToGround` 0xf934ec"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "IsOnWallAtPosition",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xf93c9c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Wall test at a candidate position, listed among the grounded mover entry points.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/MetroidPrime/CGameCollision.hpp",
+        "line": 114,
+        "evidence": "IsOnWallAtPosition 0xf93c9c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPhysicsSteppedMoverColliderMP1::MoveObject",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xf943b4",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Stepped (airborne) mover MoveObject: the other mover that may write the retained object state.",
+      "tags": [
+        "physics",
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/CGameCollision.cpp",
+        "line": 814,
+        "evidence": "CPhysicsSteppedMoverColliderMP1 0xf943b4"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPhysicsSteppedMoverColliderMP1::MoveObject",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xf9450c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Entry writes the retained object state to 0 unconditionally; a verified airborne tick restores validity. Same qualified name as the 0xf943b4 item, different address.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_ground_policy.h",
+        "line": 471,
+        "evidence": "CPhysicsSteppedMoverColliderMP1::MoveObject 0xf9450c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "DoMovementStep",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xf948d4",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Airborne mover per-step move; the landing check runs from its post-step probe.",
+      "tags": [
+        "physics",
+        "collision"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+        "line": 201,
+        "evidence": "DoMovementStep` 0xf948d4"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "DoMovementStep",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xf95414",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Raises the retained object state to 1 on a grounded step.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_ground_policy.h",
+        "line": 417,
+        "evidence": "DoMovementStep 0xf95414"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "InitMeshFilter",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xf9e764",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Excludes meshes hidden in the active visor (combat and scan, thermal, X-Ray bits); shadow passes also exclude bit 5.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_visor_mesh.h",
+        "line": 6,
+        "evidence": "InitMeshFilter (0xf9e764"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "UpdateShadowSampled",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xfab920",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Shadow update: one anchor ray per update, cycling through five anchors.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/CSimpleShadow.cpp",
+        "line": 115,
+        "evidence": "UpdateShadowSampled (0xfab920"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "UpdateShadowAnchorForExplicitHeight",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xfac1c4",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Shadow cast straight down from the bounds centre; the box is 2 above to 2 below the hit; a miss clears the shadow.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/CSimpleShadow.cpp",
+        "line": 98,
+        "evidence": "UpdateShadowAnchorForExplicitHeight (0xfac1c4"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "init_frame",
+      "mangled": null,
+      "kind": "function",
+      "address": "0xfb34b0",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Sets the baked-lighting modulation override to 0.6 in X-Ray, replacing the colour entirely.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_room_env.cpp",
+        "line": 588,
+        "evidence": "init_frame 0xfb34b0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CBomb::Think",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x100dab0",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Remastered bomb think: BombSet every frame, BombAttract from the first attracted frame, BombExplo once detonated or in the last half second.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/Weapons/CBomb.cpp",
+        "line": 162,
+        "evidence": "CBomb::Think (0x100dab0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "UpdateSwooshesAndSparks",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x1026dac",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Binds both wave-buster swooshes to the distance between the actor and the beam origin on each update.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/MetroidPrime/Weapons/CWaveBuster.cpp",
+        "line": 542,
+        "evidence": "UpdateSwooshesAndSparks 0x1026dac"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVector3f::skZeroVector",
+      "mangled": null,
+      "kind": "data",
+      "address": "0x1d0c200",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Static zero vector (three +0.0) used by the box-pair normal negation.",
+      "tags": [
+        "collision"
+      ],
+      "used_by": "port reads this as the source of a constant",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_collision_failsafe.cpp",
+        "line": 308,
+        "evidence": "CVector3f::skZeroVector (0x1d0c200"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "kBrdfLutMemOffset",
+      "mangled": null,
+      "kind": "data",
+      "address": "0x1d0dbfc",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Offset of the 0x100-byte environment BRDF table in the executable image; the table is read from the user own image.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reads this as the source of a constant",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_nsp.h",
+        "line": 123,
+        "evidence": "kBrdfLutMemOffset = 0x1d0dbfc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "skClusteredSliceChoice",
+      "mangled": null,
+      "kind": "data",
+      "address": "0x1d0dfe8",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Clustered-lights slice choice from the render debug defaults (value 2).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reads this as the source of a constant",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_clustered_lights.h",
+        "line": 23,
+        "evidence": "skClusteredSliceChoice 0x1d0dfe8"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "skClusterMaxDepth",
+      "mangled": null,
+      "kind": "data",
+      "address": "0x1d0dfec",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Clustered-lights max depth from the render debug defaults (value 500).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reads this as the source of a constant",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_clustered_lights.h",
+        "line": 22,
+        "evidence": "skClusterMaxDepth 0x1d0dfec"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "skClusterPixelsPerTile",
+      "mangled": null,
+      "kind": "data",
+      "address": "0x1d0dff0",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Clustered-lights pixels per tile from the render debug defaults (value 48).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reads this as the source of a constant",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_clustered_lights.h",
+        "line": 22,
+        "evidence": "skClusterPixelsPerTile 0x1d0dff0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "skBallNormalSwooshIntensity",
+      "mangled": null,
+      "kind": "data",
+      "address": "0x1d252d4",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Start of the morph-ball rodata swoosh intensity table; per suit values are {dry, in water}.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reads this as the source of a constant",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_morph_ball.cpp",
+        "line": 135,
+        "evidence": "skBallNormalSwooshIntensity 0x1d252d4"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "kThermalNoiseMemOffset",
+      "mangled": null,
+      "kind": "data",
+      "address": "0x2068900",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Offset of the 64x64 thermal-visor noise texture (4096 bytes) in the executable image.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reads this as the source of a constant",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_remastered_nsp.h",
+        "line": 131,
+        "evidence": "kThermalNoiseMemOffset = 0x2068900"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CParticleValues::skMinNormalizableMagSqd",
+      "mangled": null,
+      "kind": "data",
+      "address": "0x21109c8",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Minimum squared magnitude below which a particle vector is not normalised (1.42e-14).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reads this as the source of a constant",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+        "line": 339,
+        "evidence": "CParticleValues::skMinNormalizableMagSqd (0x21109c8"
+      }
+    }
+  ]
+}

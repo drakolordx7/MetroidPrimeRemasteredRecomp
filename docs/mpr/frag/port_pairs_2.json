@@ -1,0 +1,1647 @@
+{
+  "source_id": "port_pairs_2",
+  "items": [
+    {
+      "type": "symbol",
+      "name": "CAddVarBuilder::AddDefinedVar",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x275188",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Appends the hidden PEOD ints, after the system variables in PSYS, as KSSM is read.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 4384,
+        "evidence": "CAddVarBuilder::AddDefinedVar 0x275188"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SortVars",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x276188",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Orders the system variables so each comes after the ones it reads; otherwise stream order.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 5122,
+        "evidence": "SortVars 0x276188"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CAddVarSystem::Init",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x278438",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Evaluates every system variable once on the generator's own random. The candidate pairing of 0x278438 with 'Update' conflicts with the comment at port_remastered_effect_convert.cpp:2382, which pairs 0x278438 with Init. Also listed in the candidate list as \"Update\" (candidate 2).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+        "line": 766,
+        "evidence": "CAddVarSystem::Init 0x278438"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CAddVarSystem::Update",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x278638",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Evaluates the system variables that are not init-only, at the emitter's frame.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+        "line": 1651,
+        "evidence": "CAddVarSystem::Update 0x278638"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CParticleGen::ShutdownEffect",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27a66c",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "With a SHTT the countdown is armed once; otherwise the shutdown acts at once. Also listed in the candidate list as \"ShutdownEffect\" (candidate 5).",
+      "tags": [
+        "render",
+        "timestep"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+        "line": 2140,
+        "evidence": "CParticleGen::ShutdownEffect (0x27a66c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "GetCameraTransform",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27b304",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Its translation is the camera-to-world translation (the view matrix); CVECameraPositionInWorldSpace reads it.",
+      "tags": [
+        "camera"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CVectorElement.cpp",
+        "line": 586,
+        "evidence": "GetCameraTransform 0x27b304"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CParticleGen::SetExternalDataSet",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27b3d8",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Takes the owner's external translation, rotation and scale (EXTT, EXTR, EXTS).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CElementGen.hpp",
+        "line": 272,
+        "evidence": "CParticleGen::SetExternalDataSet 0x27b3d8"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "UpdateCountdownTimerForShutdown",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27b864",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Updates the shutdown countdown timer (SHTT, in ticks).",
+      "tags": [
+        "timestep"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CGenDescription.hpp",
+        "line": 228,
+        "evidence": "UpdateCountdownTimerForShutdown 0x27b864"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CParticleGen::DoShutdownBehavior",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27b88c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Applies the shutdown by SHTM: 0 stops emission, 1 also destroys live segments via CParticleSwoosh::DestroyParticles. Also listed in the candidate list as \"DoShutdownBehavior\" (candidate 11).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CSwooshDescription.hpp",
+        "line": 76,
+        "evidence": "CParticleGen::DoShutdownBehavior 0x27b88c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CreateNewParticle",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27cdc8",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Sets a new point's orientation from var bc, then applies PROT.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 4608,
+        "evidence": "CreateNewParticle 0x27cdc8"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "InternalUpdate",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27d1b4",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Reads each point's keyframes at its age, and KEWS at (age - base) / (count - 1) over the live points.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CParticleSwoosh.cpp",
+        "line": 365,
+        "evidence": "InternalUpdate 0x27d1b4"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CParticleSwoosh::UpdateExisting",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27d590",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Re-evaluates live swoosh points each frame (PROT again unless initial-only); the gradient is read at a segment's age.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 2317,
+        "evidence": "UpdateExisting 0x27d590"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CParticleSwoosh::DestroyParticles",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27f744",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Empties the swoosh segment ring (index and live counts reset); retail's version is empty.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CSwooshDescription.hpp",
+        "line": 77,
+        "evidence": "CParticleSwoosh::DestroyParticles 0x27f744"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "MPT_SetOrientation",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27f92c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Remastered's orientation setter; under XFMD 3 it writes the one system rotation (SetExternalRotation).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CParticleSwoosh.cpp",
+        "line": 282,
+        "evidence": "MPT_SetOrientation 0x27f92c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "MPT_SetTranslation",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27f9c4",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Remastered's translation setter; under XFMD 3 it writes the one system translation (SetExternalTranslation 0x27b45c).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CParticleSwoosh.cpp",
+        "line": 485,
+        "evidence": "MPT_SetTranslation 0x27f9c4"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "MPT_SetGlobalOrientation",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27fa24",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Remastered's global orientation setter; under XFMD 4 it writes the external rotation (EXTR, var bc).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CParticleSwoosh.cpp",
+        "line": 510,
+        "evidence": "MPT_SetGlobalOrientation 0x27fa24"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "MPT_SetGlobalTranslation",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27faa4",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Remastered's global translation setter; under XFMD 4 it also writes the external translation (EXTT).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CParticleSwoosh.cpp",
+        "line": 498,
+        "evidence": "MPT_SetGlobalTranslation 0x27faa4"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "MPT_GetTranslation",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x27fb54",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Remastered's translation getter; under XFMD 3 the getters read the one system variable too.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CParticleSwoosh.cpp",
+        "line": 1742,
+        "evidence": "MPT_GetTranslation 0x27fb54"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "DestroyParticles",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x286554",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "An electric's DestroyParticles, a no-op, so shutdown modes 0 and 1 both just stop emitting.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 4780,
+        "evidence": "DestroyParticles (0x286554"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CParticleMath::CrossIntoMatrixRow",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x286d70",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Cross product a x b scaled by the inverse square root of its squared length; false below kMinNormalizableMagSqd (2^-46). Also listed in the candidate list as \"CrossIntoMatrixRow\" (candidate 23).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+        "line": 342,
+        "evidence": "CParticleMath::CrossIntoMatrixRow 0x286d70"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SetupTransformMode",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2887d8",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Sets the global frame (T, Q, S at desc +0xa8/+0xac/+0xb0) for XFMD: 2 identity with external scale, 3 external T/Q/S, 4 mover position and rotation at unit scale.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CElementGen.hpp",
+        "line": 293,
+        "evidence": "SetupTransformMode 0x2887d8"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SetupTransformMode",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x289338",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Under XFMD 5 adds the generator's INTT as a constant CVEAdd (POFS) to the local translation over the scale. Also listed in the candidate list as \"CVEAdd\" (candidate 26).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 1628,
+        "evidence": "SetupTransformMode 0x289338"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SetupTransformMode",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2893f8",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Computes the velocity step V12(f) - V12(f-1) (CVEVelocityCalc); 0 at the first frame.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+        "line": 1723,
+        "evidence": "SetupTransformMode 0x2893f8"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CParticleDescription::Compile",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x289af0",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Under XFMD != 5 the system scale is INTS when authored, else the external scale; the system translation and rotation take INTT/INTR when authored. Also listed in the candidate list as \"Compile\" (candidate 28).",
+      "tags": [
+        "render",
+        "asset"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+        "line": 576,
+        "evidence": "CParticleDescription::Compile 0x289af0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SEmitter::CompileSystem",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x28e00c",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Compiles the constant-count vector path (CRCV); Compile1d runs only for a SEMR's position child.",
+      "tags": [
+        "asset"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 1663,
+        "evidence": "SEmitter::CompileSystem 0x28e00c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SSpritePrim::Fixup",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x28e640",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Under DVVN 1..4 a sprite's missing SIZE becomes 1.0, where retail's default is 0.1.",
+      "tags": [
+        "asset"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 4964,
+        "evidence": "SSpritePrim::Fixup 0x28e640"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "GetDefaultParticleSize",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x28e6c8",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Default sprite SIZE used when a sprite lacks one under DVVN 1..4 (1.0 here, 0.1 in retail).",
+      "tags": [
+        "asset"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 4965,
+        "evidence": "GetDefaultParticleSize 0x28e6c8"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "Fixup",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x28ec98",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "PMRB and PMCF make the PMRQ the particle's base rotation; port-only PMRF selects 1 (PMRQ alone) or 2 (orientation times PMRQ).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 4424,
+        "evidence": "Fixup 0x28ec98"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CParticleVelocity::Compile",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x291b90",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Remastered's DoesNodeFinalizePosition: a VEL source that finalizes the position replaces the generator's pos += vel step.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/IElement.hpp",
+        "line": 60,
+        "evidence": "CParticleVelocity::Compile 0x291b90"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CSpawnSystemKeyframeData::Update",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x293930",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Evaluates each spawn table at the current frame.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+        "line": 1814,
+        "evidence": "CSpawnSystemKeyframeData::Update (0x293930"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "GetNumInstances",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2940fc",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Instance-count element (CIntElement) evaluated at the current frame.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CGenDescription.hpp",
+        "line": 252,
+        "evidence": "GetNumInstances (0x2940fc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CREDivide::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x294e0c",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "DIVD: a / b as a plain divide with no zero guard.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CRealElement.hpp",
+        "line": 257,
+        "evidence": "CREDivide::GetValue 0x294e0c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CRENegate",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x294f20",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "NEGT(x): returns -x; retail uses MULT(x, CNST -1), the same bit for bit.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 1228,
+        "evidence": "CRENegate 0x294f20"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CREAbsoluteValue::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x295094",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "ABS_: evaluates its child into a zeroed local, then takes the absolute value; the int form keeps INT_MIN. Also listed in the candidate list as \"CREAbsoluteValue\" (candidate 40).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+        "line": 428,
+        "evidence": "GetValue 0x295094"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CRERandomConstant",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29598c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Leaf element for RAND of two CNST arguments.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 407,
+        "evidence": "CRERandomConstant 0x29598c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CRELifetimeTween",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2960d4",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Port-only PSLW blend from A to B by the system tween: a + tween * (b - a).",
+      "tags": [
+        "timestep"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortSystemTween.hpp",
+        "line": 5,
+        "evidence": "CRELifetimeTween (0x2960d4"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CREBlendByLifetimeConstant",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x296170",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Port-only PSLW blend with both children constant; same arithmetic as CRELifetimeTween.",
+      "tags": [
+        "timestep"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortSystemTween.hpp",
+        "line": 4,
+        "evidence": "CREBlendByLifetimeConstant (0x296170"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CREKeyframeInput",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x296490",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "KEYF version 2: 30-byte header, N keys and an input element; port-only PKYF. Other versions build no element in Remastered.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 1868,
+        "evidence": "CREKeyframeInput 0x296490"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CREKeyframeInput::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29661c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Port-only PKYF: keys read at the input element's value, wrapped from the loop start when looping, blended linearly.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortKeyframeInput.hpp",
+        "line": 3,
+        "evidence": "GetValue 0x29661c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CREParentAdditionalValue::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x296824",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Resolves parent reads: SPA* (parent system variable), DPV* (direct parent's PVAR), TPV* (topmost parent's variable).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+        "line": 584,
+        "evidence": "CREParentAdditionalValue::GetValue 0x296824"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "MPT_CREExternalValue::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29715c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "PMXV (MPXV): index then fallback; with an external block it reads vars[max(index,0) % 12], else the fallback. Also listed in the candidate list as \"MPT_CREExternalValue\" (candidate 48).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+        "line": 529,
+        "evidence": "MPT_CREExternalValue::GetValue 0x29715c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CREKeepInitial",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x297478",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "KPIN: keeps its child's value at birth (CElementDep::Finish 0x24f9a4).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 3199,
+        "evidence": "CREKeepInitial 0x297478"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CRECosineWave::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x298788",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "COSE: amplitude * cos((phase + frequency * frame) in degrees); phase, then frequency, then amplitude. Also listed in the candidate list as \"CRECosineWave\" (candidate 51).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+        "line": 473,
+        "evidence": "CRECosineWave::GetValue 0x298788"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CRESolveUsingSystemTime",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x298ef8",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "SUST: evaluates its child on the system's frame, the frame the port uses for swoosh elements. Also listed in the candidate list as \"SUST\" (candidate 52).",
+      "tags": [
+        "timestep"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 3201,
+        "evidence": "CRESolveUsingSystemTime 0x298ef8"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "DistanceFromCameraBlend::CalculateBlendValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x298f44",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Clamped ramp of depth along the camera's forward axis: 1 at A, 0 at B (DFCS or DFCP origin). Also listed in the candidate list as \"Remastered\" (candidate 54), \"CalculateBlendValue\" (candidate 56).",
+      "tags": [
+        "camera"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+        "line": 4,
+        "evidence": "DistanceFromCameraBlend::CalculateBlendValue 0x298f44"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "DFCP",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x299064",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Swoosh-side read: transforms a segment's position by the swoosh transform, for the camera-distance blend.",
+      "tags": [
+        "camera"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CRealElement.cpp",
+        "line": 372,
+        "evidence": "Remastered 0x299064"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "DFCS",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x299134",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Swoosh-side read of the swoosh's local translation by the swoosh transform. The candidate listed 0x299134 as DFCP, but CParticleGlobals.hpp:96 pairs 'DFCS/DFCP (0x299134 / 0x299064)', so DFCS is used.",
+      "tags": [
+        "camera"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CParticleGlobals.hpp",
+        "line": 96,
+        "evidence": "DFCP (0x299134"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CRERandomSign::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x299318",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "RSGN: the child, negated when the draw's bit is clear; one draw per evaluation. Also listed in the candidate list as \"CRERandomSign\" (candidate 60).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+        "line": 507,
+        "evidence": "CRERandomSign::GetValue 0x299318"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CREInitialRandomSign::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x299678",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "PIRS: one draw at frame 0 sets the particle's sign, kept in its slot; the result is that sign times the child.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+        "line": 555,
+        "evidence": "CREInitialRandomSign::GetValue 0x299678"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CRETicksToSeconds::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x299910",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "T2S_: (float)(1/60 * n) for an int child n, narrowed once.",
+      "tags": [
+        "timestep"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CRealElement.hpp",
+        "line": 268,
+        "evidence": "CRETicksToSeconds::GetValue 0x299910"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CREShutdownTimeRemaining",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2999e0",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "PSDT: the current system's shutdown countdown remaining over its total (SHTT); 1 when none is running.",
+      "tags": [
+        "timestep"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+        "line": 340,
+        "evidence": "CREShutdownTimeRemaining 0x2999e0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CREKeepInitial",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x299d3c",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "KPIN's initial-only flag (IsNodeInitialOnly) in the constant-after-start classification.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 413,
+        "evidence": "CREKeepInitial 0x299d3c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CRERandom::GetConstOverride",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x299dbc",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns false for RAND, so RAND(CNST, CNST) is not constant-after-start (per the PPVR flag test). Also listed in the candidate list as \"CRERandom\" (candidate 65).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/tests/port_remastered_effect_convert_pap.cpp",
+        "line": 171,
+        "evidence": "CRERandom::GetConstOverride 0x299dbc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CSwooshDescription::Compile",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29b1a0",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Start of Remastered's SIDE==2 ORNT swoosh ribbon, which replaces PROT with a rotation whose X is normalize(A x Z).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_swoosh_ring.h",
+        "line": 5,
+        "evidence": "CSwooshDescription::Compile 0x29b1a0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SetupOrientToView",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29bdbc",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Ribbon rotation toward the camera: A = camera minus point, Z = trail direction, X = normalize(A x Z).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/include/port_swoosh_ring.h",
+        "line": 6,
+        "evidence": "SetupOrientToView 0x29bdbc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CERotationKeepInitial",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29c214",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "KPIN on a rotation: the keep is pushed onto each REUL angle, which becomes init-only hidden reals.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 2250,
+        "evidence": "CERotationKeepInitial 0x29c214"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CERotationAdd::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29c370",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "RADD: quaternion product a * b of two rotations.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+        "line": 1576,
+        "evidence": "CERotationAdd::GetValue 0x29c370"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CERotationEuler::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29c944",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "REUL in axis order 0: Euler angles in degrees to a rotation (Rz * Ry * Rx). Also listed in the candidate list as \"CERotationEuler\" (candidate 72).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+        "line": 539,
+        "evidence": "CERotationEuler::GetValue 0x29c944"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "QuatGeneric",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29ca18",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Euler (REUL, axis order 0) routine that the port's comment pairs with CERotationEuler::GetValue.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+        "line": 539,
+        "evidence": "QuatGeneric 0x29ca18"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CERotationFromCamera",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29d180",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "CMRT: the camera's rotation, one of the rotation kinds ROTV can carry.",
+      "tags": [
+        "camera"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 451,
+        "evidence": "CERotationFromCamera 0x29d180"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CERotationFromAxis",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29d1bc",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "RAZY rotation from two axes as GetRotationElement builds it: Z = first, X = second x Z, Y = Z x X; fallback when degenerate.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 2245,
+        "evidence": "CERotationFromAxis 0x29d1bc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CERotationFromAxis::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29d298",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "RAZY rotation from two axes; false under kMinNormalizableMagSqd so the caller uses its fallback. Also listed in the candidate list as \"CERotationFromAxis\" (candidate 76).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+        "line": 360,
+        "evidence": "CERotationFromAxis::GetValue 0x29d298"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVEAbsoluteValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29e254",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "ABS_ on a vector: the child evaluated into a zeroed local, then its absolute value.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+        "line": 429,
+        "evidence": "CVEAbsoluteValue 0x29e254"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVEScale",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29e374",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "SCLE(v, r): out = (v.x * r, r * v.y, r * v.z).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 2062,
+        "evidence": "CVEScale 0x29e374"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVENormalizeVector::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29e620",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "NORM: the child scaled to unit length; unchanged when its length is at most 2^-23.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 381,
+        "evidence": "CVENormalizeVector::GetValue 0x29e620"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVERandomVector::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29e954",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "RNDV: a cube point from the current RNG, scaled to the magnitude (1 when absent) by an ARM rsqrt estimate. Also listed in the candidate list as \"CVERandomVector\" (candidate 82).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 257,
+        "evidence": "CVERandomVector::GetValue 0x29e954"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "MPT_CVECone::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29eca0",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "MPCN: a point on the disc of the given radius (at most 1) around the position, perpendicular to the direction.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 305,
+        "evidence": "MPT_CVECone::GetValue 0x29eca0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVEAngleCone::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29eebc",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "ANCR: a direction from a REUL rotation given as three angles, with the x/y ranges and magnitude. Also listed in the candidate list as \"CVEAngleCone\" (candidate 85).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 270,
+        "evidence": "CVEAngleCone::GetValue 0x29eebc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVEAngleConeMinMax::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29f304",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "ANCM: a direction between two cone angles, with the REUL rotation given as three angles. Also listed in the candidate list as \"CVEAngleConeMinMax\" (candidate 87).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 323,
+        "evidence": "CVEAngleConeMinMax::GetValue 0x29f304"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "MPAC",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x29fec0",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Angle cone of a centre and a spread per axis: five reals (x and y centre, x and y range, magnitude), drawing u for x and v for y.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 287,
+        "evidence": "MPAC (0x29fec0"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVERotateVector::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a0328",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "ROTV / PRTV: rotates a vector by EXTR, CMRT or REUL (axis order 0) in Remastered's particle space. Also listed in the candidate list as \"CVERotateVector\" (candidate 90).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 448,
+        "evidence": "CVERotateVector::GetValue 0x2a0328"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVECircle::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a06b4",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Circle point: wraps a before b = a + pi/2, then sums c + (r u) sin b + sin a (r v) per axis; u and v come from the constructor.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CElementGen.cpp",
+        "line": 1533,
+        "evidence": "GetValue 0x2a06b4"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVECircleWithVariance::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a0a7c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "CRCV: a point on the circle around the centre; the ring is divided into n steps, in creation order or shuffled. Also listed in the candidate list as \"GetValue\" (candidate 93).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 340,
+        "evidence": "CVECircleWithVariance::GetValue 0x2a0a7c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVELineWithVariance::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a119c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "LINV: a point along start..end divided into n steps, jittered by one draw; a segment under 1e-5 gives the start. Also listed in the candidate list as \"GetValue\" (candidate 95).",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 362,
+        "evidence": "CVELineWithVariance::GetValue 0x2a119c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVELineWithVariance::Compile",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a1418",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "Compile step for LINV (PLWV); the shuffler and a constant 0 count are CRCV's, and Compile1d runs only for a SEMR's position.",
+      "tags": [
+        "asset"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+        "line": 1702,
+        "evidence": "CVELineWithVariance::Compile 0x2a1418"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVECameraPositionInWorldSpace",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a23ec",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "CMPS: the camera position in world space (the view matrix's translation).",
+      "tags": [
+        "camera"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 435,
+        "evidence": "CVECameraPositionInWorldSpace 0x2a23ec"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "Compile",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a246c",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "CPSS path: takes the world camera position into the system's translation, orientation and scale. The source does not name the class.",
+      "tags": [
+        "camera"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CVectorElement.cpp",
+        "line": 592,
+        "evidence": "Compile 0x2a246c"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVECameraPositionInSystemSpace::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a24fc",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "CPSS: the camera position in the system's global frame, conj(q) * (camera - t) * q, then times the inverse scale. Also listed in the candidate list as \"CVECameraPositionInSystemSpace\" (candidate 99).",
+      "tags": [
+        "camera"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+        "line": 379,
+        "evidence": "CVECameraPositionInSystemSpace::GetValue 0x2a24fc"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVEBonePosition::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a2690",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Bone-position vector element (BNPS); the comment calls it the bone index element.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/platform/port_remastered_effect.cpp",
+        "line": 149,
+        "evidence": "GetValue 0x2a2690"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVEExternalValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a2774",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "EXTT and EXTS: the external translation and scale, as system vectors.",
+      "tags": [
+        "render"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+        "line": 437,
+        "evidence": "CVEExternalValue 0x2a2774"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVENormalizedCompensatedVelocity::GetValue",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a2800",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "PNCV: the particle's velocity normalised by one refined FRSQRTE step; up (0, 1, 0) when too small. Also listed in the candidate list as \"PNCV\" (candidate 103).",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+        "line": 193,
+        "evidence": "CVENormalizedCompensatedVelocity::GetValue 0x2a2800"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CVEVelocityCalc",
+      "mangled": null,
+      "kind": "function",
+      "address": "0x2a288c",
+      "addr_form": "main_offset",
+      "claimed_version": "1.0.0",
+      "signature": null,
+      "role": "EMRV: the translation one step back, for PRAZ.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "port reimplements / mirrors this function",
+      "src": {
+        "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CParticleSwoosh.hpp",
+        "line": 224,
+        "evidence": "CVEVelocityCalc 0x2a288c"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2649 @@
+{
+ "source_id": "practice_mod",
+ "items": [
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::ProcessInput",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ProcessInput(const CFinalInput&, CStateManager&)",
+   "role": "Per-frame player update: latches the state manager, reads IGT and morph-ball flags for the GUI, handles save/load position and time hotkeys, applies pending desired position, optional invulnerability.",
+   "tags": [
+    "input",
+    "player_state",
+    "save",
+    "igt"
+   ],
+   "used_by": "trampoline hook (InstallAtFuncPtr)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 273,
+    "evidence": "CPlayerMP1_ProcessInput::InstallAtFuncPtr(&CPlayerMP1::ProcessInput);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManagerGameLogicMP1::GameMainLoop",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GameMainLoop(CStateManager&, CStateManagerUpdateAccess&, float)",
+   "role": "Game loop hook: on left stick + L press toggles time stop (SetGameState SoftPaused/Running and BreakOrbit).",
+   "tags": [
+    "timestep",
+    "input"
+   ],
+   "used_by": "trampoline hook (InstallAtFuncPtr)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 274,
+    "evidence": "CStateManagerGameLogicMP1_GameMainLoop::InstallAtFuncPtr(&CStateManagerGameLogicMP1::GameMainLoop);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::RenderGun",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void RenderGun(const CStateManager&, const CVector3f&)",
+   "role": "Skips arm-cannon render when hide_cannon is set (and hide-all is not active).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "trampoline hook (InstallAtFuncPtr)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 275,
+    "evidence": "CPlayerMP1_RenderGun::InstallAtFuncPtr(&CPlayerMP1::RenderGun);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CSamusHudMP1::Draw",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Skips HUD draw when hide_hud is set (or hide-all is active).",
+   "tags": [
+    "hud",
+    "render"
+   ],
+   "used_by": "trampoline hook (InstallAtFuncPtr)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 276,
+    "evidence": "CSamusHudMP1_Draw::InstallAtFuncPtr(&CSamusHudMP1::Draw);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CSamusHudMP1::DrawHelmet",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void DrawHelmet(const CStateManager&, float)",
+   "role": "Skips helmet HUD draw when hide_hud is set (or hide-all is active).",
+   "tags": [
+    "hud",
+    "render"
+   ],
+   "used_by": "trampoline hook (InstallAtFuncPtr)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 277,
+    "evidence": "CSamusHudMP1_DrawHelmet::InstallAtFuncPtr(&CSamusHudMP1::DrawHelmet);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CAutoMapperMP1::Update",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "When hide_hud or hide-all is active, passes 0.f as the second float argument; otherwise passes it through.",
+   "tags": [
+    "hud"
+   ],
+   "used_by": "trampoline hook (InstallAtFuncPtr)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 278,
+    "evidence": "CAutoMapperMP1_Update::InstallAtFuncPtr(&CAutoMapperMP1::Update);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CSamusHudMP1::DrawTargetingReticle",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void DrawTargetingReticle(const CStateManager&)",
+   "role": "Skips targeting reticle draw when hide_reticle is set (or hide-all is active).",
+   "tags": [
+    "hud",
+    "render"
+   ],
+   "used_by": "trampoline hook (InstallAtFuncPtr)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 279,
+    "evidence": "CSamusHudMP1_DrawTargetingReticle::InstallAtFuncPtr(&CSamusHudMP1::DrawTargetingReticle);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameCameraMP1::UpdateFOV",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void UpdateFOV(float)",
+   "role": "For the first-person camera with a pending override, writes the stored vertical FOV instead of calling Orig; afterwards stores the camera's current FOV.",
+   "tags": [
+    "fov",
+    "camera"
+   ],
+   "used_by": "trampoline hook (InstallAtFuncPtr)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 280,
+    "evidence": "CGameCameraMP1_UpdateFOV::InstallAtFuncPtr(&CGameCameraMP1::UpdateFOV);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CFirstPersonCameraMP1::Think",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void Think(float, CStateManager&)",
+   "role": "Records the first-person camera pointer; after Orig, applies a roll rotation when view roll is non-zero.",
+   "tags": [
+    "camera"
+   ],
+   "used_by": "trampoline hook (InstallAtFuncPtr)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 281,
+    "evidence": "CFirstPersonCameraMP1_Think::InstallAtFuncPtr(&CFirstPersonCameraMP1::Think);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NTonemap::build_tonemap_eval_params",
+   "mangled": "_ZN8NTonemap25build_tonemap_eval_paramsERK14STonemapParams",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "NTonemap::build_tonemap_eval_params(STonemapParams const&)",
+   "role": "Trampoline: subtracts the photo-mode exposure value from the inverse exposure before Orig. Hooked by symbol to bypass const.",
+   "tags": [
+    "tonemap",
+    "render"
+   ],
+   "used_by": "trampoline hook (InstallAtSymbol)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 282,
+    "evidence": "_ZN8NTonemap25build_tonemap_eval_paramsERK14STonemapParams"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::os::SetUserExceptionHandler",
+   "mangled": "_ZN2nn2os23SetUserExceptionHandlerEPFvPNS0_17UserExceptionInfoEEPvmS2_",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::os::SetUserExceptionHandler(void (*)(nn::os::UserExceptionInfo*), void*, unsigned long, nn::os::UserExceptionInfo*)",
+   "role": "Replaced with an empty body (HOOK_DEFINE_REPLACE ExceptionHandlerStub) when installExceptionStub() runs. No call to installExceptionStub() in the files read. main.cpp:119 calls this function with the mod's exception_handler. Same install line in refs/MP1R-Exlaunch-Base/src/program/ExceptionHandler.cpp.",
+   "tags": [
+    "os"
+   ],
+   "used_by": "replace hook (InstallAtSymbol)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ExceptionHandler.cpp",
+    "line": 133,
+    "evidence": "_ZN2nn2os23SetUserExceptionHandlerEPFvPNS0_17UserExceptionInfoEEPvmS2_"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnBootstrapLoader",
+   "mangled": "nvnBootstrapLoader",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Trampoline on the NVN bootstrap loader: calls Orig, logs the name, and returns the mod's deviceInit or getProc wrapper for nvnDeviceInitialize and nvnDeviceGetProcAddress; otherwise returns Orig's result. Identical install in refs/MP1R-Exlaunch-Base/src/program/imgui_nvn.cpp.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "trampoline hook (InstallAtSymbol)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 242,
+    "evidence": "NvnBootstrapHook::InstallAtSymbol(\"nvnBootstrapLoader\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::detail::GetNpadStates",
+   "mangled": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadFullKeyStateEiRKj",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::hid::detail::GetNpadStates(int*, nn::hid::NpadFullKeyState*, int, unsigned int const&)",
+   "role": "Trampoline on the NpadFullKeyState overload: calls Orig, then zeroes buttons and both sticks of the returned state when the mod's input toggle is on and it is not reading controllers itself (disableButtons). Identical install in refs/MP1R-Exlaunch-Base/src/program/imgui_nvn.cpp.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "trampoline hook (InstallAtSymbol)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 243,
+    "evidence": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadFullKeyStateEiRKj"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::detail::GetNpadStates",
+   "mangled": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_17NpadHandheldStateEiRKj",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::hid::detail::GetNpadStates(int*, nn::hid::NpadHandheldState*, int, unsigned int const&)",
+   "role": "Trampoline on the NpadHandheldState overload: calls Orig, then zeroes buttons and both sticks of the returned state when the mod's input toggle is on and it is not reading controllers itself (disableButtons). Identical install in refs/MP1R-Exlaunch-Base/src/program/imgui_nvn.cpp.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "trampoline hook (InstallAtSymbol)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 244,
+    "evidence": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_17NpadHandheldStateEiRKj"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::detail::GetNpadStates",
+   "mangled": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadJoyDualStateEiRKj",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::hid::detail::GetNpadStates(int*, nn::hid::NpadJoyDualState*, int, unsigned int const&)",
+   "role": "Trampoline on the NpadJoyDualState overload: calls Orig, then zeroes buttons and both sticks of the returned state when the mod's input toggle is on and it is not reading controllers itself (disableButtons). Identical install in refs/MP1R-Exlaunch-Base/src/program/imgui_nvn.cpp.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "trampoline hook (InstallAtSymbol)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 245,
+    "evidence": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadJoyDualStateEiRKj"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::detail::GetNpadStates",
+   "mangled": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadJoyLeftStateEiRKj",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::hid::detail::GetNpadStates(int*, nn::hid::NpadJoyLeftState*, int, unsigned int const&)",
+   "role": "Trampoline on the NpadJoyLeftState overload: calls Orig, then zeroes buttons and both sticks of the returned state when the mod's input toggle is on and it is not reading controllers itself (disableButtons). Identical install in refs/MP1R-Exlaunch-Base/src/program/imgui_nvn.cpp.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "trampoline hook (InstallAtSymbol)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 246,
+    "evidence": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadJoyLeftStateEiRKj"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::detail::GetNpadStates",
+   "mangled": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_17NpadJoyRightStateEiRKj",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::hid::detail::GetNpadStates(int*, nn::hid::NpadJoyRightState*, int, unsigned int const&)",
+   "role": "Trampoline on the NpadJoyRightState overload: calls Orig, then zeroes buttons and both sticks of the returned state when the mod's input toggle is on and it is not reading controllers itself (disableButtons). Identical install in refs/MP1R-Exlaunch-Base/src/program/imgui_nvn.cpp.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "trampoline hook (InstallAtSymbol)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 247,
+    "evidence": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_17NpadJoyRightStateEiRKj"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "Dash_ScanVisorCheck",
+   "mangled": null,
+   "kind": "patch_site",
+   "address": "0xceeab0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Inline patch site, not installed (commented out). Sets register W8 to 0 when dash_enabled. Purpose not stated in source.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "offset patch (InstallAtOffset, commented out in runCodePatches)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 264,
+    "evidence": "Dash_ScanVisorCheck::InstallAtOffset(0xceeab0ull)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "Dash_ScanVisorCheck",
+   "mangled": null,
+   "kind": "patch_site",
+   "address": "0xceeac4",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Second site of the same inline patch, not installed (commented out). Sets register W8 to 0 when dash_enabled.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "offset patch (InstallAtOffset, commented out in runCodePatches)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 265,
+    "evidence": "Dash_ScanVisorCheck::InstallAtOffset(0xceeac4ull)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "Dash_Speed",
+   "mangled": null,
+   "kind": "patch_site",
+   "address": "0xcef7a8",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Inline patch site, not installed (commented out). Sets register W8 to 0 when dash_enabled.",
+   "tags": [
+    "player_state",
+    "physics"
+   ],
+   "used_by": "offset patch (InstallAtOffset, commented out in runCodePatches)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 266,
+    "evidence": "Dash_Speed::InstallAtOffset(0xcef7a8ull)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "Dash_VelocityClamp",
+   "mangled": null,
+   "kind": "patch_site",
+   "address": "0xcee31c",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Inline patch site, not installed (commented out). Sets register W8 to 0 when dash_enabled.",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "offset patch (InstallAtOffset, commented out in runCodePatches)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 267,
+    "evidence": "Dash_VelocityClamp::InstallAtOffset(0xcee31Cull)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "Dash_VelocityClamp",
+   "mangled": null,
+   "kind": "patch_site",
+   "address": "0xcee334",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Second site of the same inline patch, not installed (commented out). Sets register W8 to 0 when dash_enabled.",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "offset patch (InstallAtOffset, commented out in runCodePatches)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 268,
+    "evidence": "Dash_VelocityClamp::InstallAtOffset(0xcee334ull)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CheckFloatVar",
+   "mangled": null,
+   "kind": "patch_site",
+   "address": "0xcee418",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Empty inline hook, not installed (commented out). Source says even an empty hook here makes physics ice.",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "offset patch (InstallAtOffset, commented out in runCodePatches)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 271,
+    "evidence": "CheckFloatVar::InstallAtOffset(0xcee418ll)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManager::GetGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns the CGameState from the state manager; source reads play time from it.",
+   "tags": [
+    "igt"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 61,
+    "evidence": "stateManager.GetGameState()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::GetPlayTime",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns play-time (IGT) reference, read for the monitor. Also written by load-time at patches.cpp:73.",
+   "tags": [
+    "igt"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 62,
+    "evidence": "gameState->GetPlayTime();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::GetMoveState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Current player movement state, stored to GUI::moveState and shown in the monitor.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 64,
+    "evidence": "thiz->GetMoveState()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::GetMorphBall",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns the morph-ball object; the mod calls its state getters.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 65,
+    "evidence": "thiz->GetMorphBall()->GetBombJumpState()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetBombJumpState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Morph-ball bomb-jump state, stored to GUI::bombJumpState. Not displayed in the files read.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 65,
+    "evidence": "GUI::bombJumpState = thiz->GetMorphBall()->GetBombJumpState();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetIsInHalfPipeMode",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Morph-ball half-pipe flag, stored to GUI::isInHalfPipeMode and shown in the movement-state line (InputWindow.cpp).",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 66,
+    "evidence": "GetIsInHalfPipeMode()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetIsInHalfPipeModeInAir",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Morph-ball half-pipe-in-air flag, stored to GUI::isInHalfPipeModeInAir and shown in the movement-state line.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 67,
+    "evidence": "GetIsInHalfPipeModeInAir()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetTouchedHalfPipeRecently",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Morph-ball touched-half-pipe-recently flag, stored to GUI::touchedHalfPipeRecently and shown in the movement-state line.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 68,
+    "evidence": "GetTouchedHalfPipeRecently()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::SetTransform",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sets the player transform (position and rotation). Also used with GUI::lastKnownTransform while time is stopped or position-edit is active.",
+   "tags": [
+    "player_state",
+    "physics"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 80,
+    "evidence": "thiz->SetTransform(GUI::desiredTransform);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::SetVelocityWR",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sets the player's linear velocity (world-relative). Used by position load and position edit.",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 81,
+    "evidence": "thiz->SetVelocityWR(stateManager, GUI::desiredVelocity);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::SetAngularVelocityWR",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sets the player's angular velocity (world-relative). Used by position load and position edit.",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 82,
+    "evidence": "thiz->SetAngularVelocityWR(stateManager, GUI::desiredAngularVelocity);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CFinalInput::GetDigitalHeld",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads a held digital control from the player's CFinalInput, used for the save/load and time-hotkey combos. Also used in InputWindow.cpp.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 85,
+    "evidence": "input.GetDigitalHeld(EControl::ZR)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::GetTransform",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads the player transform each frame into GUI::lastKnownTransform (also read at patches.cpp:114 for position edit).",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 154,
+    "evidence": "GUI::lastKnownTransform = thiz->GetTransform();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::GetVelocityWR",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads the player's linear velocity pointer each frame into GUI::lastKnownVelocity.",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 155,
+    "evidence": "GUI::lastKnownVelocity = *thiz->GetVelocityWR(stateManager);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::GetAngularVelocityWR",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads the player's angular velocity pointer each frame into GUI::lastKnownAngularVelocity.",
+   "tags": [
+    "physics"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 156,
+    "evidence": "GUI::lastKnownAngularVelocity = *thiz->GetAngularVelocityWR(stateManager);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "gpTweakPlayer",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Global tweak-player object, read for the free-look pitch limit.",
+   "tags": [],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 143,
+    "evidence": "gpTweakPlayer->GetMaxFreeLookPitchAngle()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetMaxFreeLookPitchAngle",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called on gpTweakPlayer; returns the max free-look pitch used to clamp pitch while time is stopped.",
+   "tags": [
+    "camera"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 143,
+    "evidence": "gpTweakPlayer->GetMaxFreeLookPitchAngle()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::GetFreeLookPitchAngle",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns pointer to the free-look pitch angle; written (clamped) while time is stopped.",
+   "tags": [
+    "camera"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 145,
+    "evidence": "float currPitch = *thiz->GetFreeLookPitchAngle();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManagerGameLogicMP1::SetGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sets game-logic state: SoftPaused to freeze time, Running to resume (EGameState values from source).",
+   "tags": [
+    "timestep"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 216,
+    "evidence": "self->SetGameState(new_state);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManagerGameLogicMP1::PlayerActor",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns the player actor; BreakOrbit is called on it when time is stopped.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 219,
+    "evidence": "self->PlayerActor()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::BreakOrbit",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Breaks the player's orbit (EOrbitBrokenType value 1 cast in source) when time is stopped.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 219,
+    "evidence": "BreakOrbit((CPlayerMP1::EOrbitBrokenType)1, mgr);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerMP1::HealthInfo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns health info; invulnerability sets its health field each frame. The field name is spelled 'heatlh' in source.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 162,
+    "evidence": "thiz->HealthInfo(stateManager).heatlh"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManagerGameLogicMP1::PlayerState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Static accessor for the player state, used to read energy-tank capacity for invulnerability. Also used in InventoryMenu.cpp.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 161,
+    "evidence": "CStateManagerGameLogicMP1::PlayerState()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CFirstPersonCameraMP1::GetTransform",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads the first-person camera transform before applying view roll.",
+   "tags": [
+    "camera"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 181,
+    "evidence": "auto fpCamXf = self->GetTransform();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CFirstPersonCameraMP1::SetTransform",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Writes the first-person camera transform with the view-roll rotation applied.",
+   "tags": [
+    "camera"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 184,
+    "evidence": "self->SetTransform(fpCamXf * rotT);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::RotateLocalZ",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Builds the view-roll rotation for the first-person camera.",
+   "tags": [
+    "camera"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 183,
+    "evidence": "rotT.RotateLocalZ(roll);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::Identity",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns identity transform, used as a rotation accumulator. Also used in PlayerMenu.cpp.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 124,
+    "evidence": "CTransform4f rotT = CTransform4f::Identity();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::RotateLocalY",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Applies a local Y-axis rotation to the rotation accumulator for stick-based look and position edit.",
+   "tags": [
+    "camera"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 125,
+    "evidence": "rotT.RotateLocalY(rot);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CTransform4f::Rotate",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Rotates the position-edit movement vector by the player transform.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 115,
+    "evidence": "movement = transform.Rotate(movement);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameCameraMP1::GetCurrentFOV",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns pointer to the camera's current FOV; written with the override, and read to store the current value.",
+   "tags": [
+    "fov"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 192,
+    "evidence": "*self->GetCurrentFOV() = GUI::verticalFov;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "STonemapParams::inverseExposure",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns pointer to inverse exposure; the photo-mode exposure is subtracted from it.",
+   "tags": [
+    "tonemap"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 205,
+    "evidence": "*tonemap.inverseExposure() -= GUI::exposure;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "exl::hook::Initialize",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sets up the exlaunch hooking environment at the start of exl_main.",
+   "tags": [
+    "os"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/main.cpp",
+    "line": 117,
+    "evidence": "exl::hook::Initialize();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::mCinematicForceSkippableOverride",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "static bool",
+   "role": "Cinematic skip override flag. Set to true in exl_main (main.cpp:134) and bound to the 'Allow skipping all cutscenes' checkbox (main.cpp:79).",
+   "tags": [
+    "script"
+   ],
+   "used_by": "read/write (main.cpp:134, main.cpp:79)",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 66,
+    "evidence": "static bool mCinematicForceSkippableOverride;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCameraManagerMP1::GetDefaultFirstPersonVerticalFOV",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns the default first-person vertical FOV, used as the Reset value for the FOV control.",
+   "tags": [
+    "fov",
+    "camera"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/PhotoModeMenu.cpp",
+    "line": 15,
+    "evidence": "CCameraManagerMP1::GetDefaultFirstPersonVerticalFOV()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CFinalInput::GetAnalog",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads analog control values from the last CFinalInput. Only used by drawLastKnownPlayerInput, whose call site is commented out (InputWindow.cpp:144-148).",
+   "tags": [
+    "input"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/InputWindow.cpp",
+    "line": 182,
+    "evidence": "lastKnownCPlayerInput.GetAnalog(EControl::LEFT_STICK_X)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "stateToName",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Converts an EPlayerMovementState value to its display name for the monitor.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/InputWindow.cpp",
+    "line": 116,
+    "evidence": "stateToName(moveState)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManagerGameLogicMP1::PlayerState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Static accessor for the player state used by the inventory menu. The menu returns early when gpGameState is null.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/InventoryMenu.cpp",
+    "line": 99,
+    "evidence": "CStateManagerGameLogicMP1::PlayerState();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::GetItemMax",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Static: returns the maximum count for an item type; used to size checkboxes and sliders.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/InventoryMenu.cpp",
+    "line": 123,
+    "evidence": "CPlayerStateMP1::GetItemMax(itemType)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::SetPickup",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sets the pickup (collected) count for an item type. Used by Refill, All, Any% and 21%.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/InventoryMenu.cpp",
+    "line": 124,
+    "evidence": "playerState->SetPickup(itemType, maxValue);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::SetPowerUp",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sets the owned (power-up) count for an item type. Used by All, None, Start, Any% and 21%.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/InventoryMenu.cpp",
+    "line": 125,
+    "evidence": "playerState->SetPowerUp(itemType, maxValue);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::AddPowerUp",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Adds a power-up for a single-count item when its checkbox is enabled.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/InventoryMenu.cpp",
+    "line": 205,
+    "evidence": "playerState->AddPowerUp(itemType, 1);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::IncrPickUp",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Increments the pickup count for a single-count item when its checkbox is enabled.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/InventoryMenu.cpp",
+    "line": 206,
+    "evidence": "playerState->IncrPickUp(itemType, 1);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::GetItemCapacity",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads the owned count for an item type to set its checkbox state.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/InventoryMenu.cpp",
+    "line": 201,
+    "evidence": "playerState->GetItemCapacity(itemType) == 1"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gIsDemoVersion",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 9,
+    "evidence": "&RProductionFlags::gIsDemoVersion"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gUseProductionFrontEnd",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 10,
+    "evidence": "&RProductionFlags::gUseProductionFrontEnd"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gProductionFrontEndId",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 11,
+    "evidence": "&RProductionFlags::gProductionFrontEndId"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gLogGameStartup",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 12,
+    "evidence": "&RProductionFlags::gLogGameStartup"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gDemoVersion_InLevelResetTimeInSeconds",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 14,
+    "evidence": "&RProductionFlags::gDemoVersion_InLevelResetTimeInSeconds"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gDemoVersion_InGameResetTimeInSeconds",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 16,
+    "evidence": "&RProductionFlags::gDemoVersion_InGameResetTimeInSeconds"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gCinemaSkipIgnorePreviouslySeenFlag",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 17,
+    "evidence": "&RProductionFlags::gCinemaSkipIgnorePreviouslySeenFlag"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gMarketingBuild",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 18,
+    "evidence": "&RProductionFlags::gMarketingBuild"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gDisableSimplePerformanceMetrics",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 19,
+    "evidence": "&RProductionFlags::gDisableSimplePerformanceMetrics"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gProductionMetricsMode",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 20,
+    "evidence": "&RProductionFlags::gProductionMetricsMode"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gForceWarnMetricsInactive",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 21,
+    "evidence": "&RProductionFlags::gForceWarnMetricsInactive"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gDisableConsolePrintf",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 22,
+    "evidence": "&RProductionFlags::gDisableConsolePrintf"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gAllowInfiniteLoopFinder",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 23,
+    "evidence": "&RProductionFlags::gAllowInfiniteLoopFinder"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gResetGameOnQuit",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 24,
+    "evidence": "&RProductionFlags::gResetGameOnQuit"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gEnableWarnMetrics",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 25,
+    "evidence": "&RProductionFlags::gEnableWarnMetrics"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gEnableCinematicDebug",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 26,
+    "evidence": "&RProductionFlags::gEnableCinematicDebug"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gIsEPDVersionForScripting",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 27,
+    "evidence": "&RProductionFlags::gIsEPDVersionForScripting"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gEnableAllowNonProductionTokenReload",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 28,
+    "evidence": "&RProductionFlags::gEnableAllowNonProductionTokenReload"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gIsTesterVersionForScripting",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 29,
+    "evidence": "&RProductionFlags::gIsTesterVersionForScripting"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gEnableCodeAndDataVersionDisplay",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 30,
+    "evidence": "&RProductionFlags::gEnableCodeAndDataVersionDisplay"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gEnableNetworkClientCreation",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 31,
+    "evidence": "&RProductionFlags::gEnableNetworkClientCreation"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gEnableProductionDumpExceptionHandler",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 33,
+    "evidence": "&RProductionFlags::gEnableProductionDumpExceptionHandler"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gEnableProductionLoadTimeCheats",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 34,
+    "evidence": "&RProductionFlags::gEnableProductionLoadTimeCheats"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "RProductionFlags::gEnableNonProductionControllerConnectionLimit",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game production flag exposed in the Production Flags UI (not drawn in this build).",
+   "tags": [],
+   "used_by": "read/write via ImGui (ProductionFlagMenu.cpp; drawProductionFlagMenu call is commented out in main.cpp:95)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ProductionFlagMenu.cpp",
+    "line": 36,
+    "evidence": "&RProductionFlags::gEnableNonProductionControllerConnectionLimit"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "gpGameState",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Global game state pointer; used by the warp routine and the inventory menu null-check.",
+   "tags": [],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 66,
+    "evidence": "gpGameState->SetCurrentWorldId(worldId);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetCurrentWorldId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sets the current world ID to the chosen master world (warp step 1).",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 66,
+    "evidence": "gpGameState->SetCurrentWorldId(worldId);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::CurrentWorldState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns the current world state object (warp step 2).",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 67,
+    "evidence": "gpGameState->CurrentWorldState()->SetDesiredAreaAssetId(areaId);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "SetDesiredAreaAssetId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sets the desired area asset ID to the chosen room (warp step 2).",
+   "tags": [
+    "warp",
+    "asset"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 67,
+    "evidence": "gpGameState->CurrentWorldState()->SetDesiredAreaAssetId(areaId);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ContinueWithNewInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ContinueWithNewInitialState(CGameState&,CGameState::SInitialState const&)",
+   "role": "Starts a new game state from SInitialState(areaId) (warp step 3). Exlaunch-Base CGameState.h:62 declares it as a non-static member with (CGameState&, SInitialState const&), while the call passes the state as the first argument with class qualification (see report).",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 69,
+    "evidence": "CGameState::ContinueWithNewInitialState("
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "SInitialState(CObjectId const&)",
+   "role": "Constructs an initial state from an area object ID; used by the warp routine as SInitialState(areaId).",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 23,
+    "evidence": "SInitialState(CObjectId const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManager::GameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns the game state from the state manager latched in the ProcessInput hook (patches.cpp:60).",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 69,
+    "evidence": "mostRecentStateManager->GameState()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManager::GameInstanceState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns the game instance state, on which the warp calls QuitGame (warp step 4).",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 71,
+    "evidence": "mostRecentStateManager->GameInstanceState()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "QuitGame",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called with NGameInstanceState::kQR_Warp as the last warp step. What the reason does is not stated in source.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 71,
+    "evidence": "GameInstanceState().QuitGame(NGameInstanceState::kQR_Warp)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CObjectId::CObjectId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Constructs a CObjectId from a GUID string; used for the world and area ID constants in this file.",
+   "tags": [],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 34,
+    "evidence": "sOverMasterId = CObjectId(\"73f2640c-cfb2-407b-a786-47a263ef0001\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GUI::sOverMasterId",
+   "mangled": null,
+   "kind": "data",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Tallon Overworld master world (per trailing comment; GUID 73f2640c-cfb2-407b-a786-47a263ef0001). Used as the world ID passed to warpToRoom.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 34,
+    "evidence": "CObjectId sOverMasterId"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GUI::sRuinsWorldId",
+   "mangled": null,
+   "kind": "data",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Chozo Ruins world (per trailing comment; GUID 914061a2-c17a-4826-94f5-be4faf90cae7). Used as the world ID passed to warpToRoom.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 35,
+    "evidence": "CObjectId sRuinsWorldId"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GUI::sLavaMasterId",
+   "mangled": null,
+   "kind": "data",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Magmoor Caverns master world (per trailing comment; GUID f5712eed-dde1-47bf-8670-d0664954861a). Used as the world ID passed to warpToRoom.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 36,
+    "evidence": "CObjectId sLavaMasterId"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GUI::sIceWorldId",
+   "mangled": null,
+   "kind": "data",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Phendrana Drifts world (per trailing comment; GUID 81b62adb-88f3-46f0-a43c-b8ccdfc354df). Used as the world ID passed to warpToRoom.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 37,
+    "evidence": "CObjectId sIceWorldId"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GUI::sMinesMasterId",
+   "mangled": null,
+   "kind": "data",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Phazon Mines master world (per trailing comment; GUID d3e02263-def7-4a66-bef4-26a45e8c59a8). Used as the world ID passed to warpToRoom.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 38,
+    "evidence": "CObjectId sMinesMasterId"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GUI::sCraterMasterId",
+   "mangled": null,
+   "kind": "data",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Impact Crater master world (per trailing comment; GUID 73318837-09ac-4dbb-bc66-d26950259b27). Used as the world ID passed to warpToRoom.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 39,
+    "evidence": "CObjectId sCraterMasterId"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GUI::sIntroMasterId",
+   "mangled": null,
+   "kind": "data",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Space Pirate Frigate master world (per trailing comment; GUID 4b5e8635-0f43-4ffb-9427-2e62186e517d). Used as the world ID passed to warpToRoom.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 40,
+    "evidence": "CObjectId sIntroMasterId"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::diag::GetSymbolSize",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns symbol size; used to reject addresses outside the symbol in the stack trace. Same call in refs/MP1R-Exlaunch-Base/src/program/ExceptionHandler.cpp.",
+   "tags": [
+    "os"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ExceptionHandler.cpp",
+    "line": 21,
+    "evidence": "nn::diag::GetSymbolSize(sym)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::diag::GetSymbolName",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Looks up the symbol name for an address for the crash log.",
+   "tags": [
+    "os"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ExceptionHandler.cpp",
+    "line": 46,
+    "evidence": "nn::diag::GetSymbolName(symbol, 0x100, addr)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::diag::GetRequiredBufferSizeForGetAllModuleInfo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns the buffer size needed for module info, used by the crash handler.",
+   "tags": [
+    "os"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ExceptionHandler.cpp",
+    "line": 75,
+    "evidence": "nn::diag::GetRequiredBufferSizeForGetAllModuleInfo()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::diag::GetAllModuleInfo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Fills the module list used for stack-trace offsets and the module dump in the crash handler.",
+   "tags": [
+    "os"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ExceptionHandler.cpp",
+    "line": 82,
+    "evidence": "nn::diag::GetAllModuleInfo(&moduleInfos, moduleBuffer, bufSize)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::os::GetCurrentCoreNumber",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns the current core number, logged by the crash handler.",
+   "tags": [
+    "os"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/ExceptionHandler.cpp",
+    "line": 69,
+    "evidence": "nn::os::GetCurrentCoreNumber()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvn::CommandBuffer::EndRecording",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Ends recording of the command buffer before ImGui draws in presentTexture.",
+   "tags": [
+    "nvn",
+    "render"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 69,
+    "evidence": "buf->EndRecording();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvn::CommandBuffer::BeginRecording",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Restarts recording of the command buffer after ImGui draw and state restore.",
+   "tags": [
+    "nvn",
+    "render"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 75,
+    "evidence": "buf->BeginRecording();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvn::Queue::SubmitCommands",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Submits the ImGui command list before presenting.",
+   "tags": [
+    "nvn",
+    "render"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 79,
+    "evidence": "queue->SubmitCommands(1, &handle);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvn::nvnLoadCPPProcs",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Loads the NVN C++ proc table from the device once the device is initialized.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 90,
+    "evidence": "nvn::nvnLoadCPPProcs(nvnDevice, tempGetProcAddressFuncPtr);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnDeviceInitialize",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Bootstrap-level hook: the mod stores the original pointer and returns its deviceInit wrapper. Also matched by name in getProc (imgui_nvn.cpp:124).",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "proc-name hook (bootstrap and getProc)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 197,
+    "evidence": "strcmp(funcName, \"nvnDeviceInitialize\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnDeviceGetProcAddress",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Bootstrap-level hook: stores the original pointer and returns the mod's getProc wrapper.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "proc-name hook (bootstrap)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 201,
+    "evidence": "strcmp(funcName, \"nvnDeviceGetProcAddress\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnQueueInitialize",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "getProc hook: stores the original pointer and returns the queueInit wrapper, which records the queue.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "proc-name hook (getProc)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 115,
+    "evidence": "strcmp(procName, \"nvnQueueInitialize\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnCommandBufferInitialize",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "getProc hook: returns the cmdBufInit wrapper, which records the command buffer and initializes ImGui once.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "proc-name hook (getProc)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 118,
+    "evidence": "strcmp(procName, \"nvnCommandBufferInitialize\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnQueuePresentTexture",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "getProc hook: returns the presentTexture wrapper, which runs the ImGui draw before the original present.",
+   "tags": [
+    "nvn",
+    "render"
+   ],
+   "used_by": "proc-name hook (getProc)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 121,
+    "evidence": "strcmp(procName, \"nvnQueuePresentTexture\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnCommandBufferSetSamplerPool",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "getProc hook: returns the setSamplerPool wrapper, which remembers the pool for later restore.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "proc-name hook (getProc)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 127,
+    "evidence": "strcmp(procName, \"nvnCommandBufferSetSamplerPool\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnCommandBufferSetTexturePool",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "getProc hook: returns the setTexturePool wrapper, which remembers the pool for later restore.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "proc-name hook (getProc)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 130,
+    "evidence": "strcmp(procName, \"nvnCommandBufferSetTexturePool\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnWindowSetCrop",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "getProc hook: returns the setCrop wrapper, which logs the crop and sets the ImGui display size.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "proc-name hook (getProc)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 133,
+    "evidence": "strcmp(procName, \"nvnWindowSetCrop\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::fs::MountSdCardForDebug",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Mounts the SD card as 'sd' during ImGui init. On failure ImGui init returns false.",
+   "tags": [
+    "os",
+    "asset"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/imgui_backend/imgui_nvn.cpp",
+    "line": 280,
+    "evidence": "nn::fs::MountSdCardForDebug(\"sd\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::InitializeKeyboard",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Initializes keyboard input; called from InputHelper::initKBM.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/helpers/InputHelper.cpp",
+    "line": 65,
+    "evidence": "nn::hid::InitializeKeyboard();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::InitializeMouse",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Initializes mouse input; called from InputHelper::initKBM.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/helpers/InputHelper.cpp",
+    "line": 66,
+    "evidence": "nn::hid::InitializeMouse();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetKeyboardState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads the keyboard state each frame in updatePadState.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/helpers/InputHelper.cpp",
+    "line": 74,
+    "evidence": "nn::hid::GetKeyboardState(&curKeyboardState);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetMouseState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads the mouse state each frame in updatePadState.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/helpers/InputHelper.cpp",
+    "line": 77,
+    "evidence": "nn::hid::GetMouseState(&curMouseState);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetTouchScreenState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads the touch-screen state each frame in updatePadState.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/helpers/InputHelper.cpp",
+    "line": 80,
+    "evidence": "nn::hid::GetTouchScreenState(&curTouchState);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadStyleSet",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns the controller style set for a port; chooses which state struct to read in tryGetContState.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/helpers/InputHelper.cpp",
+    "line": 92,
+    "evidence": "nn::hid::GetNpadStyleSet(port)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::GetNpadState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads controller state for a port into the struct for the detected style (full-key, handheld, joy-dual; overloads at lines 99-103).",
+   "tags": [
+    "input"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/helpers/InputHelper.cpp",
+    "line": 96,
+    "evidence": "nn::hid::GetNpadState((nn::hid::NpadFullKeyState *) state, port);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::init::GetAllocator",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns the SDK allocator; used to free the settings.json load buffer here, and for ImGui allocation callbacks in imgui_nvn.cpp.",
+   "tags": [
+    "os"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/patches.cpp",
+    "line": 300,
+    "evidence": "nn::init::GetAllocator()->Free(loadData.buffer);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "WarpRoutine (practice mod)",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void warpToRoom(const CObjectId& worldId, const CObjectId& areaId)",
+   "role": "Calls in order: (1) abort if mostRecentStateManager is null; (2) gpGameState->SetCurrentWorldId(worldId); (3) gpGameState->CurrentWorldState()->SetDesiredAreaAssetId(areaId); (4) CGameState::ContinueWithNewInitialState(mostRecentStateManager->GameState(), CGameState::SInitialState(areaId)); (5) mostRecentStateManager->GameInstanceState().QuitGame(NGameInstanceState::kQR_Warp). mostRecentStateManager is latched by the CPlayerMP1::ProcessInput hook (patches.cpp:60). Entry: drawAreaEntries menu click (WarpMenu.cpp:20).",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called by warp menu (drawAreaEntries)",
+   "src": {
+    "path": "refs/mp1r-practice-mod/src/program/WarpMenu.cpp",
+    "line": 60,
+    "evidence": "void warpToRoom(const CObjectId& worldId, const CObjectId& areaId) {"
+   }
+  }
+ ]
+}

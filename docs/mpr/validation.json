@@ -1,0 +1,96 @@
+{
+ "binary": "main.elf",
+ "counts": {
+  "symbol.PASS": 1263,
+  "symbol.WARN": 420,
+  "symbol.FAIL": 4,
+  "patch.PASS": 828,
+  "patch.WARN": 11,
+  "vtable.PASS": 9,
+  "field.PASS": 147,
+  "field.WARN": 31,
+  "vtable.FAIL": 1
+ },
+ "failures": [
+  {
+   "category": "symbol",
+   "name": "CGenDescription::Compile",
+   "address": "0x2a7d0c",
+   "finding": "claimed address 0x2a7d0c but binary has CGenDescription::Compile(CBuildContext&) at 0x290e4c"
+  },
+  {
+   "category": "symbol",
+   "name": "CIEKeyframeInput::GetConstOverride",
+   "address": "0x2aa748",
+   "finding": "claimed address 0x2aa748 but binary has CIEKeyframeInput::GetConstOverride(bool&) const at 0x2aa764"
+  },
+  {
+   "category": "symbol",
+   "name": "SelectPush",
+   "address": "0xc1fc54",
+   "finding": "binary function at this address is CPhysicsCollisionFailsafe::DoCollisionFailsafe(CPhysicsWorld const&, CPhysicsSimulationObject const&, CTransform4f const&, ICollisionFilter const&, CTransform4f&), source calls it SelectPush"
+  },
+  {
+   "category": "symbol",
+   "name": "CParticleValues::skMinNormalizableMagSqd",
+   "address": "0x21109c8",
+   "finding": "claimed address 0x21109c8 but binary has CParticleValues::skMinNormalizableMagSqd at 0x1d12a68"
+  },
+  {
+   "category": "vtable",
+   "name": "CGameObjectComponent",
+   "address": "0x20a33b0",
+   "finding": "4 slots match, 6 mismatch, 4 unresolved | slot 7 ConnectAreaFunctorsInternal -> CGameObjectComponent::AreaEntitiesLoaded(CStateManager&); slot 10 OnActivationStateChange -> CGameObjectComponent::AreaMoved(CStateManager&, CVector3f co"
+  }
+ ],
+ "warn_reasons": [
+  [
+   "no address and name not found in symbol tables ",
+   242
+  ],
+  [
+   "2 overloads in binary, cannot pick one",
+   58
+  ],
+  [
+   "mid-function",
+   49
+  ],
+  [
+   "4 overloads in binary, cannot pick one",
+   28
+  ],
+  [
+   "0 CEntityGOC",
+   19
+  ],
+  [
+   "6 overloads in binary, cannot pick one",
+   10
+  ],
+  [
+   "3 overloads in binary, cannot pick one",
+   7
+  ],
+  [
+   "14 overloads in binary, cannot pick one",
+   7
+  ],
+  [
+   "0 IMP1EntityBaseGOC",
+   7
+  ],
+  [
+   "source name is a label",
+   5
+  ],
+  [
+   "data address inside a segment",
+   4
+  ],
+  [
+   "5 overloads in binary, cannot pick one",
+   3
+  ]
+ ]
+}

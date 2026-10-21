@@ -1,0 +1,22 @@
+{
+ "note": "Hand-written resolutions of source conflicts, each backed by a read of the real 1.0.0 main (IDA decompilation of the validated main.elf, 2026-10-21). Kept separate from the generated conflicts.json; kb_merge.py attaches them. Evidence is paraphrased, not copied from the game.",
+ "resolutions": [
+  {"kind": "struct_field_name", "struct": "CStateManager", "offset": "0x4e0150",
+   "verdict": "pointer to the game-logic object, stored at CStateManager+0x4E0150",
+   "evidence": "NSharedPlayerControls and CPlayerMP1 functions (UpdateFreeLookState_Gyro 0xc6cb30, ComputeFreeLook 0xc71638) load an 8-byte value from CStateManager+0x4E0150, add 48 and dereference again, add 128 and dereference to reach the player actor. So the slot holds a pointer, not an inline CStateManagerGameLogicMP1.",
+   "consequence": "The practice mod's GameLogic() returns the address of that slot (GetField gives address-of); one extra dereference is needed. In the Rando header the field is named mStateManagerGameLogic and its sequential offset lands on 0x4E0150 only when the leading gap is read as starting at offset 0 (its name 'gapA' is misleading). Two command-frame objects sit inline at CStateManager+0x4E01C0 and +0x4E0320.",
+   "confidence": "high for the pointer at 0x4E0150, medium for the neighbouring slots (CGameAreaManager* at 0x4E0140 is the header's claim, not verified)"},
+  {"kind": "struct_field_name", "struct": "CGameState::SInitialState", "offset": "0x0",
+   "verdict": "16-byte CObjectId at +0x0 (area/world id)",
+   "evidence": "SInitialState ctors 0x408abc / 0x408ad0 copy 16 bytes from a CObjectId into +0 and a 32-bit value into +0x10 (default -1).",
+   "consequence": "Offsets agree between sources; only the names differ.", "confidence": "high"},
+  {"kind": "struct_field_name", "struct": "CGameState::SInitialState", "offset": "0x10",
+   "verdict": "32-bit signed integer, default -1: the save slot (practice mod's mSaveSlot), not a FourCC",
+   "evidence": "Same ctors: the third constructor argument (SSaveInfo) supplies this int, the plain constructor stores -1.",
+   "consequence": "Prefer mSaveSlot over the Rando header's mSaveMagic (CFourCC, also 4 bytes).", "confidence": "medium (type and width verified, meaning from the ctor shape)"},
+  {"kind": "struct_field_name", "struct": "CHealthInfoMP1", "offset": "0x0",
+   "verdict": "float health at +0, float knockback resistance at +4 (Rando: 3 floats; practice: only the first, field spelled 'heatlh')",
+   "evidence": "CHealthInfoMP1::PutTo 0xc8c1e0 and the stream constructor 0xc8c070 handle exactly a health float and a knockback-resist float.",
+   "consequence": "Both sources agree on offset 0; the extra Rando float at +8 is unverified.", "confidence": "high for +0 and +4"}
+ ]
+}
