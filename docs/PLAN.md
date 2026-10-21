@@ -1,63 +1,71 @@
-# Metroid Prime Remastered — native PC static recompilation
+# Metroid Prime Remastered PC recomp — plan v2
 
 ## Context
-Goal: turn the Switch release of Metroid Prime Remastered (MPR, title 010012101468C000, v1.0.0 — the only version ever shipped, build ID 67C9CA14…) into a native Windows x64 executable. Must-haves: arbitrary resolution, high refresh rate (120 fps and beyond), raw mouse input, full keyboard+mouse play. Optional, last: upscaling and frame generation.
+Native Windows x64 build of Metroid Prime Remastered (Switch, 010012101468C000, v1.0.0, build ID 67C9CA14…). Must-haves: arbitrary resolution/ultrawide, 120 fps and beyond, raw mouse aim, full KB+M. Optional: upscaling, frame gen. GPL-3.0, public GitHub, prebuilt exe, player brings their own dump. Phase 0 (toolkit) is done. v1 of the plan was thin on team structure, gameplay verification and several features; a read-only study of the 18 cloned reference projects closed most unknowns. This v2 replaces v1 in `docs/PLAN.md`.
 
-Why this is feasible now (research, Oct 2026):
-- ~10 open Switch static recomps exist and run real games at 60 fps: ssbu-recomp (Smash, GPL-3), smo-recomp (Odyssey, GPL-3, best docs), SuperMarioWonderRecomp (MIT runtime), LASRecomp (Link's Awakening, built almost entirely with Claude Code), ScarletNX (generic recompiler library). The pattern is proven: AArch64 → C++ lifting, guest image mapped at native base, NVN reimplemented on Vulkan, Maxwell shaders translated ahead of time.
-- MPR specifics are favourable: one binary version, NVN confirmed, C++ symbol names very likely present (mods hook by mangled name), game logic is the original Prime engine (`CPlayerMP1`, `CFirstPersonCameraMP1`…) so PrimeDecomp + MetroidPrimePort + mp1r-practice-mod supply names, struct layouts, input structure (`CFinalInput`) and a high-FPS audit.
-- Nobody has published an MPR decomp/recomp/port.
+## What the study settled
+- **Symbols confirmed.** `main` exports C++ mangled names; mods hook `CPlayerMP1::ProcessInput`, `CStateManagerGameLogicMP1::GameMainLoop(…, float dt)`, `CFirstPersonCameraMP1::Think`, `NTonemap::build_tonemap_eval_params` etc. by name. MetroidPrimePort lists ~150 "Remastered 1.0.0" addresses. Image base 0x7100000000.
+- **Known layouts:** CPlayerMP1 (+0x5cc pitch, +0x9d0 morph ball), CTweakPlayerMP1 (+0x138 max pitch), CGameCameraMP1 (+0x25c FOV), CFinalInput (0x398, 0x38 controls), CPlayerStateMP1 power-ups, CGameState play time. Input enters via `nn::hid::GetNpadStates`.
+- **Assets:** all RFRM. TXTR = BCn/BC7/ASTC, Tegra block-linear. Shaders sit inside MTRL MaterialArchives (blob type unverified — likely Maxwell). Movies = H.264 MP4 in FMV0. HUD = GUIF frames; menus likely Scaleform (GFXL). Audio codec unknown.
+- **Nobody has solved:** mouse aim, >60 fps, HDR, ASTC→BC7 offline, zero-play pipeline prewarm, MPR shader container extraction. These are our original work.
 
-Machine: i9-12900K, 64 GB RAM, RTX 3080, ~118 GB free on D:. Missing: LLVM/clang, CMake, Ninja, VS Build Tools + Windows SDK, Vulkan SDK, JDK 21 (only JDK 8 present), Ghidra, Switch tools.
+## Architecture (decisions)
+- **CPU / lifter: fork smo-recomp's lifter** (Python, `.eh_frame`-exact discovery, Unicorn difftest with mutation testing, `fpexact.h`). Add Wonder's newer-SDK instruction coverage (LSE atomics, LDXP/STXP, crypto, scalar SIMD) and jump-table resolver; ssbu's C++ exception lifting (`recomp_eh.py`), site re-lift + hook table + inline check; ScarletNX's separate TPIDRRO and its a64 audit corpus as a stricter oracle.
+- **OS layer: decided at the Phase 1 gate by measurement.** Default: Wonder style — recompile the whole `sdk` and answer at SVC/IPC level (robust across SDK versions; MPR is a 2023 SDK, much newer than SMO's 7.3.2). Fallback: smo's nn:: import replacement where hot (fs, hid, allocator, threads). Gate inputs: SDK version string, import count, NVN version.
+- **Runtime core from smo:** identity map at 0x7100000000 (guest ptr = host ptr), pagefile-backed heap that NVN pools truly alias, Win32 thread per guest thread with the 3-core pinning model (free scheduling failed 4/6 boots in SMO).
+- **Graphics:** NVN at `nvnBootstrapLoader` → Vulkan 1.3. Base on smo's `nvn_vk` backend (pipeline libraries, push descriptors, stream ring, watchdog); use Wonder's NVN docs/DEBUG logs as the checklist (iGPU selection, NVIDIA ASTC driver crash, barriers, synchronous submit). Shaders: Ryujinx translator offline (Wonder harness) vs smo's translator — run both on MPR's shaders, keep the higher spirv-val pass rate. Textures: **ASTC → BC7 transcoded once at setup** into a cache (new work; avoids the 4–9× RGBA8 memory blowup). Pipelines: we record pipeline keys from automated room tours and ship them → zero first-run stutter.
+- **Movies:** H.264 via Media Foundation (smo `nnmovie_mf.c`), FFmpeg fallback.
+- **Audio:** recompiled SDK audio renderer driven by a host clock (smo), XAudio2/SDL3 out.
+- **Input:** SDL3 3.4.x pads (hot-plug, gyro, rumble) + raw mouse via SDL3 relative mode, injected by a trampoline on `CPlayerMP1::ProcessInput` (yaw on transform, pitch at +0x5cc), buttons synthesized at the `GetNpadStates`/`CFinalInput` layer.
+- **High refresh: measure, then choose.** Experiment first: run at dt 1/120 and 1/240 with the physics probe (theboy181's 120 fps patch reportedly kept correct physics → MPR may already be dt-clean). Few deviations → variable timestep + fixes (lowest latency). Many → 60 Hz logic + render interpolation (MetroidPrimePort's FRAME_INTERPOLATION design: camera, actor transforms, skinned poses, particles; snap on cuts/teleports). Either way, mouse look is applied every rendered frame.
+- **Release:** prebuilt exe + translated SPIR-V + pipeline keys ship; the player's dump supplies RomFS; setup tool checks build ID and file hashes, extracts, transcodes textures. Generated C++ never committed; release built locally by a script (ssbu `make_release.py` pattern, audited manifest).
 
-## Approach (decisions taken unless flagged OPEN)
-- **Recompile everything, HLE at the OS boundary.** Lift `main`, `sdk`, `subsdk*` to C++. Reimplement Horizon SVCs and IPC services (fs, hid, time, settings, account, save, audio out, nvservices stubs). Override selected `nn::` functions with host-native versions where it is better (NVN, fs, hid, allocator, threads).
-- **Graphics: NVN → Vulkan 1.3** via the `nvnBootstrapLoader` entry point; replay command buffers; block-linear untiling; ASTC transcoded to BC7 (desktop GPUs lack ASTC); Maxwell shaders → SPIR-V ahead of time with Ryujinx's MIT shader translator (dotnet tool), shipped as a hash-keyed cache, so no compile stutter.
-- **Audio:** run the SDK's own audio renderer code in-process (recompiled), output via SDL3; Ryujinx Amadeus as reference.
-- **Input:** SDL3 3.4.x relative mouse mode (hardware raw input, no acceleration). Mouse deltas injected directly into the aim code (player yaw rotation + free-look pitch clamped by `gpTweakPlayer->GetMaxFreeLookPitchAngle()`), not faked as stick input. Controllers via SDL3 gamepad, gyro kept.
-- **High refresh: variable timestep**, not 60 Hz logic + interpolation. Lowest input latency (matters for mouse feel); game update functions already take `float dt`. Fix the per-tick systems listed in MetroidPrimePort's HIGH_FPS_AUDIT (player/morph-ball friction, projectile tick period, decals, AI frame counters, HUD message countdown) after mapping them to MPR. dt clamped; fallback to interpolation only for any system that cannot be made dt-correct.
-- **Resolution:** arbitrary internal resolution and aspect (16:9, 21:9, 32:9), HUD kept at correct aspect, dynamic resolution off (known single-instruction patch at 0xAFF5D4), LOD bias and AA options (offsets known from theboy181/cucholix patches).
-- **Upscaling/frame gen (last phase, optional):** FSR 3.1 (MIT, Vulkan, upscale + frame gen) built-in; DLSS and XeSS loaded from user-supplied DLLs.
-- **Public GitHub release, Windows x64 only.** Release ships a prebuilt exe (recompiled code inside, Zelda64Recomp/Unleashed style); the player supplies their own dump. A first-run setup tool takes their NSP/XCI + keys (or already-extracted RomFS), checks the build ID / file hashes against 1.0.0, and extracts RomFS into the game folder. No game assets or keys in the repo or release.
-- **Licence: GPL-3.0.** Open release makes GPL free to adopt, which unlocks the most mature Windows runtime (ssbu-recomp / smo-recomp lifter + NVN-on-Vulkan) while still taking MIT code (Ryujinx shader translator, SuperMarioWonderRecomp pieces). Base: fork smo-recomp's architecture (documented, single-player game, 60 fps proven), borrow from ssbu-recomp's lifter test suite.
-- **Disassembler: IDA Pro 9.4** (installed) via Hex-Rays' official ida-mcp plugin, headless idalib; game executables converted with nx2elf first. Ghidra 12.1.2 + Switch Loader only as a fallback/second opinion, not installed.
-- **Dump not yet available.** Phase 0 and the game-independent parts (toolkit, reference study, lifter + Unicorn test suite, runtime skeleton, SDL3/Vulkan shell, setup tool) start without it. Phase 1 analysis starts the moment the dump lands.
+## Team and streams
+Lead (this session, Opus): architecture, interface contracts (`runtime/include/`), integration and merges, verifying every manager report, decisions, reports to you. Managers (Sonnet) own one stream each in its own git worktree; at most 3 run at once. Workers (Haiku) run per-item loops. Advisor (Fable) only after a stream has failed a real attempt.
 
-## Toolkit (`.weaver/`, built and installed in Phase 0)
-- Build: LLVM/clang-cl, CMake, Ninja, sccache, VS Build Tools + Windows SDK, Vulkan SDK.
-- Analysis: Ghidra 12.1.2 + Adubbz Switch Loader + pyghidra-mcp (headless, agent-driven); JDK 21; nx2elf; hactool/nstool; retrotool (MPR asset formats); BinDiff (carry PrimeDecomp names); Capstone + Unicorn (Python).
-- Debug/verify: mcp-windbg (recompiled exe), renderdoc-mcp (graphics capture diff/pixel asserts), Ryubing with GDB stub (reference traces from the real game), Vulkan validation layers.
-- Claude plugins: official `clangd-lsp`, `ralph-loop`; the "Reverse Engineering" directory skill.
-- Own tools (small scripts): dump extractor, function-list builder, lifter test harness, trace differ, build-shard generator, shader-cache builder, fps physics probe.
-- Reference clones: ssbu-recomp, smo-recomp, SuperMarioWonderRecomp, LASRecomp, ScarletNX, prime-recomp, MetroidPrimePort, mp1r-practice-mod, MP1R-Exlaunch-Base, retrotool, PrimeDecomp, Ryujinx.
+| Stream | Owns | Oracle (machine PASS/FAIL) | Worker loop |
+|---|---|---|---|
+| S1 Recompiler | `recomp/` | Unicorn difftest + mutation test; coverage report on MPR main+sdk | next unimplemented/failing instruction shape |
+| S2 Binary knowledge | `work/`, `tools/analysis` | symbol/import counts; known mod offsets resolve to the right names | extract struct/func facts per class into `docs/mpr/` |
+| S3 OS/HLE | `runtime/os`, `runtime/services` | boot milestones; service-call log has no unknowns; determinism hash stable | next unhandled SVC/IPC command |
+| S4 Graphics | `runtime/gfx`, `tools/shaders`, `tools/textures` | spirv-val pass rate; Vulkan validation clean; RenderDoc image asserts | next failing shader / texture format / draw |
+| S5 Test tooling | `tools/test` | same input replay twice → identical state hashes | next room in the warp tour |
+| S6 PC features | `runtime/pc` | physics probe 60/120/240 identical; mouse delta→angle linear; HUD layout checks | per feature |
+| S7 Setup/release | `tools/setup` | fresh-machine install from a dump reaches title screen | — |
 
-## AI workflow (lessons from LASRecomp, ssbu-recomp, momo5502's agent decomp write-up, Snowboard Kids 2)
-- Oracle before scale: every agent loop has a machine-checked PASS/FAIL (Unicorn lifter diffs, state-hash traces vs Ryubing, RenderDoc pixel asserts).
-- Anti-cheat: checker scripts hashed and verified each batch; no inline asm; agents can't edit oracles.
-- Per-item headless loops (`claude -p` / ralph-loop): take the easiest failing item, cap attempts, log give-ups for a manager.
-- Lifting is mechanical (deterministic tool, no AI); AI effort goes to HLE services, NVN, shader edge cases, MPR-specific fixes and naming.
-- Byte-matching decomp is out (different CPU and compiler from PrimeDecomp); PrimeDecomp is used for names and struct layouts only.
+Rules: every brief = goal, files, ruled-out, done-condition, report format. Oracle scripts are hash-locked and a project hook (ScarletNX `guard.py` pattern) blocks edits to them and blocks game data from git. No inline asm. Each stream keeps `docs/streams/Sx.md` and numbered bug entries (`docs/debug/NNN.md`: symptom, cause, fix). Project skills in `.claude/` (run, crash-triage, service-scout) like ScarletNX.
 
-## Phases and milestones
-0. **Setup** — install toolkit, clone references, git repo per major folder (`recomp/`, `runtime/`, `tools/`), `.weaver/` index/status/changelog.
-1. **Dump intake + analysis** — extract ExeFS/RomFS from user dump, NSO→ELF, confirm build ID, symbols, compiler, import list (NVN, nn:: services). Ghidra project. Function list from `.eh_frame` + symbols; jump tables resolved via Unicorn. Name/struct recovery from symbols, RTTI, PrimeDecomp, practice-mod headers. *Done when: complete function table and import list.*
-2. **Recompiler** — fork/adapt chosen base lifter; Unicorn differential tests (tens of thousands of instruction cases, checker hashed so agents can't weaken it, no inline asm); indirect-call dispatch table; output sharded across many TUs. *Done when: all of main+sdk lift and link.*
-3. **Runtime/HLE** — loader, guest memory at native base, threads with a 3-core scheduling model, sync, SVCs, IPC services, RomFS as local folder, saves to `%APPDATA%`. *Done when: boots to first NVN call.*
-4. **Graphics + audio** — NVN on Vulkan, untiling, BC7 transcoding, AOT shader cache, audio. *Done when: title screen renders with sound.*
-5. **Playable** — iterate with oracles: per-frame state-hash diff against Ryubing traces, RenderDoc image diffs. *Done when: Frigate Orpheon to credits playthrough clean.*
-6. **PC features** — resolution/aspect/HUD, uncapped + 120/144/240 + VRR + limiter, variable-dt fixes, raw mouse aim, full KB+M binding set (visors, beams, morph ball, lock-on, scan), rebinding, in-game settings overlay (ImGui). *Done when: physics probe shows identical walk speed/jump height/morph friction at 60/120/240, mouse aim 1:1 with no smoothing.*
-7. **Optional extras** — FSR 3.1 upscale + frame gen, DLSS/XeSS hooks.
+## Phases
+0. ✅ Toolkit.
+1. **Pre-dump scaffolding** (now): S1 forks and merges the lifter + difftest; S5 builds input record/replay, scripted-run DSL (`@area` waits, `@goto`, warp), screenshot/state-hash/regression tools; S3 runtime skeleton (loader, memory map, threads, log/crash/freeze reports); S4 Vulkan shell + shader harness; project hooks/skills. Reference emulator: try Eden now; fallback a Ryubing build you supply.
+2. **Dump intake** (gate): extract, nx2elf, IDA databases (main, sdk, subsdk), SDK/NVN version, import list, `recomp.py cover`, FPCR/NEON scan, shader blob identification, texture-format tally, audio codec. Lead makes the OS-layer and translator decisions here.
+3. **Lift + link** all modules; difftest green.
+4. **Boot**: SVC/IPC, fs/RomFS, saves, threads → first NVN call.
+5. **Title screen**: NVN/Vulkan, untiling, BC7 cache, shaders, audio, movies.
+6. **Playable**: warp tour of every room, scripted runs, trace/image diffs vs emulator; full playthrough Frigate → credits.
+7. **PC features**: resolution/ultrawide/HUD; high-fps experiment then implementation; raw mouse + KB+M; settings overlay.
+8. **Extras**: HDR, FSR 3.1 upscale + frame gen, DLSS/XeSS DLLs, Reflex/Anti-Lag 2.
+9. **Release**: setup tool, packaging, docs.
 
-## Team
-Lead (this session) owns architecture and integration. Managers per stream once Phase 1 is done: recompiler+oracle, runtime/HLE, graphics+shaders, later PC features. Workers for extraction, scripts, test runs, contained edits.
+## PC feature spec (Phase 7–8)
+- **Mouse:** radians-per-count sensitivity (Source-scale display), separate vertical, pitch limit from tweak, no smoothing/accel, applied per rendered frame and sampled late (just before camera update). Free aim when not locked; lock-on hands camera to target and re-syncs after. Separate sensitivity for morph-ball camera and scan/map. Pointer locked in game, released in menus; mouse support in menus/map (drag rotate, wheel zoom) where the UI allows.
+- **Bindings (MetroidPrimePort defaults):** WASD (strafe), LMB fire/charge, RMB lock-on, MMB/F missile, Space jump, Ctrl/C morph, Q alt lock-on, Alt free look, Tab/M map, 1–4 beams, 5–8 visors, wheel cycles beams; contexts gameplay/morph/map/menu/scan with tap/hold/double-tap/toggle; rebinding file + in-game UI. Controllers and gyro keep working.
+- **Display:** any resolution, aspect 16:9–32:9 with correct HUD (GUIF scaled, Scaleform menus pillarboxed), FOV slider, dynamic resolution off, LOD/draw distance, anisotropic filtering, shadow resolution, post-FX toggles, borderless/exclusive fullscreen, VRR, frame limiter, uncapped/120/144/240/360.
+- **Latency:** late input sampling, limiter waits before input poll, optional NVIDIA Reflex (VK_NV_low_latency2) / AMD Anti-Lag 2.
+- **HDR:** replace the game's tonemap output (`NTonemap`, per-room params) with an HDR10/scRGB path.
+- **Upscale/frame gen:** FSR 3.1 built-in (Vulkan), DLSS/XeSS from user DLLs.
+- **Free extras:** loose-file mod folder over RomFS, Switch save import (same `CGameState` stream), skip boot logos, dev menu (warp, IGT, noclip) behind a flag.
+- **Targets on your RTX 3080:** 4K ≥120 fps, 1440p ≥240 fps, no shader-compile stutter.
 
 ## Verification
-- Lifter: Unicorn differential suite, run every batch.
-- Runtime: boot milestones above; state-hash traces vs Ryubing for the same inputs.
-- Graphics: RenderDoc captures vs emulator frames; Vulkan validation clean.
-- High FPS: scripted physics probe at 60/120/240; frame-time logs.
-- Mouse: raw delta log vs in-game yaw/pitch, confirm linear and unsmoothed.
-- Screenshots at first boot, title screen, first gameplay, each feature batch.
+- Lifter: difftest + mutation suite each batch; coverage 100% of MPR instruction shapes.
+- Runtime: boot milestones; deterministic replay → identical per-frame state hashes on two runs.
+- Gameplay: warp tour reaches every room without crash/glitch flag; scripted runs hit checkpoints; trace/image diffs vs reference emulator.
+- Graphics: spirv-val 100%; Vulkan validation clean; RenderDoc asserts on key frames.
+- High fps: physics probe (walk speed, jump height, morph friction, projectile range, timers) identical at 60/120/240.
+- Mouse: logged raw deltas vs applied yaw/pitch are linear, unsmoothed, same at every fps.
+- Performance: frame-time logs at the targets above.
+- Screenshots at first boot, title screen, first gameplay and each feature batch.
 
 ## Risks
-Shader count and specialization; thread timing; ASTC transcoding cost; build size (~1+ GB generated C++, long first build); SDK coverage gaps. All handled by the oracles above rather than guesswork.
+SDK/NVN version gap vs reference runtimes; shader blob format unverified; NEON/FPCR coverage; 3-core timing; build size (~1+ GB C++, ~45 min builds); reference emulator availability.
