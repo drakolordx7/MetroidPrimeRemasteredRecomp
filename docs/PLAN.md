@@ -9,6 +9,15 @@ Native Windows x64 build of Metroid Prime Remastered (Switch, 010012101468C000, 
 - **Assets:** all RFRM. TXTR = BCn/BC7/ASTC, Tegra block-linear. Shaders sit inside MTRL MaterialArchives (blob type unverified — likely Maxwell). Movies = H.264 MP4 in FMV0. HUD = GUIF frames; menus likely Scaleform (GFXL). Audio codec unknown.
 - **Nobody has solved:** mouse aim, >60 fps, HDR, ASTC→BC7 offline, zero-play pipeline prewarm, MPR shader container extraction. These are our original work.
 
+## Phase 2 gate results (measured on the user's dump)
+- NSP → program NCA e66e21cd…, key generation 11, **SDK 12.3.1**. ExeFS: main 15.8 MB, sdk 5.8 MB, subsdk0 3.4 MB, rtld, main.npdm.
+- **main build ID 67C9CA1428222752F951021464A7B3597EB98FEC = v1.0.0 confirmed.** sdk 2217A4A3…, subsdk0 1506DE55….
+- **Symbols:** main dynsym 103,010 entries, 92,784 named functions defined; imports 422 (317 `nn::`, 41 `movie::`, 4 `nv`, `nvnBootstrapLoader`, libc). sdk 26,890 defined / 13 imports; subsdk0 = Nintendo multimedia (movie::/stagefright, mkv, FDK-AAC, opus) 10,896 defined / 657 imports.
+- **Lifter coverage: 100%** of instruction words — main 4,237,540, sdk 1,457,244, subsdk0 851,512.
+- **FPCR:** never written by main or subsdk0; 3 `msr fpcr` in sdk only → the lifter's FPCR gap is irrelevant to game code. 76 `svc` sites, all in sdk.
+- **OS-layer decision:** recompile main + sdk + subsdk0 entirely; HLE at the 76 SVC sites + IPC services (Wonder style, SDK-version-robust), with targeted hook-table overrides where a host path is better: `movie::` → Media Foundation (smo `nnmovie_mf.c`, same multimedia stack), `nn::hid::GetNpadStates*` for input injection, fs as a RomFS folder.
+- Translator choice still pending: needs the MTRL shader blobs from RomFS.
+
 ## Architecture (decisions)
 - **CPU / lifter: fork smo-recomp's lifter** (Python, `.eh_frame`-exact discovery, Unicorn difftest with mutation testing, `fpexact.h`). Add Wonder's newer-SDK instruction coverage (LSE atomics, LDXP/STXP, crypto, scalar SIMD) and jump-table resolver; ssbu's C++ exception lifting (`recomp_eh.py`), site re-lift + hook table + inline check; ScarletNX's separate TPIDRRO and its a64 audit corpus as a stricter oracle.
 - **OS layer: decided at the Phase 1 gate by measurement.** Default: Wonder style — recompile the whole `sdk` and answer at SVC/IPC level (robust across SDK versions; MPR is a 2023 SDK, much newer than SMO's 7.3.2). Fallback: smo's nn:: import replacement where hot (fs, hid, allocator, threads). Gate inputs: SDK version string, import count, NVN version.
