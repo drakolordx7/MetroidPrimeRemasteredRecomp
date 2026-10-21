@@ -1,0 +1,893 @@
+{
+ "source_id": "rando_misc",
+ "items": [
+  {
+   "type": "symbol",
+   "name": "CWorldTransitionIOWin::EnableTransition",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void EnableTransition(EElevatorDirection dir)",
+   "role": "Called with EElevatorDirection::Up when RoomWarper::WarpToRoom gets TransitionType::Elevator.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 53,
+    "evidence": "CWorldTransitionIOWin::EnableTransition(CWorldTransitionIOWin::EElevatorDirection::Up);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CWorldTransitionIOWin::EnableTextTeleport",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void EnableTextTeleport(const rstl::string& txtLbl, const CObjectId& id)",
+   "role": "Called with the text label and an invalid CObjectId when RoomWarper::WarpToRoom gets TransitionType::Text.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 51,
+    "evidence": "CWorldTransitionIOWin::EnableTextTeleport(rstl::string_l(sTransitionTextLabel), *CObjectId::Invalid());"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CObjectId::Invalid",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Returns an invalid CObjectId; passed as the second argument to EnableTextTeleport.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 51,
+    "evidence": "*CObjectId::Invalid()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "gpGameState",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game-state global pointer; RoomWarper::WarpToRoom sets the world id and desired area through it.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "read",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 56,
+    "evidence": "gpGameState->SetCurrentWorldId(worldId);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "SetCurrentWorldId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called on gpGameState to set the current world id.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 56,
+    "evidence": "gpGameState->SetCurrentWorldId(worldId);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CurrentWorldState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called on gpGameState; its result receives SetDesiredAreaAssetId.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 57,
+    "evidence": "gpGameState->CurrentWorldState()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "SetDesiredAreaAssetId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called on the world state from CurrentWorldState() to set the desired area asset id.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 57,
+    "evidence": "gpGameState->CurrentWorldState()->SetDesiredAreaAssetId(areaId);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ContinueWithNewInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called with the GameState of sStateManager and a new initial state for the target area.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 59,
+    "evidence": "CGameState::ContinueWithNewInitialState(sStateManager->GameState(), CGameState::SInitialState(areaId));"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called with the target area id to build the argument for ContinueWithNewInitialState.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 59,
+    "evidence": "CGameState::SInitialState(areaId)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManager::GameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called on sStateManager; its result is the first argument to ContinueWithNewInitialState.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 59,
+    "evidence": "sStateManager->GameState()"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManager::GameInstanceState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called on sStateManager; QuitGame is then called on its result.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 61,
+    "evidence": "sStateManager->GameInstanceState().QuitGame(NGameInstanceState::kQR_Warp);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "QuitGame",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called with NGameInstanceState::kQR_Warp as the last step of RoomWarper::WarpToRoom. Owning class not named in this file.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 61,
+    "evidence": "sStateManager->GameInstanceState().QuitGame(NGameInstanceState::kQR_Warp);"
+   }
+  },
+  {
+   "type": "enum",
+   "name": "CWorldTransitionIOWin::EElevatorDirection",
+   "underlying": null,
+   "values": [
+    {
+     "name": "Up",
+     "value": null
+    },
+    {
+     "name": "Down",
+     "value": null
+    }
+   ],
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RoomWarper.cpp",
+    "line": 8,
+    "evidence": "enum class EElevatorDirection {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CObjectId::CObjectId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Constructed from a 36-character GUID string for the default starting area; also constructed from the StartingArea config value.",
+   "tags": [
+    "warp"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/RandoConfig.cpp",
+    "line": 15,
+    "evidence": "CObjectId(\"0676e13f-15cf-4bc4-a058-5e056be4cfa4\")"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GalleryUnlockCheckCall",
+   "mangled": null,
+   "kind": "patch_site",
+   "address": "0xea135c",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "NOP. Source comment: removes the call that checks whether an item in the gallery can be unlocked.",
+   "tags": [],
+   "used_by": "offset patch",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/patches.cpp",
+    "line": 58,
+    "evidence": "patch::CodePatcher p(0xEA135C);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CMaterialExec::DrawMesh call site",
+   "mangled": null,
+   "kind": "patch_site",
+   "address": "0xb55da4",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "NOP. Source comment: removes the call to CMaterialExec::DrawMesh; the mod calls it itself from an inline hook (that hook is not in these files).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "offset patch",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/patches.cpp",
+    "line": 62,
+    "evidence": "p.Seek(0xB55DA4); p.WriteInst(inst::Nop());"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CMaterialExec::DrawMesh",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Its call at 0xb55da4 is NOPed; the source says the mod calls it from an inline hook.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "offset patch",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/patches.cpp",
+    "line": 61,
+    "evidence": "removes call to CMaterialExec::DrawMesh (we call it ourselves in an inline hook)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "unnamed_patch_site_0xe64c5c",
+   "mangled": null,
+   "kind": "patch_site",
+   "address": "0xe64c5c",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Writes MOV X20, X13 (inst::MovRegister(reg::X20, reg::X13)) here. The source has no comment on it.",
+   "tags": [],
+   "used_by": "offset patch",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/patches.cpp",
+    "line": 64,
+    "evidence": "p.Seek(0xE64C5C);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "SIconInstance material index array",
+   "mangled": null,
+   "kind": "data",
+   "address": "0x1d27454",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Static array base. Writes value 9 at startOffset + 9*4 (0x1d27478 by arithmetic). Source comment: an unused material index used when initializing an SIconInstance for CMappableObjectData.",
+   "tags": [
+    "asset"
+   ],
+   "used_by": "offset patch",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/patches.cpp",
+    "line": 72,
+    "evidence": "u64 startOffset = 0x1D27454;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::os::SetUserExceptionHandler",
+   "mangled": "_ZN2nn2os23SetUserExceptionHandlerEPFvPNS0_17UserExceptionInfoEEPvmS2_",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::os::SetUserExceptionHandler(void (*)(nn::os::UserExceptionInfo*), void*, unsigned long, nn::os::UserExceptionInfo*)",
+   "role": "Replaced by an empty callback (ExceptionHandlerStub, HOOK_DEFINE_REPLACE); installExceptionStub installs it by mangled name.",
+   "tags": [
+    "os"
+   ],
+   "used_by": "inline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/ExceptionHandler.cpp",
+    "line": 176,
+    "evidence": "ExceptionHandlerStub::InstallAtSymbol(\"_ZN2nn2os23SetUserExceptionHandlerEPFvPNS0_17UserExceptionInfoEEPvmS2_\");"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnBootstrapLoader",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Trampoline hook (NvnBootstrapHook). Its callback returns mod wrappers for nvnDeviceInitialize and nvnDeviceGetProcAddress.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 245,
+    "evidence": "NvnBootstrapHook::InstallAtSymbol(\"nvnBootstrapLoader\");"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::detail::GetNpadStates",
+   "mangled": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadFullKeyStateEiRKj",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::hid::detail::GetNpadStates(int*, nn::hid::NpadFullKeyState*, int, unsigned int const&)",
+   "role": "Trampoline hook (DisableFullKeyState). After the original call, disableButtons() clears buttons and sticks when input is toggled off.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 246,
+    "evidence": "DisableFullKeyState::InstallAtSymbol(\"_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadFullKeyStateEiRKj\");"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::detail::GetNpadStates",
+   "mangled": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_17NpadHandheldStateEiRKj",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::hid::detail::GetNpadStates(int*, nn::hid::NpadHandheldState*, int, unsigned int const&)",
+   "role": "Trampoline hook (DisableHandheldState). After the original call, disableButtons() clears buttons and sticks when input is toggled off.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 247,
+    "evidence": "DisableHandheldState::InstallAtSymbol(\"_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_17NpadHandheldStateEiRKj\");"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::detail::GetNpadStates",
+   "mangled": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadJoyDualStateEiRKj",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::hid::detail::GetNpadStates(int*, nn::hid::NpadJoyDualState*, int, unsigned int const&)",
+   "role": "Trampoline hook (DisableJoyDualState). After the original call, disableButtons() clears buttons and sticks when input is toggled off.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 248,
+    "evidence": "DisableJoyDualState::InstallAtSymbol(\"_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadJoyDualStateEiRKj\");"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::detail::GetNpadStates",
+   "mangled": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadJoyLeftStateEiRKj",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::hid::detail::GetNpadStates(int*, nn::hid::NpadJoyLeftState*, int, unsigned int const&)",
+   "role": "Trampoline hook (DisableJoyLeftState). After the original call, disableButtons() clears buttons and sticks when input is toggled off.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 249,
+    "evidence": "DisableJoyLeftState::InstallAtSymbol(\"_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_16NpadJoyLeftStateEiRKj\");"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nn::hid::detail::GetNpadStates",
+   "mangled": "_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_17NpadJoyRightStateEiRKj",
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "nn::hid::detail::GetNpadStates(int*, nn::hid::NpadJoyRightState*, int, unsigned int const&)",
+   "role": "Trampoline hook (DisableJoyRightState). After the original call, disableButtons() clears buttons and sticks when input is toggled off.",
+   "tags": [
+    "input"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 250,
+    "evidence": "DisableJoyRightState::InstallAtSymbol(\"_ZN2nn3hid6detail13GetNpadStatesEPiPNS0_17NpadJoyRightStateEiRKj\");"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnDeviceGetProcAddress",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Looked up through the bootstrap hook; the mod returns its getProc wrapper in its place.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 216,
+    "evidence": "strcmp(funcName, \"nvnDeviceGetProcAddress\") == 0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnDeviceInitialize",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Intercepted in the bootstrap hook (and again in getProc); the mod returns deviceInit, which calls the original then loads NVN procs.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 212,
+    "evidence": "strcmp(funcName, \"nvnDeviceInitialize\") == 0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnQueueInitialize",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Intercepted in getProc; the mod returns queueInit, which calls the original and stores the queue.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 130,
+    "evidence": "strcmp(procName, \"nvnQueueInitialize\") == 0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnCommandBufferInitialize",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Intercepted in getProc; the mod returns cmdBufInit, which calls the original and starts ImGui init on first use.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 133,
+    "evidence": "strcmp(procName, \"nvnCommandBufferInitialize\") == 0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnQueuePresentTexture",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Intercepted in getProc; the mod returns presentTexture, which runs the ImGui draw before calling the original.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 136,
+    "evidence": "strcmp(procName, \"nvnQueuePresentTexture\") == 0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnCommandBufferSetSamplerPool",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Intercepted in getProc; the mod returns setSamplerPool, which records the pool and calls the original.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 142,
+    "evidence": "strcmp(procName, \"nvnCommandBufferSetSamplerPool\") == 0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnCommandBufferSetTexturePool",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Intercepted in getProc; the mod returns setTexturePool, which records the pool and calls the original.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 145,
+    "evidence": "strcmp(procName, \"nvnCommandBufferSetTexturePool\") == 0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "nvnWindowSetCrop",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Intercepted in getProc; the mod returns setCrop, which calls the original and updates the ImGui projection and scale when the size changes.",
+   "tags": [
+    "nvn"
+   ],
+   "used_by": "trampoline hook",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/program/imgui_nvn.cpp",
+    "line": 148,
+    "evidence": "strcmp(procName, \"nvnWindowSetCrop\") == 0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::GetItemMax",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Static call returning the maximum count for an item type; used by the All button, refillItems and RenderItemType.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/InventoryMenu.cpp",
+    "line": 126,
+    "evidence": "int maxValue = CPlayerStateMP1::GetItemMax(itemType);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::SetPickup",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called with (item, count) by the All and refill paths and the item widgets.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/InventoryMenu.cpp",
+    "line": 127,
+    "evidence": "playerState->SetPickup(itemType, maxValue);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::SetPowerUp",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called with (item, count) by the All, None, Start, Any% and 21% buttons and the item widgets.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/InventoryMenu.cpp",
+    "line": 128,
+    "evidence": "playerState->SetPowerUp(itemType, maxValue);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::AddPowerUp",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called with (item, 1) when a single-count item checkbox is enabled.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/InventoryMenu.cpp",
+    "line": 208,
+    "evidence": "playerState->AddPowerUp(itemType, 1);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::IncrPickUp",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Called with (item, 1) when a single-count item checkbox is enabled.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/InventoryMenu.cpp",
+    "line": 209,
+    "evidence": "playerState->IncrPickUp(itemType, 1);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CPlayerStateMP1::GetItemCapacity",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Read to set the checkbox state for single-count items, and as the value for multi-count sliders.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/InventoryMenu.cpp",
+    "line": 204,
+    "evidence": "playerState->GetItemCapacity(itemType) == 1;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CStateManagerGameLogicMP1::PlayerState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Static call returning the player-state pointer used by the inventory window; null-checked before use.",
+   "tags": [
+    "player_state"
+   ],
+   "used_by": "called",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/InventoryMenu.cpp",
+    "line": 102,
+    "evidence": "CStateManagerGameLogicMP1::PlayerState();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "gpGameState",
+   "mangled": null,
+   "kind": "global",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Game-state global; the inventory window returns early when it is null.",
+   "tags": [],
+   "used_by": "read",
+   "src": {
+    "path": "refs/MP1R-Rando-CodeEdits/src/InventoryMenu.cpp",
+    "line": 101,
+    "evidence": "if (gpGameState == nullptr ) return;"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "constructor_at_0x7100b0763c",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x7100b0763c",
+   "addr_form": "va",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "CONSTRUCTOR. The script takes its parent namespace as the class and pairs it with the vtable at 0x71020d3630. Class name not given in the script.",
+   "tags": [],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/scripts/ghidra/URDEVFTableScriptMP1R.java",
+    "line": 46,
+    "evidence": "getAddress(program, 0x7100b0763cL)"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "vtable_at_0x71020d3630",
+   "mangled": null,
+   "kind": "vtable",
+   "address": "0x71020d3630",
+   "addr_form": "va",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "VTABLE paired with the constructor. The script clears any existing data here, creates a 'vtable' structure with one function-pointer per entry, and labels it 'vtable'.",
+   "tags": [],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/scripts/ghidra/URDEVFTableScriptMP1R.java",
+    "line": 47,
+    "evidence": "getAddress(program, 0x71020d3630L)); // VTABLE"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "vtable_scan_end_at",
+   "mangled": null,
+   "kind": "data",
+   "address": "0x7102073080",
+   "addr_form": "va",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "End boundary of the vtable scan (END_AT list). Numerically below the vtable address, so the upward scan cannot reach it; the scan otherwise stops at the first entry address that has references.",
+   "tags": [],
+   "used_by": "read",
+   "src": {
+    "path": "refs/mp1r-practice-mod/scripts/ghidra/URDEVFTableScriptMP1R.java",
+    "line": 32,
+    "evidence": "END_AT = List.of(0x7102073080L);"
+   }
+  }
+ ]
+}

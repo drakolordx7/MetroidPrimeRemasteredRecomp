@@ -1,0 +1,1793 @@
+{
+ "source_id": "port_pairs_3",
+ "items": [
+  {
+   "type": "symbol",
+   "name": "CVESwooshDirection",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a2d88",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Element in Remastered's SIDE==2 orientation swoosh chain; the port replaces the authored PROT with a camera-and-trail rotation.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_swoosh_ring.h",
+    "line": 6,
+    "evidence": "CVESwooshDirection 0x2a2d88"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "MPT_CVEConvertToXLeftYUpZForward",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a3020",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Port-only basis change for directions and positions, (x,y,z) to (-x,z,y), self-inverse; the name is the port's.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+    "line": 396,
+    "evidence": "MPT_CVEConvertToXLeftYUpZForward 0x2a3020"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "MPT_CVEConvertScaleToXLeftYUpZForward",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a30f8",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Port-only basis change for scales, (x,y,z) to (x,z,y), self-inverse; the name is the port's.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CVectorElement.hpp",
+    "line": 397,
+    "evidence": "MPT_CVEConvertScaleToXLeftYUpZForward 0x2a30f8"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCoordsExt::UpdateInverseScale",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a6390",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "One component of the inverse-scale calc: FRECPE then two FRECPS refinements. Alias UpdateInverseScale (tests/port_particle_math.cpp:174) merged here.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 254,
+    "evidence": "CCoordsExt::UpdateInverseScale 0x2a6390"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CSectionedElementData::Init",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a68dc",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Builds the index shuffler for a constant nonzero count (CRCV); alias Init 0x2a68dc (port_remastered_effect_convert.cpp:1478) merged here.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 1643,
+    "evidence": "CSectionedElementData::Init 0x2a68dc"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "Init",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a69b8",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Bare name, class not stated. Runs at a generator's _END before Compile2d 0x2a6b90 (port_remastered_effect_convert.cpp:1329).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 1329,
+    "evidence": "Init 0x2a69b8"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CSectionedElementData::Compile1d",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a6ae4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Constant-0 count takes the owning generator's MAXP and the flag sets a shuffler. Alias Compile2d at 0x2a6ae4 (PortParticleMath.hpp:296) merged; that comment pairs 0x2a6ae4 with Compile1d and 0x2a6b90 with Compile2d.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 1645,
+    "evidence": "Compile1d 0x2a6ae4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CSectionedElementData::Compile2d",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a6b90",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Shuffler and grid for PLNV after Init 0x2a69b8. Alias Compile2d 0x2a6b90 (port_remastered_effect_convert.cpp:1329) merged here.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 1423,
+    "evidence": "CSectionedElementData::Compile2d 0x2a6b90"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVectorField",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a72e0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Periodic vector grid loaded from the port's VECF asset; laid out y * (X * Z) + z * X + x.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortCurlNoise.hpp",
+    "line": 32,
+    "evidence": "CVectorField 0x2a72e0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "ComputeFieldVector",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a7390",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Field-vector lookup in the same grid as CVectorField (shares its comment).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortCurlNoise.hpp",
+    "line": 32,
+    "evidence": "ComputeFieldVector 0x2a7390"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGenDescription::Compile",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a7d0c",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Compiles Remastered's visor effect data: any VE* property marks it present; VisorGoo reads the VESN/VESM size range.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 4182,
+    "evidence": "CGenDescription::Compile 0x2a7d0c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CIEAbsoluteValue",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a86b0",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Int ABS_ element: absolute value of the child; the port's int version keeps INT_MIN as INT_MIN.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+    "line": 428,
+    "evidence": "CIEAbsoluteValue 0x2a86b0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CIERandom",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a88a8",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Remastered int RAND: min + Next() % (max - min + 1); the port's PRAN mirrors it.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CIntElement.hpp",
+    "line": 150,
+    "evidence": "CIERandom 0x2a88a8"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CIERandomConstant",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a895c",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Constant-argument int RAND, same formula as CIERandom (port_remastered_effect_convert.cpp:1977-1978).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 1978,
+    "evidence": "CIERandomConstant 0x2a895c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CIERandom2",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a89a0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Raw Next() for a constant RAND with min <= 0, which retail's RAND gives.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 1979,
+    "evidence": "CIERandom2 0x2a89a0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CIEInitialRandomConstant",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a8c40",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Constant IRND: min + Next() % (max - min + 1), the same formula the port's PRAN uses.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CIntElement.hpp",
+    "line": 151,
+    "evidence": "CIEInitialRandomConstant 0x2a8c40"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CIERealToInt",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2a9700",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Real-to-int conversion (fcvtzs): saturates, and NaN goes to 0.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CIntElement.cpp",
+    "line": 290,
+    "evidence": "CIERealToInt 0x2a9700"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CIEKeyframeInput::GetConstOverride",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2aa748",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Answers false, so keyframe inputs are never folded to constants.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 330,
+    "evidence": "CIEKeyframeInput::GetConstOverride (0x2aa748"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CParticleSceneNode::ConstructDepthBias",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2b1004",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Wraps a generator's draws in a depth-bias scope computed at the bounds centre's view depth.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CParticleDepthBias.hpp",
+    "line": 4,
+    "evidence": "CParticleSceneNode::ConstructDepthBias 0x2b1004"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "UpdateRenderData_Swoosh",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2b52e0",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Swoosh ring writer: radius is RRAD for a <= 0 and LRAD for 0 < a <= 180.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CParticleSwoosh.cpp",
+    "line": 305,
+    "evidence": "UpdateRenderData_Swoosh 0x2b52e0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "UpdateRenderData_Electric2",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2b8694",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Electric2 ribbon update: u advances 1/TSPN per segment, or 1/nodes when TSPN is absent.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CParticleElectric2Port.cpp",
+    "line": 319,
+    "evidence": "UpdateRenderData_Electric2 0x2b8694"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCEMultiply",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2c7704",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Colour MULT combinator: per-channel a * b (CColor4f::Modulate); the port clamps to [0, 1].",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+    "line": 694,
+    "evidence": "CCEMultiply 0x2c7704"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCEModifyAlphaOnly",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2c8678",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Colour MDAO: RGB of the colour with alpha set to max(real, 0).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+    "line": 724,
+    "evidence": "CCEModifyAlphaOnly 0x2c8678"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCEGradient::GetValue",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2c8d48",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Gradient colour element: HDR float stops evaluated at the integer frame. Alias CCEGradient (CColorElement.hpp:126) merged.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 5,
+    "evidence": "CCEGradient::GetValue 0x2c8d48"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetValue",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2ca1c4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Bare name, class not stated. Remastered SPEV (sphere with variance): n1 polar bands by n2 azimuth sectors, jittered.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CEmitterElement.hpp",
+    "line": 152,
+    "evidence": "GetValue 0x2ca1c4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetValue",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2ca73c",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Bare name, class not stated. Remastered ELPS (ellipsoid), zero euler: three draws pick a direction, stretched by size.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CEmitterElement.hpp",
+    "line": 174,
+    "evidence": "GetValue 0x2ca73c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVEAngleSphere::GetValue",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2cb100",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Remastered ASPR sphere with REUL as three angles. Alias CVEAngleSphere (tests/port_particle_math.cpp:227) merged.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CEmitterElement.hpp",
+    "line": 54,
+    "evidence": "CVEAngleSphere::GetValue 0x2cb100"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVEAngleSphereWithVariance::GetValue",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2cb6b0",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Remastered ASPV: sphere split into polar bands by azimuth sectors, each cell jittered. Alias GetValue (PortParticleMath.hpp:1006) merged.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CEmitterElement.hpp",
+    "line": 75,
+    "evidence": "CVEAngleSphereWithVariance::GetValue 0x2cb6b0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVEAngleSphereWithVariance::Compile",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2cbc08",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Compile step for ASPV: counts and shuffler follow SPEV's rules.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 1329,
+    "evidence": "CVEAngleSphereWithVariance::Compile 0x2cbc08"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "PLNE GetValue",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2cc2ec",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Remastered PLNE point in a plane: two draws across the half sizes, spread toward the normal, turned by the matrix. Alias PLNE (CEmitterElement.hpp:104) merged.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CEmitterElement.cpp",
+    "line": 302,
+    "evidence": "GetValue 0x2cc2ec"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "ModifyWithSpreadAngle",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2cc490",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Lifts the velocity toward the plane normal by the point's offset; the port's PlaneModifyWithSpread mirrors it.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/PortParticleMath.hpp",
+    "line": 698,
+    "evidence": "ModifyWithSpreadAngle 0x2cc490"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetValue",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2cc9b8",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Bare name, class not stated. Remastered PLNV (plane with variance): nx by nz cells, jittered.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CEmitterElement.hpp",
+    "line": 124,
+    "evidence": "GetValue 0x2cc9b8"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CComplexKeepInitial::RebaseComplexOp",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2d8fac",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "KPIN outside a system variable is latched once per particle or swoosh point at birth.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CPortParticleVars.hpp",
+    "line": 363,
+    "evidence": "CComplexKeepInitial::RebaseComplexOp 0x2d8fac"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CreateSWSH",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2db8a4",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Swoosh handling of the SHTM shutdown property: 0 stops emission, 1 also destroys live particles (port-only PSHM).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 4777,
+    "evidence": "CreateSWSH 0x2db8a4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CreateSWSH",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2dce88",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Swoosh handling of DFOG 1: sets the description's no-fog bit (port-only PDFG).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 4250,
+    "evidence": "CreateSWSH 0x2dce88"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CParticleLight::Create",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x2df010",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Divides LINT by the static exposure; the port's ParticleLightGain depends on this.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_room_env.h",
+    "line": 860,
+    "evidence": "CParticleLight::Create 0x2df010"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "PushTransferData",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x3998b8",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Multiplies the tint's alpha by the X-Ray opacity multiplier that CScriptWaterMP1::Render (0xd19404) sets.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_room_liquid.cpp",
+    "line": 262,
+    "evidence": "PushTransferData (0x3998b8"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "FilterLights",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x3b21c0",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "CPU light gather for the port's room lights, mirroring the native clustered-light gather.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_clustered_lights.h",
+    "line": 13,
+    "evidence": "FilterLights 0x3b21c0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CRenderPass_ClusteredLightGather::BuildClusteredData",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x3b4088",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Clustered light gather: cluster grid, 80-byte light records, 32-bit mask per cluster.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_clustered_lights.h",
+    "line": 10,
+    "evidence": "CRenderPass_ClusteredLightGather::BuildClusteredData 0x3b4088"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "SetupClusterContextBase",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x3b43a4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Sets up the clustered-light cluster context.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_clustered_lights.h",
+    "line": 11,
+    "evidence": "SetupClusterContextBase 0x3b43a4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CullLightsGPUByType",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x3b5ac4",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Native GPU light-mask build from CScene's light cache; the port does the same gather on the CPU.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_clustered_lights.h",
+    "line": 16,
+    "evidence": "CullLightsGPUByType 0x3b5ac4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "InitializeRenderNodes",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x3fc2f4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Registers a baked-lighting probe tile copy when an area loads.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_room_env.cpp",
+    "line": 31,
+    "evidence": "InitializeRenderNodes 0x3fc2f4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CColorGradeManager::OnHintChangedCallback",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x6b86ec",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Null hint with no grade requested: returns without a transition, so the last grade keeps full weight.",
+   "tags": [
+    "tonemap"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_room_env.cpp",
+    "line": 995,
+    "evidence": "CColorGradeManager::OnHintChangedCallback (0x6b86ec"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CVolumetricFogHintGOC::AcceptScriptMsg",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x6b8c04",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Accepts AddHintRequest, RemoveHintRequest, ReallyRemoveHint (DLEX), QueryHintState and (de)activation messages.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_room_internal.h",
+    "line": 626,
+    "evidence": "CVolumetricFogHintGOC::AcceptScriptMsg 0x6b8c04"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "TransitionTonemapParams",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb005bc",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "One step of a move between tonemap parameter sets (6 values); retargeting keeps the from-values and progress.",
+   "tags": [
+    "tonemap"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_room_env.h",
+    "line": 795,
+    "evidence": "TransitionTonemapParams 0xb005bc"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "InitStaticRenderStateImpl",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb72618",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Maps an electric's EBDM byte to a blend row: 1 additive, 2 premultiplied, 0 and 3-5 alpha.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_effect_convert.cpp",
+    "line": 3461,
+    "evidence": "InitStaticRenderStateImpl (0xb72618"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CalculatePointsForBolt",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb73b18",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Electric2 bolt point generation (ELC2), pure math.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_electric2_math.h",
+    "line": 9,
+    "evidence": "CalculatePointsForBolt 0xb73b18"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CalculatePointsForBoltBranches",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb745b0",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Electric2 bolt branch point generation, pure math.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_electric2_math.h",
+    "line": 10,
+    "evidence": "CalculatePointsForBoltBranches 0xb745b0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CalculateFractal",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb74e3c",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Electric2 fractal displacement for bolts, pure math.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_electric2_math.h",
+    "line": 10,
+    "evidence": "CalculateFractal 0xb74e3c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "UpdateElectricalEffects",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb757a4",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Ages and re-evaluates Electric2 bolts per step, removing expired ones.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CParticleElectric2Port.cpp",
+    "line": 238,
+    "evidence": "UpdateElectricalEffects 0xb757a4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CreateNewParticles",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb76508",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Bakes Electric2 bolts into world space at creation.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CParticleElectric2Port.hpp",
+    "line": 15,
+    "evidence": "CreateNewParticles 0xb76508"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "InitBoltNodePosition",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb76e18",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Bakes bolt nodes to world space: pos = xf * (pt * scale).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Kyoto/Particles/CParticleElectric2Port.cpp",
+    "line": 217,
+    "evidence": "InitBoltNodePosition 0xb76e18"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "InitBoltNodeOrientation",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb76f98",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Per-node bolt orientation: NFOM and SIDE rules, with degenerate-frame fallbacks.",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_electric2_math.h",
+    "line": 34,
+    "evidence": "InitBoltNodeOrientation 0xb76f98"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "UpdateBolt",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb77638",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Per-bolt update for Electric2 (ELC2).",
+   "tags": [
+    "render"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/include/Kyoto/Particles/CParticleElectric2Port.hpp",
+    "line": 16,
+    "evidence": "UpdateBolt 0xb77638"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "DeactivateProjectile",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb7bee4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Calls ShutdownEffect on the projectile's generators and swooshes; the DestroyParticles call is not ported.",
+   "tags": [],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/src/Weapons/CProjectileWeapon.cpp",
+    "line": 505,
+    "evidence": "DeactivateProjectile (0xb7bee4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "SRenderContext::Load",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb7e5ec",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads the render-context block in one go, then SChannel::Load.",
+   "tags": [
+    "asset"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_anim.cpp",
+    "line": 1054,
+    "evidence": "SRenderContext::Load 0xb7e5ec"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "SChannel::Load",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xb7e9e0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads a channel list: u8 count, then per channel a pooled name, i16, two bools and a guid.",
+   "tags": [
+    "asset"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_anim.cpp",
+    "line": 1055,
+    "evidence": "SChannel::Load 0xb7e9e0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "abs_bone_rel_inv_scale",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xba1bf0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Bone local transform as diag(1/Sp) * R * diag(S), Sp the parent's scale; translation kept.",
+   "tags": [],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_anim.cpp",
+    "line": 1282,
+    "evidence": "abs_bone_rel_inv_scale (0xba1bf0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NAnimOp::dquant_bits",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xba2de0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Dequantises one bit per value (type 3) into custom variables.",
+   "tags": [],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_anim.cpp",
+    "line": 383,
+    "evidence": "NAnimOp::dquant_bits 0xba2de0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "tween_real32",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xba35d0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Real32 track dequant: value = cur / 2^realExp (type 4).",
+   "tags": [],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_anim.cpp",
+    "line": 123,
+    "evidence": "tween_real32 0xba35d0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "tween_scale_for_coords",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xba3be0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Uses one real32 value for all three axes of a scale.",
+   "tags": [],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_anim.cpp",
+    "line": 723,
+    "evidence": "tween_scale_for_coords 0xba3be0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CAnimCompStream::Load",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbb45f4",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Loads a compressed animation record (01, id, length, payload); end is the size field's position plus size.",
+   "tags": [
+    "asset"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_anim.cpp",
+    "line": 575,
+    "evidence": "CAnimCompStream::Load 0xbb45f4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NAnimComp::init_dequant_real32",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbb7bf0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Stores real32 dequant parameters per track: bit width, exponent, signed flag.",
+   "tags": [
+    "asset"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_anim.cpp",
+    "line": 285,
+    "evidence": "NAnimComp::init_dequant_real32 0xbb7bf0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "init_dequant_int32",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbb7e90",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Reads int32 dequant parameters: bit width and signed flag for int32 value tracks.",
+   "tags": [
+    "asset"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_anim.cpp",
+    "line": 301,
+    "evidence": "init_dequant_int32 0xbb7e90"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "UnionWith",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbeac80",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Touches only behavior and filter in the material translation, per the source comment.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_remastered_collision_material.h",
+    "line": 106,
+    "evidence": "UnionWith 0xbeac80"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "EmptyCollisionMaterial",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbead38",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Empty collision material value; the CCollisionMaterial ctor is at 0xbea8c8.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_remastered_collision_material.h",
+    "line": 16,
+    "evidence": "EmptyCollisionMaterial 0xbead38"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollisionUtils::is_floor",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbecb40",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Floor test on contact orientation and up component. Alias is_floor (port_remastered_box_landing.h:72) merged.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_collision_failsafe.h",
+    "line": 78,
+    "evidence": "NCollisionUtils::is_floor 0xbecb40"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollisionUtils::is_wall",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbecbb0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Wall orientation test, a sibling of is_floor and is_ceiling.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_remastered_collision_material.h",
+    "line": 160,
+    "evidence": "is_wall 0xbecbb0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollisionUtils::is_ceiling",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbecc60",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Ceiling orientation test, a sibling of is_floor and is_wall.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_remastered_collision_material.h",
+    "line": 160,
+    "evidence": "is_ceiling 0xbecc60"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollisionUtils::is_ceiling_normal",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbecca0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Contact normal counts as ceiling when up < -0.70710677.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_air_mover_contact.h",
+    "line": 14,
+    "evidence": "is_ceiling_normal (0xbecca0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetTransformedAABox",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbf6064",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Bare name, class not stated. A platform's box is translated with it and never turned.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/docs/REMASTERED_MOVEMENT.md",
+    "line": 99,
+    "evidence": "GetTransformedAABox` 0xbf6064"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCollidableAABox",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbf60bc",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Collidable type 0 (AABox). Unclear from the comment whether this address is the ctor or a method.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_air_mover_contact.h",
+    "line": 101,
+    "evidence": "CCollidableAABox 0xbf60bc"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCollidableAABox::AABox_AABox",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbf61b4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Box-vs-box pair test for the stepped-mover failsafe; impacts via 0xbf6650.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_collision_failsafe.h",
+    "line": 11,
+    "evidence": "CCollidableAABox::AABox_AABox 0xbf61b4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollisionRayCast::Sphere",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbf69d0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sphere sweep, the swept-sphere part of the collision failsafe.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_remastered_sphere_sweep.h",
+    "line": 9,
+    "evidence": "NCollisionRayCast::Sphere 0xbf69d0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollisionRayCast::Sphere",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbf6ac0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Ray vs sphere through the CCollidableSphere::RayCast wrapper; a start inside returns code 1 with t = 0.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_collision_failsafe.h",
+    "line": 151,
+    "evidence": "NCollisionRayCast::Sphere 0xbf6ac0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollisionRayCast::Capsule",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbf6f10",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Ray vs capsule query that the Remastered ball mover sweeps.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/CMakeLists.txt",
+    "line": 633,
+    "evidence": "NCollisionRayCast::Capsule 0xbf6f10"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "Source::Reciprocal",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbf70c4",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "FRECPE plus two FRECPS reciprocal; the port's test block for it.",
+   "tags": [],
+   "used_by": "port test checks this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/tests/port_remastered_capsule_ray.cpp",
+    "line": 389,
+    "evidence": "Source::Reciprocal 0xbf70c4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollisionRayCast::InfiniteCylinder",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbf73c0",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Ray vs infinite cylinder query used by the ball mover sweep. Alias Source::InfiniteCylinder (tests) merged.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/CMakeLists.txt",
+    "line": 634,
+    "evidence": "NCollisionRayCast::InfiniteCylinder 0xbf73c0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollisionRayCast::AABox",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbf7e50",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Ray vs AABox, part of the box failsafe.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_collision_failsafe.h",
+    "line": 12,
+    "evidence": "NCollisionRayCast::AABox 0xbf7e50"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "TriangleNoBackface",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xbf9360",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Ray vs triangle, front faces only (mode 1).",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_movers.cpp",
+    "line": 1332,
+    "evidence": "TriangleNoBackface 0xbf9360"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollidablePairs::Sphere_Sphere_Swept",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xc012d0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sphere-vs-sphere swept query over the shared contact helpers.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/CMakeLists.txt",
+    "line": 618,
+    "evidence": "NCollidablePairs::Sphere_Sphere_Swept 0xc012d0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NormalizeWithMagnitude",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xc014ac",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Normalises the sweep delta; the penetration depth is (r0 + r1) - m. Bare name in source.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_sphere_sweep.cpp",
+    "line": 114,
+    "evidence": "NormalizeWithMagnitude (0xc014ac"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCollidableSphere::RayCast",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xc0289c",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sphere ray-cast wrapper: passes the translated centre and untouched radius to NCollisionRayCast::Sphere.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_movers.cpp",
+    "line": 1365,
+    "evidence": "CCollidableSphere::RayCast 0xc0289c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCollidableSphere::Sphere_Sphere",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xc029f0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Overlap contact for two spheres in the swept query.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_remastered_sphere_sweep.h",
+    "line": 8,
+    "evidence": "CCollidableSphere::Sphere_Sphere 0xc029f0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCollidableSphere::AABox_Sphere",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xc02d70",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Box-vs-sphere contact; the exterior distance uses the ARM estimate refined once.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_collision_failsafe.cpp",
+    "line": 19,
+    "evidence": "CCollidableSphere::AABox_Sphere 0xc02d70"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollisionBoolean::Sphere_Sphere",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xc042b0",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Sphere overlap gate: strict compare of squared distance against (r0 + r1)^2.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/port_remastered_sphere_sweep.cpp",
+    "line": 50,
+    "evidence": "NCollisionBoolean::Sphere_Sphere 0xc042b0"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "NCollidableBoxTree::build_collision_info",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xc0a180",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Builds collision info for a terrain box-tree leaf triangle.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_remastered_ground_contacts.h",
+    "line": 50,
+    "evidence": "NCollidableBoxTree::build_collision_info 0xc0a180"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CCollidableOBBoxTree",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xc0fb1c",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Collidable type 4 (OBB tree, the DCLN platforms). Unclear from the comment whether this address is the ctor or a method.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_air_mover_contact.h",
+    "line": 103,
+    "evidence": "CCollidableOBBoxTree 0xc0fb1c"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "AABox_OBBoxTree",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xc0fc18",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "Traversal of an OBB tree against a box: LIFO, leaves go through the terrain producer 0xc0a180. Bare name, class not stated.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_remastered_ground_rider.h",
+    "line": 19,
+    "evidence": "AABox_OBBoxTree 0xc0fc18"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "COrientationCollisionFilter::Passes",
+   "mangled": null,
+   "kind": "function",
+   "address": "0xc10c18",
+   "addr_form": "main_offset",
+   "claimed_version": "unspecified",
+   "signature": null,
+   "role": "Orientation filter: returns true for orientation -1 here; the MP1 wrapper rejects it first.",
+   "tags": [
+    "collision"
+   ],
+   "used_by": "port reimplements / mirrors this function",
+   "src": {
+    "path": "refs/MetroidPrimePort/platform/include/port_remastered_collision_material.h",
+    "line": 146,
+    "evidence": "COrientationCollisionFilter::Passes 0xc10c18"
+   }
+  }
+ ]
+}

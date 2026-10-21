@@ -1,0 +1,681 @@
+{
+ "source_id": "hdr_exlaunch",
+ "items": [
+  {
+   "type": "struct",
+   "name": "CGameState::SInitialState",
+   "kind": "struct",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 22,
+    "evidence": "struct SInitialState {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SInitialState::SInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "SInitialState(CObjectId const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 23,
+    "evidence": "SInitialState(CObjectId const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SInitialState::SInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "SInitialState(CObjectId const&,SSaveInfo const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 24,
+    "evidence": "SInitialState(CObjectId const&,SSaveInfo const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SInitialState::SInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "SInitialState(CInputStream &,uint)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 25,
+    "evidence": "SInitialState(CInputStream &,uint);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SInitialState::PutTo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PutTo(COutputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 26,
+    "evidence": "void PutTo(COutputStream &);"
+   }
+  },
+  {
+   "type": "struct",
+   "name": "CGameState",
+   "kind": "class",
+   "bases": [],
+   "size": null,
+   "fields": [],
+   "virtuals": [],
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 20,
+    "evidence": "class CGameState {"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::CGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGameState(rstl::ncrc_ptr<CUniverseInfo> const&,CGameState::SInitialState const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 32,
+    "evidence": "CGameState(rstl::ncrc_ptr<CUniverseInfo> const&,CGameState::SInitialState const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::CGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "CGameState(CInputBitStream &,rstl::ncrc_ptr<CUniverseInfo> const&,uint,rstl::ncrc_ptr<CGameOptions> const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 33,
+    "evidence": "CGameState(CInputBitStream &,rstl::ncrc_ptr<CUniverseInfo> const&,uint,rstl::ncrc_ptr<CGameOptions> "
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::~CGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "~CGameState()",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 34,
+    "evidence": "~CGameState();"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::InitQuickLoadBuffer",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void InitQuickLoadBuffer(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 36,
+    "evidence": "void InitQuickLoadBuffer(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::InitializeFromStream",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void InitializeFromStream(CInputBitStream &,uint)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 37,
+    "evidence": "void InitializeFromStream(CInputBitStream &,uint);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ResetGameInstanceState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ResetGameInstanceState(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 38,
+    "evidence": "void ResetGameInstanceState(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::PreSave",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PreSave(CObjectId const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 39,
+    "evidence": "void PreSave(CObjectId const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetSavePointName",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetSavePointName(rstl::basic_string<char,rstl::char_traits<char>,rstl::rmemory_allocator> const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 40,
+    "evidence": "void SetSavePointName(rstl::basic_string<char,rstl::char_traits<char>,rstl::rmemory_allocator> const"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::PutTo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PutTo(COutputBitStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 41,
+    "evidence": "void PutTo(COutputBitStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::StreamInSystemState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void StreamInSystemState(CInputStream &,uint)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 42,
+    "evidence": "void StreamInSystemState(CInputStream &,uint);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::StreamOutSystemState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void StreamOutSystemState(COutputStream &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 43,
+    "evidence": "void StreamOutSystemState(COutputStream &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::CopyOutSystemStateFrontEndSettings",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void CopyOutSystemStateFrontEndSettings(CSystemState &)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 44,
+    "evidence": "void CopyOutSystemStateFrontEndSettings(CSystemState &);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ConstructAreaStatesIfRequired",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ConstructAreaStatesIfRequired(SAreaInfoContext const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 45,
+    "evidence": "void ConstructAreaStatesIfRequired(SAreaInfoContext const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetDesiredAreaId",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetDesiredAreaId(CObjectId const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 46,
+    "evidence": "void SetDesiredAreaId(CObjectId const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::GetSavePointName",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetSavePointName(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 47,
+    "evidence": "void GetSavePointName(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::PlayerState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void PlayerState(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 48,
+    "evidence": "void PlayerState(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::GetPlayerState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetPlayerState(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 49,
+    "evidence": "void GetPlayerState(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ComputeGameProgress",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ComputeGameProgress(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 50,
+    "evidence": "void ComputeGameProgress(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetTotalPlayTime",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetTotalPlayTime(double)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 51,
+    "evidence": "void SetTotalPlayTime(double);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::GetGameMode4CC",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void GetGameMode4CC(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 52,
+    "evidence": "void GetGameMode4CC(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::IsInFrontEndArea",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void IsInFrontEndArea(CGameState::EReturnTrueIfAreaInvalid)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 53,
+    "evidence": "void IsInFrontEndArea(CGameState::EReturnTrueIfAreaInvalid);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::WasLoadedFromSaveFile",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void WasLoadedFromSaveFile(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 54,
+    "evidence": "void WasLoadedFromSaveFile(void);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetSaveSlot",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetSaveSlot(int)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 55,
+    "evidence": "void SetSaveSlot(int);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::IsCinematicSkippable",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void IsCinematicSkippable(CGuid const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 56,
+    "evidence": "void IsCinematicSkippable(CGuid const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetCinematicSkippable",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetCinematicSkippable(CGuid const&,bool)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 57,
+    "evidence": "void SetCinematicSkippable(CGuid const&,bool);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetCinematicForceSkippableOverride",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetCinematicForceSkippableOverride(bool)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 58,
+    "evidence": "void SetCinematicForceSkippableOverride(bool);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::StreamNewGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void StreamNewGameState(CInputStream &,rstl::ncrc_ptr<CUniverseInfo> const&,uint,rstl::ncrc_ptr<CGameOptions> const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 59,
+    "evidence": "void StreamNewGameState(CInputStream &,rstl::ncrc_ptr<CUniverseInfo> const&,uint,rstl::ncrc_ptr<CGam"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::CreateNewGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void CreateNewGameState(rstl::ncrc_ptr<CUniverseInfo> const&,CGameState::SInitialState const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 60,
+    "evidence": "void CreateNewGameState(rstl::ncrc_ptr<CUniverseInfo> const&,CGameState::SInitialState const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ResetGameState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ResetGameState(CGameState const&,CGameState::SInitialState const&,CGameState::EForcePreserveData)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 61,
+    "evidence": "void ResetGameState(CGameState const&,CGameState::SInitialState const&,CGameState::EForcePreserveDat"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ContinueWithNewInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ContinueWithNewInitialState(CGameState&,CGameState::SInitialState const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 62,
+    "evidence": "void ContinueWithNewInitialState(CGameState&,CGameState::SInitialState const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::SetInitialState",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void SetInitialState(CGameState::SInitialState const&)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 63,
+    "evidence": "void SetInitialState(CGameState::SInitialState const&);"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameState::ResetWithQuickLoadBuffer",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "unspecified",
+   "signature": "void ResetWithQuickLoadBuffer(void)",
+   "role": "method declared in header",
+   "tags": [],
+   "used_by": "declaration",
+   "src": {
+    "path": "refs/MP1R-Exlaunch-Base/src/CGame/CGameState.h",
+    "line": 64,
+    "evidence": "void ResetWithQuickLoadBuffer(void);"
+   }
+  }
+ ]
+}

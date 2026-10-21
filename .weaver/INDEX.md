@@ -20,3 +20,12 @@ Project-local tools (one line each: what it does, how to run).
 - Superluminal (`C:\Program Files\Superluminal\Performance\SuperluminalCmd.exe`) — CPU profiler; `run`/`attach` capture, `llm` analysis and global `superluminal` MCP (llm/mcp need license activation)
 
 Global (machine-wide) tools used here: IDA Pro 9.4 + ida-mcp plugin, mcp-windbg plugin, renderdoc-mcp (`%LOCALAPPDATA%\Programs\renderdoc-mcp`), LLVM, CMake, Ninja, sccache, Vulkan SDK, RenderDoc, VS Build Tools 2026.
+
+S2 knowledge base (docs/mpr/, scripts in tools/analysis/):
+- `tools\.venv\Scripts\python tools\analysis\kb_rebuild.py [--elf work\elf\main.elf]` — rebuild docs/mpr from frag/*.json (headers, patches, check, merge) and, with --elf, validate and write verification blocks back
+- `tools\analysis\validate_kb.py --elf work\elf\main.elf [--write-back] [--quiet]` — PASS/FAIL/WARN per symbol, patch, vtable and field claim against the real main; needs LLVM llvm-cxxfilt
+- `tools\analysis\ida_kb_apply.py work\elf\main.elf --out work\ida\main.i64` — headless idalib: apply structs.h, names and comments from docs/mpr (rerun on the saved .i64 after a rebuild)
+- `tools\analysis\sym_find.py work\elf\main.elf "<regex>" [--imports] [--callers]` — search demangled symbols with address, size and direct callers
+- `tools\analysis\pak_census.py game\romfs [--json out]` — asset-type and TXTR-format census from pak headers only
+- `tools\analysis\tests\run_synth.py` and `run_ida_synth.py` — prove validator and IDA apply on a synthetic AArch64 ELF (clang + lld)
+- `tools\analysis\kb_check.py frag.json` — schema + evidence-in-source oracle for fragments; `kb_parse_headers.py`, `kb_merge.py`, `kb_build_patches.py`, `kb_harvest_port.py`, `kb_pairs_port.py` are the pipeline steps

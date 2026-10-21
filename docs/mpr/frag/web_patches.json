@@ -1,0 +1,460 @@
+{
+ "source_id": "web_patches",
+ "items": [
+  {
+   "type": "symbol",
+   "name": "ResolutionScaleOrAspect hook (aspect constant load)",
+   "mangled": null,
+   "kind": "patch_site",
+   "address": "0x00afe3d8",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "patch replaces aspect-ratio float load (1.75 or 2.3889 cave)",
+   "tags": [
+    "resolution"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 560,
+    "evidence": "0x00afe3d8"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetScreenWidth",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x00001248",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "getter returning docked width constant (orig 1600, mov w0,#0x640; ret)",
+   "tags": [
+    "resolution"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 561,
+    "evidence": "0x00001248"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "GetScreenHeight",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x00001250",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "getter returning docked height constant (orig 900)",
+   "tags": [
+    "resolution"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 562,
+    "evidence": "0x00001250"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "HandheldFullWidth",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x00001258",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "handheld width getter (orig 1024)",
+   "tags": [
+    "resolution"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 563,
+    "evidence": "0x00001258"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "HandheldFullHeight",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x00001260",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "handheld height getter (orig 576)",
+   "tags": [
+    "resolution"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 564,
+    "evidence": "0x00001260"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "HandheldContentWidth",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x00001268",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "handheld content width getter (orig 1024)",
+   "tags": [
+    "resolution"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 565,
+    "evidence": "0x00001268"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "HandheldContentHeight",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x00001270",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "handheld content height getter (orig 576)",
+   "tags": [
+    "resolution"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 566,
+    "evidence": "0x00001270"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "DefaultThirdPersonVerticalFOV",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x00c8c8ac",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "patched to 80.0 deg; function returns default 3rd-person vertical FOV",
+   "tags": [
+    "fov"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 567,
+    "evidence": "0x00c8c8ac"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "DefaultFirstPersonVerticalFOV",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x00c8c8b8",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "patched to 74.0 deg (first-person vertical FOV default)",
+   "tags": [
+    "fov"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 568,
+    "evidence": "0x00c8c8b8"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "Dynamic resolution update (patched to ret)",
+   "mangled": null,
+   "kind": "function",
+   "address": "0x00aff5d4",
+   "addr_form": "main_offset",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "disabling this function disables dynamic resolution",
+   "tags": [
+    "resolution"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 824,
+    "evidence": "0x00aff5d4"
+   }
+  },
+  {
+   "type": "symbol",
+   "name": "CGameArchitecture::CGameArchitecture",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "contains call sites of GetScreenHeight, GetScreenWidth patched in the ultrawide/res mods",
+   "tags": [
+    "resolution",
+    "hud"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 573,
+    "evidence": "0x003c6508"
+   },
+   "contains": [
+    "0x003c6384",
+    "0x003c638c",
+    "0x003c6508",
+    "0x003c6510"
+   ]
+  },
+  {
+   "type": "symbol",
+   "name": "CGameArchitecture::Update",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "contains call sites of GetScreenHeight, GetScreenWidth patched in the ultrawide/res mods",
+   "tags": [
+    "resolution",
+    "hud"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 575,
+    "evidence": "0x003c6f80"
+   },
+   "contains": [
+    "0x003c6f80",
+    "0x003c6f88"
+   ]
+  },
+  {
+   "type": "symbol",
+   "name": "CGuiTextPane::Initialize",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "contains call sites of GetScreenHeight, GetScreenWidth patched in the ultrawide/res mods",
+   "tags": [
+    "resolution",
+    "hud"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 576,
+    "evidence": "0x00bdb81c"
+   },
+   "contains": [
+    "0x00bdb81c",
+    "0x00bdb844"
+   ]
+  },
+  {
+   "type": "symbol",
+   "name": "CInGameGuiManagerMP1::CInGameGuiManagerMP1",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "contains call sites of GetScreenHeight, GetScreenWidth patched in the ultrawide/res mods",
+   "tags": [
+    "resolution",
+    "hud"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 577,
+    "evidence": "0x00e5324c"
+   },
+   "contains": [
+    "0x00e5324c",
+    "0x00e53254",
+    "0x00e5325c",
+    "0x00e53264"
+   ]
+  },
+  {
+   "type": "symbol",
+   "name": "CInGameGuiManagerMP1::Draw",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "contains call sites of GetScreenHeight, GetScreenWidth patched in the ultrawide/res mods",
+   "tags": [
+    "resolution",
+    "hud"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 579,
+    "evidence": "0x00e54c40"
+   },
+   "contains": [
+    "0x00e54c40",
+    "0x00e54c50"
+   ]
+  },
+  {
+   "type": "symbol",
+   "name": "CInventoryScreenMP1::CInventoryScreenMP1",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "contains call sites of GetScreenHeight, GetScreenWidth patched in the ultrawide/res mods",
+   "tags": [
+    "resolution",
+    "hud"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 580,
+    "evidence": "0x00e74acc"
+   },
+   "contains": [
+    "0x00e74abc",
+    "0x00e74ac4",
+    "0x00e74acc",
+    "0x00e74ad4"
+   ]
+  },
+  {
+   "type": "symbol",
+   "name": "CInventoryScreenMP1::Draw",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "contains call sites of GetScreenHeight, GetScreenWidth patched in the ultrawide/res mods",
+   "tags": [
+    "resolution",
+    "hud"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 582,
+    "evidence": "0x00e75bfc"
+   },
+   "contains": [
+    "0x00e75bfc",
+    "0x00e75c04"
+   ]
+  },
+  {
+   "type": "symbol",
+   "name": "CVisorEffectManagerMP1::AddVisorGooSplat",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "contains call sites of GetScreenHeight, GetScreenWidth patched in the ultrawide/res mods",
+   "tags": [
+    "resolution",
+    "hud"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 583,
+    "evidence": "0x00d108b4"
+   },
+   "contains": [
+    "0x00d108b4",
+    "0x00d108bc"
+   ]
+  },
+  {
+   "type": "symbol",
+   "name": "CVisorEffectManagerMP1::IsAtMaxVisorGoo",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "contains call sites of GetScreenHeight, GetScreenWidth patched in the ultrawide/res mods",
+   "tags": [
+    "resolution",
+    "hud"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 584,
+    "evidence": "0x00d0f810"
+   },
+   "contains": [
+    "0x00d0f810",
+    "0x00d0f818"
+   ]
+  },
+  {
+   "type": "symbol",
+   "name": "CHudBallInterfaceMP1::SetBallModeFactor",
+   "mangled": null,
+   "kind": "function",
+   "address": null,
+   "addr_form": "unknown",
+   "claimed_version": "1.0.0",
+   "signature": null,
+   "role": "contains call sites of GetScreenHeight patched in the ultrawide/res mods",
+   "tags": [
+    "resolution",
+    "hud"
+   ],
+   "used_by": "offset patch in community mod",
+   "src": {
+    "path": "work/kb/web/patches_snapshot.txt",
+    "line": 590,
+    "evidence": "0x00cb1ba8"
+   },
+   "contains": [
+    "0x00cb1ba8"
+   ]
+  }
+ ]
+}

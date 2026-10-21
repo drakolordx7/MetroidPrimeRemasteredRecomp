@@ -1,0 +1,1810 @@
+{
+  "source_id": "rando_main",
+  "items": [
+    {
+      "type": "symbol",
+      "name": "CGameStateManager::AssignNewGameState",
+      "mangled": "_ZN17CGameStateManager18AssignNewGameStateERN4rstl8auto_ptrI10CGameStateEE",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CGameStateManager::AssignNewGameState(rstl::auto_ptr<CGameState>&)",
+      "role": "Stores the new game state in gGameState and the manager in gGameStateManager, then calls the original.",
+      "tags": [
+        "save"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 845,
+        "evidence": "GetGameStateHook::InstallAtSymbol(\"_ZN17CGameStateManager18AssignNewGameStateERN4rstl8auto_ptrI10CGameStateEE\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CStateManager::InitializeState",
+      "mangled": "_ZN13CStateManager15InitializeStateEv",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CStateManager::InitializeState()",
+      "role": "Stores the state manager pointer in gStateManager, passes it to RoomWarper::SetManager, then calls the original.",
+      "tags": [
+        "warp"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 846,
+        "evidence": "GetStateManagerHook::InstallAtSymbol(\"_ZN13CStateManager15InitializeStateEv\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CGameArchitecture::Run",
+      "mangled": "_ZN17CGameArchitecture3RunEv",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CGameArchitecture::Run()",
+      "role": "Each run mounts the SD card and loads rando values from the seed if the mount succeeds, then calls the original.",
+      "tags": [
+        "os"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 849,
+        "evidence": "GameMainLoopHook::InstallAtSymbol(\"_ZN17CGameArchitecture3RunEv\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::ProcessInput",
+      "mangled": "_ZN10CPlayerMP112ProcessInputERK11CFinalInputR13CStateManager",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CPlayerMP1::ProcessInput(CFinalInput const&, CStateManager&)",
+      "role": "While the input toggle is on, applies stick-driven movement to the player transform and velocities before the original; records transform and velocities after it.",
+      "tags": [
+        "input",
+        "physics"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 852,
+        "evidence": "CPlayerMP1_ProcessInput::InstallAtSymbol(\"_ZN10CPlayerMP112ProcessInputERK11CFinalInputR13CStateManager\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CheckForVariaHook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xd95f54",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets register W8 to the player state's Varia suit item capacity (X0 holds the player state).",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 855,
+        "evidence": "CheckForVariaHook::InstallAtOffset(0xD95F54);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPickupMP1GOC::TranslateScriptActionToMessage",
+      "mangled": "_ZNK13CPickupMP1GOC30TranslateScriptActionToMessageEN10NScriptMsg13EScriptActionEb",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CPickupMP1GOC::TranslateScriptActionToMessage(NScriptMsg::EScriptAction, bool) const",
+      "role": "Maps script action ActorMP1_Play to message Play; all other actions go to the original.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 858,
+        "evidence": "CustomPickupMP1TranslationToMsgHook::InstallAtSymbol(\"_ZNK13CPickupMP1GOC30TranslateScriptActionToMessageEN10NScriptMsg13EScriptActionEb\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPickupMP1GOC::TranslateScriptMessageToAction",
+      "mangled": "_ZNK13CPickupMP1GOC30TranslateScriptMessageToActionE20EScriptObjectMessageb",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CPickupMP1GOC::TranslateScriptMessageToAction(EScriptObjectMessage, bool) const",
+      "role": "Maps message Play to script action ActorMP1_Play; all other messages go to the original.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 859,
+        "evidence": "CustomPickupMP1TranslationToActionHook::InstallAtSymbol(\"_ZNK13CPickupMP1GOC30TranslateScriptMessageToActionE20EScriptObjectMessageb\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SwapMaterial1Hook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xb55d30",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: when icon mMatIdx is above 8, replaces X1 with the hint icon material (aborts if that material is null).",
+      "tags": [
+        "hud",
+        "render"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 862,
+        "evidence": "SwapMaterial1Hook::InstallAtOffset(0xB55D30);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SwapMaterial2Hook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xb55d5c",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: when icon mMatIdx is above 8, replaces X0 with the hint icon material (aborts if null).",
+      "tags": [
+        "hud",
+        "render"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 863,
+        "evidence": "SwapMaterial2Hook::InstallAtOffset(0xB55D5C);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "SwapMaterial3Hook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xb55d84",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: when icon mMatIdx is above 8, replaces X0 with the hint icon material and X2 with the address of the hint icon scalar (aborts if null).",
+      "tags": [
+        "hud",
+        "render"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 864,
+        "evidence": "SwapMaterial3Hook::InstallAtOffset(0xB55D84);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "FixIconIdxHook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xb55ca8",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: clamps X8 (mIconIdx) to 1 when it is above 8, for the donor material token.",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 865,
+        "evidence": "FixIconIdxHook::InstallAtOffset(0xB55CA8);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CAutoMapControllerMP1::UpdateAreaRenderState",
+      "mangled": "_ZNK21CAutoMapControllerMP121UpdateAreaRenderStateERK9CObjectIdRK12CMapWorldMP1RK16CMapWorldInfoMP1R28CGuiMapContextSceneNodeProxy",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CAutoMapControllerMP1::UpdateAreaRenderState(CObjectId const&, CMapWorldMP1 const&, CMapWorldInfoMP1 const&, CGuiMapContextSceneNodeProxy&) const",
+      "role": "For each PickupDot, sets its icon material index to 11 (hidden) when its memory relay is active, else 9, and refreshes the map render context before the original.",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 867,
+        "evidence": "UpdatePickupDotDataHook::InstallAtSymbol(\"_ZNK21CAutoMapControllerMP121UpdateAreaRenderStateERK9CObjectIdRK12CMapWorldMP1RK16CMapWorldInfoMP1R28CGuiMapContextSceneNodeProxy\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "DisableIconDrawHook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xb55da4",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: calls CMaterialExec::DrawMesh for the icon only when mMatIdx is 9 or less, so higher indices are not drawn.",
+      "tags": [
+        "hud",
+        "render"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 868,
+        "evidence": "DisableIconDrawHook::InstallAtOffset(0xB55DA4);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "FixMapControllerRegister1Hook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xe5fccc",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets X0 to X20 so the UpdateAreaRenderState call gets a reference to the controller (per comment at line 564).",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 869,
+        "evidence": "FixMapControllerRegister1Hook::InstallAtOffset(0xE5FCCC);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "FixMapControllerRegister2Hook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xe5fd58",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets X0 to X20 so the UpdateAreaRenderState call gets a reference to the controller (per comment at line 564).",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 870,
+        "evidence": "FixMapControllerRegister2Hook::InstallAtOffset(0xE5FD58);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "FixMapControllerRegister3Hook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xe5fde0",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets X0 to X20 so the UpdateAreaRenderState call gets a reference to the controller (per comment at line 564).",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 871,
+        "evidence": "FixMapControllerRegister3Hook::InstallAtOffset(0xE5FDE0);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "OverrideCreditsSpeedHook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0x577cc8",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets CCreditsGOC scroll speed from left stick Y times CREDITS_SPEED (5.0), or 1.0 when the stick is near zero.",
+      "tags": [
+        "input"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 874,
+        "evidence": "OverrideCreditsSpeedHook::InstallAtOffset(0x577CC8);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ChangeInitialAreaHook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0x40a75c",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: when save magic is not -1 and the initial area is the Landing Site ID, replaces it with RandoConfig::startingAreaId. The comment at line 590 names CGameState::ResetGameState above this hook.",
+      "tags": [
+        "warp"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 877,
+        "evidence": "ChangeInitialAreaHook::InstallAtOffset(0x40A75C);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CWorldTransitionIOWin::EnableTextTeleport",
+      "mangled": "_ZN21CWorldTransitionIOWin18EnableTextTeleportERKN4rstl12basic_stringIcNS0_11char_traitsIcEENS0_17rmemory_allocatorEEERK9CObjectId",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CWorldTransitionIOWin::EnableTextTeleport(rstl::basic_string<char, rstl::char_traits<char>, rstl::rmemory_allocator> const&, CObjectId const&)",
+      "role": "Replaces the label [CEDB5BA7]_000 (intro text) with [398D1DEC]_000 (world start text), then calls the original.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 878,
+        "evidence": "GetTextTeleportValueHook::InstallAtSymbol(\"_ZN21CWorldTransitionIOWin18EnableTextTeleportERKN4rstl12basic_stringIcNS0_11char_traitsIcEENS0_17rmemory_allocatorEEERK9CObjectId\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerStateMP1::GetEnergyTankCapacity",
+      "mangled": "_ZN15CPlayerStateMP121GetEnergyTankCapacityEv",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CPlayerStateMP1::GetEnergyTankCapacity()",
+      "role": "Returns RandoConfig::eTankCapacity.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "replace hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 881,
+        "evidence": "GetTankCapacityHook::InstallAtSymbol(\"_ZN15CPlayerStateMP121GetEnergyTankCapacityEv\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerStateMP1::GetBaseHealthCapacity",
+      "mangled": "_ZN15CPlayerStateMP121GetBaseHealthCapacityEv",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CPlayerStateMP1::GetBaseHealthCapacity()",
+      "role": "Returns RandoConfig::baseHealth.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "replace hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 882,
+        "evidence": "GetBaseHealthHook::InstallAtSymbol(\"_ZN15CPlayerStateMP121GetBaseHealthCapacityEv\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerStateMP1::GetMaxHealth",
+      "mangled": "_ZNK15CPlayerStateMP112GetMaxHealthEv",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CPlayerStateMP1::GetMaxHealth() const",
+      "role": "Returns energy tank count times RandoConfig::eTankCapacity, plus RandoConfig::baseHealth.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "replace hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 883,
+        "evidence": "GetMaxHealthHook::InstallAtSymbol(\"_ZNK15CPlayerStateMP112GetMaxHealthEv\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::IsEnergyLow",
+      "mangled": "_ZNK10CPlayerMP111IsEnergyLowERK13CStateManager",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CPlayerMP1::IsEnergyLow(CStateManager const&) const",
+      "role": "Reimplements the low-health check with RandoConfig values: threshold is 10% of three tanks when tank count is 3 or fewer, else RandoConfig::baseHealth.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "replace hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 884,
+        "evidence": "LowHealthCheckHook::InstallAtSymbol(\"_ZNK10CPlayerMP111IsEnergyLowERK13CStateManager\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ChangeTankCapacityHook1 patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xc88fe4",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets W8 to the bit pattern of RandoConfig::eTankCapacity.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 885,
+        "evidence": "ChangeTankCapacityHook1::InstallAtOffset(0xC88FE4);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ChangeBaseHealthHook1 patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xc88ffc",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets W8 to the bit pattern of RandoConfig::baseHealth.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 886,
+        "evidence": "ChangeBaseHealthHook1::InstallAtOffset(0xC88FFC);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ChangeTankCapacityHook2 patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xc88fa4",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets W8 to the bit pattern of RandoConfig::eTankCapacity.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 887,
+        "evidence": "ChangeTankCapacityHook2::InstallAtOffset(0xC88FA4);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ChangeBaseHealthHook2 patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xc88fb8",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets W8 to the bit pattern of RandoConfig::baseHealth.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 888,
+        "evidence": "ChangeBaseHealthHook2::InstallAtOffset(0xC88FB8);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ChangeTankCapacityHook3 patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xc890c8",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets W8 to the bit pattern of RandoConfig::eTankCapacity.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 889,
+        "evidence": "ChangeTankCapacityHook3::InstallAtOffset(0xC890C8);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ChangeBaseHealthHook3 patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xc890e0",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets W8 to the bit pattern of RandoConfig::baseHealth.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 890,
+        "evidence": "ChangeBaseHealthHook3::InstallAtOffset(0xC890E0);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ChangeTankCapacityHook4 patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xc89088",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets W8 to the bit pattern of RandoConfig::eTankCapacity.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 891,
+        "evidence": "ChangeTankCapacityHook4::InstallAtOffset(0xC89088);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "ChangeBaseHealthHook4 patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xc8909c",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Inline: sets W8 to the bit pattern of RandoConfig::baseHealth.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 892,
+        "evidence": "ChangeBaseHealthHook4::InstallAtOffset(0xC8909C);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "LowHealthCheckHook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xc69ffc",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Replace at this address with the same RandoConfig-based low-health check as the symbol hook.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 893,
+        "evidence": "LowHealthCheckHook::InstallAtOffset(0xC69FFC);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CSaveGameInterfaceMP1::ChoiceMadeInternal",
+      "mangled": "_ZN21CSaveGameInterfaceMP118ChoiceMadeInternalEi",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CSaveGameInterfaceMP1::ChoiceMadeInternal(int)",
+      "role": "When the save-game choice is 2, sets transition label WarpToStartMsg, warps to start and returns false; other choices go to the original.",
+      "tags": [
+        "save",
+        "warp"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 896,
+        "evidence": "CheckChoiceMadeHook::InstallAtSymbol(\"_ZN21CSaveGameInterfaceMP118ChoiceMadeInternalEi\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CEntityMP1::SendScriptMsgs",
+      "mangled": "_ZN10CEntityMP114SendScriptMsgsE18EScriptObjectStateR13CStateManager20EScriptObjectMessage",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CEntityMP1::SendScriptMsgs(EScriptObjectState, CStateManager&, EScriptObjectMessage)",
+      "role": "Logs messages sent to HUDMemo, SpawnPoint and Timer components, then calls the original.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 901,
+        "evidence": "LogSendMessageHook::InstallAtSymbol(\"_ZN10CEntityMP114SendScriptMsgsE18EScriptObjectStateR13CStateManager20EScriptObjectMessage\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CScriptHUDMemoMP1::AcceptScriptMsg",
+      "mangled": "_ZN17CScriptHUDMemoMP115AcceptScriptMsgE20EScriptObjectMessage15CValueVersionIdIjjtLj16ELj16EER13CStateManager",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CScriptHUDMemoMP1::AcceptScriptMsg(EScriptObjectMessage, CValueVersionId<unsigned int, unsigned int, unsigned short, 16u, 16u>, CStateManager&)",
+      "role": "Logs messages received by HUDMemo, SpawnPoint and Timer components, then calls the original.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 902,
+        "evidence": "LogAcceptMessageHook::InstallAtSymbol(\"_ZN17CScriptHUDMemoMP115AcceptScriptMsgE20EScriptObjectMessage15CValueVersionIdIjjtLj16ELj16EER13CStateManager\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CFnvHash::GetStringHash32",
+      "mangled": "_ZN8CFnvHash15GetStringHash32EPKcij",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CFnvHash::GetStringHash32(char const*, int, unsigned int)",
+      "role": "commented out in source. Would log the result of CFnvHash::GetStringHash32 for each string.",
+      "tags": [],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 904,
+        "evidence": "//    LogHashValueAndResultHook::InstallAtSymbol(\"_ZN8CFnvHash15GetStringHash32EPKcij\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CScriptActorRotateMP1::StartRotation",
+      "mangled": "_ZN21CScriptActorRotateMP113StartRotationEbR13CStateManager",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CScriptActorRotateMP1::StartRotation(bool, CStateManager&)",
+      "role": "commented out in source. Would log StartRotation's is-next flag and update bitfield, and the actor transform count.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 905,
+        "evidence": "// CheckHook::InstallAtSymbol(\"_ZN21CScriptActorRotateMP113StartRotationEbR13CStateManager\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CEntityMP1::IsMP1Connection",
+      "mangled": "_ZNK10CEntityMP115IsMP1ConnectionERK13CStateManagerRK11SConnection18EScriptObjectState20EScriptObjectMessageb",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CEntityMP1::IsMP1Connection(CStateManager const&, SConnection const&, EScriptObjectState, EScriptObjectMessage, bool) const",
+      "role": "commented out in source. Would log IsMP1Connection results for the Play state and message.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 906,
+        "evidence": "//    Check2Hook::InstallAtSymbol(\"_ZNK10CEntityMP115IsMP1ConnectionERK13CStateManagerRK11SConnection18EScriptObjectState20EScriptObjectMessageb\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "VerifyRenderDataUpdateHook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xb50434",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "commented out in source. Would log re-initialization of NGuiMapFormat::CGuiMapRenderData in CGuiMapRenderManager::Update.",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 908,
+        "evidence": "//    VerifyRenderDataUpdateHook::InstallAtOffset(0xB50434);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CheckWillUpdateHook patch site",
+      "mangled": null,
+      "kind": "patch_site",
+      "address": "0xb50420",
+      "addr_form": "main_offset",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "commented out in source. Would log the reload flag and whether mappable object and resource data are present.",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "offset patch",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 909,
+        "evidence": "//    CheckWillUpdateHook::InstallAtOffset(0xB50420);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CScriptLayer::ParseGeneratedData",
+      "mangled": "_ZN12CScriptLayer18ParseGeneratedDataEtR12CInputStreammRN4rstl16key_value_vectorI5CGuidNS_9SDataInfoENS2_4lessIS4_EENS2_29shared_owned_memory_allocatorINS2_17rmemory_allocatorEEEEE",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CScriptLayer::ParseGeneratedData(unsigned short, CInputStream&, unsigned long, rstl::key_value_vector<CGuid, CScriptLayer::SDataInfo, rstl::less<CGuid>, rstl::shared_owned_memory_allocator<rstl::rmemory_allocator>>&)",
+      "role": "commented out in source. Would log the generated object count in ParseGeneratedData.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 911,
+        "evidence": "//    GetGeneratedObjCount::InstallAtSymbol(\"_ZN12CScriptLayer18ParseGeneratedDataEtR12CInputStreammRN4rstl16key_value_vectorI5CGuidNS_9SDataInfoENS2_4lessIS4_EENS2_29shared_owned_memory_allocatorINS2_17rmemory_allocatorEEEEE\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "NScriptLoader::ComputeSizeForComponentProperties",
+      "mangled": "_ZN13NScriptLoader33ComputeSizeForComponentPropertiesEN4rstl18memory_descriptionER12CInputStreamm",
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "NScriptLoader::ComputeSizeForComponentProperties(rstl::memory_description, CInputStream&, unsigned long)",
+      "role": "commented out in source. Would log the SDEN component count.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "trampoline hook",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 912,
+        "evidence": "//    GetScriptLoaderCompCount::InstallAtSymbol(\"_ZN13NScriptLoader33ComputeSizeForComponentPropertiesEN4rstl18memory_descriptionER12CInputStreamm\");"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CMaterialExec::DrawMesh",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "static void DrawMesh(CGraphicsDeviceContext &,CGraphicsVertexBufferToken const&,CMaterialInstance const&,EPrimitive,uint,uint,EMaterialTechnique)",
+      "role": "Static member declared in this file; called in DisableIconDrawHook to draw the icon when mMatIdx is 9 or less.",
+      "tags": [
+        "render",
+        "hud"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 182,
+        "evidence": "static void DrawMesh("
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "gpGameState",
+      "mangled": null,
+      "kind": "global",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Global game state pointer, used with -> in isMemoryRelayActive, the debug window and UpdatePickupDotDataHook. Declaration is not in main.cpp.",
+      "tags": [],
+      "used_by": "read",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 215,
+        "evidence": "gpGameState->StateForWorld(worldId)"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CGameState::StateForWorld",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns the world state for a world ID; called by isMemoryRelayActive.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 215,
+        "evidence": "gpGameState->StateForWorld(worldId)"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CGameState::CurrentWorldState",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns the current world state; used by the debug window (also at line 249).",
+      "tags": [],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 254,
+        "evidence": "auto worldState = gpGameState->CurrentWorldState();"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CObjectId::Invalid",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns the invalid object ID; compared against relay and world IDs in isMemoryRelayActive.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 210,
+        "evidence": "*CObjectId::Invalid()"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CObjectId::AsString",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Formats an object ID as text for logging.",
+      "tags": [],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 211,
+        "evidence": "relayGuid.AsString().data()"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CObjectId::CObjectId",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Constructs an object ID from a GUID string; here the Credits room ID for the Warp to Credits button.",
+      "tags": [
+        "warp"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 280,
+        "evidence": "CObjectId(\"CE44A797-C442-4128-8372-694626A83722\")"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CMath::CeilingF",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Rounds the player's health up; used by LowHealthCheckHook.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 648,
+        "evidence": "CMath::CeilingF(healthInfo.mHealth)"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CStateManagerGameLogicMP1::PlayerState",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns the player state object; used by LowHealthCheckHook.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 647,
+        "evidence": "CStateManagerGameLogicMP1::PlayerState();"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::HealthInfo",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns the player's health info; mHealth feeds LowHealthCheckHook.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 646,
+        "evidence": "thiz->HealthInfo(mgr);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::GetTransform",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns the player transform; read in the ProcessInput hook.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 325,
+        "evidence": "CTransform4f transform = thiz->GetTransform();"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::SetTransform",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Sets the player transform while the input toggle is on (ProcessInput hook).",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 337,
+        "evidence": "thiz->SetTransform(lastKnownTransform);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::SetVelocityWR",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Sets the player's linear velocity while the input toggle is on (ProcessInput hook).",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 338,
+        "evidence": "thiz->SetVelocityWR(stateManager, lastKnownVelocity);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::SetAngularVelocityWR",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Sets the player's angular velocity while the input toggle is on (ProcessInput hook).",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 339,
+        "evidence": "thiz->SetAngularVelocityWR(stateManager, lastKnownAngularVelocity);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::GetVelocityWR",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Reads the player's linear velocity after the original ProcessInput runs.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 345,
+        "evidence": "lastKnownVelocity = *thiz->GetVelocityWR(stateManager);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerMP1::GetAngularVelocityWR",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Reads the player's angular velocity after the original ProcessInput runs.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 346,
+        "evidence": "lastKnownAngularVelocity = *thiz->GetAngularVelocityWR(stateManager);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CTransform4f::Identity",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns an identity transform; used to build the yaw rotation in the ProcessInput hook.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 332,
+        "evidence": "CTransform4f rotT = CTransform4f::Identity();"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CTransform4f::Rotate",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Rotates a vector by the player transform, converting stick movement to world space.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 326,
+        "evidence": "movement = transform.Rotate(movement);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CTransform4f::RotateLocalY",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Rotates a transform about its local Y axis by a CRelAngle.",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 333,
+        "evidence": "rotT.RotateLocalY(rot);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CRelAngle::CRelAngle",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Constructs the yaw angle from right-stick X times -0.05 (ProcessInput hook).",
+      "tags": [
+        "physics"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 331,
+        "evidence": "auto rot = CRelAngle(InputHelper::getRightStickX() * -0.05f);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerStateMP1::GetItemCapacity",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns the capacity of an item type from player state; VariaSuit in CheckForVariaHook (line 354), EnergyTanks in LowHealthCheckHook (line 650).",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 354,
+        "evidence": "pState->GetItemCapacity("
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CPlayerStateMP1::GetItemAmount",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns the amount of an item (energy tanks) for GetMaxHealthHook.",
+      "tags": [
+        "player_state"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 630,
+        "evidence": "thiz->GetItemAmount("
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CMapWorldMP1::GetMapArea",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns the map area for an area ID; used by UpdatePickupDotDataHook.",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 497,
+        "evidence": "*world.GetMapArea(areaId)"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CMapWorldMP1::CopyMappableObjectData",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Copies mappable object data from the world into the render context (updateCtxRenderData).",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 484,
+        "evidence": "world.CopyMappableObjectData(renderData->mMappableObjData);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CGuiMap::CopyRenderResourceData",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Copies render resource data from the map into the render context (updateCtxRenderData).",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 485,
+        "evidence": "renderMap->CopyRenderResourceData(renderData->mResourceData);"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CAutoMapControllerMP1::DummyWorld",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns a dummy world for the controller's world index when the updated world is not the current level (UpdatePickupDotDataHook).",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 532,
+        "evidence": "thiz->DummyWorld(thiz->mWorldIdx)"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "IWorldMP1::IGetWorldAssetId",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Virtual call returning the focus world's asset ID (UpdatePickupDotDataHook).",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 496,
+        "evidence": "thiz->mFocusWorld->IGetWorldAssetId()"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "IWorldMP1::IGetGuiMapPtr",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Virtual call returning a world's GUI map pointer (UpdatePickupDotDataHook).",
+      "tags": [
+        "hud"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 534,
+        "evidence": "mapRenderWorld->IGetGuiMapPtr()"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CGameState::mCinematicForceSkippableOverride",
+      "mangled": null,
+      "kind": "global",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Static flag set to true in exl_main. The name indicates it forces cinematics to be skippable; that behavior is not shown in this file.",
+      "tags": [],
+      "used_by": "written in exl_main (not in schema enum)",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 898,
+        "evidence": "CGameState::mCinematicForceSkippableOverride = true;"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CGameState::ResetGameState",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CGameState::ResetGameState(CGameState const&,CGameState::SInitialState const&,CGameState::EForcePreserveData)",
+      "role": "Named only in a comment above ChangeInitialAreaHook; that hook patches at offset 0x40a75c. No call or symbol hook in main.cpp.",
+      "tags": [
+        "warp"
+      ],
+      "used_by": "comment only",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 590,
+        "evidence": "// CGameState::ResetGameState("
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CScriptTriggerMP1::CScriptTriggerMP1",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CScriptTriggerMP1::CScriptTriggerMP1(CEntityInfoMP1 const&,CVector3f const&,CAABox const&,CDamageInfoMP1 const&,CVector3f const&,uint,bool,bool,bool,bool)",
+      "role": "Named only in a comment; no hook or call in main.cpp.",
+      "tags": [],
+      "used_by": "comment only",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 668,
+        "evidence": "// CScriptTriggerMP1::CScriptTriggerMP1("
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CAnimBitStream::CAnimBitStream",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": "CAnimBitStream::CAnimBitStream(uchar const*,CAnimBitStream::EMode,uint)",
+      "role": "Named only in a comment; no hook or call in main.cpp.",
+      "tags": [],
+      "used_by": "comment only",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 751,
+        "evidence": "// CAnimBitStream::CAnimBitStream("
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CEntityMP1::GetEntityBaseGOC",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns the entity's base component object; read by LogSendMessageHook (first use, line 811).",
+      "tags": [
+        "script"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 811,
+        "evidence": "thiz->GetEntityBaseGOC();"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "GetComponentType",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Method on the object returned by GetEntityBaseGOC (first use, line 813); its receiver class is not named in main.cpp.",
+      "tags": [
+        "script"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 813,
+        "evidence": "entityGOC->GetComponentType();"
+      }
+    },
+    {
+      "type": "symbol",
+      "name": "CEntityMP1::GetUniqueId",
+      "mangled": null,
+      "kind": "function",
+      "address": null,
+      "addr_form": "unknown",
+      "claimed_version": "unspecified",
+      "signature": null,
+      "role": "Returns the entity's unique ID; used in the LogSendMessageHook log line (first use, line 815).",
+      "tags": [
+        "script"
+      ],
+      "used_by": "called",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 815,
+        "evidence": "thiz->GetUniqueId()"
+      }
+    },
+    {
+      "type": "struct",
+      "name": "CMappableObjectMP1",
+      "bases": [],
+      "size": null,
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 61,
+        "evidence": "struct CMappableObjectMP1"
+      },
+      "fields": [
+        {
+          "offset": "0x0",
+          "type": "CUniverseInfoMP1::SMappableObjectInfoMP1",
+          "name": "mInfo",
+          "note": "First member. main.cpp reads mInfo.mId (line 516) and mInfo.mObjectType (line 503). Size is not given here; the offsets below assume 0x48, which the names float48 and cmappableobjectmp184 agree with.",
+          "confidence": "inferred",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 63,
+            "evidence": "CUniverseInfoMP1::SMappableObjectInfoMP1 mInfo;"
+          }
+        },
+        {
+          "offset": "0xd4",
+          "type": "int",
+          "name": "mInstanceIdx",
+          "note": "Index into mIconInstanceData (lines 514, 523). Layout: gap88[56] ends at 0xc0, then mObjectType at 0xc0, floatC4..floatD0 at 0xc4..0xd0, so this is at 0xd4.",
+          "confidence": "inferred",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 75,
+            "evidence": "int mInstanceIdx;"
+          }
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "CMapAreaMP1",
+      "bases": [],
+      "size": null,
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 81,
+        "evidence": "struct CMapAreaMP1"
+      },
+      "fields": [
+        {
+          "offset": "0x80",
+          "type": "rstl::vector<CMappableObjectMP1>",
+          "name": "mMappableObjList",
+          "note": "Read as mapArea->mMappableObjList (lines 500-501). Layout: mAreaId, qword10/18/20, mAreaIdx, dword2C, ctransform4f30 (CTransform4f assumed 0x30 bytes, consistent with the qword60 name), qword60, dword68, qword70, qword78, then this at 0x80.",
+          "confidence": "inferred",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 94,
+            "evidence": "rstl::vector<CMappableObjectMP1> mMappableObjList;"
+          }
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "CMapWorldMP1",
+      "bases": [],
+      "size": null,
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 105,
+        "evidence": "struct CMapWorldMP1"
+      },
+      "fields": [
+        {
+          "offset": "0x58",
+          "type": "rstl::single_ptr<NGuiMapFormat::CMappableObjectData>",
+          "name": "mWorldMappableData",
+          "note": "Directly after char pad[0x58]. Read as world.mWorldMappableData (line 507).",
+          "confidence": "source-stated",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 106,
+            "evidence": "char pad[0x58];"
+          }
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "CAutoMapControllerMP1",
+      "bases": [],
+      "size": "0x270",
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 143,
+        "evidence": "struct CAutoMapControllerMP1"
+      },
+      "fields": [
+        {
+          "offset": "0x28",
+          "type": "int",
+          "name": "mWorldIdx",
+          "note": "Directly after char pad[0x28]. Read as thiz->mWorldIdx (line 532).",
+          "confidence": "source-stated",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 144,
+            "evidence": "char pad[0x28];"
+          }
+        },
+        {
+          "offset": "0x30",
+          "type": "IWorldMP1*",
+          "name": "mFocusWorld",
+          "note": "Pointer, 8-byte aligned after the int at 0x28. Read at lines 491, 496.",
+          "confidence": "inferred",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 146,
+            "evidence": "IWorldMP1 *mFocusWorld;"
+          }
+        },
+        {
+          "offset": "0x38",
+          "type": "IWorldMP1*",
+          "name": "mCurrPlayerWorld",
+          "note": "Pointer after mFocusWorld. Read at line 530.",
+          "confidence": "inferred",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 147,
+            "evidence": "IWorldMP1 *mCurrPlayerWorld;"
+          }
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "SGuiMapRenderData",
+      "bases": [],
+      "size": null,
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 159,
+        "evidence": "struct SGuiMapRenderData"
+      },
+      "fields": [
+        {
+          "offset": "0x0",
+          "type": "u8",
+          "name": "mRenderDataBitfield",
+          "note": "First member; source comment says the 2nd bit is mIsReloadArea. Set with |= 2 at line 486.",
+          "confidence": "inferred",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 160,
+            "evidence": "u8 mRenderDataBitfield;"
+          }
+        },
+        {
+          "offset": "0x310",
+          "type": "rstl::single_ptr<NGuiMapFormat::CGuiMapResourceData>",
+          "name": "mResourceData",
+          "note": "Directly after char pad[0x30F] (plus the 1-byte bitfield). Written at line 485.",
+          "confidence": "inferred",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 161,
+            "evidence": "char pad[0x30F];"
+          }
+        },
+        {
+          "offset": "0x318",
+          "type": "rstl::single_ptr<NGuiMapFormat::CMappableObjectData>",
+          "name": "mMappableObjData",
+          "note": "Pointer after mResourceData. Written at line 484.",
+          "confidence": "inferred",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 163,
+            "evidence": "rstl::single_ptr<NGuiMapFormat::CMappableObjectData> mMappableObjData;"
+          }
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "CGuiMapRenderManager",
+      "bases": [],
+      "size": null,
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 186,
+        "evidence": "struct CGuiMapRenderManager"
+      },
+      "fields": [
+        {
+          "offset": "0xf8",
+          "type": "CMaterialInstanceData*",
+          "name": "mHintIconMat",
+          "note": "Layout from char gapB8[0x40] (0xb8 + 0x40). Read at lines 401, 417, 433. CAUTION: the next gap is named gapF8, which would put this field at 0xf8 as well, so the gap name conflicts with the arithmetic. Verify on a live dump.",
+          "confidence": "inferred",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 189,
+            "evidence": "char gapB8[0x40];"
+          }
+        },
+        {
+          "offset": "0x660",
+          "type": "CVector3f",
+          "name": "mHintIconScalar",
+          "note": "Layout 0x100 + char gapF8[0x560] = 0x660. The gap name gapF8 suggests 0xf8 instead, so this offset is unverified. Address taken at line 439.",
+          "confidence": "inferred",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 191,
+            "evidence": "char gapF8[0x560];"
+          }
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "CCreditsGOC",
+      "bases": [],
+      "size": null,
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 195,
+        "evidence": "struct CCreditsGOC"
+      },
+      "fields": [
+        {
+          "offset": "0x204",
+          "type": "float",
+          "name": "mScrollSpeed",
+          "note": "Directly after char pad[0x204]. Written in OverrideCreditsSpeedHook (line 587).",
+          "confidence": "source-stated",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 196,
+            "evidence": "char pad[0x204];"
+          }
+        }
+      ]
+    },
+    {
+      "type": "struct",
+      "name": "NGuiMapFormat::SIconInstance",
+      "bases": [],
+      "size": null,
+      "src": {
+        "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+        "line": 34,
+        "evidence": "struct SIconInstance"
+      },
+      "fields": [
+        {
+          "offset": "0xc",
+          "type": "int",
+          "name": "mMatIdx",
+          "note": "Follows mRenderPos (CVector3f). Assumes CVector3f is 12 bytes (three floats); main.cpp does not state that size. Read at lines 404, 420, 436, 455, 519, 522.",
+          "confidence": "inferred",
+          "src": {
+            "path": "refs/MP1R-Rando-CodeEdits/src/program/main.cpp",
+            "line": 37,
+            "evidence": "int mMatIdx = -1;"
+          }
+        }
+      ]
+    }
+  ]
+}
