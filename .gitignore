@@ -1,0 +1,13 @@
+# sub-repos and local-only folders
+/recomp/
+/runtime/
+/tools/
+/refs/
+/toolchain/
+/game/
+/work/
+*.i64
+*.idb
+*.nsp
+*.xci
+*.keys
