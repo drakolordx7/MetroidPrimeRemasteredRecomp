@@ -11,3 +11,5 @@
 *.nsp
 *.xci
 *.keys
+/publish/
+/runtime-wt/
