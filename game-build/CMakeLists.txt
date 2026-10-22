@@ -11,6 +11,16 @@ get_filename_component(MPR_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/.." ABSOLUTE)
 set(MPR_LIB_DIR "${MPR_ROOT}/work/build/mpr" CACHE PATH "folder with mpr_main.lib mpr_sdk.lib mpr_subsdk0.lib mpr_rtld.lib (built by recomp scripts build_mpr.cmd)")
 set(MPR_EXEFS_DEFAULT "${MPR_ROOT}/game/exefs" CACHE PATH "default ExeFS folder baked into mpr.exe (--exefs / MPR_EXEFS override it)")
 
+# Release packages (MPR_RELEASE=ON): mpr.exe is a Windows GUI program (double click opens the game window only, no console; errors show in
+# a message box, output still reaches a terminal it was started from), looks for ./exefs by default, and carries no local build paths
+# (source paths in assert strings, the .pdb path): see the installed-layout comment in src/mpr_main.cpp.
+option(MPR_RELEASE "build mpr.exe as a release package binary" OFF)
+if(MPR_RELEASE)
+    set(MPR_GUI_SUBSYSTEM ON)
+    set(MPR_EXEFS_DEFAULT "exefs")
+    add_compile_options("-clang:-ffile-prefix-map=${MPR_ROOT}=.")
+endif()
+
 # MPR_RUNTIME_DIR: which runtime checkout compiles in (default the main one; a worktree such as runtime-wt/boot2 for branch work)
 set(MPR_RUNTIME_DIR "${MPR_ROOT}/runtime" CACHE PATH "runtime source tree compiled into mpr.exe")
 set(NXRT_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -27,6 +37,10 @@ target_compile_definitions(mpr PRIVATE MPR_EXEFS_DEFAULT="${MPR_EXEFS_DEFAULT}")
 target_link_libraries(mpr PRIVATE mpr_main mpr_sdk mpr_subsdk0 mpr_rtld nxrt_gfx nxrt)
 # Same link options as the runtime's test executables: a linker map next to the exe (host frames get names), a big main stack (lifted
 # code nests deeply), low host allocations so the guest ranges at 0x71_0000_0000 and up stay free.
+if(MPR_RELEASE)
+    target_compile_definitions(mpr PRIVATE MPR_GUI_SUBSYSTEM=1)
+    target_link_options(mpr PRIVATE /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup /PDBALTPATH:mpr.pdb)
+endif()
 target_link_options(mpr PRIVATE /MAP /STACK:134217728 /HIGHENTROPYVA:NO /DEBUG)
 
 # The ASTC decoder DLLs astc2bc7 loads at run time (NVN textures in ASTC are transcoded to BC7 on first use): next to mpr.exe.
