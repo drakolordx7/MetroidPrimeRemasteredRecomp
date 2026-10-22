@@ -16,7 +16,10 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <memory>
 #include <string>
+#include <utility>
+#include <vector>
 
 #include "nxrt/config.h"
 #include "nxrt/diag.h"
@@ -25,7 +28,11 @@
 #include "nxrt/log.h"
 #include "nxrt/memory.h"
 #include "nxrt/module.h"
+#include "nxrt/gfx.h"
+#include "nxrt/input_source.h"
 #include "nxrt/nvn.h"
+#include "nxrt/nvn_backend.h"
+#include "nxrt/platform.h"
 #include "nxrt/nxmodule.h"
 #include "nxrt/runtime.h"
 
@@ -131,6 +138,66 @@ void rtld_entry(::Ctx* c) {
 // i.e. it stores 1 in the word at rtld+0x3008 and returns to its caller.
 void rtld_fn_138c(::Ctx*) { *reinterpret_cast<uint32_t*>(kRtldBase + 0x3008) = 1; }
 
+// Diagnostic ([boot] trace_plt = 1): wraps rtld's lazy PLT resolver (rtld+0x1318) and logs every binding: the slot, the link map, the
+// relocation index and what the lifted lookup (rtld+0x8b0) answers, before the resolver runs for real (debug note 018).
+nxrt::GuestFn g_orig_resolver = nullptr;
+void traced_resolver(::Ctx* c) {
+    const uint64_t slot = *reinterpret_cast<const uint64_t*>(c->x[31]);     // x16 pushed by PLT0
+    const uint64_t got2 = c->x[16];
+    const uint64_t idx = (slot - got2 - 8) / 8;
+    const uint64_t lm = *reinterpret_cast<const uint64_t*>(got2 - 8);
+    ::Ctx tmp = *c;
+    tmp.x[0] = lm; tmp.x[1] = idx; tmp.x[17] = slot; tmp.x[30] = 0;
+    nxrt::dispatch_call(&tmp, kRtldBase + 0x8b0);
+    NXLOG_I("boot", "plt resolve: slot=0x%llx got2=0x%llx lm=0x%llx idx=%llu -> 0x%llx (GOT slot now 0x%llx)", (unsigned long long)slot,
+            (unsigned long long)got2, (unsigned long long)lm, (unsigned long long)idx, (unsigned long long)tmp.x[0],
+            (unsigned long long)*reinterpret_cast<const uint64_t*>(slot));
+    g_orig_resolver(c);
+}
+
+std::unique_ptr<nxrt::gfx::Device> g_gfx_device;
+std::unique_ptr<nxrt::gfx::Renderer> g_gfx_renderer;
+
+// TEMP debug 121: dump the killer slots at a fault
+LONG CALLBACK dump_killer(PEXCEPTION_POINTERS ep) {
+    if (ep->ExceptionRecord->ExceptionCode != 0xC0000005) return EXCEPTION_CONTINUE_SEARCH;
+    static int once = 0;
+    if (once++) return EXCEPTION_CONTINUE_SEARCH;
+    const uint8_t* base = reinterpret_cast<const uint8_t*>(0x710455d5b8ull);
+    for (int slot = 0; slot < 2; slot++) {
+        const uint8_t* k = base + 0x100 + slot * 0xd8;
+        const uint64_t ids = *reinterpret_cast<const uint64_t*>(k + 0x58);
+        const uint32_t n = *reinterpret_cast<const uint32_t*>(k + 0x50);
+        NXLOG_E("dbg", "killer slot %d: tex ids ptr 0x%llx count %u (cap %u)", slot, (unsigned long long)ids, n, *reinterpret_cast<const uint32_t*>(k + 0x54));
+        if (ids) { std::string t; for (uint32_t i = 0; i < n && i < 64; i++) { char b[16]; std::snprintf(b, 16, "%x ", reinterpret_cast<const uint32_t*>(ids)[i]); t += b; } NXLOG_E("dbg", "  ids: %s", t.c_str()); }
+    }
+    return EXCEPTION_CONTINUE_SEARCH;
+}
+
+DWORD WINAPI killer_poll(LPVOID) {
+    const uint8_t* base = reinterpret_cast<const uint8_t*>(0x710455d5b8ull);
+    uint32_t last[2] = {0, 0};
+    for (;;) {
+        for (int slot = 0; slot < 2; slot++) {
+            const uint32_t n = *reinterpret_cast<const volatile uint32_t*>(base + 0x100 + slot * 0xd8 + 0x50);
+            if (n != last[slot]) {
+                if (n > last[slot] && last[slot] == 0) {
+                    std::string t;
+                    for (const auto& r : nxrt::diag_threads()) {
+                        if (!r.ctx) continue;
+                        char b[96]; std::snprintf(b, sizeof b, "\n  %s fn=%llx lr=%llx:", r.name.c_str(), (unsigned long long)r.ctx->fn, (unsigned long long)r.ctx->x[30]); t += b;
+                        uint64_t f = r.ctx->x[29];
+                        for (int d = 0; d < 10 && f > 0x1000 && !(f & 7); d++) { std::snprintf(b, sizeof b, " %llx", (unsigned long long)*reinterpret_cast<const uint64_t*>(f + 8)); t += b; f = *reinterpret_cast<const uint64_t*>(f); }
+                    }
+                    NXLOG_E("dbg", "killer slot %d count %u -> %u%s", slot, last[slot], n, t.c_str());
+                }
+                last[slot] = n;
+            }
+        }
+    }
+    return 0;
+}
+
 [[noreturn]] void die(const char* fmt, const char* a = "", const char* b = "") {
     NXLOG_E("boot", fmt, a, b);
     nxrt::log_flush();
@@ -141,10 +208,73 @@ void rtld_fn_138c(::Ctx*) { *reinterpret_cast<uint32_t*>(kRtldBase + 0x3008) = 1
     for (;;) {}
 }
 
+// [boot] press = "A@12,A@20:500,PLUS@30": scripted controller presses on player 1 (button@seconds-after-start[:hold ms, default 300]).
+struct ScriptedPress { uint64_t bit; double at; int hold_ms; };
+std::shared_ptr<nxrt::hid::ManualInputSource> g_pad;
+std::vector<ScriptedPress> g_presses;
+DWORD WINAPI press_thread(LPVOID) {
+    const ULONGLONG t0 = GetTickCount64();
+    for (const ScriptedPress& p : g_presses) {
+        const ULONGLONG due = t0 + static_cast<ULONGLONG>(p.at * 1000);
+        for (ULONGLONG now = GetTickCount64(); now < due; now = GetTickCount64()) Sleep(static_cast<DWORD>(due - now > 50 ? 50 : due - now));
+        NXLOG_I("boot", "scripted press at %.1f s", p.at);
+        g_pad->press(0, p.bit);
+        Sleep(p.hold_ms);
+        g_pad->release(0, p.bit);
+    }
+    return 0;
+}
+void parse_presses(const std::string& spec) {
+    using namespace nxrt::hid;
+    static const struct { const char* n; NpadButtonBit b; } names[] = {{"A", kBtnA}, {"B", kBtnB}, {"X", kBtnX}, {"Y", kBtnY}, {"PLUS", kBtnPlus},
+        {"MINUS", kBtnMinus}, {"UP", kBtnUp}, {"DOWN", kBtnDown}, {"LEFT", kBtnLeft}, {"RIGHT", kBtnRight}, {"L", kBtnL}, {"R", kBtnR}, {"ZL", kBtnZL}, {"ZR", kBtnZR}};
+    size_t i = 0;
+    while (i < spec.size()) {
+        size_t j = spec.find(',', i);
+        if (j == std::string::npos) j = spec.size();
+        const std::string item = spec.substr(i, j - i);
+        i = j + 1;
+        const size_t at = item.find('@');
+        if (at == std::string::npos) continue;
+        const std::string name = item.substr(0, at);
+        const size_t colon = item.find(':', at);
+        ScriptedPress sp{0, std::atof(item.c_str() + at + 1), colon == std::string::npos ? 300 : std::atoi(item.c_str() + colon + 1)};
+        for (const auto& e : names) if (name == e.n) sp.bit = btn(e.b);
+        if (sp.bit) g_presses.push_back(sp);
+    }
+}
+
+// [boot] screenshot_at = N (seconds after start, repeatable through screenshot_every): the renderer writes work/run/shot_<n>.png of the presented frame.
+DWORD WINAPI shot_thread(LPVOID) {
+    const int64_t first = nxrt::config_get_int("boot", "screenshot_at", 0), every = nxrt::config_get_int("boot", "screenshot_every", 0);
+    int n = 0;
+    Sleep(static_cast<DWORD>(first * 1000));
+    for (;;) {
+        if (g_gfx_renderer) {
+            char path[64];
+            std::snprintf(path, sizeof path, "shot_%d.png", n++);
+            g_gfx_renderer->request_screenshot(path);
+            NXLOG_I("boot", "screenshot requested: %s", path);
+        }
+        if (every <= 0) break;
+        Sleep(static_cast<DWORD>(every * 1000));
+    }
+    return 0;
+}
+
 DWORD WINAPI deadline_thread(LPVOID p) {
     const DWORD ms = static_cast<DWORD>(reinterpret_cast<uintptr_t>(p));
     Sleep(ms);
     NXLOG_W("boot", "max_seconds reached: the guest is still running; ending the process");
+    nxrt::log_flush();
+    if (nxrt::nvn::backend_installed()) {
+        const nxrt::nvn::BackendStats b = nxrt::nvn::backend_stats();
+        NXLOG_I("boot", "nvn back end at the deadline: submits %llu lists %llu draws %llu (skipped %llu) presents %llu pipelines %llu textures %llu (failed %llu) unsupported %llu",
+                (unsigned long long)b.submits, (unsigned long long)b.lists_replayed, (unsigned long long)b.draws, (unsigned long long)b.draws_skipped,
+                (unsigned long long)b.presents, (unsigned long long)b.pipelines_created, (unsigned long long)b.textures_created,
+                (unsigned long long)b.textures_failed, (unsigned long long)b.unsupported_ops);
+        NXLOG_I("boot", "nvn unsupported operations: %s", nxrt::nvn::backend_unsupported_report().c_str());
+    }
     NXLOG_I("boot", "state at the deadline:\n%s", nxrt::summary().c_str());
     nxrt::log_flush();
     TerminateProcess(GetCurrentProcess(), 124);
@@ -157,14 +287,15 @@ int main(int argc, char** argv) {
     std::string exefs = std::getenv("MPR_EXEFS") ? std::getenv("MPR_EXEFS") : MPR_EXEFS_DEFAULT;
     const char* ini = nullptr;
     const char* logp = nullptr;
+    std::vector<std::pair<std::string, std::string>> boot_opts;   // [boot] keys from the command line: nxrt::init() reloads the configuration, so they are applied after it
     for (int i = 1; i < argc; i++) {
         auto arg = [&](const char* n) { return !std::strcmp(argv[i], n) && i + 1 < argc; };
         if (arg("--exefs")) exefs = argv[++i];
         else if (arg("--ini")) ini = argv[++i];
         else if (arg("--log")) logp = argv[++i];
-        else if (arg("--max-seconds")) nxrt::config_set("boot", "max_seconds", argv[++i]);
-        else if (arg("--link")) nxrt::config_set("boot", "link", argv[++i]);
-        else if (!std::strcmp(argv[i], "--no-nvn")) nxrt::config_set("boot", "nvn", "0");
+        else if (arg("--max-seconds")) boot_opts.emplace_back("max_seconds", argv[++i]);
+        else if (arg("--link")) boot_opts.emplace_back("link", argv[++i]);
+        else if (!std::strcmp(argv[i], "--no-nvn")) boot_opts.emplace_back("nvn", "0");
         else { std::fprintf(stderr, "mpr: unknown argument %s\n", argv[i]); return 2; }
     }
 
@@ -172,10 +303,40 @@ int main(int argc, char** argv) {
     opt.ini_path = ini;
     opt.log_path = logp;
     if (!nxrt::init(opt)) die("runtime start-up failed (address-space layout)");
+    for (const auto& kv : boot_opts) nxrt::config_set("boot", kv.first.c_str(), kv.second.c_str());
     nxrt::config_set("process", "program_id", "0x010012101468C000");     // GetInfo(ProgramId); an ini value or the environment still wins
     NXLOG_I("boot", "Metroid Prime Remastered v1.0.0: exefs '%s'", exefs.c_str());
 
-    if (nxrt::config_get_bool("boot", "nvn", true)) nxrt::nvn::install();   // nvnBootstrapLoader and the NVN entry points (logging stubs until implemented)
+    if (nxrt::config_get_bool("boot", "nvn", true)) {
+        nxrt::nvn::install();   // nvnBootstrapLoader and the NVN entry points (logging stubs for what no back end implements)
+        // The NVN back end (Vulkan). [boot] gfx = headless (default while the window loop is not wired: an offscreen image ring) | window
+        // | none (keep the logging stubs: the shell alone).
+        const std::string gfxmode = nxrt::config_get_str("boot", "gfx", "headless");
+        if (gfxmode != "none") {
+            const bool headless = gfxmode != "window";
+            if (!headless) {
+                nxrt::platform::init();
+                nxrt::platform::WindowDesc wd;
+                wd.title = "Metroid Prime Remastered";
+                if (!nxrt::platform::create_window(wd)) die("cannot create the window");
+            }
+            nxrt::gfx::DeviceDesc dd;
+            dd.headless = headless ? 1 : 0;
+            std::string err;
+            g_gfx_device = nxrt::gfx::Device::create(dd, &err);
+            if (!g_gfx_device) die("graphics device: %s", err.c_str());
+            nxrt::gfx::RendererDesc rd;
+            rd.headless_width = 1920;
+            rd.headless_height = 1080;
+            g_gfx_renderer = nxrt::gfx::Renderer::create(*g_gfx_device, rd, &err);
+            if (!g_gfx_renderer) die("renderer: %s", err.c_str());
+            nxrt::nvn::BackendDesc bd;
+            bd.device = g_gfx_device.get();
+            bd.renderer = g_gfx_renderer.get();
+            if (!nxrt::nvn::install_backend(bd)) die("NVN back end failed to start (see the log)");
+            NXLOG_I("boot", "NVN back end running on %s (%s)", g_gfx_device->gpu().name.c_str(), headless ? "headless" : "window");
+        }
+    }
 
     // 1. map
     for (const GameModule& g : kModules) {
@@ -192,6 +353,16 @@ int main(int argc, char** argv) {
         if (!r.ok()) die("lifted module %s refused: %s", g.file, r.message.c_str());
     }
 
+    // The game reaches NVN only through `nvnBootstrapLoader` (an import of main that the sdk defines: Nintendo's driver). The lifted PLT
+    // stub of main calls host_import(), not the GOT that rtld fills, so the symbol is forced to the runtime's NVN front end here; the
+    // sdk's own definition is also replaced in the call table for any indirect call that reaches it by address (debug note 120).
+    if (nxrt::config_get_bool("boot", "nvn", true)) {
+        nxrt::module_override_symbol("nvnBootstrapLoader");
+        if (const uint64_t def = nxrt::nxmodule_find_export("nvnBootstrapLoader"))
+            if (nxrt::HleFn fn = nxrt::hle_lookup("nvnBootstrapLoader")) nxrt::fn_register(def, fn);
+    }
+
+    if (nxrt::config_get_bool("boot", "dump_killer", false)) { AddVectoredExceptionHandler(1, dump_killer); CreateThread(nullptr, 0, killer_poll, nullptr, 0, nullptr); }
     // 3. link: relocations of every module, imports between modules by symbol name, page protections
     //    [boot] link = rtld (default): the host only maps and protects; the game's own rtld (lifted) relocates every module, as on the console
     //    [boot] link = host: the runtime's linker relocates, rtld's linker step is skipped (a cross-check of the two)
@@ -202,6 +373,14 @@ int main(int argc, char** argv) {
         nxrt::module_protect_all();
     }
 
+    if (const std::string spec = nxrt::config_get_str("boot", "press", ""); !spec.empty()) {
+        parse_presses(spec);
+        g_pad = std::make_shared<nxrt::hid::ManualInputSource>();
+        g_pad->connect(0, nxrt::hid::NpadStyle::FullKey);
+        nxrt::hid::set_input_source(g_pad);
+        CreateThread(nullptr, 0, press_thread, nullptr, 0, nullptr);
+    }
+    if (nxrt::config_get_int("boot", "screenshot_at", 0) > 0) CreateThread(nullptr, 0, shot_thread, nullptr, 0, nullptr);
     if (const int64_t s = nxrt::config_get_int("boot", "max_seconds", 0); s > 0)
         CreateThread(nullptr, 0, deadline_thread, reinterpret_cast<void*>(static_cast<uintptr_t>(s * 1000)), 0, nullptr);
 
@@ -218,6 +397,11 @@ int main(int argc, char** argv) {
     if (!nxrt::fn_lookup(kRtldBase + 0x138c)) {
         nxrt::fn_register(kRtldBase + 0x138c, rtld_fn_138c);
         NXLOG_W("boot", "the lifted rtld has no function at 0x138c: using the host stand-in (see rtld_fn_138c)");
+    }
+
+    if (nxrt::config_get_bool("boot", "trace_plt", false)) {
+        g_orig_resolver = nxrt::fn_lookup(kRtldBase + 0x1318);
+        if (g_orig_resolver) nxrt::fn_register(kRtldBase + 0x1318, traced_resolver);
     }
 
     // 5. the first instruction: rtld offset 0. x0 = 0 (the exception entry would be non-zero), x1 = the main thread's handle.
