@@ -29,3 +29,4 @@ S2 knowledge base (docs/mpr/, scripts in tools/analysis/):
 - `tools\analysis\pak_census.py game\romfs [--json out]` — asset-type and TXTR-format census from pak headers only
 - `tools\analysis\tests\run_synth.py` and `run_ida_synth.py` — prove validator and IDA apply on a synthetic AArch64 ELF (clang + lld)
 - `tools\analysis\kb_check.py frag.json` — schema + evidence-in-source oracle for fragments; `kb_parse_headers.py`, `kb_merge.py`, `kb_build_patches.py`, `kb_harvest_port.py`, `kb_pairs_port.py` are the pipeline steps
+- `tools/survey/*` — S4c asset-survey scripts (pak extract, inventory, shader/texture/movie/audio/UI probes); index in `tools/.weaver/INDEX.md`, results in `docs/mpr/survey/SURVEY.md`
