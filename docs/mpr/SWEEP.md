@@ -12,11 +12,11 @@ Last sweep: 2026-10-22 07:43, exe `?`, ? min wall, ? parallel.
 
 ## Result
 
-**13 of 275 areas reached.** 12 visual issue, 1 crash, 262 not reached.
+**13 of 275 areas reached.** 10 OK, 2 visual issue, 1 crash, 262 not reached.
 
 | World | Areas | OK | Visual issue | Timeout | Hang | Crash | Not reached |
 |---|---|---|---|---|---|---|---|
-| Frigate Orpheon | 28 | 0 | 12 | 0 | 0 | 1 | 15 |
+| Frigate Orpheon | 28 | 10 | 2 | 0 | 0 | 1 | 15 |
 | Tallon Overworld | 44 | 0 | 0 | 0 | 0 | 0 | 44 |
 | Chozo Ruins | 64 | 0 | 0 | 0 | 0 | 0 | 64 |
 | Magmoor Caverns | 29 | 0 | 0 | 0 | 0 | 0 | 29 |
@@ -48,18 +48,18 @@ Status meanings: **OK** warp arrived, play time advanced, screenshots not black,
 | frigate_deck_alpha_mech_shaft | not reached |  |  |  |
 | frigate_deck_alpha_umbilical_hall | not reached |  |  |  |
 | frigate_deck_beta_conduit_hall | not reached |  |  |  |
-| frigate_deck_beta_security_hall | visual issue | 11.9 | 6 texture(s) not uploaded; colour noise in 3 blocks | `work/sweep_out/runs/run002/shots/frigate_deck_beta_security_hall_b.png` |
-| frigate_deck_beta_transit_hall | visual issue | 12.9 | 6 texture(s) not uploaded | `work/sweep_out/runs/run002/shots/frigate_deck_beta_transit_hall_b.png` |
-| frigate_deck_gamma_monitor_hall | visual issue | 13.3 | 6 texture(s) not uploaded | `work/sweep_out/runs/run002/shots/frigate_deck_gamma_monitor_hall_b.png` |
-| frigate_emergency_evacuation_area | visual issue | 12.7 | 6 texture(s) not uploaded | `work/sweep_out/runs/run002/shots/frigate_emergency_evacuation_area_b.png` |
-| frigate_exterior_docking_hangar | visual issue | 17.0 | 6 texture(s) not uploaded | `work/sweep_out/runs/run002/shots/frigate_exterior_docking_hangar_b.png` |
-| frigate_main_ventilation_shaft_section_a | visual issue | 33.3 | 6 texture(s) not uploaded | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_a_b.png` |
-| frigate_main_ventilation_shaft_section_b | visual issue | 31.2 | 6 texture(s) not uploaded | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_b_b.png` |
-| frigate_main_ventilation_shaft_section_c | visual issue | 16.1 | 6 texture(s) not uploaded | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_c_b.png` |
-| frigate_main_ventilation_shaft_section_d | visual issue | 15.8 | 6 texture(s) not uploaded | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_d_b.png` |
-| frigate_main_ventilation_shaft_section_e | visual issue | 21.2 | 6 texture(s) not uploaded; colour noise in 115 blocks | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_e_b.png` |
-| frigate_main_ventilation_shaft_section_f | visual issue | 15.1 | 6 texture(s) not uploaded | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_f_b.png` |
-| frigate_map_facility | visual issue | 13.9 | 6 texture(s) not uploaded | `work/sweep_out/runs/run002/shots/frigate_map_facility_b.png` |
+| frigate_deck_beta_security_hall | visual issue | 11.9 | 6 texture(s) drawn before their data arrived; colour noise in 3 blocks | `work/sweep_out/runs/run002/shots/frigate_deck_beta_security_hall_b.png` |
+| frigate_deck_beta_transit_hall | OK | 12.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_deck_beta_transit_hall_b.png` |
+| frigate_deck_gamma_monitor_hall | OK | 13.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_deck_gamma_monitor_hall_b.png` |
+| frigate_emergency_evacuation_area | OK | 12.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_emergency_evacuation_area_b.png` |
+| frigate_exterior_docking_hangar | OK | 17.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_exterior_docking_hangar_b.png` |
+| frigate_main_ventilation_shaft_section_a | OK | 33.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_a_b.png` |
+| frigate_main_ventilation_shaft_section_b | OK | 31.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_b_b.png` |
+| frigate_main_ventilation_shaft_section_c | OK | 16.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_c_b.png` |
+| frigate_main_ventilation_shaft_section_d | OK | 15.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_d_b.png` |
+| frigate_main_ventilation_shaft_section_e | visual issue | 21.2 | 6 texture(s) drawn before their data arrived; colour noise in 115 blocks | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_e_b.png` |
+| frigate_main_ventilation_shaft_section_f | OK | 15.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_f_b.png` |
+| frigate_map_facility | OK | 13.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_map_facility_b.png` |
 | frigate_reactor_core | not reached |  |  |  |
 | frigate_reactor_core_entrance | not reached |  |  |  |
 | frigate_subventilation_shaft_section_a | not reached |  |  |  |
