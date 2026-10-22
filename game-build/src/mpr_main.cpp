@@ -9,7 +9,7 @@
 //   5. enter the first module (rtld) at offset 0 with the registers the kernel gives a new process: x0 = 0, x1 = main thread handle.
 // Everything after that (nn::init::Start, nninitStartup, nnMain) is the lifted game running on the runtime.
 //
-//   mpr [--exefs DIR] [--ini FILE] [--log FILE] [--max-seconds N] [--link host|none] [--no-nvn]
+//   mpr [--exefs DIR] [--ini FILE] [--log FILE] [--max-seconds N] [--link host|none] [--no-nvn] [--headless|--window]
 // Environment: MPR_EXEFS. Keys (section [boot]) are read through the runtime's config, see docs/S6.md.
 #include <windows.h>
 
@@ -33,6 +33,7 @@
 #include "nxrt/nvn.h"
 #include "nxrt/nvn_backend.h"
 #include "nxrt/platform.h"
+#include "nxrt/play.h"
 #include "nxrt/nxmodule.h"
 #include "nxrt/runtime.h"
 
@@ -304,6 +305,8 @@ int main(int argc, char** argv) {
         else if (arg("--max-seconds")) boot_opts.emplace_back("max_seconds", argv[++i]);
         else if (arg("--link")) boot_opts.emplace_back("link", argv[++i]);
         else if (!std::strcmp(argv[i], "--no-nvn")) boot_opts.emplace_back("nvn", "0");
+        else if (!std::strcmp(argv[i], "--headless")) boot_opts.emplace_back("gfx", "headless");
+        else if (!std::strcmp(argv[i], "--window")) boot_opts.emplace_back("gfx", "window");
         else { std::fprintf(stderr, "mpr: unknown argument %s\n", argv[i]); return 2; }
     }
 
@@ -315,17 +318,22 @@ int main(int argc, char** argv) {
     nxrt::config_set("process", "program_id", "0x010012101468C000");     // GetInfo(ProgramId); an ini value or the environment still wins
     NXLOG_I("boot", "Metroid Prime Remastered v1.0.0: exefs '%s'", exefs.c_str());
 
+    bool play_started = false;
     if (nxrt::config_get_bool("boot", "nvn", true)) {
         nxrt::nvn::install();   // nvnBootstrapLoader and the NVN entry points (logging stubs for what no back end implements)
-        // The NVN back end (Vulkan). [boot] gfx = headless (default while the window loop is not wired: an offscreen image ring) | window
-        // | none (keep the logging stubs: the shell alone).
-        const std::string gfxmode = nxrt::config_get_str("boot", "gfx", "headless");
+        // The NVN back end (Vulkan). [boot] gfx = window (the default for a normal launch: play mode, see docs/S8.md) | headless (an offscreen
+        // image ring: tests and scripted runs; also the default when [gfx] headless / NXRT_GFX_HEADLESS is set) | none (keep the logging stubs).
+        const std::string gfxmode = nxrt::config_get_str("boot", "gfx", nxrt::config_get_bool("gfx", "headless", false) ? "headless" : "window");
         if (gfxmode != "none") {
             const bool headless = gfxmode != "window";
+            nxrt::play::DisplayConfig disp;
             if (!headless) {
+                disp = nxrt::play::display();       // controls.ini: window size, present mode, frame cap
                 nxrt::platform::init();
                 nxrt::platform::WindowDesc wd;
                 wd.title = "Metroid Prime Remastered";
+                wd.width = disp.width;
+                wd.height = disp.height;
                 if (!nxrt::platform::create_window(wd)) die("cannot create the window");
             }
             nxrt::gfx::DeviceDesc dd;
@@ -336,14 +344,31 @@ int main(int argc, char** argv) {
             nxrt::gfx::RendererDesc rd;
             rd.headless_width = 1920;
             rd.headless_height = 1080;
+            if (!headless) rd.present_mode = disp.present_mode;
             g_gfx_renderer = nxrt::gfx::Renderer::create(*g_gfx_device, rd, &err);
             if (!g_gfx_renderer) die("renderer: %s", err.c_str());
             nxrt::nvn::BackendDesc bd;
             bd.device = g_gfx_device.get();
             bd.renderer = g_gfx_renderer.get();
+            if (!headless) {
+                bd.limiter = nxrt::play::limiter();        // the frame limiter paces the presenting thread
+                bd.keep_aspect = disp.keep_aspect;
+            }
             if (!nxrt::nvn::install_backend(bd)) die("NVN back end failed to start (see the log)");
             NXLOG_I("boot", "NVN back end running on %s (%s)", g_gfx_device->gpu().name.c_str(), headless ? "headless" : "window");
+            nxrt::play::StartOptions po;
+            po.device = g_gfx_device.get();
+            po.renderer = g_gfx_renderer.get();
+            po.window = !headless;
+            po.overlay = !headless;
+            nxrt::play::start(po);
+            play_started = true;
         }
+    }
+    if (!play_started) {
+        nxrt::play::StartOptions po;           // no graphics: play mode still turns scripted keys into pad input
+        po.overlay = false;
+        nxrt::play::start(po);
     }
 
     // 1. map
@@ -421,6 +446,7 @@ int main(int argc, char** argv) {
     nxrt::dispatch_call(ctx, entry);
 
     NXLOG_I("boot", "the entry function returned (x0 = 0x%llx): ending the process", static_cast<unsigned long long>(ctx->x[0]));
+    nxrt::play::stop();
     nxrt::kernel::main_thread_release();
     nxrt::shutdown();
     return static_cast<int>(ctx->x[0] & 0xff);
