@@ -24,6 +24,8 @@
 - Full-game stability sweep: warp tour of every area, save/load, menus, visors, cinematics; SWEEP.md (branch `sweep`).
 
 ## Next (in this order)
+0. Gameplay performance: stutter and low fps in gameplay (user observed), profile in-world frames, shader/pipeline misses, streaming, CPU vs GPU.
+0b. Go public: S16 public-repo prep running; then scrub AI tooling files from game-repo history on the publish mirror (git filter-repo, user approved), push, flip both repos public.
 1. NVN gaps: sparse textures (MapVirtual), transform feedback, occlusion queries, pipeline prewarm.
 
 ## Shortcomings to fix
