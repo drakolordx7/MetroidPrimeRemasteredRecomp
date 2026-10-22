@@ -11,8 +11,17 @@ $base = Join-Path $root 'publish\nxrecomp'
 foreach ($r in 'recomp', 'runtime', 'tools') {
     git -C $base subtree pull -q --prefix=$r (Join-Path $root $r) main -m "Sync $r"
 }
-git -C $base push -q origin main
-$sha = git -C $base rev-parse HEAD
+# push a copy of the mirror with any local caches derived from game data removed from history (deterministic, so old
+# commits keep their hashes and later pushes stay fast-forward)
+$bscrub = Join-Path $root 'publish\base-scrub'
+if (Test-Path $bscrub) { Remove-Item $bscrub -Recurse -Force }
+git clone -q --no-local $base $bscrub
+git -C $bscrub filter-repo --force --invert-paths --path-glob '*bc7_cache/*' --path-glob '*.bc7' --path-glob '*shader_cache/*' --path-glob '*pipeline_cache.bin' --path-glob '*pipeline_keys.bin'
+$bleft = @(git -C $bscrub log --all --name-only --format= | Select-String -Pattern '(bc7_cache/|\.bc7$|shader_cache/)')
+if ($bleft.Count) { throw "base scrub left cache files in history" }
+git -C $bscrub remote add origin https://github.com/drakolordx7/nxrecomp.git
+git -C $bscrub push -q origin main
+$sha = git -C $bscrub rev-parse HEAD
 
 # the game repo: bump base locally first (commit from the index; a pathspec commit reads the uninitialised submodule folder)
 git -C $root update-index --cacheinfo "160000,$sha,base"
