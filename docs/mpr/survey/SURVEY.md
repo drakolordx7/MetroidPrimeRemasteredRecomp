@@ -1,6 +1,6 @@
-# MPR asset survey (stream S4c)
+# MPR asset survey (S4c)
 
-Measured on the user's v1.0.0 dump, 2026-10-21. Machine: i9-12900K (16C/24T), shared with other heavy jobs during the runs, so
+Measured on the v1.0.0 dump, 2026-10-21. Machine: i9-12900K (16C/24T), shared with other heavy jobs during the runs, so
 timings are conservative. Everything extracted lives under `work/survey/` (not in git); scripts are in `tools/survey/`
 (tools repo). Run order is at the end.
 
@@ -8,12 +8,12 @@ timings are conservative. Everything extracted lives under `work/survey/` (not i
 
 | Question | Answer |
 |---|---|
-| Shaders | Real NVN (GLSLC) program sets, zlib-wrapped, **not** only in `MaterialArchive.arc`: 583 sets there plus **46,936 sets inside the 767 pak `MTRL` assets**. 67,506 distinct code blocks (33,744 vertex, 33,744 pixel, 12 geometry, 6 compute). The tools/shaders harness reads them unchanged. |
-| Translator | **Ryujinx (the Wonder harness in tools/shaders).** 9,164 of 9,164 blocks pass spirv-val (100%) against smo's 3,776 (41.2%); smo never wins a block. |
-| Textures | 6,927 distinct TXTR. 4,369 ASTC (4 footprints: 5x4, 5x5, 8x5, plus sRGB twins), 2,327 BCn/BC6H/BC7 (pass through), 231 uncompressed. 4,350 MPix of ASTC to convert (all mips), 2.83 GB ASTC -> about 4.35 GB BC7. Estimated first-run conversion **about 12 min if parallel across textures, about 23 min if parallel per level (quality 5)**. |
+| Shaders | Real NVN (GLSLC) program sets, zlib-wrapped, not only in `MaterialArchive.arc`: 583 sets there plus 46,936 sets inside the 767 pak `MTRL` assets. 67,506 distinct code blocks (33,744 vertex, 33,744 pixel, 12 geometry, 6 compute). The tools/shaders harness reads them unchanged. |
+| Translator | Ryujinx (the Wonder harness in tools/shaders). 9,164 of 9,164 blocks pass spirv-val (100%) against smo's 3,776 (41.2%); smo never wins a block. |
+| Textures | 6,927 distinct TXTR. 4,369 ASTC (4 footprints: 5x4, 5x5, 8x5, plus sRGB twins), 2,327 BCn/BC6H/BC7 (pass through), 231 uncompressed. 4,350 MPix of ASTC to convert (all mips), 2.83 GB ASTC -> about 4.35 GB BC7. Estimated first-run conversion about 12 min if parallel across textures, about 23 min if parallel per level (quality 5). |
 | Audio | Every CSMP is Nintendo DSP-ADPCM, played through `nn::audio` AudioRenderer (`ParseAdpcmHeader`, `AcquireVoiceSlot`), driven by Retro's own `CAxal*` engine. No Opus, no middleware. |
 | Movies | 25 FMV0 = plain MP4, H.264 Main L4.2, 1600x900, 60 fps, 7 of them with one AAC-LC 5.1 track. All 25 decode through Windows Media Foundation (tested). |
-| UI | 14 GUIF frames, **0 Scaleform/GFXL anywhere**. The front end is a 3D "world" (`UI_FrontEnd.pak`), not flash. |
+| UI | 14 GUIF frames, 0 Scaleform/GFXL anywhere. The front end is a 3D "world" (`UI_FrontEnd.pak`), not flash. |
 | Inventory | 340 paks (6.8 GB), 31,714 directory entries, 31,602 distinct assets, 43 asset types. |
 
 ## 1. Inventory
@@ -35,7 +35,7 @@ LZSS, MTRL bodies zlib).
 | CAUD | 2,470 | 2,453 | 1.2 | sound-effect definitions (reference CSMP) |
 | GUIF | 14 | 14 | 0.1 | HUD / menu frames |
 | 25 more types | | | < 1 each | MATI 2,809, REFL 993, LSCN 848, LPTH 276, DCLN 240, CBNK 11, CABH 2, CMID 4, ... |
-| **Total** | 31,714 | 31,602 | **7,215** | |
+| Total | 31,714 | 31,602 | 7,215 | |
 
 By folder: `Worlds/MP1` 286 paks / 4.58 GB (23,556 assets), `Preload` 12 / 1.94 GB (`DuplicateData.pak` alone is 1.62 GB),
 `Worlds/FrontEnd` 38 / 0.57 GB, `UI` 1 / 0.11 GB, three small root paks. Full table: `work/survey/inventory.json`.
@@ -47,17 +47,17 @@ is extracted only partly (14 of 29 files). It does not affect the numbers above,
 
 ### Where and what format
 
-- `romfs/MaterialArchive.arc` is an RFRM `MTRL` (reader version 22) with two backends: `SDX` (1,168 records of **DXBC**, the PC D3D path,
+- `romfs/MaterialArchive.arc` is an RFRM `MTRL` (reader version 22) with two backends: `SDX` (1,168 records of DXBC, the PC D3D path,
   unused on Switch) and `SNVN` (583 records, NVN). `SNVN` holds a 22 KB table of contents (61 materials, e.g. `UberPostMP1`, `Tonemap`,
   `Bloom`, `SSAO`, `FXAA`, `VolumetricFog_*`, `LightPrePass`, `WaterSim`; 583 shader entries, one per record) followed by the
   program records.
 - Every one of the 767 pak `MTRL` assets (reader version 168, 285 MB; zlib body named by the META footer chunk, decompressing to an
-  `EXPT` blob, 352 MB in total) embeds the same kind of record: **46,936 program sets, always a vertex + pixel pair**.
-  This is where the world/model shaders are. (The brief guessed the arc only; the pak copies are 80x more shaders.)
+  `EXPT` blob, 352 MB in total) embeds the same kind of record: 46,936 program sets, always a vertex + pixel pair.
+  This is where the world/model shaders are. (An earlier assumption was that only the arc held shaders. The pak copies hold 80x more.)
 - One record = `u8 0, u32 N (flags in the high bits), u32 kind (0x11 = VS+PS, 0x19 = VS+GS+PS, 0x08 = compute), u32 zlibLen, zlib`,
   then a small trailer (stage count, offsets, control size). The zlib output is exactly NVN's GLSLC program layout, the same as
-  Wonder's BNSH payloads: per stage a **code block** (starts `78 56 34 12`, or `79 56 34 12` for compute; 0x30-byte NVN header, then the
-  0x50-byte SPH at +0x30, then Maxwell code, 0x100-aligned), followed by one **control section** per stage (magic `34 12 76 98`;
+  Wonder's BNSH payloads: per stage a code block (starts `78 56 34 12`, or `79 56 34 12` for compute; 0x30-byte NVN header, then the
+  0x50-byte SPH at +0x30, then Maxwell code, 0x100-aligned), followed by one control section per stage (magic `34 12 76 98`;
   +0x6f8 program length, +0x6fc/+0x700 constant-data size/offset, +0x704 code block size, +0x708 start 0x30, +0x714 stage).
   Control sections are 0x880 bytes in 75,180 of 95,044 stages, and 0x890 (9,571), 0x950 (9,568), 0x88c (481), 0x94c (240) or 0x940 (4) in the rest, so a parser must find them by magic.
 - Header snippet (first block of arc record 0, a pixel shader): `78 56 34 12 00 ... (0x30 bytes)`, SPH `62 54 06 00 ...`, control `34 12 76 98 01 00 00 00 10 00 00 00 20 01 00 00 0b 00 00 00 78 08 00 00`.
@@ -82,7 +82,7 @@ run was started and stopped because the machine was loaded; the Ryujinx harness 
 
 | translator | blocks | translated | spirv-val pass | rate |
 |---|---:|---:|---:|---:|
-| Ryujinx harness | 9,164 | 9,164 | **9,164** | **100%** (5,647 first try, 3,517 after the DebugMode retry) |
+| Ryujinx harness | 9,164 | 9,164 | 9,164 | 100% (5,647 first try, 3,517 after the DebugMode retry) |
 | smo `mx_translate` | 9,164 | 3,776 | 3,776 | 41.2% |
 
 | stage | blocks | Ryujinx pass | smo pass |
@@ -99,7 +99,7 @@ failure class Wonder documents; the harness retries with DebugMode).
 
 ### Findings that matter for S4
 
-- **PIXLD.MY_INDEX is not implemented by Ryujinx** (453 of 573 arc pixel shaders, and 4,480 of 4,637 pixel shaders in the sample, 97%; warning "Pixld is not implemented"). The result
+- PIXLD.MY_INDEX is not implemented by Ryujinx (453 of 573 arc pixel shaders, and 4,480 of 4,637 pixel shaders in the sample, 97%; warning "Pixld is not implemented"). The result
   register is simply not written. The shaders that use it start with an epilogue that reads the pixel position, a byte table at
   `c[0] + 0x620` and masks at `c[0] + 0x630` (probably the driver's alpha-to-coverage dither, inferred, not verified). Output stays valid
   SPIR-V and the visible colour path was unchanged in the 40 shaders inspected as GLSL. The runtime must either supply that
@@ -123,9 +123,9 @@ Parser: `txtr_tally.py` (header + META footer only). Distinct = by asset id, 6,9
 | BC7 (BptcUnorm 167, sRGB 855) | 1,022 | 582 | 651 | 715 |
 | BC1/2/4/5 (Bc5 32, Bc4 6, Bc1 and Bc2 sRGB 2 each) | 42 | 12 | 16 | 12 |
 | RGBA8 (sRGB 87, linear 91) and R8 12 | 190 | 38 | 40 | 143 |
-| **Total** | **6,927** | | | **5,197** |
+| Total | 6,927 | | | 5,197 |
 
-- Kinds: 2D 5,493, Cube 1,020, 2DArray 367, 3D 47. ASTC: 4,305 plain 2D, 53 arrays (3 to 192 layers), 10 cubes, **2 volume textures** (64x64x64,
+- Kinds: 2D 5,493, Cube 1,020, 2DArray 367, 3D 47. ASTC: 4,305 plain 2D, 53 arrays (3 to 192 layers), 10 cubes, 2 volume textures (64x64x64,
   ASTC 8x5 slices; the others are 45 RGBA8 33x33x33 colour-grading LUTs). BC6H is nearly all cubemaps (1,010) and 4-layer arrays.
 - Sizes: 1024^2 2,046, 128^2 1,304, 512^2 1,140, 256^2 505, 2048^2 154, plus 4096x2048. Mips 1 to 13. Header `tile_mode` and `swizzle` are 0 in every texture.
 - LZSS buffer modes seen: 3 (almost all), 2, and raw (0).
@@ -140,19 +140,19 @@ the ASTC 64^3 volumes every setting gives the same size (small), so use the same
 
 ### End-to-end proof (`txtr_pipeline.py samples --n 5`, 56 textures, every format/kind present)
 
-- LZSS decode -> `tegra_tile untile` -> size check: **56/56**. Compared byte-for-byte with retrotool's (tegra_swizzle) output: **36/36 identical**
+- LZSS decode -> `tegra_tile untile` -> size check: 56/56. Compared byte-for-byte with retrotool's (tegra_swizzle) output: 36/36 identical
   (all single-layer 2D samples: ASTC, BC1/2/4/5/6H/7, R8, RGBA8). Arrays, cubes and 3D have no retrotool reference output; their sizes match.
 - ASTC -> BC7 with `astc2bc7` (quality 5, level 0, layer 0) on 35 samples (2D, cube, array; 5x4, 5x5, 5x5 sRGB, 8x5, 8x5 sRGB):
-  **PSNR RGB min 36.15 dB, mean 54.64 dB; SSIM(luma) min 0.9753, mean 0.9958.** Per footprint mean: 5x4 50.1, 5x5 44.4, 5x5 sRGB 54.9, 8x5 57.3, 8x5 sRGB 60.5 dB.
+  PSNR RGB min 36.15 dB, mean 54.64 dB; SSIM(luma) min 0.9753, mean 0.9958. Per footprint mean: 5x4 50.1, 5x5 44.4, 5x5 sRGB 54.9, 8x5 57.3, 8x5 sRGB 60.5 dB.
   Worst cases are 1024-wide 5x5 and 5x4 content (36 to 37 dB). 14 of the samples carry real alpha; alpha is reproduced (PSNR RGBA min 35.9 dB).
   Reference is the ASTC decode (astcenc), BC7 decoded by the independent `bc7dec`.
 
 ### Conversion time
 
-- ASTC to convert: 4,369 textures, 44,127 mip levels, layers and slices included, **4,350 MPix**.
+- ASTC to convert: 4,369 textures, 44,127 mip levels, layers and slices included, 4,350 MPix.
 - Measured in-process throughput (astc2bc7 `--bench`, quality 5, real MPR blocks): 7.2 MPix/s at 2048^2, 4.8 at 1024^2, 4.1 at 512^2, 2.6 at 256^2, 1.2 at 128^2.
-  Per-level threading with those rates gives **22.6 min** for the whole set. Texture-level parallelism (one texture per thread, the README's
-  measured about 6 MPix/s) gives **about 12 min**. Quality 3 is about 3x faster.
+  Per-level threading with those rates gives 22.6 min for the whole set. Texture-level parallelism (one texture per thread, the README's
+  measured about 6 MPix/s) gives about 12 min. Quality 3 is about 3x faster.
 - The CLI run per level is not viable: 612 levels (60 textures, 67 MPix) took 70 s = 0.96 MPix/s, dominated by process start; the same
   would be about 75 min for everything. The setup tool must call the library in-process.
 - Output size: BC7 is 1 byte per pixel, so about 4.35 GB of BC7 against 2.83 GB of ASTC (RGBA8 would be about 17 GB).
@@ -166,28 +166,28 @@ the ASTC 64^3 volumes every setting gives the same size (small), so use the same
   (plausible values such as 1160, -629, 2831, ...), 14 samples per 8-byte frame (0.572 bytes/sample/channel). Channels: mono 1,685, stereo 131, 4ch 7, 5.1 2.
   Sample rates: 48,000 Hz for 1,699, 44,100 (39), 32,000 (71), 24,000 (13), 22,050 (2), one 4,000 Hz stub.
 - CAUD (2,470) are sound-effect definitions that point at CSMP, CBNK (11) sample banks, CABH (2) bus hierarchy, CMID (4) sequences. No codec in them.
-- Symbols (`audio_symbols.py`, main/sdk/subsdk0 `.dynsym`): `main` imports 127 `nn::audio` functions, **all AudioRenderer** (45 `AudioRenderer`, `AcquireVoiceSlot`, `AcquireSubMix`, `AcquireFinalMix`,
-  `AddDeviceSink`, reverb/I3DL2/delay/aux/limiter effects, **`ParseAdpcmHeader`**), no AudioOut, no `nn::codec`, no Opus imports. `sdk` defines the audio renderer, AudioOut
+- Symbols (`audio_symbols.py`, main/sdk/subsdk0 `.dynsym`): `main` imports 127 `nn::audio` functions, all AudioRenderer (45 `AudioRenderer`, `AcquireVoiceSlot`, `AcquireSubMix`, `AcquireFinalMix`,
+  `AddDeviceSink`, reverb/I3DL2/delay/aux/limiter effects, `ParseAdpcmHeader`), no AudioOut, no `nn::codec`, no Opus imports. `sdk` defines the audio renderer, AudioOut
   and `nn::codec`/Opus; `subsdk0` (the multimedia stack) uses AudioOut plus its own FDK-AAC, vorbis, mp3 and Opus. No FMOD, Wwise, CRI, Bink or XAudio symbols.
   Game classes: `CAudioManager` 193 methods, `CAxalSystem`, `CAxalVoice`, `NAxal::` (about 830 names), `CAudioSampler`, `CSoundGOC`, `NMP1AudioSounds` 1,003.
 - Consequence: the host needs a DSP-ADPCM decoder and an AudioRenderer implementation (mix graph, voices, effects). Opus is not used by the game audio.
 
 ## 5. Movies
 
-`movies.py` + `ffprobe 8.1.2`: all 25 FMV0 are an `RFRM FMV0` wrapper (MP4 starts at 0x20, `ftyp` first) around **MP4, H.264 Main, level 4.2, 1600x900, 60 fps, yuv420p, BT.709 limited, B-frames
-(reorder depth 1)**, about 10 Mbit/s, 1.0 to 30.0 s (sum 264 s, 332 MB). 7 movies have one AAC-LC audio track (6 channels, 48 kHz, about 700 kbit/s); the other 18 are silent (their
+`movies.py` + `ffprobe 8.1.2`: all 25 FMV0 are an `RFRM FMV0` wrapper (MP4 starts at 0x20, `ftyp` first) around MP4, H.264 Main, level 4.2, 1600x900, 60 fps, yuv420p, BT.709 limited, B-frames
+(reorder depth 1), about 10 Mbit/s, 1.0 to 30.0 s (sum 264 s, 332 MB). 7 movies have one AAC-LC audio track (6 channels, 48 kHz, about 700 kbit/s); the other 18 are silent (their
 sound is presumably CSMP/streamed). 10 are in `UI/MPR1/UIMP1.pak` and 15 in `Worlds/FrontEnd`.
 
 Media Foundation: Microsoft documents the H.264 MFT as Baseline/Main/High up to level 5.1, up to 4096x2304
-([learn.microsoft.com H.264 video decoder](https://learn.microsoft.com/en-us/windows/win32/medfound/h-264-video-decoder)). Tested for real with `mf_decode_test.exe`
-(IMFSourceReader, software path): **25/25 decode, 1600x900 at 60 fps, 91 to 128 fps decode speed including RGB32 conversion, and the 6-channel AAC decodes to 16-bit PCM**
+([learn.microsoft.com H.264 video decoder](https://learn.microsoft.com/en-us/windows/win32/medfound/h-264-video-decoder)). Tested with `mf_decode_test.exe`
+(IMFSourceReader, software path): 25/25 decode, 1600x900 at 60 fps, 91 to 128 fps decode speed including RGB32 conversion, and the 6-channel AAC decodes to 16-bit PCM
 (7 files, durations match). Media Foundation is viable; FFmpeg fallback is not needed for these.
 
 ## 6. UI
 
 - GUIF: 14, all in `Preload/MPR1/GuiSysMP1.pak`: `FRME_BaseHud`, `CombatHud`, `ScanHud`, `ScanHudFlat`, `XRayHudNew`, `ThermalHud`, `Helmet`, `BallHud`, `PauseScreen`,
   `PauseScreenInstructions`, `MapScreen`, `QuitScreen`, `MsgScreen`, `GenericMenu`. The same 14 `FRME_` names are the only ones in `main`'s strings.
-- Scaleform/GFXL: **none.** No asset type, no SWF/GFX header in any of the 7.2 GB (30 raw hits of `GFX`/`CFX`/`FWS` were checked: random bytes), no Scaleform strings or symbols in `main.elf`.
+- Scaleform/GFXL: none. No asset type, no SWF/GFX header in any of the 7.2 GB (30 raw hits of `GFX`/`CFX`/`FWS` were checked: random bytes), no Scaleform strings or symbols in `main.elf`.
   The earlier assumption that menus use Scaleform is wrong for this build.
 - The front end (title, file select, options, extras) is `Worlds/FrontEnd` (38 paks, 570 MB: ROOM/CMDL/TXTR/CAUD/FMV0) driven by `CFrontEndManagerGOC` / `CFrontEndIOWin`, i.e. a 3D scene,
   and `UI/MPR1/UIMP1.pak` (112 MB, mostly textures and 10 movies). All UI is therefore GUIF + world rendering; no separate flash runtime is needed.
@@ -207,4 +207,4 @@ python tools\survey\movies.py ; pwsh tools\survey\build_mf_test.ps1 ; work\surve
 python tools\survey\audio_symbols.py ; python tools\survey\ui_survey.py
 ```
 
-Known gaps: the translator pass rates are on 9,164 of 67,506 distinct blocks (all arc blocks plus a seeded random sample), not all of them. PIXLD semantics and the alpha-to-coverage reading are inferred, not verified against a capture.
+Known gaps: the translator pass rates cover 9,164 of 67,506 distinct blocks (all arc blocks plus a seeded random sample). PIXLD semantics and the alpha-to-coverage reading are inferred, not verified against a capture.

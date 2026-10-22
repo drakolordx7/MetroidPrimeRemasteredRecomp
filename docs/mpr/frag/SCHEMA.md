@@ -2,7 +2,7 @@
 
 One file per source cluster, merged by `tools/analysis/kb_merge.py` into `docs/mpr/symbols.json` and `structs.json`.
 A fragment is `{"source_id": "<short id>", "items": [ ... ]}`. Every item needs a `src` with an exact `evidence` string
-that really appears in the source file within +-3 lines of `line` (`kb_check.py` verifies this mechanically).
+that appears in the source file within +-3 lines of `line` (`kb_check.py` verifies this mechanically).
 Nothing is invented: unknown values are `null`.
 
 ## symbol item
