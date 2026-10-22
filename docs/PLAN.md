@@ -42,11 +42,11 @@ Seven areas, each with a code location and a pass/fail check.
 | S6 PC features | `runtime/pc` | physics probe 60/120/240 identical; mouse delta→angle linear; HUD layout checks | per feature |
 | S7 Setup/release | `tools/setup` | fresh-machine install from a dump reaches title screen | - |
 
-Rules: the oracle scripts are hash-locked, and a project hook (ScarletNX `guard.py` pattern) blocks edits to them and keeps game data out of git. No inline asm. Each area keeps a dev log under `docs/` and numbered bug notes (`docs/debug/NNN.md`: symptom, cause, fix).
+Rules: the oracle scripts are hash-locked, and a commit guard (the ScarletNX `guard.py` pattern) keeps game data out of git. No inline asm. Each area keeps a dev log under `docs/` and numbered bug notes (`docs/debug/NNN.md`: symptom, cause, fix).
 
 ## Phases
 0. Toolkit (done).
-1. Pre-dump scaffolding (now): S1 forks and merges the lifter + difftest; S5 builds input record/replay, scripted-run DSL (`@area` waits, `@goto`, warp), screenshot/state-hash/regression tools; S3 runtime skeleton (loader, memory map, threads, log/crash/freeze reports); S4 Vulkan shell + shader harness; project hooks/skills. Reference emulator: try Eden now; fallback a Ryubing build you supply.
+1. Pre-dump scaffolding (now): S1 forks and merges the lifter + difftest; S5 builds input record/replay, scripted-run DSL (`@area` waits, `@goto`, warp), screenshot/state-hash/regression tools; S3 runtime skeleton (loader, memory map, threads, log/crash/freeze reports); S4 Vulkan shell + shader harness; project hooks/skills. Reference emulator: try Eden now; fallback a Ryubing build supplied by the user.
 2. Dump intake (gate): extract, nx2elf, IDA databases (main, sdk, subsdk), SDK/NVN version, import list, `recomp.py cover`, FPCR/NEON scan, shader blob identification, texture-format tally, audio codec. The OS-layer and translator decisions are made at this gate.
 3. Lift + link all modules; difftest green.
 4. Boot: SVC/IPC, fs/RomFS, saves, threads → first NVN call.
@@ -64,7 +64,7 @@ Rules: the oracle scripts are hash-locked, and a project hook (ScarletNX `guard.
 - HDR: replace the game's tonemap output (`NTonemap`, per-room params) with an HDR10/scRGB path.
 - Upscale/frame gen: FSR 3.1 built-in (Vulkan), DLSS/XeSS from user DLLs.
 - Free extras: loose-file mod folder over RomFS, Switch save import (same `CGameState` stream), skip boot logos, dev menu (warp, IGT, noclip) behind a flag.
-- Targets on your RTX 3080: 4K ≥120 fps, 1440p ≥240 fps, no shader-compile stutter.
+- Targets on an RTX 3080: 4K ≥120 fps, 1440p ≥240 fps, no shader-compile stutter.
 
 ## Verification
 - Lifter: difftest + mutation suite each batch; coverage 100% of MPR instruction shapes.

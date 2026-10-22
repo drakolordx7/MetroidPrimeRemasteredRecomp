@@ -9,7 +9,7 @@ Project-local tools (one line each: what it does, how to run).
 - `toolchain/retrotool/retrotool.exe` — MPR .pak / TXTR / FMV0 extract and repack (built from `refs/retrotool`)
 - `refs/PrimeRemasterStructs/*.bt` — 010 Editor templates for 48 MPR asset formats
 - `toolchain/eden/eden.exe` (+ `eden-cli.exe`) — Eden v0.2.1 Switch emulator (official git.eden-emu.dev build, Defender-clean), the reference oracle for traces and frame comparisons
-- `.claude/hooks/guard.py` — PreToolUse guard: no game data in git/uploads, read-only refs/game/toolchain, locked oracles (`oracle/LOCKED`). Self-test: `python .claude/hooks/test_guard.py`
+- Oracle folders that contain an `oracle/LOCKED` file are hash-locked (`oracle/SHA256SUMS`): do not edit them.
 - `runtime/scripts/build.ps1` — build the runtime + run CTest. `pwsh runtime\scripts\build.ps1 -Clean -Test`
 - `tools/{tiling,shaders,textures}/oracle/run_oracle.py` — S4 tool oracles (locked); see `tools/.weaver/INDEX.md` for the per-tool commands
 - `.weaver/publish.ps1` — sync recomp/runtime/tools into `publish/nxrecomp` (subtree), push github.com/drakolordx7/nxrecomp, bump + push the game repo github.com/drakolordx7/MetroidPrimeRemasteredRecomp (both private). Push only on the user's say-so.
@@ -17,9 +17,9 @@ Project-local tools (one line each: what it does, how to run).
 - `refs/ryubing/src/Ryujinx.Graphics.Shader` — Ryujinx MIT shader translator source (Codeberg archive a82350bb77, 2026-07-17); build with .NET 10.
 
 - 010 Editor 16.0.4 (`C:\Program Files\010 Editor\010Editor.exe`) — run `refs/PrimeRemasterStructs/*.bt` on MPR files headless: `-script:x.1sc -noui -nowarnings`, script uses `RunTemplate` + `OutputPaneSave`
-- Superluminal (`C:\Program Files\Superluminal\Performance\SuperluminalCmd.exe`) — CPU profiler; `run`/`attach` capture, `llm` analysis and global `superluminal` MCP (llm/mcp need license activation)
+- Superluminal (`C:\Program Files\Superluminal\Performance\SuperluminalCmd.exe`) — CPU profiler; `run`/`attach` capture
 
-Global (machine-wide) tools used here: IDA Pro 9.4 + ida-mcp plugin, mcp-windbg plugin, renderdoc-mcp (`%LOCALAPPDATA%\Programs\renderdoc-mcp`), LLVM, CMake, Ninja, sccache, Vulkan SDK, RenderDoc, VS Build Tools 2026.
+Global (machine-wide) tools used here: IDA Pro 9.4, WinDbg, LLVM, CMake, Ninja, sccache, Vulkan SDK, RenderDoc, VS Build Tools 2026.
 
 S2 knowledge base (docs/mpr/, scripts in tools/analysis/):
 - `tools\.venv\Scripts\python tools\analysis\kb_rebuild.py [--elf work\elf\main.elf]` — rebuild docs/mpr from frag/*.json (headers, patches, check, merge) and, with --elf, validate and write verification blocks back
@@ -38,7 +38,7 @@ S2 knowledge base (docs/mpr/, scripts in tools/analysis/):
 
 S3c (services) tools, in runtime\scripts unless noted:
 - `pwsh runtime\scripts\t.ps1 <group> ...` — build nxrt_tests and run the named test groups directly (`-All` runs everything, `-NoBuild` skips the build). Groups: svc_* (services), svc_audren_* (audio renderer port).
-- `pwsh runtime\scripts\wt_setup.ps1 -Name <n>` — sibling git worktree on branch <n> with a gfx-off build configured against recomp\include (fast worker builds).
+- `pwsh runtime\scripts\wt_setup.ps1 -Name <n>` — sibling git worktree on branch <n> with a gfx-off build configured against recomp\include (fast test builds).
 - `python -I runtime\scripts\svc_table.py --out runtime\docs\S3c_commands.md` — regenerates the service command table from src\services.
 - `runtime-wt\gb-services\run.sh [boot.py args]` — builds mpr.exe with the services worktree's runtime and runs the real game headless (tools\boot\boot.py copy writing to work\run_svc); `SECS=`, `LVL=`, `N=`, `T=` env vars set timeout, log level, summary lines, ipc tail lines.
 - `pwsh runtime\scripts\nvn_unit.ps1 -Src <test.cpp>` — builds and runs one NVN unit test without CMake; `python runtime\scripts\gen_nvn_test_api.py` (typed NVN callers for tests), `gen_nvn_coverage_doc.py coverage.tsv mpr_used_nvn.txt` (entry-point table for docs/S4d.md; coverage.tsv from `NXRT_NVN_DUMP_COVERAGE=<file> nxrt_gfx_tests gfx_nvn_impl`). NVN scene oracles: `NXRT_GFX_HIDDEN=1 nxrt_gfx_tests gfx_nvn_scene_<clear|triangle|geometry|state|texture|commands|msaa|stress>`; `NXRT_GFX_GPU=integrated` for the iGPU.

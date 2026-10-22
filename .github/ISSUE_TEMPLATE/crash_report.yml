@@ -1,0 +1,84 @@
+name: "Crash report"
+description: "The game closed on its own, or froze and had to be closed."
+title: "[Crash] "
+labels: ["crash"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never attach or paste game files, extracted game data, keys (prod.keys, title.keys) or dumps. Screenshots of a bug in a running build are fine.
+
+  - type: input
+    id: build
+    attributes:
+      label: "Build"
+      description: "Release version (for example v0.1.0) or commit hash."
+      placeholder: "v0.1.0 or abc1234"
+    validations:
+      required: true
+
+  - type: input
+    id: gpu
+    attributes:
+      label: "GPU model"
+      placeholder: "NVIDIA GeForce RTX 3060"
+    validations:
+      required: true
+
+  - type: input
+    id: driver
+    attributes:
+      label: "GPU driver version"
+      placeholder: "551.23"
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: "Windows version"
+      placeholder: "Windows 11 24H2"
+    validations:
+      required: true
+
+  - type: textarea
+    id: crash_file
+    attributes:
+      label: "Crash report file"
+      description: "Paste the contents of mpr_crash.txt or mpr_fatal.txt (written next to mpr.exe), or drag the file in"
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: freeze_report
+    attributes:
+      label: "Freeze report"
+      description: "If the game froze instead of closing, paste the freeze report the watchdog wrote, if any."
+      render: text
+
+  - type: textarea
+    id: log
+    attributes:
+      label: "mpr.log"
+      description: "Paste the last 200 lines of mpr.log (next to mpr.exe), or drag the file into this box"
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: doing
+    attributes:
+      label: "What you were doing when it crashed"
+      description: "Where you were in the game, and what you had just done."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: "How often does it happen?"
+      options:
+        - "Every time at the same spot"
+        - "Sometimes"
+        - "Once"
