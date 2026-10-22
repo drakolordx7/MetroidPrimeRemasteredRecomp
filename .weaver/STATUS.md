@@ -14,10 +14,20 @@
 - S3c: boot-path Horizon services (branch `services`).
 - S4d: NVN→Vulkan implementation + full 67,506-block shader cache (branch `nvn`).
 
-## Next
-- Link game libraries + runtime → first boot, iterate on logged unknown SVC/IPC/NVN calls.
-- S5 test tooling (input record/replay, scripted runs, Eden reference captures).
-- High-fps experiment (CGameArchitectureSupport::Update hard-codes 1/60), raw mouse via CPlayerMP1::ProcessInput, KB+M via nn::hid::GetNpadState import.
+## Running (3 managers always)
+- S3c services (branch `services`), S4d NVN→Vulkan (branch `nvn`), S5 test tooling + Eden references (branch `testtools`).
+
+## Next (stream queue, launch in this order as slots free)
+1. Boot integration loop: merge services/nvn, run tools\boot\boot.py, route blockers (lead-driven or a manager).
+2. S7 setup tool: NSP/XCI + keys import, build-ID check, RomFS extract, in-process ASTC→BC7 cache, shader cache install.
+3. S6-PC input: raw mouse via CPlayerMP1::ProcessInput trampoline, KB+M via nn::hid::GetNpadState import, bindings file + ImGui rebinding.
+4. High-fps experiment: patch CGameArchitectureSupport::Update 1/60, physics probe at 60/120/240, then variable-dt fixes or interpolation.
+5. Display: resolution/aspect/HUD (COsContext::GetScreen*, CDisplayManager::GetAspectRatio), FOV (CGameCameraMP1::UpdateFOV), dynamic-res off, quality options.
+6. Movies via Media Foundation (movie:: imports in subsdk0), audio renderer correctness.
+7. Extras: HDR (NTonemap), FSR 3.1, DLSS/XeSS, Reflex/Anti-Lag 2.
+
+## Shortcomings to fix
+- kernel_threads and gfx_pacing tests fail under heavy machine load (pass alone): make them load-robust.
 
 ## Open items
 - "Reverse Engineering" directory skill: user installs from the claude.ai card.
