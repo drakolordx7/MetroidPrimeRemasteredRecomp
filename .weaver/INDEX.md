@@ -50,3 +50,16 @@ S6b (boot integration, second pass; docs `runtime/docs/S6b.md` on branch boot2):
 - `.weaver/boot_wt.sh [boot.py args]` — boot.py against the boot2 runtime worktree (separate build dir `game-build/build/boot2`; `MPR_RUNTIME`/`MPR_BUILD_DIR` env choose the runtime checkout). Boot options via env: `NXRT_HLE_TRACE=nvn` (ordered HLE call trace with results), `NXRT_BOOT_PRESS="A@12,A@22"` (scripted pad), `NXRT_BOOT_SCREENSHOT_AT/EVERY=<s>` (shot_<n>.png in work/run), `NXRT_BOOT_GFX=headless|window|none`, `NXRT_GFX_VALIDATION=1`.
 - `tools\.venv\Scripts\python .weaver\nvn_order.py [--seq] [--n N] [mpr.log]` — first-seen order and counts of the hle-trace lines.
 - `tools\.venv\Scripts\python .weaver\plt_sym.py work\elf\sdk.elf 0x58b870` — relocation/symbol behind a PLT stub or GOT slot.
+
+S9 (movies and audio, branch `media`, worktree `runtime-wt/media`; docs `runtime/docs/S9.md`):
+- `.weaver/boot_media.sh [boot.py args]` — boot.py against the media runtime; builds `game-build-media/` (a copy of game-build at HEAD, so another stream's uncommitted mpr_main.cpp does not matter; build dir `game-build-media/build`), runs in `work/run_media`.
+- `.weaver/wtbuild.ps1 <worktree> [target]` — build one target of a runtime worktree and print only the errors.
+- `tools\.venv\Scripts\python tools\media\movie_oracle.py [--only ID] [--frame-step N]` — S9 movie oracle: extracts the 25 FMV0 from game\romfs, makes ffmpeg references (frame md5, PCM), runs `nxrt_tests media_movie` (every frame md5, timestamps, audio length) and compares the PCM; work files in `work\media_fmv`.
+- `tools/media/{fmv_manifest,fmv_reference,compare_pcm,wav_check}.py` — movie manifest, ffmpeg references, PCM compare (lag/correlation per channel), WAV sanity check (rate, channels, silence, clicks, dropouts); tests next to them (`python -I -m unittest` in tools\media).
+
+S8 (play mode, branch `play`, worktree runtime-wt/play; docs `runtime/docs/S8.md`):
+- `.weaver/boot_play.sh [boot.py args]` — boot.py against the play worktree (build dir game-build/build/play). Window run: `--env NXRT_BOOT_GFX=window`; boot.py is headless by default now.
+- `pwsh .weaver\play_tests.ps1 [-Filter regex]` — build nxrt_tests + nxrt_gfx_tests in runtime-wt\play and run the play/tt/hid/platform CTest groups.
+- `runtime-wt/play/scripts/play_unit.ps1 -Name n -Test t.cpp -Src a.cpp,b.cpp` — one play unit test without CMake; `play_syntax.ps1 files...` — compile check only.
+- `tools\.venv\Scripts\python tools\test\run_suite.py tools\test\suites\play.toml --exe game-build\build\play\mpr.exe` then `tools\test\play_check.py suite work\suite_out_play` — title-screen key vs pad oracle, window lifecycle, limiter, settings, overlay.
+- `tools\.venv\Scripts\python .weaver\gdis.py 0xADDR [count]` — disassemble main.elf at a vaddr (capstone).
