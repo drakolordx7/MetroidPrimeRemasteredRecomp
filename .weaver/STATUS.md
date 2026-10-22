@@ -25,7 +25,6 @@
 
 ## Next (in this order)
 0. Gameplay performance: stutter and low fps in gameplay (user observed), profile in-world frames, shader/pipeline misses, streaming, CPU vs GPU.
-0b. Go public: S16 public-repo prep running; then scrub AI tooling files from game-repo history on the publish mirror (git filter-repo, user approved), push, flip both repos public.
 1. NVN gaps: sparse textures (MapVirtual), transform feedback, occlusion queries, pipeline prewarm.
 
 ## Shortcomings to fix
@@ -35,6 +34,8 @@
 - gfx_nvn_scene_stress failed once under load, passed alone; watch it.
 
 ## Open items
+- README build-from-source uses junctions (baseecomp etc.); verify on a fresh clone, or make the scripts find base/ directly.
+- Add screenshots to docs/images (maintainer's choice).
 - README screenshots: the maintainer adds real captures to `docs/images/` (none are committed).
 
 ## Decisions that matter
