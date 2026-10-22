@@ -16,3 +16,8 @@
 /runtime-wt/
 nxrt.log*
 *.log
+
+# AI tooling instructions stay local
+CLAUDE.md
+.claude/
+docs/BRIEF_PREAMBLE.md

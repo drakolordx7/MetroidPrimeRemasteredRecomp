@@ -84,7 +84,7 @@ So four ASTC footprints (5x4, 5x5, 8x5 and their sRGB variants) carry about 2.1 
 
 ## 6. Movies [C] [P]
 
-`FMV0` (25 assets, 332 MB). The payload after the 32-byte RFRM header is a plain MP4 (`ftyp mp42/mp41`). The first movie's `stsd` holds `avc1` with `avcC` profile 0x4d (Main), level 0x2a (4.2), 1600x900; no `mp4a` box appears in that file, so the video track is video-only. The port assumes 1600x900 at 60 fps and does not check the codec. The binary imports 41 `movie::` functions from `subsdk0` (Nintendo multimedia, also carrying mkv, FDK-AAC and Opus support). Media Foundation or FFmpeg can decode the H.264 payload. Movie audio is not in the MP4 and its source is still unknown.
+`FMV0` (25 assets, 332 MB). The payload after the 32-byte RFRM header is a plain MP4 (`ftyp mp42/mp41`). The first movie's `stsd` holds `avc1` with `avcC` profile 0x4d (Main), level 0x2a (4.2), 1600x900; no `mp4a` box appears in that file, so that movie is video-only. The port assumes 1600x900 at 60 fps and does not check the codec. The binary imports 41 `movie::` functions from `subsdk0` (Nintendo multimedia, also carrying mkv, FDK-AAC and Opus support). Media Foundation or FFmpeg can decode the H.264 payload. The full survey (`survey/SURVEY.md`) found that 7 of the 25 movies carry one AAC-LC 5.1 track and the rest are video-only.
 
 ## 7. Audio
 
@@ -101,7 +101,7 @@ So four ASTC footprints (5x4, 5x5, 8x5 and their sRGB variants) carry about 2.1 
 ## 9. Open items to settle on the dump
 
 1. Shader blob format in `SShaderSource.data` and the `SDX ` chunk of `MaterialArchive.arc`.
-2. CSMP codec; where movie audio lives.
+2. CSMP codec (resolved in `survey/SURVEY.md`: DSP-ADPCM). Movie audio: AAC-LC 5.1 in 7 of 25 movies.
 3. Identity of `SVGM` (89 compressed assets, all in world masters).
 4. Whether the 14 `ETextureFormat` ASTC footprints in the enum beyond 5x4/5x5/8x5 are ever used (no: not in this build).
 5. Retrotool's `skip` field and the `unk` words in RFRM/chunk headers.
