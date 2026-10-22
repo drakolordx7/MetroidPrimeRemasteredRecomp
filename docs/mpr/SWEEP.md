@@ -8,19 +8,19 @@ tools\.venv\Scripts\python tools\test\sweep.py --exe game-build\build\release\mp
 
 `--resume` keeps the areas that were OK last time, `--report-only` rebuilds this file from `work\sweep_out\results.json`, `--worlds`, `--areas` and `--limit` select a subset.
 
-Last sweep: 2026-10-22 08:36, exe `?`, ? min wall, ? parallel.
+Last sweep: 2026-10-22 09:16, exe `?`, ? min wall, ? parallel.
 
 ## Result
 
-**112 of 275 areas reached.** 99 OK, 12 visual issue, 1 crash, 163 not reached.
+**184 of 275 areas reached.** 159 OK, 18 visual issue, 1 timeout, 4 hang, 2 crash, 91 not reached.
 
 | World | Areas | OK | Visual issue | Timeout | Hang | Crash | Not reached |
 |---|---|---|---|---|---|---|---|
 | Frigate Orpheon | 28 | 23 | 4 | 0 | 0 | 1 | 0 |
 | Tallon Overworld | 44 | 40 | 4 | 0 | 0 | 0 | 0 |
-| Chozo Ruins | 64 | 36 | 4 | 0 | 0 | 0 | 24 |
-| Magmoor Caverns | 29 | 0 | 0 | 0 | 0 | 0 | 29 |
-| Phendrana Drifts | 56 | 0 | 0 | 0 | 0 | 0 | 56 |
+| Chozo Ruins | 64 | 55 | 9 | 0 | 0 | 0 | 0 |
+| Magmoor Caverns | 29 | 26 | 0 | 0 | 2 | 1 | 0 |
+| Phendrana Drifts | 56 | 15 | 1 | 1 | 2 | 0 | 37 |
 | Phazon Mines | 42 | 0 | 0 | 0 | 0 | 0 | 42 |
 | Impact Crater | 12 | 0 | 0 | 0 | 0 | 0 | 12 |
 
@@ -31,6 +31,12 @@ Status meanings: **OK** warp arrived, play time advanced, screenshots not black,
 | Area | Status | Stage | Alone | Reason | Evidence |
 |---|---|---|---|---|---|
 | frigate_air_lock | crash | warp | - | HOST EXCEPTION 0xC0000005 at host address 0x7ff65aea63d8 on thread guest-84 (tid 505996) | `work/sweep_out/runs/run001` |
+| magmoor_geothermal_core | hang | warp | - | no progress for 300 s (killed) | `work/sweep_out/runs/run018` |
+| magmoor_lake_tunnel | hang | warp | - | no progress for 300 s (killed) | `work/sweep_out/runs/run024` |
+| magmoor_magmoor_workstation | crash | play | - | HOST EXCEPTION 0xC0000005 at host address 0x7ff65a9122a0 on thread guest-88 (tid 423892) | `work/sweep_out/runs/run026` |
+| phendrana_canyon_entryway | hang | play | - | watchdog freeze: no frame tick for 60s | `work/sweep_out/runs/run022` |
+| phendrana_chapel_tunnel | hang | warp | - | no progress for 300 s (killed) | `work/sweep_out/runs/run025` |
+| phendrana_phendrana_canyon | timeout | warp | - | C:\mpr\work\sweep_out\runs\run029\tour.nxs:19: timeout waiting for the warp targ | `work/sweep_out/runs/run029` |
 
 ## Frigate Orpheon
 
@@ -154,30 +160,30 @@ Status meanings: **OK** warp arrived, play time advanced, screenshots not black,
 | chozo_ruined_fountain | OK | 34.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_ruined_fountain_b.png` |
 | chozo_ruined_fountain_access | OK | 36.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_ruined_fountain_access_b.png` |
 | chozo_ruined_gallery | OK | 36.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_ruined_gallery_b.png` |
-| chozo_ruined_nursery | not reached |  |  |  |
-| chozo_ruined_shrine | not reached |  |  |  |
-| chozo_ruined_shrine_access | not reached |  |  |  |
-| chozo_ruins_entrance | not reached |  |  |  |
-| chozo_save_station_1 | not reached |  |  |  |
-| chozo_save_station_2 | not reached |  |  |  |
-| chozo_save_station_3 | not reached |  |  |  |
-| chozo_sun_tower | not reached |  |  |  |
-| chozo_sun_tower_access | not reached |  |  |  |
-| chozo_sunchamber | not reached |  |  |  |
-| chozo_sunchamber_access | not reached |  |  |  |
-| chozo_sunchamber_lobby | not reached |  |  |  |
-| chozo_totem_access | not reached |  |  |  |
-| chozo_tower_of_light | not reached |  |  |  |
-| chozo_tower_of_light_access | not reached |  |  |  |
-| chozo_training_chamber | not reached |  |  |  |
-| chozo_training_chamber_access | not reached |  |  |  |
-| chozo_transport_access_north | not reached |  |  |  |
-| chozo_transport_access_south | not reached |  |  |  |
-| chozo_transport_to_magmoor_caverns_north | not reached |  |  |  |
-| chozo_transport_to_tallon_overworld_east | not reached |  |  |  |
-| chozo_transport_to_tallon_overworld_north | not reached |  |  |  |
-| chozo_transport_to_tallon_overworld_south | not reached |  |  |  |
-| chozo_vault | not reached |  |  |  |
+| chozo_ruined_nursery | OK | 32.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_ruined_nursery_b.png` |
+| chozo_ruined_shrine | OK | 13.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_ruined_shrine_b.png` |
+| chozo_ruined_shrine_access | OK | 11.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_ruined_shrine_access_b.png` |
+| chozo_ruins_entrance | OK | 17.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_ruins_entrance_b.png` |
+| chozo_save_station_1 | OK | 29.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_save_station_1_b.png` |
+| chozo_save_station_2 | OK | 20.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_save_station_2_b.png` |
+| chozo_save_station_3 | OK | 30.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_save_station_3_b.png` |
+| chozo_sun_tower | OK | 29.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_sun_tower_b.png` |
+| chozo_sun_tower_access | OK | 33.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_sun_tower_access_b.png` |
+| chozo_sunchamber | OK | 23.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_sunchamber_b.png` |
+| chozo_sunchamber_access | OK | 38.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_sunchamber_access_b.png` |
+| chozo_sunchamber_lobby | OK | 24.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run015/shots/chozo_sunchamber_lobby_b.png` |
+| chozo_totem_access | visual issue | 41.3 | 6 texture(s) drawn before their data arrived; colour noise in 1962 blocks | `work/sweep_out/runs/run016/shots/chozo_totem_access_b.png` |
+| chozo_tower_of_light | visual issue | 11.1 | 6 texture(s) drawn before their data arrived; colour noise in 563 blocks | `work/sweep_out/runs/run016/shots/chozo_tower_of_light_b.png` |
+| chozo_tower_of_light_access | visual issue | 10.7 | 6 texture(s) drawn before their data arrived; colour noise in 380 blocks | `work/sweep_out/runs/run016/shots/chozo_tower_of_light_access_b.png` |
+| chozo_training_chamber | OK | 11.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run016/shots/chozo_training_chamber_b.png` |
+| chozo_training_chamber_access | OK | 13.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run016/shots/chozo_training_chamber_access_b.png` |
+| chozo_transport_access_north | OK | 33.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run016/shots/chozo_transport_access_north_b.png` |
+| chozo_transport_access_south | visual issue | 23.4 | 6 texture(s) drawn before their data arrived; colour noise in 112 blocks | `work/sweep_out/runs/run016/shots/chozo_transport_access_south_b.png` |
+| chozo_transport_to_magmoor_caverns_north | OK | 28.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run016/shots/chozo_transport_to_magmoor_caverns_north_b.png` |
+| chozo_transport_to_tallon_overworld_east | OK | 34.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run016/shots/chozo_transport_to_tallon_overworld_east_b.png` |
+| chozo_transport_to_tallon_overworld_north | OK | 32.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run016/shots/chozo_transport_to_tallon_overworld_north_b.png` |
+| chozo_transport_to_tallon_overworld_south | OK | 31.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run016/shots/chozo_transport_to_tallon_overworld_south_b.png` |
+| chozo_vault | visual issue | 28.4 | 6 texture(s) drawn before their data arrived; colour noise in 299 blocks | `work/sweep_out/runs/run016/shots/chozo_vault_b.png` |
 | chozo_vault_access | visual issue | 8.7 | 6 texture(s) drawn before their data arrived; colour noise in 154 blocks | `work/sweep_out/runs/run017/shots/chozo_vault_access_b.png` |
 | chozo_watery_hall | OK | 59.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run017/shots/chozo_watery_hall_b.png` |
 | chozo_watery_hall_access | visual issue | 76.5 | 6 texture(s) drawn before their data arrived; colour noise in 2398 blocks | `work/sweep_out/runs/run017/shots/chozo_watery_hall_access_b.png` |
@@ -187,45 +193,45 @@ Status meanings: **OK** warp arrived, play time advanced, screenshots not black,
 
 | Area | Status | Load s | Notes | Evidence |
 |---|---|---|---|---|
-| magmoor_burning_trail | not reached |  |  |  |
-| magmoor_fiery_shores | not reached |  |  |  |
-| magmoor_geothermal_core | not reached |  |  |  |
-| magmoor_lake_tunnel | not reached |  |  |  |
-| magmoor_lava_lake | not reached |  |  |  |
-| magmoor_magmoor_workstation | not reached |  |  |  |
-| magmoor_monitor_station | not reached |  |  |  |
-| magmoor_monitor_tunnel | not reached |  |  |  |
-| magmoor_north_core_tunnel | not reached |  |  |  |
-| magmoor_pit_tunnel | not reached |  |  |  |
-| magmoor_plasma_processing | not reached |  |  |  |
-| magmoor_save_station_magmoor_a | not reached |  |  |  |
-| magmoor_save_station_magmoor_b | not reached |  |  |  |
-| magmoor_shore_tunnel | not reached |  |  |  |
-| magmoor_south_core_tunnel | not reached |  |  |  |
-| magmoor_storage_cavern | not reached |  |  |  |
-| magmoor_transport_to_chozo_ruins_north | not reached |  |  |  |
-| magmoor_transport_to_phazon_mines_west | not reached |  |  |  |
-| magmoor_transport_to_phendrana_drifts_north | not reached |  |  |  |
-| magmoor_transport_to_phendrana_drifts_south | not reached |  |  |  |
-| magmoor_transport_to_tallon_overworld_west | not reached |  |  |  |
-| magmoor_transport_tunnel_a | not reached |  |  |  |
-| magmoor_transport_tunnel_b | not reached |  |  |  |
-| magmoor_transport_tunnel_c | not reached |  |  |  |
-| magmoor_triclops_pit | not reached |  |  |  |
-| magmoor_twin_fires | not reached |  |  |  |
-| magmoor_twin_fires_tunnel | not reached |  |  |  |
-| magmoor_warrior_shrine | not reached |  |  |  |
-| magmoor_workstation_tunnel | not reached |  |  |  |
+| magmoor_burning_trail | OK | 30.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run018/shots/magmoor_burning_trail_b.png` |
+| magmoor_fiery_shores | OK | 26.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run018/shots/magmoor_fiery_shores_b.png` |
+| magmoor_geothermal_core | hang |  | no progress for 300 s (killed) | `work/sweep_out/runs/run018` |
+| magmoor_lake_tunnel | hang |  | no progress for 300 s (killed) | `work/sweep_out/runs/run024` |
+| magmoor_lava_lake | OK | 18.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run026/shots/magmoor_lava_lake_b.png` |
+| magmoor_magmoor_workstation | crash | 251.2 | HOST EXCEPTION 0xC0000005 at host address 0x7ff65a9122a0 on thread guest-88 (tid 423892) | `work/sweep_out/runs/run026` |
+| magmoor_monitor_station | OK | 17.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run028/shots/magmoor_monitor_station_b.png` |
+| magmoor_monitor_tunnel | OK | 15.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run028/shots/magmoor_monitor_tunnel_b.png` |
+| magmoor_north_core_tunnel | OK | 29.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run028/shots/magmoor_north_core_tunnel_b.png` |
+| magmoor_pit_tunnel | OK | 27.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run028/shots/magmoor_pit_tunnel_b.png` |
+| magmoor_plasma_processing | OK | 19.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run028/shots/magmoor_plasma_processing_b.png` |
+| magmoor_save_station_magmoor_a | OK | 22.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run028/shots/magmoor_save_station_magmoor_a_b.png` |
+| magmoor_save_station_magmoor_b | OK | 37.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_save_station_magmoor_b_b.png` |
+| magmoor_shore_tunnel | OK | 53.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_shore_tunnel_b.png` |
+| magmoor_south_core_tunnel | OK | 33.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_south_core_tunnel_b.png` |
+| magmoor_storage_cavern | OK | 36.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_storage_cavern_b.png` |
+| magmoor_transport_to_chozo_ruins_north | OK | 22.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_transport_to_chozo_ruins_north_b.png` |
+| magmoor_transport_to_phazon_mines_west | OK | 25.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_transport_to_phazon_mines_west_b.png` |
+| magmoor_transport_to_phendrana_drifts_north | OK | 41.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_transport_to_phendrana_drifts_north_b.png` |
+| magmoor_transport_to_phendrana_drifts_south | OK | 64.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_transport_to_phendrana_drifts_south_b.png` |
+| magmoor_transport_to_tallon_overworld_west | OK | 17.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_transport_to_tallon_overworld_west_b.png` |
+| magmoor_transport_tunnel_a | OK | 15.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_transport_tunnel_a_b.png` |
+| magmoor_transport_tunnel_b | OK | 9.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_transport_tunnel_b_b.png` |
+| magmoor_transport_tunnel_c | OK | 11.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run019/shots/magmoor_transport_tunnel_c_b.png` |
+| magmoor_triclops_pit | OK | 44.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run020/shots/magmoor_triclops_pit_b.png` |
+| magmoor_twin_fires | OK | 39.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run020/shots/magmoor_twin_fires_b.png` |
+| magmoor_twin_fires_tunnel | OK | 17.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run020/shots/magmoor_twin_fires_tunnel_b.png` |
+| magmoor_warrior_shrine | OK | 28.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run020/shots/magmoor_warrior_shrine_b.png` |
+| magmoor_workstation_tunnel | OK | 36.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run020/shots/magmoor_workstation_tunnel_b.png` |
 
 ## Phendrana Drifts
 
 | Area | Status | Load s | Notes | Evidence |
 |---|---|---|---|---|
-| phendrana_aether_lab_entryway | not reached |  |  |  |
-| phendrana_canyon_entryway | not reached |  |  |  |
-| phendrana_chamber_access | not reached |  |  |  |
-| phendrana_chapel_of_the_elders | not reached |  |  |  |
-| phendrana_chapel_tunnel | not reached |  |  |  |
+| phendrana_aether_lab_entryway | OK | 8.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run022/shots/phendrana_aether_lab_entryway_b.png` |
+| phendrana_canyon_entryway | hang | 91.9 | watchdog freeze: no frame tick for 60s | `work/sweep_out/runs/run022` |
+| phendrana_chamber_access | OK | 14.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run025/shots/phendrana_chamber_access_b.png` |
+| phendrana_chapel_of_the_elders | OK | 25.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run025/shots/phendrana_chapel_of_the_elders_b.png` |
+| phendrana_chapel_tunnel | hang |  | no progress for 300 s (killed) | `work/sweep_out/runs/run025` |
 | phendrana_chozo_ice_temple | not reached |  |  |  |
 | phendrana_control_tower | not reached |  |  |  |
 | phendrana_courtyard_entryway | not reached |  |  |  |
@@ -233,20 +239,20 @@ Status meanings: **OK** warp arrived, play time advanced, screenshots not black,
 | phendrana_frost_cave | not reached |  |  |  |
 | phendrana_frost_cave_access | not reached |  |  |  |
 | phendrana_frozen_pike | not reached |  |  |  |
-| phendrana_gravity_chamber | not reached |  |  |  |
-| phendrana_hunter_cave | not reached |  |  |  |
-| phendrana_hunter_cave_access | not reached |  |  |  |
-| phendrana_hydra_lab_entryway | not reached |  |  |  |
-| phendrana_ice_ruins_access | not reached |  |  |  |
-| phendrana_ice_ruins_east | not reached |  |  |  |
-| phendrana_ice_ruins_west | not reached |  |  |  |
-| phendrana_lake_tunnel | not reached |  |  |  |
-| phendrana_lower_edge_tunnel | not reached |  |  |  |
-| phendrana_map_station | not reached |  |  |  |
-| phendrana_north_quarantine_tunnel | not reached |  |  |  |
-| phendrana_observatory | not reached |  |  |  |
-| phendrana_observatory_access | not reached |  |  |  |
-| phendrana_phendrana_canyon | not reached |  |  |  |
+| phendrana_gravity_chamber | OK | 13.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_gravity_chamber_b.png` |
+| phendrana_hunter_cave | OK | 16.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_hunter_cave_b.png` |
+| phendrana_hunter_cave_access | OK | 18.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_hunter_cave_access_b.png` |
+| phendrana_hydra_lab_entryway | OK | 19.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_hydra_lab_entryway_b.png` |
+| phendrana_ice_ruins_access | visual issue | 20.8 | 6 texture(s) drawn before their data arrived; colour noise in 60 blocks | `work/sweep_out/runs/run023/shots/phendrana_ice_ruins_access_b.png` |
+| phendrana_ice_ruins_east | OK | 18.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_ice_ruins_east_b.png` |
+| phendrana_ice_ruins_west | OK | 40.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_ice_ruins_west_b.png` |
+| phendrana_lake_tunnel | OK | 34.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_lake_tunnel_b.png` |
+| phendrana_lower_edge_tunnel | OK | 20.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_lower_edge_tunnel_b.png` |
+| phendrana_map_station | OK | 21.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_map_station_b.png` |
+| phendrana_north_quarantine_tunnel | OK | 233.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_north_quarantine_tunnel_b.png` |
+| phendrana_observatory | OK | 23.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_observatory_b.png` |
+| phendrana_observatory_access | OK | 21.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run029/shots/phendrana_observatory_access_b.png` |
+| phendrana_phendrana_canyon | timeout |  | C:\mpr\work\sweep_out\runs\run029\tour.nxs:19: timeout waiting for the warp target area to become current  [@warp phendrana phendrana_phendrana_canyon] | `work/sweep_out/runs/run029` |
 | phendrana_phendrana_s_edge | not reached |  |  |  |
 | phendrana_phendrana_shorelines | not reached |  |  |  |
 | phendrana_pike_access | not reached |  |  |  |
@@ -365,3 +371,16 @@ None logged.
 | run013 | ok | 841.4 | 12 |  |
 | run014 | ok | 922.4 | 12 |  |
 | run017 | ok | 473.1 | 4 |  |
+| run016 | ok | 758.8 | 12 |  |
+| run015 | ok | 835.1 | 12 |  |
+| run018 | hang | 559.1 | 12 | no progress for 300 s (killed) |
+| run020 | ok | 554.6 | 5 |  |
+| run019 | ok | 773.4 | 12 |  |
+| run021 | hang | 432.9 | 9 | no progress for 420 s (killed) |
+| run022 | hang | 303.5 | 12 | watchdog freeze: no frame tick for 60s |
+| run024 | hang | 553.9 | 9 | no progress for 300 s (killed) |
+| run025 | hang | 771.3 | 10 | no progress for 300 s (killed) |
+| run026 | crash | 427.2 | 8 | HOST EXCEPTION 0xC0000005 at host address 0x7ff65a9122a0 on thread guest-88 (tid 423892) |
+| run023 | ok | 1179.1 | 12 |  |
+| run028 | ok | 325.4 | 6 |  |
+| run029 | timeout | 337.1 | 12 | C:\mpr\work\sweep_out\runs\run029\tour.nxs:19: timeout waiting for the |
