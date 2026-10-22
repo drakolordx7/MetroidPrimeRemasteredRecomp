@@ -9,8 +9,13 @@
 //   5. enter the first module (rtld) at offset 0 with the registers the kernel gives a new process: x0 = 0, x1 = main thread handle.
 // Everything after that (nn::init::Start, nninitStartup, nnMain) is the lifted game running on the runtime.
 //
-//   mpr [--exefs DIR] [--ini FILE] [--log FILE] [--max-seconds N] [--link host|none] [--no-nvn] [--headless|--window]
-// Environment: MPR_EXEFS. Keys (section [boot]) are read through the runtime's config, see docs/S6.md.
+//   mpr [--game DIR] [--exefs DIR] [--ini FILE] [--log FILE] [--max-seconds N] [--link host|none] [--no-nvn] [--headless|--window]
+// Environment: MPR_EXEFS, MPR_GAME. Keys (section [boot]) are read through the runtime's config, see docs/S6.md.
+//
+// Installed layout (a release folder after mpr_setup has run): when exefs\main sits next to mpr.exe, or --game DIR / MPR_GAME names a
+// folder, that folder becomes the working directory, so everything the runtime reads relative to it (bc7_cache, shader_cache, romfs,
+// controls.ini, mpr.log) is found wherever the exe is started from (double click, shortcut, terminal), the ExeFS is ./exefs and the
+// settings file is ./mpr.ini (written by setup). Without it (development runs from game-build or work/run) nothing changes.
 #include <windows.h>
 
 #include <cstdio>
@@ -205,8 +210,48 @@ DWORD WINAPI killer_poll(LPVOID) {
     std::fprintf(stderr, "mpr: ");
     std::fprintf(stderr, fmt, a, b);
     std::fprintf(stderr, "\n");
+#ifdef MPR_GUI_SUBSYSTEM
+    char msg[1024];     // a double-clicked exe has no console: say what is wrong in a box
+    std::snprintf(msg, sizeof msg, fmt, a, b);
+    MessageBoxA(nullptr, msg, "Metroid Prime Remastered", MB_OK | MB_ICONERROR);
+#endif
     TerminateProcess(GetCurrentProcess(), 1);
     for (;;) {}
+}
+
+std::wstring widen_utf8(const std::string& s) {
+    if (s.empty()) return {};
+    const int n = MultiByteToWideChar(CP_UTF8, 0, s.data(), static_cast<int>(s.size()), nullptr, 0);
+    std::wstring w(static_cast<size_t>(n), L'\0');
+    MultiByteToWideChar(CP_UTF8, 0, s.data(), static_cast<int>(s.size()), w.data(), n);
+    return w;
+}
+std::string narrow_utf8(const std::wstring& w) {
+    if (w.empty()) return {};
+    const int n = WideCharToMultiByte(CP_UTF8, 0, w.data(), static_cast<int>(w.size()), nullptr, 0, nullptr, nullptr);
+    std::string s(static_cast<size_t>(n), '\0');
+    WideCharToMultiByte(CP_UTF8, 0, w.data(), static_cast<int>(w.size()), s.data(), n, nullptr, nullptr);
+    return s;
+}
+std::wstring exe_dir() {
+    std::wstring buf(32768, L'\0');
+    const DWORD n = GetModuleFileNameW(nullptr, buf.data(), static_cast<DWORD>(buf.size()));
+    buf.resize(n);
+    const size_t slash = buf.find_last_of(L"\\/");
+    return slash == std::wstring::npos ? L"." : buf.substr(0, slash);
+}
+bool file_exists(const std::wstring& p) {
+    const DWORD a = GetFileAttributesW(p.c_str());
+    return a != INVALID_FILE_ATTRIBUTES && !(a & FILE_ATTRIBUTE_DIRECTORY);
+}
+// Absolute form of a path given on the command line, resolved against the current directory (before it is changed).
+std::string absolute_utf8(const std::string& p) {
+    const std::wstring w = widen_utf8(p);
+    std::wstring buf(32768, L'\0');
+    const DWORD n = GetFullPathNameW(w.c_str(), static_cast<DWORD>(buf.size()), buf.data(), nullptr);
+    if (!n || n >= buf.size()) return p;
+    buf.resize(n);
+    return narrow_utf8(buf);
 }
 
 // [boot] press = "A@12,A@20:500,PLUS@30,A#1500": scripted controller presses on player 1 (button@seconds-after-start[:hold ms, default 300]).
@@ -293,13 +338,22 @@ DWORD WINAPI deadline_thread(LPVOID p) {
 }  // namespace
 
 int main(int argc, char** argv) {
+#ifdef MPR_GUI_SUBSYSTEM
+    if (AttachConsole(ATTACH_PARENT_PROCESS)) {     // started from a terminal: keep its output
+        std::freopen("CONOUT$", "w", stdout);
+        std::freopen("CONOUT$", "w", stderr);
+    }
+#endif
     std::string exefs = std::getenv("MPR_EXEFS") ? std::getenv("MPR_EXEFS") : MPR_EXEFS_DEFAULT;
+    bool exefs_given = std::getenv("MPR_EXEFS") != nullptr;
+    std::string game = std::getenv("MPR_GAME") ? std::getenv("MPR_GAME") : "";
     const char* ini = nullptr;
     const char* logp = nullptr;
     std::vector<std::pair<std::string, std::string>> boot_opts;   // [boot] keys from the command line: nxrt::init() reloads the configuration, so they are applied after it
     for (int i = 1; i < argc; i++) {
         auto arg = [&](const char* n) { return !std::strcmp(argv[i], n) && i + 1 < argc; };
-        if (arg("--exefs")) exefs = argv[++i];
+        if (arg("--game")) game = argv[++i];
+        else if (arg("--exefs")) { exefs = argv[++i]; exefs_given = true; }
         else if (arg("--ini")) ini = argv[++i];
         else if (arg("--log")) logp = argv[++i];
         else if (arg("--max-seconds")) boot_opts.emplace_back("max_seconds", argv[++i]);
@@ -310,11 +364,29 @@ int main(int argc, char** argv) {
         else { std::fprintf(stderr, "mpr: unknown argument %s\n", argv[i]); return 2; }
     }
 
+    // Installed layout: work from the game folder (see the file comment).
+    std::string ini_abs, log_abs;
+    bool installed = false;
+    {
+        const std::wstring base = game.empty() ? exe_dir() : widen_utf8(absolute_utf8(game));
+        installed = !game.empty() || file_exists(base + L"\\exefs\\main");
+        if (installed) {
+            if (exefs_given) exefs = absolute_utf8(exefs);
+            if (ini) { ini_abs = absolute_utf8(ini); ini = ini_abs.c_str(); }
+            if (logp) { log_abs = absolute_utf8(logp); logp = log_abs.c_str(); }
+            if (!SetCurrentDirectoryW(base.c_str())) die("cannot use the game folder %s", narrow_utf8(base).c_str());
+            if (!exefs_given) exefs = "exefs";
+            if (!logp) logp = "mpr.log";
+            if (!ini && !std::getenv("NXRT_INI") && file_exists(L"mpr.ini")) ini = "mpr.ini";
+        }
+    }
+
     nxrt::InitOptions opt;
     opt.ini_path = ini;
     opt.log_path = logp;
     if (!nxrt::init(opt)) die("runtime start-up failed (address-space layout)");
     for (const auto& kv : boot_opts) nxrt::config_set("boot", kv.first.c_str(), kv.second.c_str());
+    if (installed && !nxrt::config_has("fs", "romfs")) nxrt::config_set("fs", "romfs", "romfs");   // mpr.ini missing or without [fs]
     nxrt::config_set("process", "program_id", "0x010012101468C000");     // GetInfo(ProgramId); an ini value or the environment still wins
     NXLOG_I("boot", "Metroid Prime Remastered v1.0.0: exefs '%s'", exefs.c_str());
 
@@ -378,6 +450,8 @@ int main(int argc, char** argv) {
         lo.base = g.base;
         std::string err;
         const std::string path = exefs + "\\" + g.file;
+        if (!file_exists(widen_utf8(path)))
+            die("The game files were not found (%s). Run mpr_setup.exe from this folder first, then start the game again.", path.c_str());
         nxrt::Module* m = nxrt::module_load_nso_file(path.c_str(), lo, &err);
         if (!m) die("cannot load %s: %s", path.c_str(), err.c_str());
         if (m->base() != g.nx->base) die("module %s is mapped at a base different from the one the library was lifted for", g.file);
