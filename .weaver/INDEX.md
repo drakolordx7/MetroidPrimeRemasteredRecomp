@@ -63,3 +63,23 @@ S8 (play mode, branch `play`, worktree runtime-wt/play; docs `runtime/docs/S8.md
 - `runtime-wt/play/scripts/play_unit.ps1 -Name n -Test t.cpp -Src a.cpp,b.cpp` — one play unit test without CMake; `play_syntax.ps1 files...` — compile check only.
 - `tools\.venv\Scripts\python tools\test\run_suite.py tools\test\suites\play.toml --exe game-build\build\play\mpr.exe` then `tools\test\play_check.py suite work\suite_out_play` — title-screen key vs pad oracle, window lifecycle, limiter, settings, overlay.
 - `tools\.venv\Scripts\python .weaver\gdis.py 0xADDR [count]` — disassemble main.elf at a vaddr (capstone).
+- `.weaver/hifps_wt.sh [boot.py args]` — S11: boot.py against the hifps runtime worktree (`runtime-wt/hifps`, build dir `game-build/build/hifps`).
+- `.weaver/killmine.sh` — kill the running mpr.exe of the nvn2 build tree (run before every `trun.sh`: a live exe blocks the rebuild); `.weaver/trun.sh <sec>` with `TRACE=<present>` or `--env NXRT_NVN_TRACE_AFTER_FS=<fs hash prefix>`, `NXRT_NVN_TRACE_SNAP_FS`, `NXRT_NVN_TRACE_SNAP_SAMPLED=1` — traced run of the nvn2 build (docs/S4e.md)
+- `.weaver/relift_hifps.cmd` — S11: re-lift + build mpr_main with the current main.sites into work/lift_hifps and work/build/mpr_hifps (shared work/lift untouched); `.weaver/hifps_game_build.cmd` then builds mpr.exe against it into game-build/build/hifps.
+
+S14 (extras, branch `extras`, docs `runtime/docs/S14.md`):
+- `.weaver/build_mpr_extras.cmd` — lift + build the game libraries into `work/lift_extras`, `work/build/mpr_extras` (private copy; uses the current `main.sites`); `.weaver/build_extras.cmd` — build mpr.exe from `runtime-wt/extras` against them (`game-build/build/extras`).
+- `.weaver/boot_extras.sh [boot.py args]` — boot.py against that build, run folder `work/run_extras`. `--env NXRT_HDR_MODE=on`, `NXRT_UPSCALE_MODE=fsr1`, `NXRT_UPSCALE_SCENE_SCALE=60`, `NXRT_LATENCY_MODE=on`, `NXRT_GFX_LOG_FPS=1`, `NXRT_NVN_TRACE_SEC=90` (trace the frame N s after the first draw). HDR runs write `shot_<n>.hdrmap.png` and `.pfm` next to the screenshot.
+- `.weaver/lat_ab.py LABEL [--toggle 8]` — latency A/B in one window-mode run (mode flipped every N s); `.weaver/lat_measure.py` — one run per state; `.weaver/fsr_matrix.py` — window 3840x2160 frame rate and present-pass GPU time for native / bilinear / FSR 1 / scene-scale variants with screenshots; `.weaver/s14_oracles.sh` — HDR off/on, window auto, Reflex runs with validation into `work/shots_s14`.
+- `.weaver/spv_scan3d.py` — list fragment SPIR-V in the shader cache that sample 3D images. `work/ffx114/build.cmd` — build `amd_fidelityfx_vk.dll` from FidelityFX SDK v1.1.4 (MIT).
+
+S17 (button prompts, branch prompts; docs `runtime/docs/S17.md`):
+- `.weaver/boot_prompts.sh [boot.py args]` — boot.py against the prompts runtime worktree (build `game-build/build/prompts`, run dir `work/run_prompts`); `.weaver/trace_press_a.sh [tries]` — retries a traced title frame until the PRESS A text is lit (snaps of draws 40..142 in work/run_prompts).
+- `.weaver/prompts_tests.ps1 [-Filter "play_|prompt_|..."] [-NoBuild]` — build + ctest of the prompts worktree. `.weaver/txtr_bc7_dump.py <TXTR> <png> [gob_height]` — decode a 1-mip block-linear BC7 TXTR; `.weaver/gob_rule_diff.py` — count TXTRs where the two block-height rules differ.
+
+S4f (rendering fidelity) tools:
+- `.weaver/bnrun.sh <seconds> [boot args]` — build the private game build (`game-build-nvn3`, runtime worktree `runtime-wt/nvn3`) and run it scripted into the game (`nrun.sh` without the build); env `PRESS` (button script), `SHOT_AT`/`SHOT_EVERY`. Results in `work/run_nvn3`. One-time configure: `cfg_nvn3.cmd`; `boot_nvn3.sh` is boot.py against that build.
+- Run options (env, all `[nvn]` keys): `NXRT_NVN_SHOT_FRAMES=a:b:step,n` writes numbered PNGs of presented frames to `shots/`; `NXRT_NVN_TRACE_FRAME=n[,m]` traces frames (draws, uniforms, textures with sampler/view/memory, viewport, indexed vertex data); `NXRT_NVN_TRACE_DUMP_TEX=dir` writes the prepared and the GPU data of sampled textures; `NXRT_NVN_TRACE_TEX_EVENTS=1` logs the life of 128x128 cube textures.
+- `.weaver/align_frames.py A_DIR B_DIR OUT_DIR [--amin N --bmin N --bmax M]` — match our screenshots to the best Eden frames (monotonic), side-by-side PNGs and ssim/mae table (`align.tsv`).
+- `.weaver/bc6view.py t<id> out.png [level]` — decode a texture written by `trace_dump_tex` (BC6H cube or array) to a picture (needs `texture2ddecoder` in tools\.venv).
+- `.weaver/wt_build.cmd <worktree>` configures and builds `nxrt_tests` of a runtime worktree; `.weaver/wt_target.cmd <worktree> <target>` builds one target (`nxrt_gfx_tests` holds the gfx test groups).
