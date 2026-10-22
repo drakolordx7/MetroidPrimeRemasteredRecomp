@@ -19,6 +19,9 @@ Project-local tools (one line each: what it does, how to run).
 - 010 Editor 16.0.4 (`C:\Program Files\010 Editor\010Editor.exe`) — run `refs/PrimeRemasterStructs/*.bt` on MPR files headless: `-script:x.1sc -noui -nowarnings`, script uses `RunTemplate` + `OutputPaneSave`
 - Superluminal (`C:\Program Files\Superluminal\Performance\SuperluminalCmd.exe`) — CPU profiler; `run`/`attach` capture
 
+- Nsight Systems 2026.5.1 (`C:/Program Files/NVIDIA Corporation/Nsight Systems 2026.5.1/target-windows-x64/nsys.exe`): CPU/GPU timeline, frame pacing and latency; `nsys profile --trace=vulkan,osrt -o work/prof/x mpr.exe`
+- Nsight Graphics 2026.3.1 (`C:/Program Files/NVIDIA Corporation/Nsight Graphics 2026.3.1/host/windows-desktop-nomad-x64/ngfx.exe`, `ngfx-capture.exe`): GPU frame capture/debug, works with Vulkan apps that RenderDoc can't hook
+
 Global (machine-wide) tools used here: IDA Pro 9.4, WinDbg, LLVM, CMake, Ninja, sccache, Vulkan SDK, RenderDoc, VS Build Tools 2026.
 
 S2 knowledge base (docs/mpr/, scripts in tools/analysis/):

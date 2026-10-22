@@ -22,7 +22,7 @@ elease\mpr.exe --jobs 2 --resume.
 
 ## Next
 1. Merge the branches above, rerun tests and boot once, publish (`pwsh .weaver\publish.ps1`; humanizer pass on new docs first).
-2. Finish S18 (latency is the top issue for mouse play) and the S4f visual bugs.
+2. Finish S18 (use Nsight Systems for the latency/frame-pacing timeline and Nsight Graphics for GPU frames; both installed) (latency is the top issue for mouse play) and the S4f visual bugs.
 3. Then: FSR 3.1/DLSS/XeSS need motion vectors (S14.md says what it takes); AMD Anti-Lag 2 untested (no AMD GPU); HDR untested on a real HDR display.
 
 ## Shortcomings to fix
