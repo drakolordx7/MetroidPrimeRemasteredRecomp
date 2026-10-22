@@ -1,21 +1,29 @@
 # Status — Metroid Prime Remastered PC recomp
 
-## Done
-- Phase 0 toolkit installed and verified (`.weaver\check-toolchain.ps1`, 16/16 pass): LLVM 23.1.4, CMake 4.4.4, Ninja, sccache, VS Build Tools 2026 + Windows SDK 26100, Vulkan SDK 1.4.363, RenderDoc 1.46, WinDbg (cdb), .NET 10, Rust, hactool, nstool, nx2elf (built), retrotool (built), Python oracle venv (Unicorn, Capstone), IDA Pro 9.4 + idalib.
-- Ryujinx shader translator (MIT) builds from the Codeberg Ryubing archive.
-- Global Claude add-ons: ida-mcp, mcp-windbg, renderdoc-mcp, clangd-lsp, ralph-loop, Trail of Bits modern-cpp / differential-review / regression-hunt / c-review.
-- 18 reference projects in `refs/` (Switch recomps, Prime ports/mods, retrotool, PrimeRemasterStructs, Ryubing, deko3d, XenonRecomp, N64Recomp).
-- Git repos: root, `recomp/`, `runtime/`, `tools/`.
+## Done (verified by the lead)
+- Phase 0 toolkit (`.weaver\check-toolchain.ps1`), guard hook, Eden reference emulator, 010 Editor, Superluminal.
+- S1 recompiler (`recomp/`): difftest 565,061/565,061, mutation 22/22, e2e 30/30, hooks — oracles locked.
+- S4 offline graphics tools (`tools/`): shaders harness, ASTC→BC7, tiling — oracles locked.
+- S3 runtime skeleton + S3b ABI v2 and C++ unwinder + S4b graphics shell merged on `runtime` main: 54/54 tests.
+- S2 knowledge base (`docs/mpr/`): validator on real main 2,247 PASS / 5 FAIL (source errors) / 462 WARN; IDA db `work\ida\main.i64`.
+- Dump gate: v1.0.0 confirmed (build ID 67C9CA14…), SDK 12.3.1, 92,784 named functions, lifter coverage 100% of 6.5 M instructions, FPCR unused by game code. Asset survey (`docs/mpr/survey/SURVEY.md`): Ryujinx translator chosen, no Scaleform, DSP-ADPCM audio, H.264 movies, ~12–23 min ASTC→BC7.
+- GitHub: private drakolordx7/nxrecomp (base) and drakolordx7/MetroidPrimeRemasteredRecomp (game, base as submodule); `.weaver\publish.ps1`.
+
+## In progress
+- S1b: lift + compile main/sdk/subsdk0 (work\lift, work\build), plus 4 lifter changes requested by S3b.
+- S3c: boot-path Horizon services (branch `services`).
+- S4d: NVN→Vulkan implementation + full 67,506-block shader cache (branch `nvn`).
 
 ## Next
-- Game-independent work while the dump is pending: study smo-recomp / ssbu-recomp / Wonder architecture, then lifter + Unicorn test suite, runtime skeleton, SDL3/Vulkan shell, first-run setup tool.
-- Phase 1 the moment the user's dump (NSP/XCI + prod.keys) arrives.
+- Link game libraries + runtime → first boot, iterate on logged unknown SVC/IPC/NVN calls.
+- S5 test tooling (input record/replay, scripted runs, Eden reference captures).
+- High-fps experiment (CGameArchitectureSupport::Update hard-codes 1/60), raw mouse via CPlayerMP1::ProcessInput, KB+M via nn::hid::GetNpadState import.
 
 ## Open items
-- Reference emulator for trace diffs (Phase 5): Ryubing won't build here because some NuGet packages live only on the unreachable git.ryujinx.app feed; GitHub mirrors are unverified third-party binaries, not used. Revisit in Phase 5: Eden, a Ryubing build the user supplies, or retry the official host.
-- "Reverse Engineering" directory skill: user installs from the claude.ai card (CLI can't find it).
-- BinDiff/BinExport: no BinExport build for IDA 9.4 yet; build from source against the IDA SDK in Phase 1 if name matching needs it.
-- PrimeDecomp server (git.axiodl.com) returns 502; decomp source is available inside `refs/MetroidPrimePort/decomp`.
+- "Reverse Engineering" directory skill: user installs from the claude.ai card.
+- Superluminal license activation for its llm/mcp modes (user, browser).
+- BinExport for IDA 9.4 not built (not needed so far).
+- PIXLD.MY_INDEX lowering (S4d investigating).
 
 ## Decisions that matter
-GPL-3.0; base on smo-recomp architecture; IDA primary, Ghidra not installed; variable timestep for high refresh; Vulkan 1.3; FSR 3.1 built-in, DLSS/XeSS user DLLs; prebuilt exe release, player supplies dump; Windows x64 only.
+GPL-3.0; recompile main+sdk+subsdk0, HLE at SVC/IPC with hook overrides (movie→Media Foundation, GetNpadState, fs as folder); smo lifter + Wonder/ssbu/ScarletNX pieces; Ryujinx shader translator, SPIR-V shipped; ASTC→BC7 at setup; Vulkan 1.3; prebuilt exe release, player supplies dump; Windows x64 only; repos private until release; symbol names/addresses in docs are kept.
