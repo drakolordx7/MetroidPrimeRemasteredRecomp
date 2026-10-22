@@ -8,13 +8,13 @@ The real game runs natively on Windows from the title screen through New Game in
 - Offline tools (`tools/`): shader harness (Ryujinx), ASTC→BC7 (normal maps fixed, 4,413/4,413 pass), tiling, setup tool (NSP/XCI/NSZ + keys, version check, ~5 min setup), release builder (refuses game data, 286 MiB zip, clean-room install reaches the title), test tooling (deterministic mode, state hash, input replay, script runner, probes, comparators, Eden references).
 - Runtime (`runtime/` main): ABI 3, C++ exceptions, Horizon services, NVN on Vulkan (struct sizes from the game, storage images, sparse textures, occlusion, transform feedback), shader cache (67,506 blocks), movies on Media Foundation, audio paced by the sink, window + controllers + keyboard/mouse bindings + mouse aim + F1 settings, real-time timestep (60/120/144/240 run at real speed), display options (resolution, Hor+ ultrawide, FOV, AF, LOD bias, post toggles, dynamic resolution off), perf fixes (title 140 fps at a 144 cap), pipeline prewarm, HDR10/scRGB, Reflex, frames-ahead pacing, FSR 1, scene scale.
 
-## Unmerged work on branches (resume here)
-Each stream's branch lives in runtime (worktrees under `runtime-wt\<branch>`), with its notes in `runtime-wt\<branch>\docs\S<n>.md`. Merge order suggestion: nvn3, verify, sweep, prompts, perf; run the runtime tests once and `tools\boot\boot.py` once after the batch.
-- `nvn3` (S4f, rendering fidelity): rainbow textures fixed, cutscene gun coloured, cube-map layered rendering, no dev shader path. Open: first-person arm and gun missing/black, misaligned engine jets, hangar-door noise (likely a texture-pool slot race), black textures, broken character model, BC5/RGBA8 cache entries.
-- `verify` (S13, gameplay verification): probe fixes (yaw axis, physics velocity guard, @give/@mash/@run/@sleep steps). Open: physics deviation table at 60-240, binding-by-binding run, mouse linearity log, morph-ball camera, free look.
-- `sweep` (S15, full-game sweep): warp-tour suite and SWEEP.md in progress.
-- `prompts` (S17): warped button icons (cause being traced: icon texture decode/UV vs font) and prompt styles Switch/Xbox/PlayStation/keyboard-mouse from a free icon pack.
-- `perf` (S18): gameplay stutter/low fps and input latency (measured 250-360 ms input→present, far too high).
+## Unmerged work (resume here)
+Merged into runtime main at the end of the session: nvn3 (rendering fixes so far), verify (aim, free look, ball camera, probes), sweep (warp tour suite), perf (notes only). Branch notes: runtime\docs\S4f.md, S13.md, S15.md, S18.md.
+- `prompts` (runtime-wt\prompts, commit 436e77b "WIP"): NOT merged; conflicts with the extras settings code (play_config.cpp, play_types.h, test_play_config.cpp, nvn_core.h, nvn_texdata.h, nvn_texture_registry.cpp), all additive. Contains the important fix for wrongly untiled small textures (console_block_height in nvn_texture_layout.cpp: 263 textures incl. the 173 button icons) and the Switch/Xbox/PlayStation/keyboard prompt styles (Kenney Input Prompts, CC0). Merge it first next session.
+- nvn3 and sweep may have a last commit after the merge: `git -C runtime log main..nvn3` / `main..sweep`.
+- Open from S4f: first-person arm and gun missing/black, misaligned engine jets, hangar-door noise (texture-pool slot race suspected), black textures, broken character model.
+- Open from S13: physics deviation table (walk at 120 vs 60 looked 4% slow, unconfirmed), keyboard beam/visor keys unverified after the pulse fix, core-model stutter numbers, guest-wait stalls during warp loads.
+- Open from S18: no measurements yet; hypothesis for the 250-360 ms latency: frame limiter sleeps inside present while the game's queue fills, plus up to 4 submissions in flight. Plan in S18.md.
 
 ## Next
 1. Merge the branches above, rerun tests and boot once, publish (`pwsh .weaver\publish.ps1`; humanizer pass on new docs first).
