@@ -7,7 +7,8 @@
 - Runtime main: ABI 3, C++ exceptions, graphics shell, Horizon services (fs/RomFS, saves, am, acc, set, time, hid, pl, audren, vi, nvdrv and stubs), NVN on Vulkan (513/523 entry points, all 204 the game uses), shader cache (67,506 blocks, 0 failures). 122/122 tests.
 - Knowledge base (`docs/mpr/`), asset survey (`docs/mpr/survey/SURVEY.md`).
 - Boot: the real game reaches the title screen ("PRESS A TO START", background still black) and main menu through our NVN-on-Vulkan backend at about 136 fps headless, and with scripted input the loading screen, where the Vulkan device is lost (~58 s). Screenshot: work\run\shot_0.png.
-- Test tooling: deterministic mode with per-frame state hash, input record/replay, script runner and probes, image/trace/regression comparators, Eden reference captures (work\eden_refef). main is lifted with entry hooks (recomp\games\mpr\main.sites).
+- Test tooling: deterministic mode with per-frame state hash, input record/replay, script runner and probes, image/trace/regression comparators, Eden reference captures (work\eden_ref
+ef). main is lifted with entry hooks (recomp\games\mpr\main.sites).
 - GitHub: both repos humanized and published (private).
 
 ## Running
