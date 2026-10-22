@@ -14,7 +14,6 @@
 ## Running
 - NVN correctness to gameplay (branch `nvn2`): struct-size audit, validation clean, fix the device loss, title background, past loading into gameplay.
 - Play mode: window, real controller input, pacing, then keyboard/mouse and raw mouse aim (branch `play`).
-- Kernel sync deadlock fix (branch `syncfix`).
 - Movies (Media Foundation for movie::) and audio correctness (branch `media`).
 
 ## Next (in this order)
@@ -24,6 +23,7 @@
 4. Extras: HDR (NTonemap), FSR 3.1, DLSS/XeSS, Reflex/Anti-Lag 2.
 
 ## Shortcomings to fix
+- Game threads are pinned to three host cores with Windows wake-up boost off (console core model). Under heavy background load each contended mutex hand-over waits a scheduler quantum (debug 180, fixed in tests by raising priority). Decide how mpr.exe itself avoids stutter on busy PCs: raise its priority class, or relax the pinning or boost once gameplay timing is measured.
 - BC7 quality: real textures go down to 28-29 dB on a few files (mean 49-50 dB); find which textures (normal maps, alpha?) and fix the encoding rather than relax the floor.
 - Release launcher must run from the game folder with --exefs exefs --ini mpr.ini (the exe's default game/exefs doesn't match the setup layout).
 - gfx_nvn_scene_stress failed once under load, passed alone; watch it.
