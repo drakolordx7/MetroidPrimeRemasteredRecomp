@@ -8,17 +8,17 @@ tools\.venv\Scripts\python tools\test\sweep.py --exe game-build\build\release\mp
 
 `--resume` keeps the areas that were OK last time, `--report-only` rebuilds this file from `work\sweep_out\results.json`, `--worlds`, `--areas` and `--limit` select a subset.
 
-Last sweep: 2026-10-22 07:43, exe `?`, ? min wall, ? parallel.
+Last sweep: 2026-10-22 08:36, exe `?`, ? min wall, ? parallel.
 
 ## Result
 
-**13 of 275 areas reached.** 10 OK, 2 visual issue, 1 crash, 262 not reached.
+**112 of 275 areas reached.** 99 OK, 12 visual issue, 1 crash, 163 not reached.
 
 | World | Areas | OK | Visual issue | Timeout | Hang | Crash | Not reached |
 |---|---|---|---|---|---|---|---|
-| Frigate Orpheon | 28 | 10 | 2 | 0 | 0 | 1 | 15 |
-| Tallon Overworld | 44 | 0 | 0 | 0 | 0 | 0 | 44 |
-| Chozo Ruins | 64 | 0 | 0 | 0 | 0 | 0 | 64 |
+| Frigate Orpheon | 28 | 23 | 4 | 0 | 0 | 1 | 0 |
+| Tallon Overworld | 44 | 40 | 4 | 0 | 0 | 0 | 0 |
+| Chozo Ruins | 64 | 36 | 4 | 0 | 0 | 0 | 24 |
 | Magmoor Caverns | 29 | 0 | 0 | 0 | 0 | 0 | 29 |
 | Phendrana Drifts | 56 | 0 | 0 | 0 | 0 | 0 | 56 |
 | Phazon Mines | 42 | 0 | 0 | 0 | 0 | 0 | 42 |
@@ -37,17 +37,17 @@ Status meanings: **OK** warp arrived, play time advanced, screenshots not black,
 | Area | Status | Load s | Notes | Evidence |
 |---|---|---|---|---|
 | frigate_air_lock | crash |  | HOST EXCEPTION 0xC0000005 at host address 0x7ff65aea63d8 on thread guest-84 (tid 505996) | `work/sweep_out/runs/run001` |
-| frigate_biohazard_containment | not reached |  |  |  |
-| frigate_biotech_research_area_1 | not reached |  |  |  |
-| frigate_biotech_research_area_2 | not reached |  |  |  |
-| frigate_cargo_freight_lift_to_deck_gamma | not reached |  |  |  |
-| frigate_connection_elevator_to_deck_alpha | not reached |  |  |  |
-| frigate_connection_elevator_to_deck_beta | not reached |  |  |  |
-| frigate_connection_elevator_to_deck_beta_2 | not reached |  |  |  |
-| frigate_deck_alpha_access_hall | not reached |  |  |  |
-| frigate_deck_alpha_mech_shaft | not reached |  |  |  |
-| frigate_deck_alpha_umbilical_hall | not reached |  |  |  |
-| frigate_deck_beta_conduit_hall | not reached |  |  |  |
+| frigate_biohazard_containment | OK | 13.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run004/shots/frigate_biohazard_containment_b.png` |
+| frigate_biotech_research_area_1 | visual issue | 7.6 | 6 texture(s) drawn before their data arrived; colour noise in 45 blocks | `work/sweep_out/runs/run004/shots/frigate_biotech_research_area_1_b.png` |
+| frigate_biotech_research_area_2 | OK | 80.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run004/shots/frigate_biotech_research_area_2_b.png` |
+| frigate_cargo_freight_lift_to_deck_gamma | OK | 18.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run004/shots/frigate_cargo_freight_lift_to_deck_gamma_b.png` |
+| frigate_connection_elevator_to_deck_alpha | OK | 13.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run004/shots/frigate_connection_elevator_to_deck_alpha_b.png` |
+| frigate_connection_elevator_to_deck_beta | OK | 14.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run004/shots/frigate_connection_elevator_to_deck_beta_b.png` |
+| frigate_connection_elevator_to_deck_beta_2 | OK | 12.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run004/shots/frigate_connection_elevator_to_deck_beta_2_b.png` |
+| frigate_deck_alpha_access_hall | OK | 10.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run004/shots/frigate_deck_alpha_access_hall_b.png` |
+| frigate_deck_alpha_mech_shaft | visual issue | 21.0 | 6 texture(s) drawn before their data arrived; colour noise in 11 blocks | `work/sweep_out/runs/run004/shots/frigate_deck_alpha_mech_shaft_b.png` |
+| frigate_deck_alpha_umbilical_hall | OK | 20.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run004/shots/frigate_deck_alpha_umbilical_hall_b.png` |
+| frigate_deck_beta_conduit_hall | OK | 38.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run004/shots/frigate_deck_beta_conduit_hall_b.png` |
 | frigate_deck_beta_security_hall | visual issue | 11.9 | 6 texture(s) drawn before their data arrived; colour noise in 3 blocks | `work/sweep_out/runs/run002/shots/frigate_deck_beta_security_hall_b.png` |
 | frigate_deck_beta_transit_hall | OK | 12.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_deck_beta_transit_hall_b.png` |
 | frigate_deck_gamma_monitor_hall | OK | 13.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_deck_gamma_monitor_hall_b.png` |
@@ -60,100 +60,100 @@ Status meanings: **OK** warp arrived, play time advanced, screenshots not black,
 | frigate_main_ventilation_shaft_section_e | visual issue | 21.2 | 6 texture(s) drawn before their data arrived; colour noise in 115 blocks | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_e_b.png` |
 | frigate_main_ventilation_shaft_section_f | OK | 15.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_main_ventilation_shaft_section_f_b.png` |
 | frigate_map_facility | OK | 13.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run002/shots/frigate_map_facility_b.png` |
-| frigate_reactor_core | not reached |  |  |  |
-| frigate_reactor_core_entrance | not reached |  |  |  |
-| frigate_subventilation_shaft_section_a | not reached |  |  |  |
-| frigate_subventilation_shaft_section_b | not reached |  |  |  |
+| frigate_reactor_core | OK | 13.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run005/shots/frigate_reactor_core_b.png` |
+| frigate_reactor_core_entrance | OK | 15.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run005/shots/frigate_reactor_core_entrance_b.png` |
+| frigate_subventilation_shaft_section_a | OK | 8.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run005/shots/frigate_subventilation_shaft_section_a_b.png` |
+| frigate_subventilation_shaft_section_b | OK | 18.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run005/shots/frigate_subventilation_shaft_section_b_b.png` |
 
 ## Tallon Overworld
 
 | Area | Status | Load s | Notes | Evidence |
 |---|---|---|---|---|
-| tallon_alcove | not reached |  |  |  |
-| tallon_arbor_chamber | not reached |  |  |  |
-| tallon_artifact_temple | not reached |  |  |  |
-| tallon_biohazard_containment | not reached |  |  |  |
-| tallon_biotech_research_area_1 | not reached |  |  |  |
-| tallon_canyon_cavern | not reached |  |  |  |
-| tallon_cargo_freight_lift_to_deck_gamma | not reached |  |  |  |
-| tallon_connection_elevator_to_deck_beta | not reached |  |  |  |
-| tallon_deck_beta_conduit_hall | not reached |  |  |  |
-| tallon_deck_beta_security_hall | not reached |  |  |  |
-| tallon_deck_beta_transit_hall | not reached |  |  |  |
-| tallon_frigate_access_tunnel | not reached |  |  |  |
-| tallon_frigate_crash_site | not reached |  |  |  |
-| tallon_great_tree_chamber | not reached |  |  |  |
-| tallon_great_tree_hall | not reached |  |  |  |
-| tallon_gully | not reached |  |  |  |
-| tallon_hydro_access_tunnel | not reached |  |  |  |
-| tallon_landing_site | not reached |  |  |  |
-| tallon_life_grove | not reached |  |  |  |
-| tallon_life_grove_tunnel | not reached |  |  |  |
-| tallon_main_ventilation_shaft_section_a | not reached |  |  |  |
-| tallon_main_ventilation_shaft_section_b | not reached |  |  |  |
-| tallon_main_ventilation_shaft_section_c | not reached |  |  |  |
-| tallon_overgrown_cavern | not reached |  |  |  |
-| tallon_reactor_access | not reached |  |  |  |
-| tallon_reactor_core | not reached |  |  |  |
-| tallon_root_cave | not reached |  |  |  |
-| tallon_root_tunnel | not reached |  |  |  |
-| tallon_save_station | not reached |  |  |  |
-| tallon_tallon_canyon | not reached |  |  |  |
-| tallon_temple_hall | not reached |  |  |  |
-| tallon_temple_lobby | not reached |  |  |  |
-| tallon_temple_security_station | not reached |  |  |  |
-| tallon_transport_to_chozo_ruins_east | not reached |  |  |  |
-| tallon_transport_to_chozo_ruins_south | not reached |  |  |  |
-| tallon_transport_to_chozo_ruins_west | not reached |  |  |  |
-| tallon_transport_to_magmoor_caverns_east | not reached |  |  |  |
-| tallon_transport_to_phazon_mines_east | not reached |  |  |  |
-| tallon_transport_tunnel_a | not reached |  |  |  |
-| tallon_transport_tunnel_b | not reached |  |  |  |
-| tallon_transport_tunnel_c | not reached |  |  |  |
-| tallon_transport_tunnel_d | not reached |  |  |  |
-| tallon_transport_tunnel_e | not reached |  |  |  |
-| tallon_waterfall_cavern | not reached |  |  |  |
+| tallon_alcove | OK | 10.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run006/shots/tallon_alcove_b.png` |
+| tallon_arbor_chamber | OK | 9.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run006/shots/tallon_arbor_chamber_b.png` |
+| tallon_artifact_temple | OK | 20.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run006/shots/tallon_artifact_temple_b.png` |
+| tallon_biohazard_containment | visual issue | 41.4 | 6 texture(s) drawn before their data arrived; colour noise in 2175 blocks | `work/sweep_out/runs/run006/shots/tallon_biohazard_containment_b.png` |
+| tallon_biotech_research_area_1 | OK | 54.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run006/shots/tallon_biotech_research_area_1_b.png` |
+| tallon_canyon_cavern | OK | 49.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run006/shots/tallon_canyon_cavern_b.png` |
+| tallon_cargo_freight_lift_to_deck_gamma | OK | 34.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run006/shots/tallon_cargo_freight_lift_to_deck_gamma_b.png` |
+| tallon_connection_elevator_to_deck_beta | OK | 54.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run006/shots/tallon_connection_elevator_to_deck_beta_b.png` |
+| tallon_deck_beta_conduit_hall | OK | 32.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run006/shots/tallon_deck_beta_conduit_hall_b.png` |
+| tallon_deck_beta_security_hall | OK | 28.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run006/shots/tallon_deck_beta_security_hall_b.png` |
+| tallon_deck_beta_transit_hall | OK | 18.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run006/shots/tallon_deck_beta_transit_hall_b.png` |
+| tallon_frigate_access_tunnel | OK | 32.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run006/shots/tallon_frigate_access_tunnel_b.png` |
+| tallon_frigate_crash_site | OK | 66.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run009/shots/tallon_frigate_crash_site_b.png` |
+| tallon_great_tree_chamber | OK | 60.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run009/shots/tallon_great_tree_chamber_b.png` |
+| tallon_great_tree_hall | OK | 36.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run009/shots/tallon_great_tree_hall_b.png` |
+| tallon_gully | OK | 30.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run009/shots/tallon_gully_b.png` |
+| tallon_hydro_access_tunnel | OK | 30.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run009/shots/tallon_hydro_access_tunnel_b.png` |
+| tallon_landing_site | OK | 39.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run009/shots/tallon_landing_site_b.png` |
+| tallon_life_grove | OK | 22.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run009/shots/tallon_life_grove_b.png` |
+| tallon_life_grove_tunnel | OK | 19.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run009/shots/tallon_life_grove_tunnel_b.png` |
+| tallon_main_ventilation_shaft_section_a | OK | 13.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run009/shots/tallon_main_ventilation_shaft_section_a_b.png` |
+| tallon_main_ventilation_shaft_section_b | visual issue | 15.5 | 6 texture(s) drawn before their data arrived; colour noise in 34 blocks | `work/sweep_out/runs/run009/shots/tallon_main_ventilation_shaft_section_b_b.png` |
+| tallon_main_ventilation_shaft_section_c | OK | 22.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run009/shots/tallon_main_ventilation_shaft_section_c_b.png` |
+| tallon_overgrown_cavern | OK | 40.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run009/shots/tallon_overgrown_cavern_b.png` |
+| tallon_reactor_access | OK | 41.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run008/shots/tallon_reactor_access_b.png` |
+| tallon_reactor_core | OK | 53.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run008/shots/tallon_reactor_core_b.png` |
+| tallon_root_cave | OK | 79.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run008/shots/tallon_root_cave_b.png` |
+| tallon_root_tunnel | visual issue | 55.9 | 6 texture(s) drawn before their data arrived; colour noise in 398 blocks | `work/sweep_out/runs/run008/shots/tallon_root_tunnel_b.png` |
+| tallon_save_station | OK | 44.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run008/shots/tallon_save_station_b.png` |
+| tallon_tallon_canyon | OK | 42.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run008/shots/tallon_tallon_canyon_b.png` |
+| tallon_temple_hall | OK | 30.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run008/shots/tallon_temple_hall_b.png` |
+| tallon_temple_lobby | OK | 54.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run008/shots/tallon_temple_lobby_b.png` |
+| tallon_temple_security_station | visual issue | 21.3 | 6 texture(s) drawn before their data arrived; colour noise in 31 blocks | `work/sweep_out/runs/run008/shots/tallon_temple_security_station_b.png` |
+| tallon_transport_to_chozo_ruins_east | OK | 28.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run008/shots/tallon_transport_to_chozo_ruins_east_b.png` |
+| tallon_transport_to_chozo_ruins_south | OK | 18.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run008/shots/tallon_transport_to_chozo_ruins_south_b.png` |
+| tallon_transport_to_chozo_ruins_west | OK | 11.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run008/shots/tallon_transport_to_chozo_ruins_west_b.png` |
+| tallon_transport_to_magmoor_caverns_east | OK | 26.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run011/shots/tallon_transport_to_magmoor_caverns_east_b.png` |
+| tallon_transport_to_phazon_mines_east | OK | 23.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run011/shots/tallon_transport_to_phazon_mines_east_b.png` |
+| tallon_transport_tunnel_a | OK | 11.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run011/shots/tallon_transport_tunnel_a_b.png` |
+| tallon_transport_tunnel_b | OK | 17.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run011/shots/tallon_transport_tunnel_b_b.png` |
+| tallon_transport_tunnel_c | OK | 8.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run011/shots/tallon_transport_tunnel_c_b.png` |
+| tallon_transport_tunnel_d | OK | 9.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run011/shots/tallon_transport_tunnel_d_b.png` |
+| tallon_transport_tunnel_e | OK | 9.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run011/shots/tallon_transport_tunnel_e_b.png` |
+| tallon_waterfall_cavern | OK | 10.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run011/shots/tallon_waterfall_cavern_b.png` |
 
 ## Chozo Ruins
 
 | Area | Status | Load s | Notes | Evidence |
 |---|---|---|---|---|
-| chozo_antechamber | not reached |  |  |  |
-| chozo_arboretum | not reached |  |  |  |
-| chozo_arboretum_access | not reached |  |  |  |
-| chozo_burn_dome | not reached |  |  |  |
-| chozo_burn_dome_access | not reached |  |  |  |
-| chozo_crossway | not reached |  |  |  |
-| chozo_crossway_access_south | not reached |  |  |  |
-| chozo_crossway_access_west | not reached |  |  |  |
-| chozo_dynamo | not reached |  |  |  |
-| chozo_dynamo_access | not reached |  |  |  |
-| chozo_east_atrium | not reached |  |  |  |
-| chozo_east_furnace_access | not reached |  |  |  |
-| chozo_elder_chamber | not reached |  |  |  |
-| chozo_elder_hall_access | not reached |  |  |  |
-| chozo_energy_core | not reached |  |  |  |
-| chozo_energy_core_access | not reached |  |  |  |
-| chozo_eyon_tunnel | not reached |  |  |  |
-| chozo_furnace | not reached |  |  |  |
-| chozo_gathering_hall | not reached |  |  |  |
-| chozo_gathering_hall_access | not reached |  |  |  |
-| chozo_hall_of_the_elders | not reached |  |  |  |
-| chozo_hive_totem | not reached |  |  |  |
-| chozo_magma_pool | not reached |  |  |  |
-| chozo_main_plaza | not reached |  |  |  |
-| chozo_map_station | not reached |  |  |  |
-| chozo_meditation_chamber | not reached |  |  |  |
-| chozo_meditation_fountain | not reached |  |  |  |
-| chozo_north_atrium | not reached |  |  |  |
-| chozo_nursery_access | not reached |  |  |  |
-| chozo_piston_tunnel | not reached |  |  |  |
-| chozo_plaza_access | not reached |  |  |  |
-| chozo_reflecting_pool | not reached |  |  |  |
-| chozo_reflecting_pool_access | not reached |  |  |  |
-| chozo_ruined_fountain | not reached |  |  |  |
-| chozo_ruined_fountain_access | not reached |  |  |  |
-| chozo_ruined_gallery | not reached |  |  |  |
+| chozo_antechamber | OK | 32.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run012/shots/chozo_antechamber_b.png` |
+| chozo_arboretum | OK | 19.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run012/shots/chozo_arboretum_b.png` |
+| chozo_arboretum_access | OK | 20.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run012/shots/chozo_arboretum_access_b.png` |
+| chozo_burn_dome | OK | 31.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run012/shots/chozo_burn_dome_b.png` |
+| chozo_burn_dome_access | OK | 18.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run012/shots/chozo_burn_dome_access_b.png` |
+| chozo_crossway | OK | 36.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run012/shots/chozo_crossway_b.png` |
+| chozo_crossway_access_south | OK | 28.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run012/shots/chozo_crossway_access_south_b.png` |
+| chozo_crossway_access_west | OK | 14.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run012/shots/chozo_crossway_access_west_b.png` |
+| chozo_dynamo | OK | 41.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run012/shots/chozo_dynamo_b.png` |
+| chozo_dynamo_access | visual issue | 30.6 | 6 texture(s) drawn before their data arrived; colour noise in 384 blocks | `work/sweep_out/runs/run012/shots/chozo_dynamo_access_b.png` |
+| chozo_east_atrium | OK | 29.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run012/shots/chozo_east_atrium_b.png` |
+| chozo_east_furnace_access | OK | 25.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run012/shots/chozo_east_furnace_access_b.png` |
+| chozo_elder_chamber | OK | 18.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_elder_chamber_b.png` |
+| chozo_elder_hall_access | OK | 19.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_elder_hall_access_b.png` |
+| chozo_energy_core | OK | 31.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_energy_core_b.png` |
+| chozo_energy_core_access | OK | 31.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_energy_core_access_b.png` |
+| chozo_eyon_tunnel | OK | 36.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_eyon_tunnel_b.png` |
+| chozo_furnace | OK | 33.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_furnace_b.png` |
+| chozo_gathering_hall | OK | 18.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_gathering_hall_b.png` |
+| chozo_gathering_hall_access | OK | 32.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_gathering_hall_access_b.png` |
+| chozo_hall_of_the_elders | OK | 22.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_hall_of_the_elders_b.png` |
+| chozo_hive_totem | OK | 31.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_hive_totem_b.png` |
+| chozo_magma_pool | OK | 25.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_magma_pool_b.png` |
+| chozo_main_plaza | OK | 23.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run013/shots/chozo_main_plaza_b.png` |
+| chozo_map_station | OK | 20.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_map_station_b.png` |
+| chozo_meditation_chamber | OK | 27.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_meditation_chamber_b.png` |
+| chozo_meditation_fountain | OK | 35.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_meditation_fountain_b.png` |
+| chozo_north_atrium | OK | 25.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_north_atrium_b.png` |
+| chozo_nursery_access | OK | 17.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_nursery_access_b.png` |
+| chozo_piston_tunnel | OK | 54.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_piston_tunnel_b.png` |
+| chozo_plaza_access | OK | 29.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_plaza_access_b.png` |
+| chozo_reflecting_pool | OK | 29.8 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_reflecting_pool_b.png` |
+| chozo_reflecting_pool_access | visual issue | 26.0 | 6 texture(s) drawn before their data arrived; colour noise in 370 blocks | `work/sweep_out/runs/run014/shots/chozo_reflecting_pool_access_b.png` |
+| chozo_ruined_fountain | OK | 34.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_ruined_fountain_b.png` |
+| chozo_ruined_fountain_access | OK | 36.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_ruined_fountain_access_b.png` |
+| chozo_ruined_gallery | OK | 36.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run014/shots/chozo_ruined_gallery_b.png` |
 | chozo_ruined_nursery | not reached |  |  |  |
 | chozo_ruined_shrine | not reached |  |  |  |
 | chozo_ruined_shrine_access | not reached |  |  |  |
@@ -178,10 +178,10 @@ Status meanings: **OK** warp arrived, play time advanced, screenshots not black,
 | chozo_transport_to_tallon_overworld_north | not reached |  |  |  |
 | chozo_transport_to_tallon_overworld_south | not reached |  |  |  |
 | chozo_vault | not reached |  |  |  |
-| chozo_vault_access | not reached |  |  |  |
-| chozo_watery_hall | not reached |  |  |  |
-| chozo_watery_hall_access | not reached |  |  |  |
-| chozo_west_furnace_access | not reached |  |  |  |
+| chozo_vault_access | visual issue | 8.7 | 6 texture(s) drawn before their data arrived; colour noise in 154 blocks | `work/sweep_out/runs/run017/shots/chozo_vault_access_b.png` |
+| chozo_watery_hall | OK | 59.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run017/shots/chozo_watery_hall_b.png` |
+| chozo_watery_hall_access | visual issue | 76.5 | 6 texture(s) drawn before their data arrived; colour noise in 2398 blocks | `work/sweep_out/runs/run017/shots/chozo_watery_hall_access_b.png` |
+| chozo_west_furnace_access | OK | 30.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run017/shots/chozo_west_furnace_access_b.png` |
 
 ## Magmoor Caverns
 
@@ -353,3 +353,15 @@ None logged.
 | run001 | crash | 147.0 | 12 | HOST EXCEPTION 0xC0000005 at host address 0x7ff65aea63d8 on thread guest-84 (tid 505996) |
 | run003 | hang | 434.7 | 4 | no progress for 420 s (killed) |
 | run002 | ok | 603.6 | 12 |  |
+| run005 | ok | 273.3 | 4 |  |
+| run004 | ok | 699.1 | 11 |  |
+| run007 | hang | 431.7 | 12 | no progress for 420 s (killed) |
+| run006 | ok | 815.3 | 12 |  |
+| run010 | hang | 433.1 | 8 | no progress for 420 s (killed) |
+| run008 | ok | 1324.2 | 12 |  |
+| run011 | ok | 363.7 | 8 |  |
+| run009 | ok | 1195.9 | 12 |  |
+| run012 | ok | 882.9 | 12 |  |
+| run013 | ok | 841.4 | 12 |  |
+| run014 | ok | 922.4 | 12 |  |
+| run017 | ok | 473.1 | 4 |  |
