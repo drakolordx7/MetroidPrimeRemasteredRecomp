@@ -8,21 +8,22 @@
 - Knowledge base (`docs/mpr/`), asset survey (`docs/mpr/survey/SURVEY.md`).
 - Boot: the real game reaches the title screen ("PRESS A TO START", background still black) and main menu through our NVN-on-Vulkan backend at about 136 fps headless, and with scripted input the loading screen, where the Vulkan device is lost (~58 s). Screenshot: work\run\shot_0.png.
 - Setup tool (`tools/setup`): NSP/XCI/NSZ + keys, version check, byte-identical extraction, resumable BC7 cache; 160 s full setup at quality 3, 660 s at quality 5; 13/13 unit tests, 7/7 refusals.
+- Play mode: window by default (Alt+Enter fullscreen, vsync option), controllers with gyro and rumble, keyboard/mouse bindings (controls.ini), mouse aim through ProcessInput, F1 settings page. Aim gating and Switch layout are unverified until gameplay is reachable.
 - Test tooling: deterministic mode with per-frame state hash, input record/replay, script runner and probes, image/trace/regression comparators, Eden reference captures (work/eden_ref/ref). main is lifted with entry hooks (recomp\games\mpr\main.sites).
 - GitHub: both repos humanized and published (private).
 
 ## Running
 - NVN correctness to gameplay (branch `nvn2`): struct-size audit, validation clean, fix the device loss, title background, past loading into gameplay.
-- Play mode: window, real controller input, pacing, then keyboard/mouse and raw mouse aim (branch `play`).
+- Display options and frame-time performance (branch `display`): profile title stalls, pipeline prewarm, resolution, aspect/Hor+, FOV, AF, dynamic resolution off.
 - Movies (Media Foundation for movie::) and audio correctness (branch `media`).
 
 ## Next (in this order)
 1. High refresh: patch CGameArchitectureSupport::Update (1/60), physics probe at 60/120/240, then dt fixes or interpolation.
-2. Display: resolution, aspect and HUD (COsContext::GetScreen*, CDisplayManager::GetAspectRatio), FOV (CGameCameraMP1::UpdateFOV), dynamic resolution off, quality options.
-3. NVN gaps: sparse textures (MapVirtual), transform feedback, occlusion queries, pipeline prewarm.
-4. Extras: HDR (NTonemap), FSR 3.1, DLSS/XeSS, Reflex/Anti-Lag 2.
+2. NVN gaps: sparse textures (MapVirtual), transform feedback, occlusion queries, pipeline prewarm.
+3. Extras: HDR (NTonemap), FSR 3.1, DLSS/XeSS, Reflex/Anti-Lag 2.
 
 ## Shortcomings to fix
+- Mouse aim, context detection, Switch button layout and beam/visor combos need checking in real gameplay; morph-ball mouse camera and free look not done; aim steps at the game tick rate above 60 fps until a late-sample camera hook exists.
 - Game threads are pinned to three host cores with Windows wake-up boost off (console core model). Under heavy background load each contended mutex hand-over waits a scheduler quantum (debug 180, fixed in tests by raising priority). Decide how mpr.exe itself avoids stutter on busy PCs: raise its priority class, or relax the pinning or boost once gameplay timing is measured.
 - BC7 quality: real textures go down to 28-29 dB on a few files (mean 49-50 dB); find which textures (normal maps, alpha?) and fix the encoding rather than relax the floor.
 - Release launcher must run from the game folder with --exefs exefs --ini mpr.ini (the exe's default game/exefs doesn't match the setup layout).
