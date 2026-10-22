@@ -1,0 +1,32 @@
+name: "Feature request"
+description: "Suggest something new for the game or the port."
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: want
+    attributes:
+      label: "What you want"
+      description: "Describe the feature in a few sentences."
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: "Why"
+      description: "What problem does it solve, or what would it make better?"
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Alternatives you tried"
+      description: "Any workaround you have used, or other ways you considered."
+
+  - type: checkboxes
+    id: not_existing
+    attributes:
+      label: "Before you file"
+      options:
+        - label: "This is not already in the README feature list or an open issue."
+          required: true

@@ -2,7 +2,7 @@
  "meta": {
   "build_id": "67C9CA1428222752F951021464A7B3597EB98FEC",
   "offset_note": "offsets are main-relative (== main.elf vaddr). pchtxt \"bytes\" are memory byte order; cheats use numeric words (converted to bytes here).",
-  "transcription_note": "fl4sh_* sets were retyped by a worker from fetched pages; validate_kb decodes each entry and compares with its own comment to catch typos."
+  "transcription_note": "fl4sh_* sets were retyped by hand from fetched pages; validate_kb decodes each entry and compares with its own comment to catch typos."
  },
  "sets": [
   {

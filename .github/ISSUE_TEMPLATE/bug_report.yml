@@ -1,0 +1,97 @@
+name: "Bug report"
+description: "Something in the game or the port does not work the way it should."
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never attach or paste game files, extracted game data, keys (prod.keys, title.keys) or dumps. Screenshots of a bug in a running build are fine.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: "Before you file"
+      options:
+        - label: "I searched KNOWN_ISSUES.md and the existing issues."
+          required: true
+        - label: "My dump is the original v1.0.0 base game (no update or patch)."
+          required: true
+        - label: "I am not attaching game data or keys."
+          required: true
+
+  - type: input
+    id: build
+    attributes:
+      label: "Build"
+      description: "Release version (for example v0.1.0) or commit hash."
+      placeholder: "v0.1.0 or abc1234"
+    validations:
+      required: true
+
+  - type: input
+    id: gpu
+    attributes:
+      label: "GPU model"
+      placeholder: "NVIDIA GeForce RTX 3060"
+    validations:
+      required: true
+
+  - type: input
+    id: driver
+    attributes:
+      label: "GPU driver version"
+      placeholder: "551.23"
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: "Windows version"
+      placeholder: "Windows 11 24H2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: version_check
+    attributes:
+      label: "Game version check"
+      options:
+        - "Setup tool accepted my dump as v1.0.0"
+        - "I am not sure"
+
+  - type: textarea
+    id: settings
+    attributes:
+      label: "Settings changed"
+      description: "Anything changed in mpr.ini or controls.ini (resolution, window mode, fps cap, vsync, bc7_quality). Write Nothing if you changed nothing."
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to reproduce"
+      description: "Numbered steps, starting from a fresh launch if you can."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_actual
+    attributes:
+      label: "Expected vs actual"
+      description: "What you expected to happen, and what happened instead."
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: "mpr.log"
+      description: "Paste the last 200 lines of mpr.log (next to mpr.exe), or drag the file into this box"
+      render: text
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: "Screenshot"
+      description: "Drag a screenshot of the bug here. Screenshots of a bug in a running build are fine."

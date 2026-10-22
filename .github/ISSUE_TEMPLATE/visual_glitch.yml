@@ -1,0 +1,94 @@
+name: "Visual glitch"
+description: "Something looks wrong on screen: colours, textures, effects, models or lighting."
+title: "[Visual] "
+labels: ["visual"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never attach or paste game files, extracted game data, keys (prod.keys, title.keys) or dumps. Screenshots of a bug in a running build are fine.
+
+  - type: dropdown
+    id: glitch_type
+    attributes:
+      label: "What kind of glitch is it?"
+      options:
+        - "Rainbow or wrongly coloured textures"
+        - "Black textures"
+        - "Misaligned or misplaced effects"
+        - "Broken or stretched character model"
+        - "Noise or static patches"
+        - "Flicker"
+        - "Wrong lighting or fog"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: where
+    attributes:
+      label: "Where in the game?"
+      description: "Room, area or cutscene."
+
+  - type: input
+    id: build
+    attributes:
+      label: "Build"
+      description: "Release version (for example v0.1.0) or commit hash."
+      placeholder: "v0.1.0 or abc1234"
+    validations:
+      required: true
+
+  - type: input
+    id: gpu
+    attributes:
+      label: "GPU model"
+      placeholder: "NVIDIA GeForce RTX 3060"
+    validations:
+      required: true
+
+  - type: input
+    id: driver
+    attributes:
+      label: "GPU driver version"
+      placeholder: "551.23"
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: "Windows version"
+      placeholder: "Windows 11 24H2"
+    validations:
+      required: true
+
+  - type: textarea
+    id: display
+    attributes:
+      label: "Display settings"
+      description: "Resolution, aspect ratio, window mode and bc7_quality (from mpr.ini)."
+
+  - type: dropdown
+    id: same_place
+    attributes:
+      label: "Does it happen in the same place every time?"
+      options:
+        - "Yes"
+        - "No"
+        - "Not sure"
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: "Screenshot or clip"
+      description: "Drag a screenshot or short clip of the glitch here. Screenshots of a bug in a running build are fine."
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: "mpr.log"
+      description: "Paste the last 200 lines of mpr.log (next to mpr.exe), or drag the file into this box"
+      render: text
