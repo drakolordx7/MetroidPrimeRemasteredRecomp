@@ -26,7 +26,7 @@ if ($staged.Count -eq 1 -and $staged[0] -eq 'base') {
 $scrub = Join-Path $root 'publish\game-scrub'
 if (Test-Path $scrub) { Remove-Item $scrub -Recurse -Force }
 git clone -q --no-local $root $scrub
-git -C $scrub filter-repo --force --invert-paths --path CLAUDE.md --path .claude/ --path docs/BRIEF_PREAMBLE.md
+git -C $scrub filter-repo --force --invert-paths --path CLAUDE.md --path .claude/ --path docs/BRIEF_PREAMBLE.md --path nxrt.log --path nxrt.log.prev
 $left = @(git -C $scrub log --all --name-only --format= | Select-String -Pattern '(^|/)(CLAUDE\.md|\.claude/|BRIEF_PREAMBLE)')
 if ($left.Count) { throw "scrub left tooling files in history" }
 git -C $scrub remote add origin https://github.com/drakolordx7/MetroidPrimeRemasteredRecomp.git
