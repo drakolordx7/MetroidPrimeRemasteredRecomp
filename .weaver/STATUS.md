@@ -21,6 +21,7 @@
 - Rendering fidelity in gameplay vs Eden references (branch `nvn3`).
 - Gameplay verification of PC features: probes, physics at 60-240 Hz, controls and mouse aim, morph-ball camera, core-model stutter (branch `verify`).
 - Extras: HDR, FSR 3.1, DLSS/XeSS (user DLLs), Reflex/Anti-Lag 2 (branch `extras`).
+- Button prompt glyphs fix + prompt styles Switch/Xbox/PlayStation/KBM/auto from a free icon pack (branch `prompts`).
 - Full-game stability sweep: warp tour of every area, save/load, menus, visors, cinematics; SWEEP.md (branch `sweep`).
 
 ## Next (in this order)
@@ -34,7 +35,8 @@
 - gfx_nvn_scene_stress failed once under load, passed alone; watch it.
 
 ## Open items
-- README build-from-source uses junctions (baseecomp etc.); verify on a fresh clone, or make the scripts find base/ directly.
+- README build-from-source uses junctions (base
+ecomp etc.); verify on a fresh clone, or make the scripts find base/ directly.
 - Add screenshots to docs/images (maintainer's choice).
 - README screenshots: the maintainer adds real captures to `docs/images/` (none are committed).
 
