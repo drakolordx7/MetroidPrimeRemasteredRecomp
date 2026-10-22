@@ -208,16 +208,22 @@ DWORD WINAPI killer_poll(LPVOID) {
     for (;;) {}
 }
 
-// [boot] press = "A@12,A@20:500,PLUS@30": scripted controller presses on player 1 (button@seconds-after-start[:hold ms, default 300]).
-struct ScriptedPress { uint64_t bit; double at; int hold_ms; };
+// [boot] press = "A@12,A@20:500,PLUS@30,A#1500": scripted controller presses on player 1 (button@seconds-after-start[:hold ms, default 300]).
+// "A#1500:300" is keyed to the NVN back end's presented-frame count instead of seconds: a loaded machine plays the same sequence.
+struct ScriptedPress { uint64_t bit; double at; int hold_ms; bool by_frame = false; };
 std::shared_ptr<nxrt::hid::ManualInputSource> g_pad;
 std::vector<ScriptedPress> g_presses;
 DWORD WINAPI press_thread(LPVOID) {
     const ULONGLONG t0 = GetTickCount64();
     for (const ScriptedPress& p : g_presses) {
-        const ULONGLONG due = t0 + static_cast<ULONGLONG>(p.at * 1000);
-        for (ULONGLONG now = GetTickCount64(); now < due; now = GetTickCount64()) Sleep(static_cast<DWORD>(due - now > 50 ? 50 : due - now));
-        NXLOG_I("boot", "scripted press at %.1f s", p.at);
+        if (p.by_frame) {
+            while (!nxrt::nvn::backend_installed() || nxrt::nvn::backend_stats().presents < static_cast<uint64_t>(p.at)) Sleep(20);
+            NXLOG_I("boot", "scripted press at present %.0f (%.1f s)", p.at, (GetTickCount64() - t0) / 1000.0);
+        } else {
+            const ULONGLONG due = t0 + static_cast<ULONGLONG>(p.at * 1000);
+            for (ULONGLONG now = GetTickCount64(); now < due; now = GetTickCount64()) Sleep(static_cast<DWORD>(due - now > 50 ? 50 : due - now));
+            NXLOG_I("boot", "scripted press at %.1f s", p.at);
+        }
         g_pad->press(0, p.bit);
         Sleep(p.hold_ms);
         g_pad->release(0, p.bit);
@@ -234,11 +240,13 @@ void parse_presses(const std::string& spec) {
         if (j == std::string::npos) j = spec.size();
         const std::string item = spec.substr(i, j - i);
         i = j + 1;
-        const size_t at = item.find('@');
+        size_t at = item.find('@');
+        const bool by_frame = at == std::string::npos && item.find('#') != std::string::npos;
+        if (by_frame) at = item.find('#');
         if (at == std::string::npos) continue;
         const std::string name = item.substr(0, at);
         const size_t colon = item.find(':', at);
-        ScriptedPress sp{0, std::atof(item.c_str() + at + 1), colon == std::string::npos ? 300 : std::atoi(item.c_str() + colon + 1)};
+        ScriptedPress sp{0, std::atof(item.c_str() + at + 1), colon == std::string::npos ? 300 : std::atoi(item.c_str() + colon + 1), by_frame};
         for (const auto& e : names) if (name == e.n) sp.bit = btn(e.b);
         if (sp.bit) g_presses.push_back(sp);
     }
