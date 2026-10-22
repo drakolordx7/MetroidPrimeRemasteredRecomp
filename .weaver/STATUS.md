@@ -17,7 +17,8 @@ Merged into runtime main at the end of the session: nvn3 (rendering fixes so far
 - Open from S18: no measurements yet; hypothesis for the 250-360 ms latency: frame limiter sleeps inside present while the game's queue fills, plus up to 4 submissions in flight. Plan in S18.md.
 
 ## Full-game sweep (docs/mpr/SWEEP.md)
-184 of 275 areas reached: 159 OK, 18 visual issues (colour-noise rectangles, worst in tallon_biohazard_containment, chozo_watery_hall_access, chozo_totem_access), 2 crashes (frigate_air_lock particle state on the loader thread, magmoor_workstation BoxInFrustumPlanes), 4 post-warp hangs in CGraphicsFrameToken::WaitUntilFinished and 2 boot deadlocks in CScopedSceneTransferLock (lost wake-up suspected; the watchdog now dumps kernel waiters). Fixed: loading freezes from the spin-only LockBusyMutex (host replacement; lifter idea: make `wfe` yield). Not visited: rest of Phendrana, Phazon Mines, Impact Crater. Rerun: tools\.venv\Scripts\python tools	est\sweep.py --exe game-builduildelease\mpr.exe --jobs 2 --resume.
+184 of 275 areas reached: 159 OK, 18 visual issues (colour-noise rectangles, worst in tallon_biohazard_containment, chozo_watery_hall_access, chozo_totem_access), 2 crashes (frigate_air_lock particle state on the loader thread, magmoor_workstation BoxInFrustumPlanes), 4 post-warp hangs in CGraphicsFrameToken::WaitUntilFinished and 2 boot deadlocks in CScopedSceneTransferLock (lost wake-up suspected; the watchdog now dumps kernel waiters). Fixed: loading freezes from the spin-only LockBusyMutex (host replacement; lifter idea: make `wfe` yield). Not visited: rest of Phendrana, Phazon Mines, Impact Crater. Rerun: tools\.venv\Scripts\python tools	est\sweep.py --exe game-builduild
+elease\mpr.exe --jobs 2 --resume.
 
 ## Next
 1. Merge the branches above, rerun tests and boot once, publish (`pwsh .weaver\publish.ps1`; humanizer pass on new docs first).
@@ -25,6 +26,8 @@ Merged into runtime main at the end of the session: nvn3 (rendering fixes so far
 3. Then: FSR 3.1/DLSS/XeSS need motion vectors (S14.md says what it takes); AMD Anti-Lag 2 untested (no AMD GPU); HDR untested on a real HDR display.
 
 ## Shortcomings to fix
+- End-of-session batch: 151 tests, 1 load-sensitive failure (gfx_nvn_scene_state, passes alone) that logged a real validation error: vkCmdPipelineBarrier2 with a null image (find the caller). Gameplay boot ran 170 s; shader block 46742355274dd77e is missing from the cache.
+- The setup tool must follow the new texture cache entry formats (RGBA8 / BC5, docs in runtime/docs/S4f.md).
 - High refresh and mouse aim still need gameplay verification (S13).
 - Licence texts missing in the release for Eden/yuzu GPL-2.0 snippets, libc++abi, MSVC runtime.
 - README build-from-source uses junctions (base\recomp etc.); verify on a fresh clone or make the scripts find base/ directly.
