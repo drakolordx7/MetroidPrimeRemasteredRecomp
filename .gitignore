@@ -21,3 +21,4 @@ nxrt.log*
 CLAUDE.md
 .claude/
 docs/BRIEF_PREAMBLE.md
+/game-build-*/
