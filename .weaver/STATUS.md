@@ -6,7 +6,7 @@
 - Offline graphics tools (`tools/`): shader harness, ASTC→BC7, tiling; oracles locked.
 - Runtime main: ABI 3, C++ exceptions, graphics shell, Horizon services (fs/RomFS, saves, am, acc, set, time, hid, pl, audren, vi, nvdrv and stubs), NVN on Vulkan (513/523 entry points, all 204 the game uses), shader cache (67,506 blocks, 0 failures). 122/122 tests.
 - Knowledge base (`docs/mpr/`), asset survey (`docs/mpr/survey/SURVEY.md`).
-- Boot: the real game reaches the full title screen (logo and background movie) and main menu through our NVN-on-Vulkan backend at about 136 fps headless, and with scripted input the loading screen, where the Vulkan device is lost (~58 s). Screenshot: work\run\shot_0.png.
+- Gameplay: the real game plays from the title through New Game into the Frigate Orpheon (opening cutscene, landing, hangar with HUD, lighting, fog, bloom), zero Vulkan validation errors, no device loss over 7-minute runs. Known visual bugs: noise rectangle on the hangar door, dark gunship, black spike artefact.
 - Setup tool (`tools/setup`): NSP/XCI/NSZ + keys, version check, byte-identical extraction, resumable BC7 cache; 160 s full setup at quality 3, 660 s at quality 5; 13/13 unit tests, 7/7 refusals.
 - High refresh: the game steps by measured frame time (`[time] mode = real`, 60 Hz lock option); movies and the front end run at real speed at 60/120/144/240 (retail ran 2-4x fast). Variable timestep chosen; physics probe ready for gameplay.
 - Movies and audio: movie:: on Media Foundation (25/25 movies bit-identical to ffmpeg, title background now plays), audio paced by the sink queue, DSP-ADPCM verified on real data. Live XAudio2 playback not heard yet (no output device in the agent session).
@@ -16,6 +16,8 @@
 
 ## Running
 - NVN correctness to gameplay (branch `nvn2`): struct-size audit, validation clean, fix the device loss, title background, past loading into gameplay.
+- Rendering fidelity in gameplay vs Eden references (branch `nvn3`).
+- Gameplay verification of PC features: probes, physics at 60-240 Hz, controls and mouse aim, morph-ball camera, core-model stutter (branch `verify`).
 - Display options and frame-time performance (branch `display`): profile title stalls, pipeline prewarm, resolution, aspect/Hor+, FOV, AF, dynamic resolution off.
 - Texture quality fix and release packaging (tools/textures, tools/setup, tools/release).
 
