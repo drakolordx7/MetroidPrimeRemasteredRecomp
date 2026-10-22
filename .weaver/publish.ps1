@@ -9,6 +9,12 @@ foreach ($r in 'recomp', 'runtime', 'tools') {
 git -C $base push -q origin main
 $sha = git -C $base rev-parse HEAD
 git -C $root update-index --cacheinfo "160000,$sha,base"
-git -C $root commit -q -m "Bump base to $($sha.Substring(0,8))" -- base 2>$null
+$staged = @(git -C $root diff --cached --name-only)
+if ($staged.Count -eq 1 -and $staged[0] -eq 'base') {
+    # a pathspec commit reads the (uninitialised) submodule folder, so commit the index instead
+    git -C $root commit -q -m "Bump base to $($sha.Substring(0,8))"
+} elseif ($staged.Count -gt 0) {
+    throw "game repo has other staged changes ($($staged -join ', ')); commit them first"
+}
 git -C $root push -q origin main
 "base $($sha.Substring(0,8)) pushed; game repo pushed"
