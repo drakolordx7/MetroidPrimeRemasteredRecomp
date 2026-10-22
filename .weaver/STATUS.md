@@ -12,7 +12,7 @@ The real game runs natively on Windows from the title screen through New Game in
 Merged into runtime main at the end of the session: nvn3 (rendering fixes so far), verify (aim, free look, ball camera, probes), sweep (warp tour suite), perf (notes only). Branch notes: runtime\docs\S4f.md, S13.md, S15.md, S18.md.
 - `prompts` (runtime-wt\prompts, commit 436e77b "WIP"): NOT merged; conflicts with the extras settings code (play_config.cpp, play_types.h, test_play_config.cpp, nvn_core.h, nvn_texdata.h, nvn_texture_registry.cpp), all additive. Contains the important fix for wrongly untiled small textures (console_block_height in nvn_texture_layout.cpp: 263 textures incl. the 173 button icons) and the Switch/Xbox/PlayStation/keyboard prompt styles (Kenney Input Prompts, CC0). Merge it first next session.
 - nvn3 and sweep may have a last commit after the merge: `git -C runtime log main..nvn3` / `main..sweep`.
-- Open from S4f: first-person arm and gun missing/black, misaligned engine jets, hangar-door noise (texture-pool slot race suspected), black textures, broken character model.
+- Open from S4f (user saw the player model and first-person arm render correctly in the latest nvn3 build): misaligned engine jets, hangar-door noise (texture-pool slot race suspected), black textures, broken character model.
 - Open from S13: physics deviation table (walk at 120 vs 60 looked 4% slow, unconfirmed), keyboard beam/visor keys unverified after the pulse fix, core-model stutter numbers, guest-wait stalls during warp loads.
 - Open from S18: no measurements yet; hypothesis for the 250-360 ms latency: frame limiter sleeps inside present while the game's queue fills, plus up to 4 submissions in flight. Plan in S18.md.
 
