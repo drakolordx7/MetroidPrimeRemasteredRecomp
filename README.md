@@ -62,7 +62,7 @@ You only need this to work on the code. A release is easier if you just want to 
 
 ### Steps
 
-Run these from the repository root, in `cmd` or PowerShell. Git Bash does not work: its `tar` cannot unpack the downloads.
+Run these from the repository root, in `cmd` or PowerShell. Git Bash does not work because its `tar` cannot unpack the downloads.
 
 1. Clone with the submodule.
 
