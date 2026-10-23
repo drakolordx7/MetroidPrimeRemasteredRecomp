@@ -10,7 +10,7 @@ The real game runs natively on Windows from the title screen through New Game in
 
 ## Running (overnight)
 - Last merge batch (nvn4 into runtime main): 154/154 tests, gameplay boot 170 s, 9,248 presents, 0 failed textures.
-- S23 `upscale`: motion vectors + jitter, then FSR 3.1 / DLSS / XeSS upscaling and frame generation (research licences first).
+- S25 `play`: scripted real playthrough from New Game through the frigate (Parasite Queen, escape) into Tallon IV/Chozo Ruins, save/load, menus; fix what breaks.
 - S22 `rel`: static MSVC runtime, scene_texture test reference, CONFIG docs for new keys, INDEX repair, fresh-clone build check, physics table 60-240 fps, keyboard beam/visor keys.
 - S24 `warm`: build pipeline keys on the player's machine so a cold first run has no pipeline-creation hitches.
 
@@ -18,8 +18,7 @@ The real game runs natively on Windows from the title screen through New Game in
 All 275 areas reached: all OK after S4h (noise rectangles were already fixed by S4f alias sharing; black world and black environment maps fixed). The hangs and boot "deadlocks" were CPU starvation of the lowest-priority loader thread under machine load, fixed by the starvation guard (`[sched] starvation_guard`, S20). `wfe`/`yield` now call a host spin hint. Open: frigate_air_lock loader crash (did not recur in 7 tries), magmoor_workstation BoxInFrustumPlanes crash (intermittent). Rerun: `.weaver/stab_sweep.sh --resume --jobs 2`.
 
 ## Next (queue, in order)
-1. Gameplay verification: a long play session from New Game through the frigate into Tallon IV (high refresh, mouse aim, keyboard), after S22.
-2. Later: HDR on a real HDR display; AMD Anti-Lag 2. Jets: not reproduced by S4h; need a clip from the user's build.
+1. Later, low priority (user: upscalers are not a priority at all): motion vectors + FSR 3.1/DLSS/XeSS (unfinished work parked on runtime branch `upscale` 7f65481, unverified); HDR on a real HDR display; AMD Anti-Lag 2. Jets: not reproduced; need a clip from the user's build.
 
 ## Shortcomings to fix
 - High refresh and mouse aim still need gameplay verification (S13).
