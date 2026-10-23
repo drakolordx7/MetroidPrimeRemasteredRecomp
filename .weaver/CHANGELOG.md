@@ -1,4 +1,5 @@
 # Changelog
+- S27: a launcher (`mpr_launcher.exe`) edits `controls.ini`, runs the first-time setup and starts the game; frame rate counter in the game (F2, off by default, left out of test screenshots); controller buttons can be remapped (`[padmap]`); button icons default to `auto` (keyboard icons until a controller is used)
 - S26: the scripted route goes from New Game through the hangar force fields, the walkway, the corridor door, the Air Lock (scan puzzle) and the Deck Alpha Access Hall to the Emergency Evacuation Area, where it stops (fire and a lip at the hill); new script steps @rays, @probe, @peek, @poke; room graph of the whole Frigate; morph ball speed measured (real, not explained).
 
 - S22: all shipped binaries use the static Visual C++ runtime (no redistributable needed, the release builder checks imports); the ASTC texture test builds its own reference; settings and keyboard beam/visor keys documented and checked in the game; physics at 60/120/144/240 measured (walk, jump and ball match; one 240 Hz jump stall found, cause open).
