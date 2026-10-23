@@ -22,3 +22,5 @@ CLAUDE.md
 .claude/
 docs/BRIEF_PREAMBLE.md
 /game-build-*/
+/.weaver/scratch/
+__pycache__/
