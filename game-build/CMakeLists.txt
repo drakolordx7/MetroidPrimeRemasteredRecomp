@@ -3,6 +3,11 @@
 #   pwsh scripts\build.ps1            configure + build into game-build\build\release
 # Nothing derived from the game lives here: the libraries are imported from the work folder, the NSOs are read at run time.
 cmake_minimum_required(VERSION 3.25)
+# Static MSVC runtime (/MT): players need no Visual C++ Redistributable. Set before project() so every target below, third-party code
+# included, uses it; the libraries this one links must agree (a mismatch is a link error).
+if(NOT DEFINED CMAKE_MSVC_RUNTIME_LIBRARY)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
 project(mpr_game C CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -44,7 +49,8 @@ endif()
 target_link_options(mpr PRIVATE /MAP /STACK:134217728 /HIGHENTROPYVA:NO /DEBUG)
 
 # The ASTC decoder DLLs astc2bc7 loads at run time (NVN textures in ASTC are transcoded to BC7 on first use): next to mpr.exe.
-file(GLOB MPR_A2B_DLLS "${MPR_ROOT}/tools/textures/build/release/astcdec-*-shared.dll")
+# (NXRT_A2B_DIR is the tools/textures build folder the runtime links its transcoder from: cmake/gfx.cmake)
+file(GLOB MPR_A2B_DLLS "${NXRT_A2B_DIR}/astcdec-*-shared.dll")
 foreach(dll ${MPR_A2B_DLLS})
     add_custom_command(TARGET mpr POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different "${dll}" "$<TARGET_FILE_DIR:mpr>")
 endforeach()

@@ -62,7 +62,7 @@ You only need this to work on the code. A release is easier if you just want to 
 
 ### Steps
 
-Run these from the repository root.
+Run these from the repository root, in `cmd` or PowerShell. Git Bash does not work: its `tar` cannot unpack the downloads.
 
 1. Clone with the submodule.
 
@@ -103,6 +103,8 @@ Run these from the repository root.
    recomp\scripts\build_mpr.cmd
    ```
 
+   The script starts its own sccache server on port 24339 with the cache in `work\build\sccache`, so every checkout on the same PC shares it. Set `SCCACHE_SERVER_PORT` and `SCCACHE_DIR` first if you want a separate cache.
+
 6. Build the texture decoder DLLs and then `mpr.exe`.
 
    ```
@@ -110,7 +112,7 @@ Run these from the repository root.
    pwsh game-build\scripts\build.ps1
    ```
 
-   The program ends up in `game-build\build\release\mpr.exe`.
+   The program ends up in `game-build\build\release\mpr.exe`. The first configure downloads SDL3 and a few small libraries, so it needs an internet connection. `mpr.exe` and the setup tools use the static Visual C++ runtime, so a PC that only runs them needs no redistributable.
 
 The game also needs its translated shaders (`shader_cache`). A release ships them as a prebuilt pack that the setup tool unpacks. To build the cache yourself, see `tools/shaders/README.md` and `runtime/docs/S4d.md` in nxrecomp.
 
