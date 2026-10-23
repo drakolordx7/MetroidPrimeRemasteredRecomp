@@ -72,7 +72,7 @@ def start(argv):
     e.update(NXRT_TEST_SCRIPT=RUN + '/live/boot.nxs', NXRT_TEST_LIVE=LIVE, NXRT_TEST_OUT=RUN + '/out', NXRT_TEST_SHOT_DIR=RUN + '/shots',
              NXRT_TEST_REGIONS=ROOT + '/tools/test/regions.tsv', NXRT_BOOT_GFX=gfx, NXRT_FS_ROMFS=ROOT + '/game/romfs', NXRT_FS_SAVE_DIR=cwd + '/save',
              NXRT_TEST_WALL_TIMEOUT_S='86400', NXRT_TEST_FREEZE_EXIT='0', NXRT_TIME_MODE='real', NXRT_DIAG_WATCHDOG_SECONDS='0',
-             NXRT_NVN_SHADER_CACHE=ROOT + '/work/shader_cache/spirv', NXRT_AUDIO_SINK=os.environ.get('NXRT_AUDIO_SINK', 'null'))
+             NXRT_TEST_VTABLES=RUN + '/vtables.txt', NXRT_NVN_SHADER_CACHE=ROOT + '/work/shader_cache/spirv', NXRT_AUDIO_SINK=os.environ.get('NXRT_AUDIO_SINK', 'null'))
     if gfx == 'headless': e['NXRT_GFX_HEADLESS'] = '1'
     e.update(extra)
     import shutil

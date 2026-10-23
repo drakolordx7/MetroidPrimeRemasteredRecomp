@@ -5,5 +5,7 @@ set ROOT=%~dp0..
 set NXRT_FS_ROMFS=%ROOT%\game\romfs
 set NXRT_FS_SAVE_DIR=%ROOT%\work\playtest\save
 set NXRT_NVN_SHADER_CACHE=%ROOT%\work\shader_cache\spirv
+set NXRT_NVN_BC7_CACHE=%ROOT%workunbc7_cache
+set NXRT_NVN_PIPELINE_CACHE=%ROOT%workplaytestpipeline_cache.bin
 cd /d "%ROOT%\work\playtest"
 start "" mpr.exe --log nxrt.log

@@ -1,8 +1,8 @@
 # S23: syntax-check (no codegen, no link) sources of runtime-wt/upscale. pwsh .weaver\up_syntax.ps1 src\gfx\upscale\foo.cpp [more.cpp ...]
-# Extra include dirs (SDK headers) are in the repo's third_party folders. Exit 0 = every file compiles.
+# Extra include dirs (SDK headers) are the third_party folder of src/gfx/upscale. Exit 0 = every file compiles.
 param([Parameter(Mandatory, Position = 0, ValueFromRemainingArguments)][string[]]$Files)
 $root = "D:\AI\Active\Metroid-Prime\runtime-wt\upscale"
-$Build = "D:\AI\Active\Metroid-Prime\game-build-upscale\build\upscale"
+$Build = "D:\AI\Active\Metroid-Prime\game-build\build\release"
 $recomp = "D:/AI/Active/Metroid-Prime/recomp/include"
 $inc = "/I`"$root\include`" /I`"$root\src\gfx`" /I`"$root\src\gfx\nvn`" /I`"$root\src\gfx\nvn\third_party`" /I`"$root\src\gfx\upscale\third_party`" /I`"$root\src\services`" /I`"$root\src\testtools`" /I`"$root\tests`" " +
        "/I`"$Build\_deps\sdl3-src\include`" /I`"$Build\_deps\imgui-src`" /I`"$Build\_deps\vulkan_headers-src\include`" /I`"$Build\_deps\volk-src`" /I`"$recomp`""
