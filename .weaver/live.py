@@ -14,6 +14,7 @@ ROOT = 'D:/AI/Active/Metroid-Prime'
 RUN = os.environ.get('LIVE_RUN', ROOT + '/work/run_play2')
 EXE = os.environ.get('LIVE_EXE', ROOT + '/game-build-play2/build/play2')
 LIVE = RUN + '/live/live.nxs'
+HP_GUARD = float(os.environ.get('HPGUARD', '0'))      # S26: raise when the player's health drops below this (a script must not play on in a fire)
 
 
 def count_lines(path):
@@ -99,6 +100,8 @@ def send(lines, timeout=100):
     while time.time() - t0 < timeout:
         st = status()
         if st and st['lines'] >= want:
+            if HP_GUARD and 0 < st['hp'] < HP_GUARD:
+                raise RuntimeError('health %.0f: stopping the script (HPGUARD)' % st['hp'])
             return st
         time.sleep(0.05)
     st = status()

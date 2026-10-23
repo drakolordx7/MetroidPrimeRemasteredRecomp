@@ -39,6 +39,30 @@ def hangar_field2():
 
 STEPS.update({'hangar_scan_panel': hangar_scan_panel, 'hangar_field2': hangar_field2})
 
+
+
+# ---- S26: navigation steps (nav.py plans on the game's own collision) ----
+def _nav_walk(x, y, z, tol=1.2, tracker=None):
+    import nav, frigate
+    st = L.status()
+    g = frigate.scan_around(st, (x, y, z), step=1.0)
+    return nav.walk(g, (x, y, z), tol=tol, tracker=tracker)
+
+def hangar_corridor_door():
+    """from the pad (force fields down) to the corridor door at z=-164.7, open it"""
+    import nav
+    ok = _nav_walk(-18.5, 5.02, -158.0)
+    nav.fire_at(-18.5, 6.9, -164.7, 2)
+    L.send(['wait 90'])
+    return L.status()
+
+def hangar_to_airlock():
+    import frigate
+    frigate.cross('frigate_air_lock')
+    return L.status()
+
+STEPS.update({'hangar_corridor_door': hangar_corridor_door, 'hangar_to_airlock': hangar_to_airlock})
+
 if __name__ == '__main__':
     if sys.argv[1] == 'list':
         print(' '.join(STEPS))
