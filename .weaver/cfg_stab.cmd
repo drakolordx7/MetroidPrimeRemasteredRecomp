@@ -1,0 +1,4 @@
+@echo off
+rem one-time configure of the private stab game build
+call D:\AI\Active\Metroid-Prime\runtime\scripts\env.cmd
+cmake -S D:\AI\Active\Metroid-Prime\game-build-stab -B D:\AI\Active\Metroid-Prime\game-build-stab\build\stab -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache -DNXRT_RECOMP_INCLUDE=D:/AI/Active/Metroid-Prime/recomp-wt/stab/include -DMPR_LIB_DIR=D:/AI/Active/Metroid-Prime/work/build/mpr_stab -DMPR_RUNTIME_DIR=D:\AI\Active\Metroid-Prime\runtime-wt\stab -DFETCHCONTENT_SOURCE_DIR_VOLK=D:/AI/Active/Metroid-Prime/game-build/build/release/_deps/volk-src -DFETCHCONTENT_SOURCE_DIR_VULKAN_HEADERS=D:/AI/Active/Metroid-Prime/game-build/build/release/_deps/vulkan_headers-src

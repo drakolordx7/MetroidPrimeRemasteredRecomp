@@ -8,41 +8,29 @@ tools\.venv\Scripts\python tools\test\sweep.py --exe game-build\build\release\mp
 
 `--resume` keeps the areas that were OK last time, `--report-only` rebuilds this file from `work\sweep_out\results.json`, `--worlds`, `--areas` and `--limit` select a subset.
 
-Last sweep: 2026-10-22 09:16, exe `?`, ? min wall, ? parallel.
+Last sweep: 2026-10-23, stab build (`game-build-stab`), 2 games at a time. The report joins two passes: Frigate, Tallon, Chozo and Magmoor were first run on 2026-10-22 with the S15 build; Phendrana, the mines, the crater and the five areas that failed or stalled in the first pass (`frigate_air_lock`, `magmoor_geothermal_core`, `magmoor_lake_tunnel`, `magmoor_magmoor_workstation`, `phendrana_canyon_entryway`) were run again on 2026-10-23 with the stab build (110 areas in 60 min, then 4 in 3 min). The stalls of the first pass were host CPU starvation, not deadlocks: `runtime/docs/S20.md`.
 
 ## Result
 
-**184 of 275 areas reached.** 159 OK, 18 visual issue, 1 timeout, 4 hang, 2 crash, 91 not reached.
+**275 of 275 areas reached.** 258 OK, 17 visual issue.
 
 | World | Areas | OK | Visual issue | Timeout | Hang | Crash | Not reached |
 |---|---|---|---|---|---|---|---|
-| Frigate Orpheon | 28 | 23 | 4 | 0 | 0 | 1 | 0 |
+| Frigate Orpheon | 28 | 24 | 4 | 0 | 0 | 0 | 0 |
 | Tallon Overworld | 44 | 40 | 4 | 0 | 0 | 0 | 0 |
 | Chozo Ruins | 64 | 55 | 9 | 0 | 0 | 0 | 0 |
-| Magmoor Caverns | 29 | 26 | 0 | 0 | 2 | 1 | 0 |
-| Phendrana Drifts | 56 | 15 | 1 | 1 | 2 | 0 | 37 |
-| Phazon Mines | 42 | 0 | 0 | 0 | 0 | 0 | 42 |
-| Impact Crater | 12 | 0 | 0 | 0 | 0 | 0 | 12 |
+| Magmoor Caverns | 29 | 29 | 0 | 0 | 0 | 0 | 0 |
+| Phendrana Drifts | 56 | 56 | 0 | 0 | 0 | 0 | 0 |
+| Phazon Mines | 42 | 42 | 0 | 0 | 0 | 0 | 0 |
+| Impact Crater | 12 | 12 | 0 | 0 | 0 | 0 | 0 |
 
 Status meanings: **OK** warp arrived, play time advanced, screenshots not black, no shader or texture errors in the log slice. **visual issue** arrived and ran, but a screenshot is black or has patches of colour noise, or the log shows a missing shader, a texture that was not uploaded or an unsupported NVN operation (owner: NVN back end). **timeout** the area never became current or play time never advanced. **hang** the watchdog saw no frame for too long, or nothing moved for minutes. **crash** the host or the guest crashed. **not reached** never started.
-
-## Failures
-
-| Area | Status | Stage | Alone | Reason | Evidence |
-|---|---|---|---|---|---|
-| frigate_air_lock | crash | warp | - | HOST EXCEPTION 0xC0000005 at host address 0x7ff65aea63d8 on thread guest-84 (tid 505996) | `work/sweep_out/runs/run001` |
-| magmoor_geothermal_core | hang | warp | - | no progress for 300 s (killed) | `work/sweep_out/runs/run018` |
-| magmoor_lake_tunnel | hang | warp | - | no progress for 300 s (killed) | `work/sweep_out/runs/run024` |
-| magmoor_magmoor_workstation | crash | play | - | HOST EXCEPTION 0xC0000005 at host address 0x7ff65a9122a0 on thread guest-88 (tid 423892) | `work/sweep_out/runs/run026` |
-| phendrana_canyon_entryway | hang | play | - | watchdog freeze: no frame tick for 60s | `work/sweep_out/runs/run022` |
-| phendrana_chapel_tunnel | hang | warp | - | no progress for 300 s (killed) | `work/sweep_out/runs/run025` |
-| phendrana_phendrana_canyon | timeout | warp | - | D:\AI\Active\Metroid-Prime\work\sweep_out\runs\run029\tour.nxs:19: timeout waiting for the warp targ | `work/sweep_out/runs/run029` |
 
 ## Frigate Orpheon
 
 | Area | Status | Load s | Notes | Evidence |
 |---|---|---|---|---|
-| frigate_air_lock | crash |  | HOST EXCEPTION 0xC0000005 at host address 0x7ff65aea63d8 on thread guest-84 (tid 505996) | `work/sweep_out/runs/run001` |
+| frigate_air_lock | OK | 8.7 |  | `work/sweep_final4/runs/run001/shots/frigate_air_lock_b.png` |
 | frigate_biohazard_containment | OK | 13.2 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run004/shots/frigate_biohazard_containment_b.png` |
 | frigate_biotech_research_area_1 | visual issue | 7.6 | 6 texture(s) drawn before their data arrived; colour noise in 45 blocks | `work/sweep_out/runs/run004/shots/frigate_biotech_research_area_1_b.png` |
 | frigate_biotech_research_area_2 | OK | 80.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run004/shots/frigate_biotech_research_area_2_b.png` |
@@ -195,10 +183,10 @@ Status meanings: **OK** warp arrived, play time advanced, screenshots not black,
 |---|---|---|---|---|
 | magmoor_burning_trail | OK | 30.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run018/shots/magmoor_burning_trail_b.png` |
 | magmoor_fiery_shores | OK | 26.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run018/shots/magmoor_fiery_shores_b.png` |
-| magmoor_geothermal_core | hang |  | no progress for 300 s (killed) | `work/sweep_out/runs/run018` |
-| magmoor_lake_tunnel | hang |  | no progress for 300 s (killed) | `work/sweep_out/runs/run024` |
+| magmoor_geothermal_core | OK | 9.0 |  | `work/sweep_final4/runs/run002/shots/magmoor_geothermal_core_b.png` |
+| magmoor_lake_tunnel | OK | 10.2 |  | `work/sweep_final4/runs/run002/shots/magmoor_lake_tunnel_b.png` |
 | magmoor_lava_lake | OK | 18.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run026/shots/magmoor_lava_lake_b.png` |
-| magmoor_magmoor_workstation | crash | 251.2 | HOST EXCEPTION 0xC0000005 at host address 0x7ff65a9122a0 on thread guest-88 (tid 423892) | `work/sweep_out/runs/run026` |
+| magmoor_magmoor_workstation | OK | 9.2 |  | `work/sweep_final4/runs/run003/shots/magmoor_magmoor_workstation_b.png` |
 | magmoor_monitor_station | OK | 17.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run028/shots/magmoor_monitor_station_b.png` |
 | magmoor_monitor_tunnel | OK | 15.7 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run028/shots/magmoor_monitor_tunnel_b.png` |
 | magmoor_north_core_tunnel | OK | 29.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run028/shots/magmoor_north_core_tunnel_b.png` |
@@ -227,126 +215,126 @@ Status meanings: **OK** warp arrived, play time advanced, screenshots not black,
 
 | Area | Status | Load s | Notes | Evidence |
 |---|---|---|---|---|
-| phendrana_aether_lab_entryway | OK | 8.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run022/shots/phendrana_aether_lab_entryway_b.png` |
-| phendrana_canyon_entryway | hang | 91.9 | watchdog freeze: no frame tick for 60s | `work/sweep_out/runs/run022` |
-| phendrana_chamber_access | OK | 14.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run025/shots/phendrana_chamber_access_b.png` |
-| phendrana_chapel_of_the_elders | OK | 25.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run025/shots/phendrana_chapel_of_the_elders_b.png` |
-| phendrana_chapel_tunnel | hang |  | no progress for 300 s (killed) | `work/sweep_out/runs/run025` |
-| phendrana_chozo_ice_temple | not reached |  |  |  |
-| phendrana_control_tower | not reached |  |  |  |
-| phendrana_courtyard_entryway | not reached |  |  |  |
-| phendrana_east_tower | not reached |  |  |  |
-| phendrana_frost_cave | not reached |  |  |  |
-| phendrana_frost_cave_access | not reached |  |  |  |
-| phendrana_frozen_pike | not reached |  |  |  |
-| phendrana_gravity_chamber | OK | 13.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_gravity_chamber_b.png` |
-| phendrana_hunter_cave | OK | 16.5 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_hunter_cave_b.png` |
-| phendrana_hunter_cave_access | OK | 18.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_hunter_cave_access_b.png` |
-| phendrana_hydra_lab_entryway | OK | 19.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_hydra_lab_entryway_b.png` |
-| phendrana_ice_ruins_access | visual issue | 20.8 | 6 texture(s) drawn before their data arrived; colour noise in 60 blocks | `work/sweep_out/runs/run023/shots/phendrana_ice_ruins_access_b.png` |
-| phendrana_ice_ruins_east | OK | 18.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_ice_ruins_east_b.png` |
-| phendrana_ice_ruins_west | OK | 40.0 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_ice_ruins_west_b.png` |
-| phendrana_lake_tunnel | OK | 34.6 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_lake_tunnel_b.png` |
-| phendrana_lower_edge_tunnel | OK | 20.9 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_lower_edge_tunnel_b.png` |
-| phendrana_map_station | OK | 21.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_map_station_b.png` |
-| phendrana_north_quarantine_tunnel | OK | 233.3 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_north_quarantine_tunnel_b.png` |
-| phendrana_observatory | OK | 23.1 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run023/shots/phendrana_observatory_b.png` |
-| phendrana_observatory_access | OK | 21.4 | 6 texture(s) drawn before their data arrived | `work/sweep_out/runs/run029/shots/phendrana_observatory_access_b.png` |
-| phendrana_phendrana_canyon | timeout |  | D:\AI\Active\Metroid-Prime\work\sweep_out\runs\run029\tour.nxs:19: timeout waiting for the warp target area to become current  [@warp phendrana phendrana_phendrana_canyon] | `work/sweep_out/runs/run029` |
-| phendrana_phendrana_s_edge | not reached |  |  |  |
-| phendrana_phendrana_shorelines | not reached |  |  |  |
-| phendrana_pike_access | not reached |  |  |  |
-| phendrana_plaza_walkway | not reached |  |  |  |
-| phendrana_quarantine_access | not reached |  |  |  |
-| phendrana_quarantine_cave | not reached |  |  |  |
-| phendrana_quarantine_monitor | not reached |  |  |  |
-| phendrana_research_core | not reached |  |  |  |
-| phendrana_research_core_access | not reached |  |  |  |
-| phendrana_research_entrance | not reached |  |  |  |
-| phendrana_research_lab_aether | not reached |  |  |  |
-| phendrana_research_lab_hydra | not reached |  |  |  |
-| phendrana_ruined_courtyard | not reached |  |  |  |
-| phendrana_ruins_entryway | not reached |  |  |  |
-| phendrana_save_station_a | not reached |  |  |  |
-| phendrana_save_station_b | not reached |  |  |  |
-| phendrana_save_station_c | not reached |  |  |  |
-| phendrana_save_station_d | not reached |  |  |  |
-| phendrana_security_cave | not reached |  |  |  |
-| phendrana_shoreline_entrance | not reached |  |  |  |
-| phendrana_south_quarantine_tunnel | not reached |  |  |  |
-| phendrana_specimen_storage | not reached |  |  |  |
-| phendrana_storage_cave | not reached |  |  |  |
-| phendrana_temple_entryway | not reached |  |  |  |
-| phendrana_transport_access | not reached |  |  |  |
-| phendrana_transport_to_magmoor_caverns_south | not reached |  |  |  |
-| phendrana_transport_to_magmoor_caverns_west | not reached |  |  |  |
-| phendrana_upper_edge_tunnel | not reached |  |  |  |
-| phendrana_west_tower | not reached |  |  |  |
-| phendrana_west_tower_entrance | not reached |  |  |  |
+| phendrana_aether_lab_entryway | OK | 8.6 |  | `work/sweep_stab/runs/run001/shots/phendrana_aether_lab_entryway_b.png` |
+| phendrana_canyon_entryway | OK | 18.5 |  | `work/sweep_stab/runs/run001/shots/phendrana_canyon_entryway_b.png` |
+| phendrana_chamber_access | OK | 15.7 |  | `work/sweep_stab/runs/run001/shots/phendrana_chamber_access_b.png` |
+| phendrana_chapel_of_the_elders | OK | 14.6 |  | `work/sweep_stab/runs/run001/shots/phendrana_chapel_of_the_elders_b.png` |
+| phendrana_chapel_tunnel | OK | 15.9 |  | `work/sweep_stab/runs/run001/shots/phendrana_chapel_tunnel_b.png` |
+| phendrana_chozo_ice_temple | OK | 9.0 |  | `work/sweep_stab/runs/run001/shots/phendrana_chozo_ice_temple_b.png` |
+| phendrana_control_tower | OK | 13.6 |  | `work/sweep_stab/runs/run001/shots/phendrana_control_tower_b.png` |
+| phendrana_courtyard_entryway | OK | 13.6 |  | `work/sweep_stab/runs/run001/shots/phendrana_courtyard_entryway_b.png` |
+| phendrana_east_tower | OK | 14.7 |  | `work/sweep_stab/runs/run001/shots/phendrana_east_tower_b.png` |
+| phendrana_frost_cave | OK | 14.5 |  | `work/sweep_stab/runs/run001/shots/phendrana_frost_cave_b.png` |
+| phendrana_frost_cave_access | OK | 16.7 |  | `work/sweep_stab/runs/run001/shots/phendrana_frost_cave_access_b.png` |
+| phendrana_frozen_pike | OK | 15.8 |  | `work/sweep_stab/runs/run001/shots/phendrana_frozen_pike_b.png` |
+| phendrana_gravity_chamber | OK | 9.5 |  | `work/sweep_stab/runs/run002/shots/phendrana_gravity_chamber_b.png` |
+| phendrana_hunter_cave | OK | 15.1 |  | `work/sweep_stab/runs/run002/shots/phendrana_hunter_cave_b.png` |
+| phendrana_hunter_cave_access | OK | 13.1 |  | `work/sweep_stab/runs/run002/shots/phendrana_hunter_cave_access_b.png` |
+| phendrana_hydra_lab_entryway | OK | 13.3 |  | `work/sweep_stab/runs/run002/shots/phendrana_hydra_lab_entryway_b.png` |
+| phendrana_ice_ruins_access | OK | 14.5 |  | `work/sweep_stab/runs/run002/shots/phendrana_ice_ruins_access_b.png` |
+| phendrana_ice_ruins_east | OK | 34.5 |  | `work/sweep_stab/runs/run002/shots/phendrana_ice_ruins_east_b.png` |
+| phendrana_ice_ruins_west | OK | 42.2 |  | `work/sweep_stab/runs/run002/shots/phendrana_ice_ruins_west_b.png` |
+| phendrana_lake_tunnel | OK | 13.7 |  | `work/sweep_stab/runs/run002/shots/phendrana_lake_tunnel_b.png` |
+| phendrana_lower_edge_tunnel | OK | 13.7 |  | `work/sweep_stab/runs/run002/shots/phendrana_lower_edge_tunnel_b.png` |
+| phendrana_map_station | OK | 13.8 |  | `work/sweep_stab/runs/run002/shots/phendrana_map_station_b.png` |
+| phendrana_north_quarantine_tunnel | OK | 14.5 |  | `work/sweep_stab/runs/run002/shots/phendrana_north_quarantine_tunnel_b.png` |
+| phendrana_observatory | OK | 14.6 |  | `work/sweep_stab/runs/run002/shots/phendrana_observatory_b.png` |
+| phendrana_observatory_access | OK | 10.8 |  | `work/sweep_stab/runs/run003/shots/phendrana_observatory_access_b.png` |
+| phendrana_phendrana_canyon | OK | 17.8 |  | `work/sweep_stab/runs/run003/shots/phendrana_phendrana_canyon_b.png` |
+| phendrana_phendrana_s_edge | OK | 19.3 |  | `work/sweep_stab/runs/run003/shots/phendrana_phendrana_s_edge_b.png` |
+| phendrana_phendrana_shorelines | OK | 15.7 |  | `work/sweep_stab/runs/run003/shots/phendrana_phendrana_shorelines_b.png` |
+| phendrana_pike_access | OK | 14.0 |  | `work/sweep_stab/runs/run003/shots/phendrana_pike_access_b.png` |
+| phendrana_plaza_walkway | OK | 15.4 |  | `work/sweep_stab/runs/run003/shots/phendrana_plaza_walkway_b.png` |
+| phendrana_quarantine_access | OK | 16.1 |  | `work/sweep_stab/runs/run003/shots/phendrana_quarantine_access_b.png` |
+| phendrana_quarantine_cave | OK | 17.1 |  | `work/sweep_stab/runs/run003/shots/phendrana_quarantine_cave_b.png` |
+| phendrana_quarantine_monitor | OK | 19.7 |  | `work/sweep_stab/runs/run003/shots/phendrana_quarantine_monitor_b.png` |
+| phendrana_research_core | OK | 15.2 |  | `work/sweep_stab/runs/run003/shots/phendrana_research_core_b.png` |
+| phendrana_research_core_access | OK | 15.9 |  | `work/sweep_stab/runs/run003/shots/phendrana_research_core_access_b.png` |
+| phendrana_research_entrance | OK | 17.2 |  | `work/sweep_stab/runs/run003/shots/phendrana_research_entrance_b.png` |
+| phendrana_research_lab_aether | OK | 11.6 |  | `work/sweep_stab/runs/run004/shots/phendrana_research_lab_aether_b.png` |
+| phendrana_research_lab_hydra | OK | 17.8 |  | `work/sweep_stab/runs/run004/shots/phendrana_research_lab_hydra_b.png` |
+| phendrana_ruined_courtyard | OK | 18.8 |  | `work/sweep_stab/runs/run004/shots/phendrana_ruined_courtyard_b.png` |
+| phendrana_ruins_entryway | OK | 12.2 |  | `work/sweep_stab/runs/run004/shots/phendrana_ruins_entryway_b.png` |
+| phendrana_save_station_a | OK | 17.3 |  | `work/sweep_stab/runs/run004/shots/phendrana_save_station_a_b.png` |
+| phendrana_save_station_b | OK | 8.4 |  | `work/sweep_stab/runs/run004/shots/phendrana_save_station_b_b.png` |
+| phendrana_save_station_c | OK | 8.4 |  | `work/sweep_stab/runs/run004/shots/phendrana_save_station_c_b.png` |
+| phendrana_save_station_d | OK | 10.4 |  | `work/sweep_stab/runs/run004/shots/phendrana_save_station_d_b.png` |
+| phendrana_security_cave | OK | 14.5 |  | `work/sweep_stab/runs/run004/shots/phendrana_security_cave_b.png` |
+| phendrana_shoreline_entrance | OK | 20.2 |  | `work/sweep_stab/runs/run004/shots/phendrana_shoreline_entrance_b.png` |
+| phendrana_south_quarantine_tunnel | OK | 17.7 |  | `work/sweep_stab/runs/run004/shots/phendrana_south_quarantine_tunnel_b.png` |
+| phendrana_specimen_storage | OK | 14.4 |  | `work/sweep_stab/runs/run004/shots/phendrana_specimen_storage_b.png` |
+| phendrana_storage_cave | OK | 9.1 |  | `work/sweep_stab/runs/run005/shots/phendrana_storage_cave_b.png` |
+| phendrana_temple_entryway | OK | 16.6 |  | `work/sweep_stab/runs/run005/shots/phendrana_temple_entryway_b.png` |
+| phendrana_transport_access | OK | 14.3 |  | `work/sweep_stab/runs/run005/shots/phendrana_transport_access_b.png` |
+| phendrana_transport_to_magmoor_caverns_south | OK | 15.9 |  | `work/sweep_stab/runs/run005/shots/phendrana_transport_to_magmoor_caverns_south_b.png` |
+| phendrana_transport_to_magmoor_caverns_west | OK | 15.8 |  | `work/sweep_stab/runs/run005/shots/phendrana_transport_to_magmoor_caverns_west_b.png` |
+| phendrana_upper_edge_tunnel | OK | 17.6 |  | `work/sweep_stab/runs/run005/shots/phendrana_upper_edge_tunnel_b.png` |
+| phendrana_west_tower | OK | 15.5 |  | `work/sweep_stab/runs/run005/shots/phendrana_west_tower_b.png` |
+| phendrana_west_tower_entrance | OK | 14.8 |  | `work/sweep_stab/runs/run005/shots/phendrana_west_tower_entrance_b.png` |
 
 ## Phazon Mines
 
 | Area | Status | Load s | Notes | Evidence |
 |---|---|---|---|---|
-| mines_central_dynamo | not reached |  |  |  |
-| mines_dynamo_access | not reached |  |  |  |
-| mines_elevator_a | not reached |  |  |  |
-| mines_elevator_access_a | not reached |  |  |  |
-| mines_elevator_access_b | not reached |  |  |  |
-| mines_elevator_b | not reached |  |  |  |
-| mines_elite_control | not reached |  |  |  |
-| mines_elite_control_access | not reached |  |  |  |
-| mines_elite_quarters | not reached |  |  |  |
-| mines_elite_quarters_access | not reached |  |  |  |
-| mines_elite_research | not reached |  |  |  |
-| mines_fungal_hall_a | not reached |  |  |  |
-| mines_fungal_hall_access | not reached |  |  |  |
-| mines_fungal_hall_b | not reached |  |  |  |
-| mines_main_quarry | not reached |  |  |  |
-| mines_maintenance_tunnel | not reached |  |  |  |
-| mines_map_station_mines | not reached |  |  |  |
-| mines_metroid_quarantine_a | not reached |  |  |  |
-| mines_metroid_quarantine_b | not reached |  |  |  |
-| mines_mine_security_station | not reached |  |  |  |
-| mines_missile_station_mines | not reached |  |  |  |
-| mines_omega_research | not reached |  |  |  |
-| mines_ore_processing | not reached |  |  |  |
-| mines_phazon_mining_tunnel | not reached |  |  |  |
-| mines_phazon_processing_center | not reached |  |  |  |
-| mines_processing_center_access | not reached |  |  |  |
-| mines_quarantine_access_a | not reached |  |  |  |
-| mines_quarantine_access_b | not reached |  |  |  |
-| mines_quarry_access | not reached |  |  |  |
-| mines_research_access | not reached |  |  |  |
-| mines_save_station_mines_a | not reached |  |  |  |
-| mines_save_station_mines_b | not reached |  |  |  |
-| mines_save_station_mines_c | not reached |  |  |  |
-| mines_security_access_a | not reached |  |  |  |
-| mines_security_access_b | not reached |  |  |  |
-| mines_storage_depot_a | not reached |  |  |  |
-| mines_storage_depot_b | not reached |  |  |  |
-| mines_transport_access | not reached |  |  |  |
-| mines_transport_to_magmoor_caverns_south | not reached |  |  |  |
-| mines_transport_to_tallon_overworld_south | not reached |  |  |  |
-| mines_ventilation_shaft | not reached |  |  |  |
-| mines_waste_disposal | not reached |  |  |  |
+| mines_central_dynamo | OK | 10.4 |  | `work/sweep_stab/runs/run006/shots/mines_central_dynamo_b.png` |
+| mines_dynamo_access | OK | 14.8 |  | `work/sweep_stab/runs/run006/shots/mines_dynamo_access_b.png` |
+| mines_elevator_a | OK | 15.8 |  | `work/sweep_stab/runs/run006/shots/mines_elevator_a_b.png` |
+| mines_elevator_access_a | OK | 15.0 |  | `work/sweep_stab/runs/run006/shots/mines_elevator_access_a_b.png` |
+| mines_elevator_access_b | OK | 14.4 |  | `work/sweep_stab/runs/run006/shots/mines_elevator_access_b_b.png` |
+| mines_elevator_b | OK | 14.5 |  | `work/sweep_stab/runs/run006/shots/mines_elevator_b_b.png` |
+| mines_elite_control | OK | 16.2 |  | `work/sweep_stab/runs/run006/shots/mines_elite_control_b.png` |
+| mines_elite_control_access | OK | 15.8 |  | `work/sweep_stab/runs/run006/shots/mines_elite_control_access_b.png` |
+| mines_elite_quarters | OK | 18.3 |  | `work/sweep_stab/runs/run006/shots/mines_elite_quarters_b.png` |
+| mines_elite_quarters_access | OK | 15.8 |  | `work/sweep_stab/runs/run006/shots/mines_elite_quarters_access_b.png` |
+| mines_elite_research | OK | 16.7 |  | `work/sweep_stab/runs/run006/shots/mines_elite_research_b.png` |
+| mines_fungal_hall_a | OK | 17.6 |  | `work/sweep_stab/runs/run006/shots/mines_fungal_hall_a_b.png` |
+| mines_fungal_hall_access | OK | 13.4 |  | `work/sweep_stab/runs/run007/shots/mines_fungal_hall_access_b.png` |
+| mines_fungal_hall_b | OK | 16.8 |  | `work/sweep_stab/runs/run007/shots/mines_fungal_hall_b_b.png` |
+| mines_main_quarry | OK | 14.5 |  | `work/sweep_stab/runs/run007/shots/mines_main_quarry_b.png` |
+| mines_maintenance_tunnel | OK | 16.3 |  | `work/sweep_stab/runs/run007/shots/mines_maintenance_tunnel_b.png` |
+| mines_map_station_mines | OK | 16.4 |  | `work/sweep_stab/runs/run007/shots/mines_map_station_mines_b.png` |
+| mines_metroid_quarantine_a | OK | 14.2 |  | `work/sweep_stab/runs/run007/shots/mines_metroid_quarantine_a_b.png` |
+| mines_metroid_quarantine_b | OK | 15.8 |  | `work/sweep_stab/runs/run007/shots/mines_metroid_quarantine_b_b.png` |
+| mines_mine_security_station | OK | 17.6 |  | `work/sweep_stab/runs/run007/shots/mines_mine_security_station_b.png` |
+| mines_missile_station_mines | OK | 16.2 |  | `work/sweep_stab/runs/run007/shots/mines_missile_station_mines_b.png` |
+| mines_omega_research | OK | 14.7 |  | `work/sweep_stab/runs/run007/shots/mines_omega_research_b.png` |
+| mines_ore_processing | OK | 14.0 |  | `work/sweep_stab/runs/run007/shots/mines_ore_processing_b.png` |
+| mines_phazon_mining_tunnel | OK | 13.0 |  | `work/sweep_stab/runs/run007/shots/mines_phazon_mining_tunnel_b.png` |
+| mines_phazon_processing_center | OK | 10.9 |  | `work/sweep_stab/runs/run008/shots/mines_phazon_processing_center_b.png` |
+| mines_processing_center_access | OK | 18.1 |  | `work/sweep_stab/runs/run008/shots/mines_processing_center_access_b.png` |
+| mines_quarantine_access_a | OK | 20.9 |  | `work/sweep_stab/runs/run008/shots/mines_quarantine_access_a_b.png` |
+| mines_quarantine_access_b | OK | 11.5 |  | `work/sweep_stab/runs/run008/shots/mines_quarantine_access_b_b.png` |
+| mines_quarry_access | OK | 8.3 |  | `work/sweep_stab/runs/run008/shots/mines_quarry_access_b.png` |
+| mines_research_access | OK | 8.3 |  | `work/sweep_stab/runs/run008/shots/mines_research_access_b.png` |
+| mines_save_station_mines_a | OK | 8.2 |  | `work/sweep_stab/runs/run008/shots/mines_save_station_mines_a_b.png` |
+| mines_save_station_mines_b | OK | 8.1 |  | `work/sweep_stab/runs/run008/shots/mines_save_station_mines_b_b.png` |
+| mines_save_station_mines_c | OK | 8.2 |  | `work/sweep_stab/runs/run008/shots/mines_save_station_mines_c_b.png` |
+| mines_security_access_a | OK | 8.1 |  | `work/sweep_stab/runs/run008/shots/mines_security_access_a_b.png` |
+| mines_security_access_b | OK | 9.2 |  | `work/sweep_stab/runs/run008/shots/mines_security_access_b_b.png` |
+| mines_storage_depot_a | OK | 10.3 |  | `work/sweep_stab/runs/run008/shots/mines_storage_depot_a_b.png` |
+| mines_storage_depot_b | OK | 8.4 |  | `work/sweep_stab/runs/run009/shots/mines_storage_depot_b_b.png` |
+| mines_transport_access | OK | 14.2 |  | `work/sweep_stab/runs/run009/shots/mines_transport_access_b.png` |
+| mines_transport_to_magmoor_caverns_south | OK | 13.6 |  | `work/sweep_stab/runs/run009/shots/mines_transport_to_magmoor_caverns_south_b.png` |
+| mines_transport_to_tallon_overworld_south | OK | 7.8 |  | `work/sweep_stab/runs/run009/shots/mines_transport_to_tallon_overworld_south_b.png` |
+| mines_ventilation_shaft | OK | 8.4 |  | `work/sweep_stab/runs/run009/shots/mines_ventilation_shaft_b.png` |
+| mines_waste_disposal | OK | 14.5 |  | `work/sweep_stab/runs/run009/shots/mines_waste_disposal_b.png` |
 
 ## Impact Crater
 
 | Area | Status | Load s | Notes | Evidence |
 |---|---|---|---|---|
-| crater_crater_entry_point | not reached |  |  |  |
-| crater_crater_missile_station | not reached |  |  |  |
-| crater_crater_tunnel_a | not reached |  |  |  |
-| crater_crater_tunnel_b | not reached |  |  |  |
-| crater_metroid_prime_lair | not reached |  |  |  |
-| crater_phazon_core | not reached |  |  |  |
-| crater_phazon_infusion_chamber | not reached |  |  |  |
-| crater_subchamber_five | not reached |  |  |  |
-| crater_subchamber_four | not reached |  |  |  |
-| crater_subchamber_one | not reached |  |  |  |
-| crater_subchamber_three | not reached |  |  |  |
-| crater_subchamber_two | not reached |  |  |  |
+| crater_crater_entry_point | OK | 12.4 |  | `work/sweep_stab/runs/run010/shots/crater_crater_entry_point_b.png` |
+| crater_crater_missile_station | OK | 14.2 |  | `work/sweep_stab/runs/run010/shots/crater_crater_missile_station_b.png` |
+| crater_crater_tunnel_a | OK | 15.3 |  | `work/sweep_stab/runs/run010/shots/crater_crater_tunnel_a_b.png` |
+| crater_crater_tunnel_b | OK | 13.7 |  | `work/sweep_stab/runs/run010/shots/crater_crater_tunnel_b_b.png` |
+| crater_metroid_prime_lair | OK | 15.9 |  | `work/sweep_stab/runs/run010/shots/crater_metroid_prime_lair_b.png` |
+| crater_phazon_core | OK | 15.8 |  | `work/sweep_stab/runs/run010/shots/crater_phazon_core_b.png` |
+| crater_phazon_infusion_chamber | OK | 15.6 |  | `work/sweep_stab/runs/run010/shots/crater_phazon_infusion_chamber_b.png` |
+| crater_subchamber_five | OK | 15.0 |  | `work/sweep_stab/runs/run010/shots/crater_subchamber_five_b.png` |
+| crater_subchamber_four | OK | 8.8 |  | `work/sweep_stab/runs/run010/shots/crater_subchamber_four_b.png` |
+| crater_subchamber_one | OK | 13.9 |  | `work/sweep_stab/runs/run010/shots/crater_subchamber_one_b.png` |
+| crater_subchamber_three | OK | 15.5 |  | `work/sweep_stab/runs/run010/shots/crater_subchamber_three_b.png` |
+| crater_subchamber_two | OK | 13.5 |  | `work/sweep_stab/runs/run010/shots/crater_subchamber_two_b.png` |
 
 ## Unknown calls
 
@@ -384,3 +372,44 @@ None logged.
 | run023 | ok | 1179.1 | 12 |  |
 | run028 | ok | 325.4 | 6 |  |
 | run029 | timeout | 337.1 | 12 | D:\AI\Active\Metroid-Prime\work\sweep_out\runs\run029\tour.nxs:19: timeout waiting for the |
+| run001 | crash | 147.0 | 12 | HOST EXCEPTION 0xC0000005 at host address 0x7ff65aea63d8 on thread guest-84 (tid 505996) |
+| run003 | hang | 434.7 | 4 | no progress for 420 s (killed) |
+| run002 | ok | 603.6 | 12 |  |
+| run005 | ok | 273.3 | 4 |  |
+| run004 | ok | 699.1 | 11 |  |
+| run007 | hang | 431.7 | 12 | no progress for 420 s (killed) |
+| run006 | ok | 815.3 | 12 |  |
+| run010 | hang | 433.1 | 8 | no progress for 420 s (killed) |
+| run008 | ok | 1324.2 | 12 |  |
+| run011 | ok | 363.7 | 8 |  |
+| run009 | ok | 1195.9 | 12 |  |
+| run012 | ok | 882.9 | 12 |  |
+| run013 | ok | 841.4 | 12 |  |
+| run014 | ok | 922.4 | 12 |  |
+| run017 | ok | 473.1 | 4 |  |
+| run016 | ok | 758.8 | 12 |  |
+| run015 | ok | 835.1 | 12 |  |
+| run018 | hang | 559.1 | 12 | no progress for 300 s (killed) |
+| run020 | ok | 554.6 | 5 |  |
+| run019 | ok | 773.4 | 12 |  |
+| run021 | hang | 432.9 | 9 | no progress for 420 s (killed) |
+| run022 | hang | 303.5 | 12 | watchdog freeze: no frame tick for 60s |
+| run024 | hang | 553.9 | 9 | no progress for 300 s (killed) |
+| run025 | hang | 771.3 | 10 | no progress for 300 s (killed) |
+| run026 | crash | 427.2 | 8 | HOST EXCEPTION 0xC0000005 at host address 0x7ff65a9122a0 on thread guest-88 (tid 423892) |
+| run023 | ok | 1179.1 | 12 |  |
+| run028 | ok | 325.4 | 6 |  |
+| run029 | timeout | 337.1 | 12 | D:\AI\Active\Metroid-Prime\work\sweep_out\runs\run029\tour.nxs:19: timeout waiting for the |
+| run002 | ok | 694.2 | 12 |  |
+| run001 | ok | 711.0 | 12 |  |
+| run004 | ok | 642.9 | 12 |  |
+| run003 | ok | 782.6 | 12 |  |
+| run005 | ok | 488.1 | 8 |  |
+| run006 | ok | 744.0 | 12 |  |
+| run007 | ok | 752.6 | 12 |  |
+| run009 | ok | 275.2 | 6 |  |
+| run008 | ok | 744.2 | 12 |  |
+| run010 | ok | 713.8 | 12 |  |
+| run001 | ok | 86.0 | 1 |  |
+| run002 | ok | 99.7 | 2 |  |
+| run003 | ok | 97.6 | 1 |  |
