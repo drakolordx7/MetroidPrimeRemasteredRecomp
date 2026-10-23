@@ -12,15 +12,14 @@ The real game runs natively on Windows from the title screen through New Game in
 - Last merge batch (stutter into runtime main): 154/154 tests, gameplay boot 170 s, 9,351 presents, 0 failed textures; title prompt renders correctly.
 - S23 `upscale`: motion vectors + jitter, then FSR 3.1 / DLSS / XeSS upscaling and frame generation (research licences first).
 - S22 `rel`: static MSVC runtime, scene_texture test reference, CONFIG docs for new keys, INDEX repair, fresh-clone build check, physics table 60-240 fps, keyboard beam/visor keys.
-- S4h `nvn4` (restarted 03:40 after a 2 h stall; previous work at e9212ce): colour-noise rectangles (18 areas + hangar door), misaligned engine jets, black textures, magmoor_workstation graphics crash.
+- S24 `warm`: build pipeline keys on the player's machine so a cold first run has no pipeline-creation hitches.
 
 ## Full-game sweep (docs/mpr/SWEEP.md)
-All 275 areas reached: 258 OK, 17 visual issues (colour-noise rectangles, S4h). The hangs and boot "deadlocks" were CPU starvation of the lowest-priority loader thread under machine load, fixed by the starvation guard (`[sched] starvation_guard`, S20). `wfe`/`yield` now call a host spin hint. Open: frigate_air_lock loader crash (did not recur in 7 tries), magmoor_workstation BoxInFrustumPlanes crash (intermittent). Rerun: `.weaver/stab_sweep.sh --resume --jobs 2`.
+All 275 areas reached: all OK after S4h (noise rectangles were already fixed by S4f alias sharing; black world and black environment maps fixed). The hangs and boot "deadlocks" were CPU starvation of the lowest-priority loader thread under machine load, fixed by the starvation guard (`[sched] starvation_guard`, S20). `wfe`/`yield` now call a host spin hint. Open: frigate_air_lock loader crash (did not recur in 7 tries), magmoor_workstation BoxInFrustumPlanes crash (intermittent). Rerun: `.weaver/stab_sweep.sh --resume --jobs 2`.
 
 ## Next (queue, in order)
-1. Ship pipeline warm-up without game-derived files: have setup or first launch build the pipeline key file locally (a cold driver cache gave 90-750 ms frames in pipeline creation, S21).
-2. Gameplay verification of high refresh + mouse aim over a longer route (S13), input polish.
-3. Later: HDR on a real HDR display; AMD Anti-Lag 2.
+1. Gameplay verification: a long play session from New Game through the frigate into Tallon IV (high refresh, mouse aim, keyboard), after S22.
+2. Later: HDR on a real HDR display; AMD Anti-Lag 2. Jets: not reproduced by S4h; need a clip from the user's build.
 
 ## Shortcomings to fix
 - High refresh and mouse aim still need gameplay verification (S13).
