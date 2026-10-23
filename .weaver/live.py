@@ -34,7 +34,7 @@ def regions():
     r = {}
     for line in open(ROOT + '/tools/test/regions.tsv', encoding='utf-8'):
         p = line.rstrip('\n').split('\t')
-        if len(p) >= 3 and p[2]:
+        if len(p) >= 3 and p[2] and not p[0].endswith('_start'):
             r[p[2].lower()] = p[0]
     return r
 
