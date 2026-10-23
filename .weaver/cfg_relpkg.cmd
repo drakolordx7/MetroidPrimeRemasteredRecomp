@@ -1,0 +1,5 @@
+@echo off
+rem configure the release-flavour build (MPR_RELEASE=ON) of the rel game build: mpr.exe from runtime-wt\rel, the game libraries of work\build\mpr_rel
+rem (.weaver\build_mpr_rel.cmd) and the tools of tools-wt\rel (textures\build\release must be built there first)
+call D:\AI\Active\Metroid-Prime\runtime\scripts\env.cmd
+cmake -S D:\AI\Active\Metroid-Prime\game-build-rel -B D:\AI\Active\Metroid-Prime\game-build-rel\build\relpkg -G Ninja -DMPR_RELEASE=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang-cl -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_C_COMPILER_LAUNCHER=sccache -DCMAKE_CXX_COMPILER_LAUNCHER=sccache -DNXRT_RECOMP_INCLUDE=D:/AI/Active/Metroid-Prime/recomp-wt/rel/include -DMPR_LIB_DIR=D:/AI/Active/Metroid-Prime/work/build/mpr_rel -DMPR_RUNTIME_DIR=D:\AI\Active\Metroid-Prime\runtime-wt\rel -DNXRT_TOOLS_DIR=D:/AI/Active/Metroid-Prime/tools-wt/rel -DFETCHCONTENT_SOURCE_DIR_VOLK=D:/AI/Active/Metroid-Prime/game-build/build/release/_deps/volk-src -DFETCHCONTENT_SOURCE_DIR_VULKAN_HEADERS=D:/AI/Active/Metroid-Prime/game-build/build/release/_deps/vulkan_headers-src
