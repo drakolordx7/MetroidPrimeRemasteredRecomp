@@ -12,7 +12,7 @@ The real game runs natively on Windows from the title screen through New Game in
 - Last merge batch (perf2 + polish into runtime main): 152/152 tests, gameplay boot 170 s, 9,057 presents, 0 failed textures.
 - S21 `stutter`: async texture prepare at area loads, movie decoder off the main thread, Reflex vs new pacing, vsync/uncapped matrix.
 - S20 `stab`: sweep hangs, boot deadlocks, frigate_air_lock crash, warp stalls, lifter `wfe` yield, finish the sweep.
-- S4g `nvn4`: colour-noise rectangles (18 areas + hangar door), misaligned engine jets, black textures, magmoor_workstation graphics crash.
+- S4h `nvn4` (restarted 03:40 after a 2 h stall; previous work at e9212ce): colour-noise rectangles (18 areas + hangar door), misaligned engine jets, black textures, magmoor_workstation graphics crash.
 
 ## Full-game sweep (docs/mpr/SWEEP.md)
 184 of 275 areas reached: 159 OK, 18 visual issues (colour-noise rectangles, worst in tallon_biohazard_containment, chozo_watery_hall_access, chozo_totem_access), 2 crashes (frigate_air_lock particle state on the loader thread, magmoor_workstation BoxInFrustumPlanes), 4 post-warp hangs in CGraphicsFrameToken::WaitUntilFinished and 2 boot deadlocks in CScopedSceneTransferLock (lost wake-up suspected; the watchdog now dumps kernel waiters). Fixed: loading freezes from the spin-only LockBusyMutex (host replacement; lifter idea: make `wfe` yield). Not visited: rest of Phendrana, Phazon Mines, Impact Crater. Rerun: `tools/.venv/Scripts/python tools/test/sweep.py --exe game-build/build/release/mpr.exe --jobs 2 --resume`.
