@@ -1,6 +1,6 @@
 # Known issues
 
-This list is kept short and matches the latest release. The release notes of each version say what changed. If something here happens differently on your PC, or you hit something that is not listed, open an issue with `mpr.log`.
+This list matches the latest release. The release notes of each version say what changed. If something here happens differently on your PC, or you hit a problem that is not listed, open an issue and attach `mpr.log`.
 
 ## Playing
 
@@ -21,5 +21,5 @@ This list is kept short and matches the latest release. The release notes of eac
 
 ## Not there yet
 
-- Upscalers (FSR, DLSS, XeSS), and AMD Anti-Lag 2 (written, never run on an AMD GPU).
+- Upscalers (FSR, DLSS, XeSS) are not there yet. AMD Anti-Lag 2 is written but has never been run on an AMD GPU.
 - Windows 7, 8 and 8.1, 32-bit Windows, Linux and macOS.
