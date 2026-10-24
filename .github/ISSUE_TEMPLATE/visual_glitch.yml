@@ -34,7 +34,7 @@ body:
     id: build
     attributes:
       label: "Build"
-      description: "Release version (for example v0.1.0) or commit hash."
+      description: "Release version (for example v0.1.0) or commit hash. The version is in the top right corner of mpr_launcher.exe, and on the line 'mpr 0.1.0' near the top of mpr.log."
       placeholder: "v0.1.0 or abc1234"
     validations:
       required: true
@@ -43,6 +43,7 @@ body:
     id: gpu
     attributes:
       label: "GPU model"
+      description: "AMD and Intel reports are welcome. The only GPU tested so far is an NVIDIA GeForce RTX 3080."
       placeholder: "NVIDIA GeForce RTX 3060"
     validations:
       required: true
@@ -90,5 +91,5 @@ body:
     id: log
     attributes:
       label: "mpr.log"
-      description: "Paste the last 200 lines of mpr.log (next to mpr.exe), or drag the file into this box"
+      description: "Paste the last 200 lines of mpr.log (in the game folder, next to mpr.exe), or drag the file into this box"
       render: text

@@ -1,8 +1,11 @@
 blank_issues_enabled: false
 contact_links:
   - name: "Known issues"
+    url: "https://github.com/drakolordx7/MetroidPrimeRemasteredRecomp/releases"
+    about: "Check the known issues listed in the release notes before filing a new one."
+  - name: "Known issues file"
     url: "https://github.com/drakolordx7/MetroidPrimeRemasteredRecomp/blob/main/KNOWN_ISSUES.md"
-    about: "Check the list of bugs we already know about before filing a new one."
+    about: "The known issues file in the repository."
   - name: "Security problem"
     url: "https://github.com/drakolordx7/MetroidPrimeRemasteredRecomp/security/advisories/new"
     about: "Report a security problem privately."

@@ -1,165 +1,73 @@
-# Metroid Prime Remastered Recomp
+# Metroid Prime Remastered for Windows (unofficial PC port)
 
-A native Windows x64 port of Metroid Prime Remastered, made by statically recompiling the Nintendo Switch release (v1.0.0). It is not an emulator. The game's code is translated to C++ ahead of time and built into a normal Windows program. A runtime provides the Switch's operating system services, and the game's graphics API (NVN) runs on Vulkan.
+A native Windows port of Metroid Prime Remastered, made by recompiling the Nintendo Switch release (version 1.0.0) into a normal Windows program. It is not an emulator. The game's code is translated to C++ ahead of time, a runtime stands in for the Switch's system services, and the game's graphics API (NVN) runs on Vulkan. It has a launcher, a setup tool, mouse and keyboard controls, any resolution and aspect ratio, and high refresh rates.
 
-This is an unofficial fan project. It is not affiliated with Nintendo or Retro Studios. The repository contains no game code, assets or keys, and you need your own copy of the game.
+[Download the latest release](https://github.com/drakolordx7/MetroidPrimeRemasteredRecomp/releases/latest)
 
-The recompiler, runtime and tools are in a separate repository, [nxrecomp](https://github.com/drakolordx7/nxrecomp), which is included here as the `base` submodule.
+The release has no game files. You need your own dump of Metroid Prime Remastered version 1.0.0 and the keys from your own Switch. Not affiliated with Nintendo or Retro Studios.
 
-## Status
+## Requirements
 
-Early. The game runs from the title screen into the first level (the Frigate Orpheon): opening cutscene, landing, the hangar with its HUD. There are many visual bugs, and it is not playable from start to finish yet. [KNOWN_ISSUES.md](KNOWN_ISSUES.md) lists what we know is broken. Expect crashes, and please report them (see [Reporting problems](#reporting-problems)).
+- Windows 10 (1903 or later) or Windows 11, 64-bit
+- A GPU and driver with Vulkan 1.3. It has been tested on an NVIDIA GeForce RTX 3080 only; AMD and Intel GPUs are untested
+- About 14 GB of free disk space
+- Your dump of the game, version 1.0.0 (`.nsp`, `.xci`, `.nsz` or `.xcz`; updates and patches are not supported) and your `prod.keys` (if the dump was bought on another console, also its `title.keys`, next to `prod.keys`)
 
-## PC features
+## Usage
 
-| Feature | State |
-|---|---|
-| Any resolution and aspect ratio, ultrawide included, with a correct HUD | Working |
-| FOV, anisotropic filtering, LOD bias, bloom and chromatic aberration toggles | Working |
-| Window, borderless fullscreen (Alt+Enter), vsync and frame cap options | Working |
-| A launcher (`mpr_launcher.exe`) for display, mouse, keyboard, controller and button icon settings, plus first-time setup and a Play button | Working |
-| Frame rate counter (corner overlay, F2 by default, off by default) | Working |
-| High refresh rates (120, 144, 240 Hz and uncapped) with game speed and physics unchanged | Working in menus and cutscenes. Not yet checked in gameplay. |
-| Keyboard and mouse controls with rebinding (`controls.ini` and the F1 settings page), raw mouse aim | Implemented. Mouse aim and the Switch button layout are not yet checked in gameplay. Morph ball mouse camera and free look are missing. |
-| Controllers with gyro and rumble, and remappable buttons (any controller button can press any Switch button) | Implemented, not yet checked in gameplay |
-| Button icons that match the device you use: keyboard and mouse icons (showing your own keys), Xbox, PlayStation or Switch | Working |
-| HDR | In progress |
-| FSR 3.1 upscaling and frame generation, DLSS or XeSS if you supply the DLLs, Reflex and Anti-Lag 2 | In progress |
+1. Unzip the release into a folder with a short path (under about 180 characters) and run `mpr_launcher.exe`.
+2. Press "Set up game files...", choose your dump and your `prod.keys`, and press Start setup. It takes about 5 minutes on a 16-core PC, longer on fewer cores. You can stop it and run it again later.
+3. When setup closes, the launcher prepares shaders for your GPU (a few minutes, once per driver). When it says "Ready to play.", press Play.
 
-## What you need
+Settings are in the launcher (display, mouse, keyboard, controller, button icons) and on the F1 page in the game, and are saved to `controls.ini` in the game folder. Saves are in `%APPDATA%\MPRRecomp\save`. Logs (`mpr.log`, `setup.log`) are in the game folder. To update, unzip a new release over the old folder. To uninstall, delete the folder and the save folder.
 
-- Windows 10 or 11, 64-bit.
-- A graphics card and driver with Vulkan 1.3.
-- About 13 GB of free disk space.
-- Your own dump of Metroid Prime Remastered, version 1.0.0 (title id `010012101468C000`), as an `.nsp`, `.xci`, `.nsz` or `.xcz` file. Updates and patches are not supported.
-- Your Switch keys (`prod.keys`), dumped from your own console. If the dump was bought on another console, its `title.keys` goes next to `prod.keys`.
-
-We do not provide dumps or keys and cannot help you get them.
-
-## Install a release
-
-1. Download the latest zip from the Releases page and unpack it.
-2. Run `mpr_launcher.exe`. In a new folder it reports that there are no game files yet, so press "Set up game files...". That opens the setup tool (`mpr_setup.exe`, which you can also run directly). Pick your dump (or drag it into the window) and check that the line under it turns green. If setup did not find your keys, point it at them. Then press Start setup. It takes about 5 minutes on a 16-core PC. You can stop it and run it again later, and it picks up where it left off.
-3. When the launcher says "Ready to play.", change any settings you like (display, mouse, keys, controller, button icons, frame rate counter), then press Play. You can also start `mpr.exe` directly. It uses the same saved settings.
-
-The release's own `README.txt` lists the default controls and the settings you can change. `tools/setup/README.md` in nxrecomp covers the setup tool in more detail, including its command-line options and error messages.
-
-## Build from source
-
-You only need this to work on the code. A release is easier if you just want to play.
-
-### Prerequisites
-
-| Tool | Notes |
-|---|---|
-| Visual Studio Build Tools 2026 | C++ workload and a Windows SDK, in the default install path. The scripts call `vcvars64.bat` from there. |
-| LLVM with clang-cl | Installed in `C:\Program Files\LLVM`. We use LLVM 23. |
-| CMake and Ninja | CMake 4.x. Both must be on `PATH`. |
-| sccache | The build scripts use it as the compiler launcher. |
-| Vulkan SDK | For `spirv-val` and the validation layer. |
-| Python 3.13 and [uv](https://docs.astral.sh/uv/) | For the recompiler and the test tools. |
-| .NET 10 SDK | For the shader translator. |
-| Git | Clone with submodules. |
-
-`pwsh check-toolchain.ps1` checks that each tool runs. It also checks some optional analysis tools (IDA, hactool, RenderDoc and others). Those can fail without affecting the build.
-
-### Steps
-
-Run these from the repository root, in `cmd` or PowerShell. Git Bash does not work because its `tar` cannot unpack the downloads.
-
-1. Clone with the submodule.
-
-   ```
-   git clone --recurse-submodules https://github.com/drakolordx7/MetroidPrimeRemasteredRecomp
-   ```
-
-2. The scripts expect `recomp`, `runtime` and `tools` at the top level, but they arrive inside `base`. Link them (in `cmd`; no admin rights needed). These names are already in `.gitignore`.
-
-   ```
-   mklink /J recomp base\recomp
-   mklink /J runtime base\runtime
-   mklink /J tools base\tools
-   ```
-
-3. Create the Python environment.
-
-   ```
-   uv venv tools\.venv --python 3.13
-   uv pip install --python tools\.venv -r recomp\requirements.txt
-   uv pip install --python tools\.venv numpy pillow
-   ```
-
-4. Build the setup tool and extract your dump into `game\`. This writes `game\exefs`, `game\romfs` and the converted texture cache.
-
-   ```
-   pwsh -File tools\textures\scripts\fetch_third_party.ps1
-   pwsh -File tools\setup\scripts\fetch_zstd.ps1
-   pwsh -File tools\setup\scripts\build.ps1
-   tools\setup\build\release\bin\mpr_setup_cli --input "path\to\Metroid Prime Remastered.nsp" --out game
-   ```
-
-   Add `--keys path\to\prod.keys` if it cannot find your keys. Run `mpr_setup_cli --check` with `--input` to inspect a dump without writing anything.
-
-5. Translate the game's code to C++ and build it into libraries. The first run takes a long time. Later runs only rebuild what changed.
-
-   ```
-   recomp\scripts\build_mpr.cmd
-   ```
-
-   The script starts its own sccache server on port 24339 with the cache in `work\build\sccache`, so every checkout on the same PC shares it. Set `SCCACHE_SERVER_PORT` and `SCCACHE_DIR` first if you want a separate cache.
-
-6. Build the texture decoder DLLs and then `mpr.exe`.
-
-   ```
-   pwsh -File tools\textures\scripts\build.ps1
-   pwsh game-build\scripts\build.ps1
-   ```
-
-   The program ends up in `game-build\build\release\mpr.exe`. The first configure downloads SDL3 and a few small libraries, so it needs an internet connection. `mpr.exe` and the setup tools use the static Visual C++ runtime, so a PC that only runs them needs no redistributable.
-
-The game also needs its translated shaders (`shader_cache`). A release ships them as a prebuilt pack that the setup tool unpacks. To build the cache yourself, see `tools/shaders/README.md` and `runtime/docs/S4d.md` in nxrecomp.
-
-## Run and test
-
-Run the game in a window from the repository root:
-
-```
-game-build\build\release\mpr.exe --game game
-```
-
-Developer commands, all through the project's Python environment:
-
-```
-tools\.venv\Scripts\python tools\boot\boot.py                          # rebuild, run headless for 40 s, print a summary and the log tail
-tools\.venv\Scripts\python tools\boot\boot.py --env NXRT_BOOT_GFX=window
-tools\.venv\Scripts\python tools\test\run_suite.py tools\test\suites\boot.toml
-```
-
-`boot.py` has more options (`--help`). The suite runs scripted, deterministic runs of the game and prints one PASS or FAIL line per run. Unit tests and the recompiler's oracle checks are described in [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Screenshots
-
-Screenshots will go in `docs/images/`.
-
-<!-- Maintainer: this folder is intentionally empty. Game frames are copyrighted, so decide whether to commit any before adding them, then link them here. -->
+Defaults: WASD move, mouse aims, left button fires, right button or Q locks on, middle button or F fires missiles, Space jumps, Ctrl or C is the morph ball, Tab or M opens the map, Escape pauses, 1 to 4 pick the beam and 5 to 8 the visor. Xbox, PlayStation and Switch controllers work. Alt+Enter toggles fullscreen and F2 shows the frame rate. `HELP.txt` in the release lists every key, every setting and the fixes for common problems.
 
 ## Reporting problems
 
-Use the issue forms: bug report, crash report, visual glitch and feature request. Include `mpr.log` and your GPU and driver version. A screenshot of a bug in a running build is fine to attach. Never attach game files, keys or dumps. [CONTRIBUTING.md](CONTRIBUTING.md) explains how to turn on more detailed logging.
+[Open an issue](https://github.com/drakolordx7/MetroidPrimeRemasteredRecomp/issues/new/choose) and attach `mpr.log` from the run where it happened (the next run keeps the old one as `mpr.log.prev`). The top right of the launcher and the "mpr 0.1.0" line near the top of the log show your version. For a crash, also attach `mpr_crash.txt` or `mpr_fatal.txt`. Never attach game files, your dump or your keys.
 
 ## Contributing
 
-Pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first. Security problems go through [SECURITY.md](SECURITY.md).
+- Open pull requests against `main`. Say what you changed and what you ran. Keep unrelated clean-ups out, and write commit subjects as one plain sentence.
+- Code in `recomp/`, `runtime/` and `tools/` lives in [nxrecomp](https://github.com/drakolordx7/nxrecomp), included here as the `base` submodule. Game bugs, `game-build/` and the docs belong here.
+- Never put game data, keys or anything extracted from the game in a pull request.
+- Build (Visual Studio Build Tools with the C++ workload, LLVM 23 with clang-cl, CMake, Ninja, sccache, Vulkan SDK, Python 3.13 with uv, .NET 10; run from `cmd` or PowerShell, not Git Bash):
 
-## Layout
+```
+git clone --recurse-submodules https://github.com/drakolordx7/MetroidPrimeRemasteredRecomp
+mklink /J recomp base\recomp
+mklink /J runtime base\runtime
+mklink /J tools base\tools
+uv venv tools\.venv --python 3.13
+uv pip install --python tools\.venv -r recomp\requirements.txt numpy pillow
+pwsh -File tools\textures\scripts\fetch_third_party.ps1
+pwsh -File tools\setup\scripts\fetch_zstd.ps1
+pwsh -File tools\setup\scripts\build.ps1
+tools\setup\build\release\bin\mpr_setup_cli --input "Metroid Prime Remastered.nsp" --out game
+recomp\scripts\build_mpr.cmd
+pwsh -File tools\textures\scripts\build.ps1
+pwsh game-build\scripts\build.ps1
+```
 
-| Path | What is in it |
-|---|---|
-| `base/` | The nxrecomp submodule: recompiler (`recomp`), runtime (`runtime`) and tools (`tools`) |
-| `game-build/` | The CMake project that links the runtime and the translated game into `mpr.exe` |
-| `docs/` | The original plan (`PLAN.md`) and reverse-engineering notes (`mpr/`) |
-| `` | Helper scripts, the tool index (`INDEX.md`), the current status (`STATUS.md`) and a changelog |
+`build_mpr.cmd` lifts the game's code and takes a while the first time. The program ends up in `game-build\build\release\mpr.exe`. Add `-Release -Version 0.1.0` to the last command for the package build that `tools\release\make_release.py` zips. The tests are `pwsh runtime\scripts\build.ps1 -Test` (runtime) and `pwsh -File tools\setup\scripts\build.ps1 -Test` (setup tool). Folders with an `oracle\LOCKED` file are checks that must not be edited. More detail is in the READMEs of each folder in nxrecomp.
 
-## Licence
+## Credits
 
-GPL-3.0. See `LICENSE`. Third-party code keeps its own licence; the notices are in nxrecomp.
+Maintained by [drakolordx7](https://github.com/drakolordx7).
+
+Built on the work of others:
+
+- Recompiler and runtime design: [smo-recomp](https://github.com/Coz-0/smo-recomp) (the lifter this one started from), [SuperMarioWonderRecomp](https://github.com/BelmanteGu) by Projeto Belmante, [ssbu-recomp](https://github.com/OpenSmash-Ultimate/ssbu-recomp) (C++ exceptions), [ScarletNX](https://github.com/scarletnx/ScarletNX) (service layouts) and [LASRecomp](https://github.com/peiikai/LASRecomp)
+- [Ryujinx](https://ryujinx.app) (Ryubing): the Maxwell shader translator and the audio renderer port
+- [Eden](https://eden-emu.dev) and yuzu: file system, audio and display service layouts, and Eden as the reference for checking frames
+- [retrotool](https://github.com/PrimeDecomp/retrotool) and [PrimeRemasterStructs](https://github.com/PrimeDecomp/PrimeRemasterStructs) by PrimeDecomp: Metroid Prime Remastered file formats
+- Libraries: [SDL3](https://github.com/libsdl-org/SDL), [Dear ImGui](https://github.com/ocornut/imgui), [volk](https://github.com/zeux/volk), [Vulkan Memory Allocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator), [Vulkan-Headers](https://github.com/KhronosGroup/Vulkan-Headers), [astc-encoder](https://github.com/ARM-software/astc-encoder), [bc7enc_rdo](https://github.com/richgel999/bc7enc_rdo), [zstd](https://github.com/facebook/zstd), AMD FidelityFX FSR 1, DejaVu Sans, and the [Kenney Input Prompts](https://kenney.nl/assets/input-prompts) icons
+
+Contributors and testers: none yet. Everyone who sends a fix or a useful log goes here.
+
+Licences of the third-party parts are in the `licenses` folder and `THIRD_PARTY_NOTICES.txt` of the release.
+
+## License
+
+GPL-3.0, see [LICENSE](LICENSE). Third-party components keep their own licenses.
