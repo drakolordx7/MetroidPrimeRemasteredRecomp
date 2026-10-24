@@ -23,7 +23,7 @@ All 275 areas reached: all OK after S4h (noise rectangles were already fixed by 
 
 ## Shortcomings to fix
 - High refresh: physics matches within 0.5% at 60-240 steps (S22, S25 fixed the 240-step jump stall); morph ball +1-2% at 120-240 unconfirmed (S26); real-time stepping with a frame cap not yet checked in an unscripted window run.
-- Timing-sensitive tests (kernel_threads, svc_info, gfx_nvn_scene_stress, watchdog, gfx_pacing) can fail under heavy machine load and pass alone.
+- Timing-sensitive tests (kernel_threads, svc_info, gfx_nvn_scene_stress, watchdog, gfx_pacing, gfx_present) can fail under heavy machine load and pass alone.
 - New dev docs (S8-S18) have not had the plain-language pass yet.
 
 ## Decisions that matter
