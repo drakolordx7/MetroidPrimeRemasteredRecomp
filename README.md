@@ -17,12 +17,12 @@ Early. The game runs from the title screen into the first level (the Frigate Orp
 | Any resolution and aspect ratio, ultrawide included, with a correct HUD | Working |
 | FOV, anisotropic filtering, LOD bias, bloom and chromatic aberration toggles | Working |
 | Window, borderless fullscreen (Alt+Enter), vsync and frame cap options | Working |
-| A launcher (`mpr_launcher.exe`) with the display, mouse, keyboard, controller and button icon settings, first-time setup and a Play button | Working |
+| A launcher (`mpr_launcher.exe`) for display, mouse, keyboard, controller and button icon settings, plus first-time setup and a Play button | Working |
 | Frame rate counter (corner overlay, F2 by default, off by default) | Working |
 | High refresh rates (120, 144, 240 Hz and uncapped) with game speed and physics unchanged | Working in menus and cutscenes. Not yet checked in gameplay. |
 | Keyboard and mouse controls with rebinding (`controls.ini` and the F1 settings page), raw mouse aim | Implemented. Mouse aim and the Switch button layout are not yet checked in gameplay. Morph ball mouse camera and free look are missing. |
-| Controllers with gyro and rumble, and any controller button can press any Switch button | Implemented, not yet checked in gameplay |
-| Button icons that follow the device you use: keyboard and mouse icons (showing your own keys), Xbox, PlayStation or Switch | Working |
+| Controllers with gyro and rumble, and remappable buttons (any controller button can press any Switch button) | Implemented, not yet checked in gameplay |
+| Button icons that match the device you use: keyboard and mouse icons (showing your own keys), Xbox, PlayStation or Switch | Working |
 | HDR | In progress |
 | FSR 3.1 upscaling and frame generation, DLSS or XeSS if you supply the DLLs, Reflex and Anti-Lag 2 | In progress |
 
@@ -39,8 +39,8 @@ We do not provide dumps or keys and cannot help you get them.
 ## Install a release
 
 1. Download the latest zip from the Releases page and unpack it.
-2. Run `mpr_launcher.exe`. On a fresh folder it says there are no game files yet; press "Set up game files...". That opens the setup tool (`mpr_setup.exe`, which you can also start yourself). Pick your dump (or drag it into the window), check that the line under it turns green, point it at your keys if it did not find them, and press Start setup. It takes about 5 minutes on a 16-core PC. You can stop it and run it again later; it carries on where it left off.
-3. When the launcher says "Ready to play.", change any settings you like (display, mouse, keys, controller, button icons, frame rate counter) and press Play. Starting `mpr.exe` directly works too and uses the same saved settings.
+2. Run `mpr_launcher.exe`. In a new folder it reports that there are no game files yet, so press "Set up game files...". That opens the setup tool (`mpr_setup.exe`, which you can also run directly). Pick your dump (or drag it into the window) and check that the line under it turns green. If setup did not find your keys, point it at them. Then press Start setup. It takes about 5 minutes on a 16-core PC. You can stop it and run it again later, and it picks up where it left off.
+3. When the launcher says "Ready to play.", change any settings you like (display, mouse, keys, controller, button icons, frame rate counter), then press Play. You can also start `mpr.exe` directly. It uses the same saved settings.
 
 The release's own `README.txt` lists the default controls and the settings you can change. `tools/setup/README.md` in nxrecomp covers the setup tool in more detail, including its command-line options and error messages.
 
