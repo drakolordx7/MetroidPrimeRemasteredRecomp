@@ -18,6 +18,7 @@
 // settings file is ./mpr.ini (written by setup). Without it (development runs from game-build or work/run) nothing changes.
 #include <windows.h>
 
+#include <chrono>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -335,6 +336,49 @@ DWORD WINAPI deadline_thread(LPVOID p) {
     return 0;
 }
 
+// --prepare-shaders: no game, no window. A headless Vulkan device and the NVN back end's pipeline code compile the shader parts of every program the
+// setup tool listed (shader_cache/programs.bin), so the driver has them in its cache before the first start. Progress goes to stdout as
+// "prepare: <done> <total>" lines (the launcher reads them), the end as "prepare: done ..." / "prepare: ready" (already up to date).
+// Exit code: 0 done or ready, 1 could not run, 3 cancelled.
+int prepare_shaders_main(bool if_needed, int threads, const std::string& programs) {
+    std::string err;
+    nxrt::gfx::DeviceDesc dd;
+    dd.headless = 1;
+    auto dev = nxrt::gfx::Device::create(dd, &err);
+    if (!dev) { std::printf("prepare: error graphics device: %s\n", err.c_str()); return 1; }
+    nxrt::nvn::BackendDesc bd;
+    bd.device = dev.get();
+    bd.register_entry_points = false;
+    if (!nxrt::nvn::install_backend(bd)) { std::printf("prepare: error the graphics back end did not start\n"); return 1; }
+    nxrt::nvn::ShaderPrepareOptions po;
+    po.only_if_needed = if_needed;
+    po.programs_file = programs;
+    po.threads = threads;
+    auto last = std::chrono::steady_clock::now();
+    po.progress = [&](uint64_t done, uint64_t total) {
+        const auto now = std::chrono::steady_clock::now();
+        if (done < total && now - last < std::chrono::milliseconds(250)) return true;
+        last = now;
+        std::printf("prepare: %llu %llu\n", static_cast<unsigned long long>(done), static_cast<unsigned long long>(total));
+        std::fflush(stdout);
+        return true;
+    };
+    nxrt::nvn::ShaderPrepareResult pr;
+    const bool ok = nxrt::nvn::prepare_shaders(po, &pr);
+    int rc = 0;
+    if (!ok) { std::printf("prepare: error %s\n", pr.error.c_str()); rc = 1; }
+    else if (pr.already_ready) std::printf("prepare: ready\n");
+    else std::printf("prepare: done programs=%llu prepared=%llu missing=%llu failed=%llu parts=%llu fast=%llu seconds=%.1f%s\n", static_cast<unsigned long long>(pr.programs),
+                     static_cast<unsigned long long>(pr.prepared), static_cast<unsigned long long>(pr.missing_shaders), static_cast<unsigned long long>(pr.failed),
+                     static_cast<unsigned long long>(pr.parts), static_cast<unsigned long long>(pr.fast_parts), pr.seconds, pr.cancelled ? " cancelled" : "");
+    std::fflush(stdout);
+    if (ok && pr.cancelled) rc = 3;
+    nxrt::nvn::shutdown_backend();
+    dev.reset();
+    nxrt::shutdown();
+    return rc;
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -349,6 +393,9 @@ int main(int argc, char** argv) {
     std::string game = std::getenv("MPR_GAME") ? std::getenv("MPR_GAME") : "";
     const char* ini = nullptr;
     const char* logp = nullptr;
+    bool prepare = false, prepare_if_needed = false;      // --prepare-shaders [--if-needed] [--threads N]: compile the game's shaders ahead and exit (no game start)
+    int prepare_threads = 0;
+    std::string prepare_programs;                         // --programs FILE: another program list (tests)
     std::vector<std::pair<std::string, std::string>> boot_opts;   // [boot] keys from the command line: nxrt::init() reloads the configuration, so they are applied after it
     for (int i = 1; i < argc; i++) {
         auto arg = [&](const char* n) { return !std::strcmp(argv[i], n) && i + 1 < argc; };
@@ -358,6 +405,10 @@ int main(int argc, char** argv) {
         else if (arg("--log")) logp = argv[++i];
         else if (arg("--max-seconds")) boot_opts.emplace_back("max_seconds", argv[++i]);
         else if (arg("--link")) boot_opts.emplace_back("link", argv[++i]);
+        else if (!std::strcmp(argv[i], "--prepare-shaders")) { prepare = true; _putenv("NXRT_DIAG_WATCHDOG_SECONDS=0"); }
+        else if (!std::strcmp(argv[i], "--if-needed")) prepare_if_needed = true;
+        else if (arg("--threads")) prepare_threads = std::atoi(argv[++i]);
+        else if (arg("--programs")) prepare_programs = argv[++i];
         else if (!std::strcmp(argv[i], "--no-nvn")) boot_opts.emplace_back("nvn", "0");
         else if (!std::strcmp(argv[i], "--headless")) boot_opts.emplace_back("gfx", "headless");
         else if (!std::strcmp(argv[i], "--window")) boot_opts.emplace_back("gfx", "window");
@@ -389,6 +440,8 @@ int main(int argc, char** argv) {
     if (installed && !nxrt::config_has("fs", "romfs")) nxrt::config_set("fs", "romfs", "romfs");   // mpr.ini missing or without [fs]
     nxrt::config_set("process", "program_id", "0x010012101468C000");     // GetInfo(ProgramId); an ini value or the environment still wins
     NXLOG_I("boot", "Metroid Prime Remastered v1.0.0: exefs '%s'", exefs.c_str());
+
+    if (prepare) return prepare_shaders_main(prepare_if_needed, prepare_threads, prepare_programs);
 
     bool play_started = false;
     if (nxrt::config_get_bool("boot", "nvn", true)) {
