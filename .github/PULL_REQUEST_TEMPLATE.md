@@ -19,4 +19,4 @@ Build used:
 - [ ] Tests added or updated where it makes sense.
 - [ ] Commit messages are plain imperative sentences.
 
-Please read [CONTRIBUTING.md](https://github.com/drakolordx7/MetroidPrimeRemasteredRecomp/blob/main/CONTRIBUTING.md) before you open a PR.
+Please read the [Contributing](https://github.com/drakolordx7/MetroidPrimeRemasteredRecomp#contributing) section before you open a PR.

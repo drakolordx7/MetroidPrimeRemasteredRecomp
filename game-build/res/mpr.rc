@@ -1,0 +1,43 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Resources for mpr.exe: the manifest (UTF-8 code page, long paths, asInvoker) and the version information.
+// MPR_VER_MAJOR / MINOR / PATCH and MPR_VER_TEXT come from the build (game-build/CMakeLists.txt, -DMPR_VERSION=0.1.0).
+#include <winres.h>
+
+#ifndef MPR_VER_MAJOR
+#define MPR_VER_MAJOR 0
+#define MPR_VER_MINOR 0
+#define MPR_VER_PATCH 0
+#endif
+#ifndef MPR_VER_TEXT
+#define MPR_VER_TEXT "dev"
+#endif
+
+1 24 "mpr.manifest"
+
+1 VERSIONINFO
+FILEVERSION     MPR_VER_MAJOR, MPR_VER_MINOR, MPR_VER_PATCH, 0
+PRODUCTVERSION  MPR_VER_MAJOR, MPR_VER_MINOR, MPR_VER_PATCH, 0
+FILEFLAGSMASK   0x3fL
+FILEFLAGS       0x0L
+FILEOS          0x40004L
+FILETYPE        0x1L
+FILESUBTYPE     0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", ""
+            VALUE "FileDescription", "Metroid Prime Remastered PC"
+            VALUE "FileVersion", MPR_VER_TEXT
+            VALUE "InternalName", "mpr"
+            VALUE "OriginalFilename", "mpr.exe"
+            VALUE "ProductName", "Metroid Prime Remastered PC"
+            VALUE "ProductVersion", MPR_VER_TEXT
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END

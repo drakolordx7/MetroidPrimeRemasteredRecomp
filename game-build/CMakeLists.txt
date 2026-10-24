@@ -28,6 +28,17 @@ if(MPR_RELEASE)
     add_compile_options("-clang:-ffile-prefix-map=${MPR_ROOT}=.")
 endif()
 
+# The release version ("0.1.0"; "dev" for local builds). The game log, --version and the exe's file properties show it, and the
+# launcher (built from the runtime with the same cache value) shows it in its window. game-build/scripts/build.ps1 -Version sets it.
+set(MPR_VERSION "dev" CACHE STRING "release version shown by mpr.exe and the launcher")
+set(MPR_VER_MAJOR 0)
+set(MPR_VER_MINOR 0)
+set(MPR_VER_PATCH 0)
+if(MPR_VERSION MATCHES "^([0-9]+)[.]([0-9]+)[.]([0-9]+)")
+    set(MPR_VER_MAJOR ${CMAKE_MATCH_1})
+    set(MPR_VER_MINOR ${CMAKE_MATCH_2})
+    set(MPR_VER_PATCH ${CMAKE_MATCH_3})
+endif()
 # MPR_RUNTIME_DIR: which runtime checkout compiles in (default the main one; a worktree such as runtime-wt/boot2 for branch work)
 set(MPR_RUNTIME_DIR "${MPR_ROOT}/runtime" CACHE PATH "runtime source tree compiled into mpr.exe")
 set(NXRT_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -39,7 +50,10 @@ foreach(m main sdk subsdk0 rtld)
     set_target_properties(mpr_${m} PROPERTIES IMPORTED_LOCATION "${MPR_LIB_DIR}/mpr_${m}.lib")
 endforeach()
 
-add_executable(mpr src/mpr_main.cpp)
+add_executable(mpr src/mpr_main.cpp res/mpr.rc)
+set_source_files_properties(src/mpr_main.cpp PROPERTIES COMPILE_DEFINITIONS "MPR_VERSION=\"${MPR_VERSION}\"")
+set_source_files_properties(res/mpr.rc PROPERTIES COMPILE_DEFINITIONS "MPR_VER_MAJOR=${MPR_VER_MAJOR};MPR_VER_MINOR=${MPR_VER_MINOR};MPR_VER_PATCH=${MPR_VER_PATCH};MPR_VER_TEXT=\"${MPR_VERSION}\""
+                            OBJECT_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/res/mpr.manifest")
 target_compile_definitions(mpr PRIVATE MPR_EXEFS_DEFAULT="${MPR_EXEFS_DEFAULT}")
 target_link_libraries(mpr PRIVATE mpr_main mpr_sdk mpr_subsdk0 mpr_rtld nxrt_gfx nxrt)
 # Same link options as the runtime's test executables: a linker map next to the exe (host frames get names), a big main stack (lifted
@@ -48,7 +62,7 @@ if(MPR_RELEASE)
     target_compile_definitions(mpr PRIVATE MPR_GUI_SUBSYSTEM=1)
     target_link_options(mpr PRIVATE /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup /PDBALTPATH:mpr.pdb)
 endif()
-target_link_options(mpr PRIVATE /MAP /STACK:134217728 /HIGHENTROPYVA:NO /DEBUG)
+target_link_options(mpr PRIVATE /MAP /STACK:134217728 /HIGHENTROPYVA:NO /DEBUG /MANIFEST:NO)   # res/mpr.rc carries the manifest
 
 # The ASTC decoder DLLs astc2bc7 loads at run time (NVN textures in ASTC are transcoded to BC7 on first use): next to mpr.exe.
 # (NXRT_A2B_DIR is the tools/textures build folder the runtime links its transcoder from: cmake/gfx.cmake)

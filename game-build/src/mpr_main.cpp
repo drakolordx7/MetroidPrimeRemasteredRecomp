@@ -22,6 +22,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <cwctype>
 #include <memory>
 #include <string>
 #include <utility>
@@ -50,6 +51,10 @@ extern const uint32_t nxmod_main_abi, nxmod_sdk_abi, nxmod_subsdk0_abi, nxmod_rt
 
 #ifndef MPR_EXEFS_DEFAULT
 #define MPR_EXEFS_DEFAULT "game/exefs"
+#endif
+
+#ifndef MPR_VERSION
+#define MPR_VERSION "dev"     // set by the build: game-build/CMakeLists.txt, -DMPR_VERSION=0.1.0
 #endif
 
 namespace {
@@ -383,7 +388,9 @@ int prepare_shaders_main(bool if_needed, int threads, const std::string& program
 
 int main(int argc, char** argv) {
 #ifdef MPR_GUI_SUBSYSTEM
-    if (AttachConsole(ATTACH_PARENT_PROCESS)) {     // started from a terminal: keep its output
+    // Started from a terminal: show the output there. When the output is redirected to a file or a pipe (mpr --version > v.txt), leave it alone.
+    const HANDLE out_handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    if ((!out_handle || out_handle == INVALID_HANDLE_VALUE) && AttachConsole(ATTACH_PARENT_PROCESS)) {
         std::freopen("CONOUT$", "w", stdout);
         std::freopen("CONOUT$", "w", stderr);
     }
@@ -405,6 +412,7 @@ int main(int argc, char** argv) {
         else if (arg("--log")) logp = argv[++i];
         else if (arg("--max-seconds")) boot_opts.emplace_back("max_seconds", argv[++i]);
         else if (arg("--link")) boot_opts.emplace_back("link", argv[++i]);
+        else if (!std::strcmp(argv[i], "--version")) { std::printf("mpr %s\n", MPR_VERSION); return 0; }
         else if (!std::strcmp(argv[i], "--prepare-shaders")) { prepare = true; _putenv("NXRT_DIAG_WATCHDOG_SECONDS=0"); }
         else if (!std::strcmp(argv[i], "--if-needed")) prepare_if_needed = true;
         else if (arg("--threads")) prepare_threads = std::atoi(argv[++i]);
@@ -426,6 +434,17 @@ int main(int argc, char** argv) {
             if (ini) { ini_abs = absolute_utf8(ini); ini = ini_abs.c_str(); }
             if (logp) { log_abs = absolute_utf8(logp); logp = log_abs.c_str(); }
             if (!SetCurrentDirectoryW(base.c_str())) die("cannot use the game folder %s", narrow_utf8(base).c_str());
+            // One game (or one shader preparation) per game folder: two would write the same log, pipeline cache and saves. The name comes from
+            // the folder's full path; NXRT_ALLOW_MULTIPLE=1 lifts the check for test rigs.
+            if (!std::getenv("NXRT_ALLOW_MULTIPLE")) {
+                std::wstring full(32768, L'\0');
+                full.resize(GetFullPathNameW(base.c_str(), static_cast<DWORD>(full.size()), full.data(), nullptr));
+                unsigned long long h = 1469598103934665603ull;
+                for (wchar_t ch : full) h = (h ^ static_cast<unsigned long long>(std::towlower(ch))) * 1099511628211ull;
+                const std::wstring name = L"Local\\MPRRecomp_" + std::to_wstring(h);
+                if (CreateMutexW(nullptr, FALSE, name.c_str()) && GetLastError() == ERROR_ALREADY_EXISTS)
+                    die("The game is already running from this folder (or its shaders are being prepared). Close that one first.");
+            }
             if (!exefs_given) exefs = "exefs";
             if (!logp) logp = "mpr.log";
             if (!ini && !std::getenv("NXRT_INI") && file_exists(L"mpr.ini")) ini = "mpr.ini";
@@ -439,6 +458,7 @@ int main(int argc, char** argv) {
     for (const auto& kv : boot_opts) nxrt::config_set("boot", kv.first.c_str(), kv.second.c_str());
     if (installed && !nxrt::config_has("fs", "romfs")) nxrt::config_set("fs", "romfs", "romfs");   // mpr.ini missing or without [fs]
     nxrt::config_set("process", "program_id", "0x010012101468C000");     // GetInfo(ProgramId); an ini value or the environment still wins
+    NXLOG_I("boot", "mpr %s (Metroid Prime Remastered PC port)", MPR_VERSION);
     NXLOG_I("boot", "Metroid Prime Remastered v1.0.0: exefs '%s'", exefs.c_str());
 
     if (prepare) return prepare_shaders_main(prepare_if_needed, prepare_threads, prepare_programs);
@@ -459,7 +479,7 @@ int main(int argc, char** argv) {
                 wd.title = "Metroid Prime Remastered";
                 wd.width = disp.width;
                 wd.height = disp.height;
-                if (!nxrt::platform::create_window(wd)) die("cannot create the window");
+                if (!nxrt::platform::create_window(wd)) die("cannot create the game window. The game needs a graphics driver with Vulkan 1.3: update the driver for your graphics card and try again. The reason is in mpr.log.");
             }
             nxrt::gfx::DeviceDesc dd;
             dd.headless = headless ? 1 : 0;
