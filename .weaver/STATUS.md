@@ -18,7 +18,7 @@ All 275 areas reached: all OK after S4h (noise rectangles were already fixed by 
 ## Next (queue, in order)
 1. Scripted route past the Frigate Emergency Evacuation Area (fire damage + wall stall; S26 suggests a 0.25 @probe grid or a room script). Low value while the user play-tests by hand.
 2. Morph ball speed +0.3-1.7 % at 120-240 vs 60 (S26: real, not monotonic in rate, mechanism unknown; try a flat test area).
-3. Launcher polish (S27 gaps): press-a-button capture on the Controller tab, folder picker and DPI-change untested, Keyboard tab Reset resets all contexts; FPS counter overlaps the title-screen copyright line bottom-right.
+3. Launcher polish (S27 gaps): press-a-button capture on the Controller tab, folder picker and DPI-change untested, Keyboard tab Reset resets all contexts; FPS counter overlaps the title-screen copyright line bottom-right. Setup run without a shader pack beside it says "the game compiles shaders as it needs them", which is wrong (nothing draws): make it find the pack or fail clearly. Release exe embeds build paths (D:/AI...; make_release warns, --strict-paths would fail): add -ffile-prefix-map / /pathmap.
 4. Later, low priority (user: upscalers are not a priority at all): motion vectors + FSR 3.1/DLSS/XeSS (unfinished work parked on runtime branch `upscale` 7f65481, unverified); HDR on a real HDR display; AMD Anti-Lag 2. Jets: not reproduced; need a clip from the user's build.
 
 ## Shortcomings to fix
