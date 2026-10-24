@@ -479,7 +479,7 @@ int main(int argc, char** argv) {
                 wd.title = "Metroid Prime Remastered";
                 wd.width = disp.width;
                 wd.height = disp.height;
-                if (!nxrt::platform::create_window(wd)) die("cannot create the window");
+                if (!nxrt::platform::create_window(wd)) die("cannot create the game window. The game needs a graphics driver with Vulkan 1.3: update the driver for your graphics card and try again. The reason is in mpr.log.");
             }
             nxrt::gfx::DeviceDesc dd;
             dd.headless = headless ? 1 : 0;
