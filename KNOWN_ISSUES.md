@@ -5,7 +5,8 @@ This list is kept short and matches the latest release. The release notes of eac
 ## Playing
 
 - Only the start of the game has been played by hand: New Game, the Frigate Orpheon, and the first part of Tallon IV up to the Chozo Ruins' Main Plaza. An automated check loads all 275 areas, but nobody has played the later ones, so a story blocker could still be there.
-- 17 areas show patches of colour noise when they load: Frigate (Biotech Research Area 1, Deck Alpha Mech Shaft, Deck Beta Security Hall, Main Ventilation Shaft Section E), Tallon (Biohazard Containment, Main Ventilation Shaft Section B, Root Tunnel, Temple Security Station) and Chozo Ruins (Dynamo Access, Reflecting Pool Access, Totem Access, Tower of Light, Tower of Light Access, Transport Access South, Vault, Vault Access, Watery Hall Access).
+- Some wall monitors on the Frigate show static instead of their screen graphics.
+- With a controller, looking up and down with the right stick does not work yet (left and right does).
 - Two rare crashes were seen in room-loading sweeps (a Magmoor Caverns area, and the Frigate air lock) and did not repeat.
 - A few hundred of the game's shader programs, among them some gun shaders, have no translated stage and are skipped. What that looks like in play is not known.
 
