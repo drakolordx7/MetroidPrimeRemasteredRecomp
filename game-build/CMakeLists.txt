@@ -19,6 +19,8 @@ set(MPR_EXEFS_DEFAULT "${MPR_ROOT}/game/exefs" CACHE PATH "default ExeFS folder 
 # Release packages (MPR_RELEASE=ON): mpr.exe is a Windows GUI program (double click opens the game window only, no console; errors show in
 # a message box, output still reaches a terminal it was started from), looks for ./exefs by default, and carries no local build paths
 # (source paths in assert strings, the .pdb path): see the installed-layout comment in src/mpr_main.cpp.
+# __FILE__ (the assert strings of the audio renderer) never carries the build folder, in any build: paths are written relative to the checkout.
+add_compile_options("-clang:-fmacro-prefix-map=${MPR_ROOT}=.")
 option(MPR_RELEASE "build mpr.exe as a release package binary" OFF)
 if(MPR_RELEASE)
     set(MPR_GUI_SUBSYSTEM ON)
