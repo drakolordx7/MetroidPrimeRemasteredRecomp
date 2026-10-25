@@ -451,7 +451,8 @@ int main(int argc, char** argv) {
             }
             if (!exefs_given) exefs = "exefs";
             if (!logp) logp = "mpr.log";
-            if (!ini && !std::getenv("NXRT_INI") && file_exists(L"mpr.ini")) ini = "mpr.ini";
+            const char* game_ini = nxrt::game::info().game_ini;     // "mpr.ini", written by setup
+            if (!ini && !std::getenv("NXRT_INI") && *game_ini && file_exists(std::wstring(game_ini, game_ini + std::strlen(game_ini)))) ini = game_ini;
         }
     }
 
