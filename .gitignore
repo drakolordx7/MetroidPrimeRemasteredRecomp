@@ -19,3 +19,6 @@ nxrt.log*
 # local editor and tool settings
 /game-build-*/
 __pycache__/
+recomp-wt/
+root-wt/
+tools-wt/
