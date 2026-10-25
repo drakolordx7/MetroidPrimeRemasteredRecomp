@@ -33,6 +33,7 @@
 #include "nxrt/dispatch.h"
 #include "nxrt/kernel.h"
 #include "nxrt/log.h"
+#include "nxrt/game.h"
 #include "nxrt/memory.h"
 #include "nxrt/module.h"
 #include "nxrt/gfx.h"
@@ -43,6 +44,8 @@
 #include "nxrt/play.h"
 #include "nxrt/nxmodule.h"
 #include "nxrt/runtime.h"
+
+#include "mpr/mpr_game.h"     // the Metroid Prime Remastered game module (runtime/games/mpr): every title-specific table the runtime uses
 
 extern "C" {
 extern const NxModule nxmod_main, nxmod_sdk, nxmod_subsdk0, nxmod_rtld;
@@ -219,7 +222,7 @@ DWORD WINAPI killer_poll(LPVOID) {
 #ifdef MPR_GUI_SUBSYSTEM
     char msg[1024];     // a double-clicked exe has no console: say what is wrong in a box
     std::snprintf(msg, sizeof msg, fmt, a, b);
-    MessageBoxA(nullptr, msg, "Metroid Prime Remastered", MB_OK | MB_ICONERROR);
+    MessageBoxA(nullptr, msg, nxrt::game::info().title, MB_OK | MB_ICONERROR);
 #endif
     TerminateProcess(GetCurrentProcess(), 1);
     for (;;) {}
@@ -387,6 +390,7 @@ int prepare_shaders_main(bool if_needed, int threads, const std::string& program
 }  // namespace
 
 int main(int argc, char** argv) {
+    nxrt_register_game_mpr();      // before anything reads it (nxrt::init, play mode, the services, the test tooling): docs/GAME_BOUNDARY.md
 #ifdef MPR_GUI_SUBSYSTEM
     // Started from a terminal: show the output there. When the output is redirected to a file or a pipe (mpr --version > v.txt), leave it alone.
     const HANDLE out_handle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -476,7 +480,7 @@ int main(int argc, char** argv) {
                 disp = nxrt::play::display();       // controls.ini: window size, present mode, frame cap
                 nxrt::platform::init();
                 nxrt::platform::WindowDesc wd;
-                wd.title = "Metroid Prime Remastered";
+                wd.title = nxrt::game::info().title;
                 wd.width = disp.width;
                 wd.height = disp.height;
                 if (!nxrt::platform::create_window(wd)) die("cannot create the game window. The game needs a graphics driver with Vulkan 1.3: update the driver for your graphics card and try again. The reason is in mpr.log.");
