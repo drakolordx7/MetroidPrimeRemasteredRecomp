@@ -55,7 +55,7 @@ set_source_files_properties(src/mpr_main.cpp PROPERTIES COMPILE_DEFINITIONS "MPR
 set_source_files_properties(res/mpr.rc PROPERTIES COMPILE_DEFINITIONS "MPR_VER_MAJOR=${MPR_VER_MAJOR};MPR_VER_MINOR=${MPR_VER_MINOR};MPR_VER_PATCH=${MPR_VER_PATCH};MPR_VER_TEXT=\"${MPR_VERSION}\""
                             OBJECT_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/res/mpr.manifest")
 target_compile_definitions(mpr PRIVATE MPR_EXEFS_DEFAULT="${MPR_EXEFS_DEFAULT}")
-target_link_libraries(mpr PRIVATE mpr_main mpr_sdk mpr_subsdk0 mpr_rtld nxrt_gfx nxrt)
+target_link_libraries(mpr PRIVATE mpr_main mpr_sdk mpr_subsdk0 mpr_rtld nxrt_game_mpr nxrt_gfx nxrt)   # nxrt_game_mpr: runtime/games/mpr
 # Same link options as the runtime's test executables: a linker map next to the exe (host frames get names), a big main stack (lifted
 # code nests deeply), low host allocations so the guest ranges at 0x71_0000_0000 and up stay free.
 if(MPR_RELEASE)
